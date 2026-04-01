@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import type { Game } from "@/data/games";
 import { GameCard } from "./GameCard";
 
@@ -12,6 +12,18 @@ interface HeroProps {
 export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
   const [search, setSearch] = useState("");
   const [searchFocused, setSearchFocused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const checkSize = () => {
+      setIsMobile(window.innerWidth <= 640);
+      setIsTablet(window.innerWidth > 640 && window.innerWidth <= 1024);
+    };
+    checkSize();
+    window.addEventListener("resize", checkSize);
+    return () => window.removeEventListener("resize", checkSize);
+  }, []);
 
   const filtered = games.filter(
     (g) =>
@@ -219,68 +231,6 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
         </div>
       </div>
 
-      {/* ── STATS BAR ── */}
-      <div
-        style={{
-          maxWidth: 900,
-          margin: "0 auto",
-          padding: "0 24px",
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: 12,
-            background: "#0c1020",
-            border: "1px solid rgba(100,80,200,0.2)",
-            borderRadius: 14,
-            padding: "20px 24px",
-            marginBottom: 56,
-          }}
-        >
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: 4,
-                padding: "4px 0",
-                borderRight: "1px solid rgba(100,80,200,0.12)",
-              }}
-            >
-              <span style={{ fontSize: 22 }}>{s.icon}</span>
-              <span
-                style={{
-                  fontFamily: "Georgia, serif",
-                  fontSize: "clamp(16px, 2vw, 22px)",
-                  fontWeight: 700,
-                  color: "#e8e0ff",
-                  lineHeight: 1,
-                }}
-              >
-                {s.value}
-              </span>
-              <span
-                style={{
-                  fontFamily: "monospace",
-                  fontSize: 10,
-                  color: "#3d3560",
-                  letterSpacing: 1.5,
-                  textTransform: "uppercase",
-                }}
-              >
-                {s.label}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* ── FEATURED CONTENT HUB ── */}
       <div
         style={{
@@ -307,7 +257,11 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns: isMobile
+              ? "1fr"
+              : isTablet
+              ? "repeat(2, 1fr)"
+              : "repeat(3, 1fr)",
             gap: 16,
             marginBottom: 64,
           }}
