@@ -20,7 +20,9 @@
       "overall": "A",
       "notes": "Not her reigning era anymore. But still good frontline for PVP and good 50% dmg amp vs Earth and Holy monster with imbue effect to ease on gearing"
     },
-    "requiredMats": "2240 Zaura Particle + 5 Zaura Memory Orb or 700 Demigod Orb + 5 Zaura Memory Orb"
+    "requiredMats": "2240 Zaura Particle + 5 Zaura Memory Orb or 700 Demigod Orb + 5 Zaura Memory Orb",
+    "element": "Dark",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -43,7 +45,9 @@
       "overall": "S",
       "notes": "Jack of all trade that can healing, AoE for leveling alts and good buff, but low downtime compare to new character joining in roster. Still usable and comfy pick by many players"
     },
-    "requiredMats": "2240 Vakarine Particle + 5 Vakarine Memory Orb or 700 Demigod Orb + 5 Vakarine Memory Orb"
+    "requiredMats": "2240 Vakarine Particle + 5 Vakarine Memory Orb or 700 Demigod Orb + 5 Vakarine Memory Orb",
+    "element": "Ice",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -66,7 +70,9 @@
       "overall": "A",
       "notes": "Only his good is HP/SP regen from rank 5 and he still has his caveats from dying too much.  Only Cleric Class can substain him enough"
     },
-    "requiredMats": "2240 Hauberk Particle + 5 Hauberk Memory Orb or 700 Demigod Orb + 5 Hauberk Memory Orb"
+    "requiredMats": "2240 Hauberk Particle + 5 Hauberk Memory Orb or 700 Demigod Orb + 5 Hauberk Memory Orb",
+    "element": "Earth",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -89,7 +95,9 @@
       "overall": "A",
       "notes": "Her awakening is very strong despite of it is area effect. Make her useful even at 1 star.  Not good as others for damage boost. But great pick for newbies that love to play DPS classes that lack on survival like Archer , Scout and Musketeer"
     },
-    "requiredMats": "2240 Gabija Particle + 5 Gabija Memory Orb or 700 Demigod Orb + 5 Gabija Memory Orb"
+    "requiredMats": "2240 Gabija Particle + 5 Gabija Memory Orb or 700 Demigod Orb + 5 Gabija Memory Orb",
+    "element": "Fire",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -112,7 +120,9 @@
       "overall": "S",
       "notes": "Must-pick for Wizard class. Her Rank 7 skill provide Lethargy status effect which combo nicely with Earthquake. Still useful around with AoE CC, hard to kill with extra life from Rank 5 effect and nearly permanent 40% dmg amp"
     },
-    "requiredMats": "2240 Lada Particle + 5 Lada Memory Orb or 700 Demigod Orb + 5 Lada Memory Orb"
+    "requiredMats": "2240 Lada Particle + 5 Lada Memory Orb or 700 Demigod Orb + 5 Lada Memory Orb",
+    "element": "Lightning",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -135,7 +145,9 @@
       "overall": "S+",
       "notes": "Very useful unit that sadly get powercrept by Velcoffer. Provide substainable heal, 50% dmg boost that is multiplicative and guarantee block which mitigate good amount of damage. But her damage is not good without rings make her steep investment"
     },
-    "requiredMats": "2240 Arlene Particle + 5 Arlene Memory Orb or 700 Demigod Orb + 5 Arlene Memory Orb"
+    "requiredMats": "2240 Arlene Particle + 5 Arlene Memory Orb or 700 Demigod Orb + 5 Arlene Memory Orb",
+    "element": "Holy",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -158,7 +170,9 @@
       "overall": "S+",
       "notes": "Deal a lot of damage as a range DPS character itself and provide passive 20% atk and hp boost. Which is consider very much on lategame where every attack point you have can make difference. But only consider usable after unlocking rank 6 make her steep investment  She also good as PVP unit."
     },
-    "requiredMats": "2240 Nebulas Particle + 5 Nebulas Memory Orb or 700 Demigod Orb + 5 Nebulas Memory Orb"
+    "requiredMats": "2240 Nebulas Particle + 5 Nebulas Memory Orb or 700 Demigod Orb + 5 Nebulas Memory Orb",
+    "element": "Dark",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -181,7 +195,9 @@
       "overall": "S",
       "notes": "-SS  God of Water is OP as heck when facing any Fire enemy, but just so-so on everything else. She doing good damage after unlock rank 5-6 while provide mitigation from rank 4. Make her a bit versatile even not facing fire enemy"
     },
-    "requiredMats": "2240 Jurate Particle + 5 Jurate Memory Orb or 700 Demigod Orb + 5 Jurate Memory Orb"
+    "requiredMats": "2240 Jurate Particle + 5 Jurate Memory Orb or 700 Demigod Orb + 5 Jurate Memory Orb",
+    "element": "Ice",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -204,7 +220,9 @@
       "overall": "S",
       "notes": "PVP unit that can add-on as specialist vs. Thunder enemy, more bonus point if that enemy is insect or beast-type. With high evasion rate from rings, he can act as a tank as well. Provoke a lot of hit from boss."
     },
-    "requiredMats": "2240 Marnox Particle + 5 Marnox Memory Orb or 700 Demigod Orb + 5 Marnox Memory Orb"
+    "requiredMats": "2240 Marnox Particle + 5 Marnox Memory Orb or 700 Demigod Orb + 5 Marnox Memory Orb",
+    "element": "Earth",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -227,7 +245,9 @@
       "overall": "SS",
       "notes": "75% damage amp from self that can ramped up by time, combine with 75% dmg amp debuff make her potential uncomparable to anyone currently. Rank 2 meteor effect also provide a lot damage ongoing and she also has healing at rank 7 skill. Make her great offensive support and best bossing unit in the game."
     },
-    "requiredMats": "2240 Velcoffer Particle + 5 Velcoffer Memory Orb or 700 Demigod Orb + 5 Velcoffer Memory Orb"
+    "requiredMats": "2240 Velcoffer Particle + 5 Velcoffer Memory Orb or 700 Demigod Orb + 5 Velcoffer Memory Orb",
+    "element": "Fire",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -238,8 +258,8 @@
     "leaderSkill": "[TIP] (TOS Idol Project) Idol  When the team has a combination of this element fellows. Grant all fellows this following effect: - Fire + Ice : All attack has 10% chance to inflict 'Heron Heron' (Mental-type debuff) to enemy. Decrease attack power by 3.5% for 10s - Ice + Lightning : All attack has 10% chance to inflict 'Surprise' (Physical-type debuff) to enemy. Reduce Hit and Penetration value by 5% for 10s. -  Fire + Lightning : All attack has 10% chance to inflict 'Dazzle' (Magical-type debuff) to enemy. Increase damage taken by 5% for 10s.",
     "basicAttack": "100% damage. Grant your self 1 'Performance' stack and heal lowest member in team for each [TIP] unit in team by 15% (+2% per rank) of healing power. Pririotize ally that is lowest HP and not affect by this unit's healing skill  Base Stat Increase: HP +60%, Defense +50%, Atk +25%",
     "skill1": "Perform CD 7s [Can only used when have 10 stacks of 'Performance']  Start a perform for 10s. Affect all nearby allies. Every 2s, heal all allies that are not affect by this unit's healing skill for 25% of healing power. Reduce damage taken by 50% while performing",
-    "skill2": "no skill",
-    "skill3": "no skill",
+    "skill2": "ไม่มี",
+    "skill3": "ไม่มี",
     "awakenSkill": "On The Stage [Unlock at Rank 1] CD 120s Enter 'Awakening' state for 30s.  [Awakening - On The Stage] - Constantly use Perform, healing all allies every 2s.",
     "tierlist": {
       "damage": "C (A at 6 star)",
@@ -250,7 +270,9 @@
       "overall": "S",
       "notes": "Healer demigod that very useful for field boss hunt. Usable since rank 1 make her useful. With every rank unlocked make her buff more and more potential. Healer fellows always be sought after.  Her buff provide to all members make her always good for Guild Raid content. Must have at least 1 member in party"
     },
-    "requiredMats": "2240 Aura Black Particle + 5 Aura Black Memory Orb or 700 Demigod Orb + 5 Aura Black Memory Orb"
+    "requiredMats": "2240 Aura Black Particle + 5 Aura Black Memory Orb or 700 Demigod Orb + 5 Aura Black Memory Orb",
+    "element": "Lightning",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -273,7 +295,9 @@
       "overall": "S+",
       "notes": "AoE DPS that come with a ton of support.  Replace Justina in role of team res and also can deal good damage & buff as meta unit should do. Very competitive in every content"
     },
-    "requiredMats": "2240 Giltine Particle + 5 Giltine Memory Orb or 700 Demigod Orb + 5 Giltine Memory Orb"
+    "requiredMats": "2240 Giltine Particle + 5 Giltine Memory Orb or 700 Demigod Orb + 5 Giltine Memory Orb",
+    "element": "Holy",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -296,7 +320,9 @@
       "overall": "S+",
       "notes": "Has a tons of buffs & debuffs that might look too much RNG at first, but alleviete with Rank upgrade for more consistancy. But the best of her kit is she improve your survivalbility very much. Great pick for squishy class like Archer, Scout or Musketeer or even Wizard  Still great to use and deal great damage. Compatible with anyone"
     },
-    "requiredMats": "2240 Laima Particle + 5 Laima Memory Orb or 700 Demigod Orb + 5 Laima Memory Orb"
+    "requiredMats": "2240 Laima Particle + 5 Laima Memory Orb or 700 Demigod Orb + 5 Laima Memory Orb",
+    "element": "Dark",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -319,7 +345,9 @@
       "overall": "OP",
       "notes": "Heal a lot, buff a lot, can be used at rank 2 and so on. Her rank upgrade is great. Stack on offensive & defensive every upgrade. Can use on every content.  Max HP buff to you after rank 5 is huge (+30%). Make her really great on boosting squishy class as well"
     },
-    "requiredMats": "2240 Austeja Particle + 5 Austeja Memory Orb or 700 Demigod Orb + 5 Austeja Memory Orb"
+    "requiredMats": "2240 Austeja Particle + 5 Austeja Memory Orb or 700 Demigod Orb + 5 Austeja Memory Orb",
+    "element": "Ice",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -342,7 +370,9 @@
       "overall": "S+",
       "notes": "Very high damage and ceiling fellows that costly. Like every other Male demigod fellow, they mainly used for PvP. But to be useful for PvE need high rank and specific investment. But for him it is very worthwhile if you lucky to R7 him early."
     },
-    "requiredMats": "2240 Rexipher Particle + 5 Rexipher Memory Orb or 700 Demigod Orb + 5 Rexipher Memory Orb"
+    "requiredMats": "2240 Rexipher Particle + 5 Rexipher Memory Orb or 700 Demigod Orb + 5 Rexipher Memory Orb",
+    "element": "Earth",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -365,7 +395,9 @@
       "overall": "SS",
       "notes": "Double Mechanic and team wide buff prove her usage to be a nice replace to Aura Black slot. Very general and new buff that can be used for long time. At least for 6 months (2 Demigod rotations)"
     },
-    "requiredMats": "2240 Lucy Particle + 5 Lucy Memory Orb or 700 Demigod Orb + 5 Lucy Memory Orb"
+    "requiredMats": "2240 Lucy Particle + 5 Lucy Memory Orb or 700 Demigod Orb + 5 Lucy Memory Orb",
+    "element": "Fire",
+    "rarity": 5
   },
   {
     "grade": "Demigod UR",
@@ -388,7 +420,9 @@
       "overall": "SS+",
       "notes": "Has high power but take too long time to ramp up her \"Blue Rose Protection\" stacks make her only useful for a prolong fight. But debuff from Royal Garden (Rank 3) the make enemy takes more damage apply to all party member. That includes guildmate. Make her become must-have choice for challenging guild raid content.  Damage amplify & Atk boost right now become saturated. So her offensive boost although look high on number, not much difference from other unit"
     },
-    "requiredMats": "2240 Sorcsha Particle + 5 Sorcsha Memory Orb or 700 Demigod Orb + 5 Sorcsha Memory Orb"
+    "requiredMats": "2240 Sorcsha Particle + 5 Sorcsha Memory Orb or 700 Demigod Orb + 5 Sorcsha Memory Orb",
+    "element": "Lightning",
+    "rarity": 5
   },
   {
     "grade": "Collaboration UR",
@@ -411,7 +445,9 @@
       "overall": "S",
       "notes": "Can be considered as inferior but cheaper Nebulas. With 10x cheaper to build but can provide 80-90% buff potential and good amount of self damage. This unit can be interchangeable for account that F2P or low spenders"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Multi",
+    "rarity": 4
   },
   {
     "grade": "Limited UR",
@@ -434,7 +470,9 @@
       "overall": "C",
       "notes": "Just a good AoE melee character. Not worth your limted banner quota"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Fire",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -457,7 +495,9 @@
       "overall": "B",
       "notes": "20% crit buff and 20% accu buff is outdated in 2025."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Holy",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -480,7 +520,9 @@
       "overall": "A",
       "notes": "Still good vs. Fire enemy. But Ina Creek that is general unit now completely powercrept her"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Ice",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -503,7 +545,9 @@
       "overall": "A+",
       "notes": "Healers always sought after. She is good for vs. Devil boss. So many use her in Guild Raid"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Dark",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -526,7 +570,9 @@
       "overall": "S",
       "notes": "The best UR unit that many still uses.  Single target heal that can substain you through all contents and can deal some damage & buff by herself."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Holy",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -549,7 +595,9 @@
       "overall": "A",
       "notes": "Good universal DPS & buff unit. Get overshadowed by SeolHwa"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Multi",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -572,7 +620,9 @@
       "overall": "B+",
       "notes": "Specialist vs. Ice enemy.Not needed if you have good demigod unit"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Lightning",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -595,7 +645,9 @@
       "overall": "S+",
       "notes": "Specialist vs. Thunder and Insect enemy. Also tanky as well. Tank UR is rarely useful in PvE but she is an exception. Great PVP Unit. Can hold your team from full Demigod team."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Earth",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -618,7 +670,9 @@
       "overall": "S+",
       "notes": "Specialist vs. Holy and Mutant enemy. But also deal extremely good damage to the point of being new generation of fellows. Also good PvP Unit"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Dark",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -641,7 +695,9 @@
       "overall": "OP",
       "notes": "If Gabrielle damage is not insanely high enough. May can do about 2-3x more damage while also provide good buff to you to push you damage to another level."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Fire",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -664,7 +720,9 @@
       "overall": "OP",
       "notes": "2025 general healer unit. Come with 10-15% atk , 10-15% accu, 80% amp, 50 effective SP regen per second. (66.7 at 25% CDR), Dealing very good damage and second life passive. Even has some CC and knockback immunity so she also good PvP unit too  New content require maximum of 20 fellows to beat it. And healer fellow always good to have"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Multi",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -687,7 +745,9 @@
       "overall": "A+",
       "notes": "Specialist vs. Ice or Plant enemy"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Lightning",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -710,12 +770,14 @@
       "overall": "S+",
       "notes": "After Episode 20 update. Now Hit Rate and Penetration rate is harder to reach the cap. So her buff is very good to cap your stats  Specialist vs. Beast or Fire unit"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Ice",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
     "name": "Beatrice",
-    "classInfo": "Asssassin Type (Holy)  - --- Asssassin Type",
+    "classInfo": "Assassin Type (Holy)  - --- Assassin Type",
     "obtainFrom": "Gacha",
     "acquireBonus": "Crit Rate +20",
     "leaderSkill": "",
@@ -733,7 +795,9 @@
       "overall": "S",
       "notes": "Specialist vs. Dark or Mutant enemy Also can use as PVP unit for evasion team Best unit to fit in Argent Temple"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Holy",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -756,7 +820,9 @@
       "overall": "A",
       "notes": "PvP Defense specialist. Need high resource to be able to withstand demigods. Can be annoying to fight with 3 CCs in his kit 20% DR & Block really help squishy class on leveling. (Like Musketeer)"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Earth",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -779,7 +845,9 @@
       "overall": "B",
       "notes": "Good general DPS that also has good buff. But not reliable uptime."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Dark",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -802,7 +870,9 @@
       "overall": "B",
       "notes": "Another PvP Specialist that focus on Evasion team. Not currently used much in meta. But sometimes he can turn the tide in battle.... just sometimes"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Earth",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -825,7 +895,9 @@
       "overall": "B",
       "notes": "Niche tank that can carry F2P account who wanna play squishy class. Can be good unit in PvP too but do not expect her too much"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Ice",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -848,7 +920,9 @@
       "overall": "A+",
       "notes": "Another good general DPS unit. Good buff but sometimes sluggish to use skills to acquire buffs."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Lightning",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -871,7 +945,9 @@
       "overall": "A+",
       "notes": "Best healer for F2P that cannot access rerun limited or cannot afford demigod characters.  Must have for everyone for Silver buff in Ardent Temple"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Multi",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -894,7 +970,9 @@
       "overall": "C",
       "notes": "Slow, squishy. Rarely used"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Fire",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -917,7 +995,9 @@
       "overall": "C",
       "notes": "Lowest health in the game. Trust me even her buff is good, she always dead before apply those to you."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Dark",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -940,12 +1020,14 @@
       "overall": "A",
       "notes": "Good AoE DPS that can buff your damage and regen your SP.  Good unit to carry Lanistar stage 1 and 3"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Fire",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
     "name": "Grace",
-    "classInfo": "Corsair  (Ice)  - --- Asssassin Type",
+    "classInfo": "Corsair  (Ice)  - --- Assassin Type",
     "obtainFrom": "Gacha",
     "acquireBonus": "Damage +17",
     "leaderSkill": "",
@@ -963,7 +1045,9 @@
       "overall": "F",
       "notes": "Increase penetration rate solely does not justify her uses."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Ice",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -986,12 +1070,14 @@
       "overall": "B",
       "notes": "Specialist vs. Beast enemy. You can just use Ina Creek instead"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Earth",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
     "name": "Yura Swajone",
-    "classInfo": "Shinobi (Multi)  -  Asssassin Type",
+    "classInfo": "Shinobi (Multi)  -  Assassin Type",
     "obtainFrom": "Gacha",
     "acquireBonus": "Evasion +14",
     "leaderSkill": "",
@@ -1009,7 +1095,9 @@
       "overall": "C",
       "notes": "Niche evasion unit for PvP. Might be good sometimes. But currently evasion team is in tough spot in meta"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Multi",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -1032,7 +1120,9 @@
       "overall": "C",
       "notes": "Niche offensive unit for PvP. Can use a bit in PvE for defense shred. But not that good"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Fire",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -1055,7 +1145,9 @@
       "overall": "B",
       "notes": "Out of date healer that must rank 7 to be able to heal."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Holy",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -1078,7 +1170,9 @@
       "overall": "F",
       "notes": "Does the change of her element to multi really help her? No"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Multi",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -1101,7 +1195,9 @@
       "overall": "B",
       "notes": "Good old unit. Bad current unit"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Fire",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -1124,7 +1220,9 @@
       "overall": "C",
       "notes": "Has some niche in defensive team in PvP. Or just use demigod unit."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Holy",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -1147,7 +1245,9 @@
       "overall": "B",
       "notes": "Her taunt can shread defense. Useful for early use in PvE. No need to invest anything on her"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Ice",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -1170,12 +1270,14 @@
       "overall": "F",
       "notes": "Sad DPS unit that only has self buff."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Lightning",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
     "name": "Gema",
-    "classInfo": "Rogue (Fire)  - - Asssassin Type",
+    "classInfo": "Rogue (Fire)  - - Assassin Type",
     "obtainFrom": "Gacha",
     "acquireBonus": "Evasion +14",
     "leaderSkill": "",
@@ -1193,7 +1295,9 @@
       "overall": "C",
       "notes": "Has some use in PVP. Good single target damage make her sometimes use as bossing unit for early game."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Fire",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -1216,7 +1320,9 @@
       "overall": "F",
       "notes": "Worst unit you can get from banner"
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Lightning",
+    "rarity": 3
   },
   {
     "grade": "Limited UR",
@@ -1239,7 +1345,9 @@
       "overall": "C",
       "notes": "Just use Valentina (SR Elementalist) if you really need SP regen and buffs. Save your book for Leonie or others, please."
     },
-    "requiredMats": "47 UR Books"
+    "requiredMats": "47 UR Books",
+    "element": "Multi",
+    "rarity": 3
   },
   {
     "grade": "SR",
@@ -1262,7 +1370,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Earth",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1285,12 +1395,14 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Holy",
+    "rarity": 2
   },
   {
     "grade": "SR",
     "name": "Edmandas",
-    "classInfo": "Asssassin Type (Lightning)",
+    "classInfo": "Assassin Type (Lightning)",
     "obtainFrom": "Collection Reward EP. 3",
     "acquireBonus": "Penetration +22",
     "leaderSkill": "",
@@ -1308,7 +1420,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Lightning",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1331,7 +1445,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Lightning",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1354,7 +1470,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Earth",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1377,7 +1495,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Dark",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1400,7 +1520,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Earth",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1423,7 +1545,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Fire",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1446,7 +1570,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Holy",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1469,7 +1595,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Fire",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1492,7 +1620,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Ice",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1515,7 +1645,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Lightning",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1538,7 +1670,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Earth",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1561,7 +1695,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Ice",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1584,7 +1720,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Ice",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1607,7 +1745,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Earth",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1630,7 +1770,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Lightning",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1653,7 +1795,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Fire",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1676,7 +1820,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Ice",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1699,7 +1845,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Multi",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1722,7 +1870,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Earth",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1745,7 +1895,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Lightning",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1768,7 +1920,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Fire",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1791,7 +1945,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Lightning",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1814,7 +1970,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Holy",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1837,7 +1995,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Holy",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1860,7 +2020,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Fire",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1883,12 +2045,14 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Dark",
+    "rarity": 2
   },
   {
     "grade": "SR",
     "name": "Bourbon",
-    "classInfo": "Asssassin Type (Lightning)",
+    "classInfo": "Assassin Type (Lightning)",
     "obtainFrom": "Gacha",
     "acquireBonus": "Block +11",
     "leaderSkill": "",
@@ -1906,7 +2070,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Lightning",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1929,12 +2095,14 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Fire",
+    "rarity": 2
   },
   {
     "grade": "SR",
     "name": "Jade",
-    "classInfo": "Asssassin (Dark)",
+    "classInfo": "Assassin (Dark)",
     "obtainFrom": "Gacha",
     "acquireBonus": "Crit Resist +20",
     "leaderSkill": "",
@@ -1952,7 +2120,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Dark",
+    "rarity": 2
   },
   {
     "grade": "SR",
@@ -1975,7 +2145,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "54 SR Books"
+    "requiredMats": "54 SR Books",
+    "element": "Multi",
+    "rarity": 2
   },
   {
     "grade": "R",
@@ -1998,7 +2170,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Earth",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2021,7 +2195,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Ice",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2044,7 +2220,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Ice",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2067,7 +2245,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Earth",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2090,7 +2270,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Lightning",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2113,7 +2295,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Fire",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2136,7 +2320,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Ice",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2159,7 +2345,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Multi",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2182,7 +2370,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Earth",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2205,7 +2395,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Lightning",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2228,7 +2420,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Fire",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2251,7 +2445,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Lightning",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2274,7 +2470,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Holy",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2297,7 +2495,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Holy",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2320,7 +2520,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Fire",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2343,12 +2545,14 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Dark",
+    "rarity": 1
   },
   {
     "grade": "R",
     "name": "Hockey",
-    "classInfo": "Asssassin Type (Lightning)",
+    "classInfo": "Assassin Type (Lightning)",
     "obtainFrom": "Gacha",
     "acquireBonus": "Block",
     "leaderSkill": "",
@@ -2366,7 +2570,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Lightning",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2389,12 +2595,14 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Fire",
+    "rarity": 1
   },
   {
     "grade": "R",
     "name": "Yash",
-    "classInfo": "Asssassin (Dark)",
+    "classInfo": "Assassin (Dark)",
     "obtainFrom": "Gacha",
     "acquireBonus": "Dodge",
     "leaderSkill": "",
@@ -2412,7 +2620,9 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Dark",
+    "rarity": 1
   },
   {
     "grade": "R",
@@ -2435,6 +2645,8 @@
       "overall": "",
       "notes": ""
     },
-    "requiredMats": "60 R Books"
+    "requiredMats": "60 R Books",
+    "element": "Multi",
+    "rarity": 1
   }
 ]
