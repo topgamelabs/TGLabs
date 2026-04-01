@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GAMES } from "@/data/games";
 import type { Game } from "@/data/games";
 
-// Temporary: show only Tree of Savior M
-const VISIBLE_GAMES = GAMES.filter((g) => g.id === "tosm");
+// Show all games with Coming Soon section for unreleased ones
+const VISIBLE_GAMES = GAMES;
 import { Navbar } from "@/components/nav/Navbar";
 import { Hero } from "@/components/home/Hero";
 import { GamePage } from "@/components/game/GamePage";

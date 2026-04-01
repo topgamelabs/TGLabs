@@ -1,0 +1,205 @@
+[
+  {
+    "grade": "Demigod\nUR",
+    "name": "Inferno Zaura",
+    "classInfo": "Demigod (Dark)  - Demigod",
+    "obtainFrom": "Gacha\n(Demigod Banner)",
+    "acquireBonus": "Penetration +22",
+    "leaderSkill": "Darkest Blaze Fire and Dark element fellows (Except Demigod grade) ignore defense +1.25% x rank",
+    "basicAttack": "100% dmg Base stat increase : HP +60% , Def +50% , Atk +25%",
+    "skill1": "Sunder Flare CD 15s Smash axe to the ground and cause flame ground in landing area for 5s. Dealing 141% every 0.5s Reduce damage taken by 50% while using the skill",
+    "skill2": "Chariot of Fire CD 12s Jump to the air and rotate swiftly with axe attack. Dealing 413% damage every 0.25s Then landing attack smash the ground dealing same damage with larger AoE. Reduce damage taken by 50% while using the skill",
+    "skill3": "Whirlwind of Flame CD 20s Quickly spin with axe causing flame whirlwind. Dealing 201% damage every 0.5s continuously to enemy inside the area. Reduce damage taken by 50% while using the skill",
+    "awakenSkill": "Warcry Explosion [Unlock at Rank 1] CD 120s Unleash the anger around yourself. Dealing 740% damage and cause this fellow to enter 'Awakening' state for 30s [Awakening] Knockback immune , Attack speed +50% . Basic attack damage +300%, skill attack damage +200%",
+    "rankEffects": {
+      "rank4": "Overheat When got hit, cause an explosion dealing 734% damage around yourself (+66% per rank ,+134% additional at Rank 9) (CD 30s) Also grant herself 15s buff that increase block rate by 75%",
+      "rank5": "Chaos Quake Using Sunder Flare will cause many fire pillar to erupt around yourself. Deal 3 hit for total of 196%(+17% per rank , +49% additional at rank 9) damage",
+      "rank6": "The Huntress Damage increase +10% and Boss damage increase +1.5% (+0.5% per rank) Every 10s, grant Swordman and Scout fellow a 'Huntress' buff. Which increase crit rate and crit damage by 10% for 10s",
+      "rank7": "Chaos Rush Spawn 5 fireballs when using Chariot of Fire that fly to random enemy. Each dealing 225%(+20% per rank, +96% at rank 9) damage",
+      "rank9": "Inferno Berserker All skill attack deal additional hit equal to 29%(+2% per rank, +7% at rank 9) dark damage. This damage increase further by how much HP is lost. Up to 99% After using skill, grant all fellow and player 'Inferno Berserker' buff for 5s.  [Inferno Berserker] For Player : Imbue weapon with Fire and Dark element. Increase skill damage by 30%. Increase damage to Holy  & Earth type enemy by additional 20% Fire & Dark element fellows : Increase damage by 50%"
+    },
+    "tierlist": {
+      "damage": "2240 Zaura Particle + 5 Zaura Memory Orb\nor\n700 Demigod Orb + 5 Zaura Memory Orb",
+      "survival": "",
+      "offensiveSupport": "",
+      "defensiveSupport": "",
+      "utility": "",
+      "overall": ""
+    },
+    "requiredMats": ""
+  },
+  {
+    "grade": "Collaboration\nUR",
+    "name": "Seol Hwa",
+    "classInfo": "Theurge (Multi) -- - Magic Type",
+    "obtainFrom": "Gacha \n(Limited Banner)",
+    "acquireBonus": "Penetration +14",
+    "leaderSkill": "",
+    "basicAttack": "100% dmg. Grant herself a 'Recharge' stack every time she using skill. Increase Penetration Rate, Block and Evasion rate by 0.5% per stack (Max 10 stacks) All stack lost on death",
+    "skill1": "Windfall CD 8s Attack all target in projectile trajectory Throw a mystic orb that travel forward for 1s, then travel back to you in 1s. Dealing 240% Earth damage every 0.3s to enemy in pathway",
+    "skill2": "Trance Illusion CD 10s Attack all target in 2m radius Emit illusion aura around yourself. Dealing 929% Dark damage to all enemies around target area and put them to 'Confusion' for 5s. Reduce hit rate by 30% and reduce damage done to owner by 10%",
+    "skill3": "Tale of The Moon CD 40s Self buff. Summon a clone that replicate all Seolhwa skills for 30s. It only deal with 50% of base power. And also inherit 'Recharge' stacks. The clone cannot be targeted, and do not receive any damage.",
+    "awakenSkill": "",
+    "rankEffects": {
+      "rank4": "Increase Maximum HP  Increase HP by 50%",
+      "rank5": "Increase Defense Increase Defense by 50%",
+      "rank6": "Increase Attack Increase Attack by 25%",
+      "rank7": "Trigram Charm Stance When 'Recharge' stack reaching 2 and 5, unlock new ability to use  [2 Stacks - Restict Area] CD 10s Evoke a fire charm's power. Dealing 1045% Fire damage to all enemies in 3m radius around yourself and push them away by 1.5m  [5 Stacks - Weather Art: The Tri Diasters] CD 14s Place a lightning charm to call down lightning strike to enemy in that area for 4s. Dealing 301% x 8 Lightning damage and 'Shock' them for 10s. Taking 10% DoT every second, 10% chance to be stunned when try using any skill",
+      "rank9": "Fork Tale Art Stance When 'Recharge' stack reaching 3 and 6, unlock new ability to use  [3 Stacks - Divine Spirit Art] CD 13s Summon Dragon spirit to strike enemies in 3x8m frontal area. Dealing 428% x 3 Ice damage and inflict 'Seizure' to enemy hit for 10s. Reduce Defense,Block and Evasion rate by 10%  [6 Stacks - Flamboyance] CD 16s Perfrom an exorcism to purify the defile soul in 2x7m frontal area. Dealing 328% x 5 Holy damage and inflict 'Purified' to enemy for 15s. Increase damage taken from caster.owner and all of their fellows by 40%"
+    },
+    "tierlist": {
+      "damage": "47 UR Books",
+      "survival": "",
+      "offensiveSupport": "",
+      "defensiveSupport": "",
+      "utility": "",
+      "overall": ""
+    },
+    "requiredMats": ""
+  },
+  {
+    "grade": "Limited\nUR",
+    "name": "Arlene Berg",
+    "classInfo": "Highlander (Fire) - - Battle Type",
+    "obtainFrom": "Gacha \n(Limited Banner)",
+    "acquireBonus": "Damage +17",
+    "leaderSkill": "",
+    "basicAttack": "100% dmg Ignore 20% def 25% chance to put herself in 'Frenzy' state",
+    "skill1": "Fellow Great Swing CD 10s Attack all target in 3.5m radius around yourself Spin your sword to attack enemy around you. Dealing 215% x 3 damage",
+    "skill2": "Fellow Zornhau CD 7s Attack target in 3x3m frontal area Landing overhead smash. Dealing 697% damage",
+    "skill3": "Fellow Great Finish CD 15s Attack all target in 4m radius around yourself Leap and then smash greatsword to the ground. Dealing 994% damage  50% chance to 'stun' enemy on hit",
+    "awakenSkill": "",
+    "rankEffects": {
+      "rank4": "Increase Maximum HP  Increase HP by 50%",
+      "rank5": "Increase Defense Increase Defense by 50%",
+      "rank6": "Increase Attack Increase Attack by 25%",
+      "rank7": "Great Swing - Enhance Increase Fellow Great Swing damage by 100%",
+      "rank9": "Zornhau - Combo After using Zornhau, can use 'Zucken' and 'Redel' after that  Zucken : Attack frontal area 3x3m. Dealing 326% x 4 damage Redel : Attack frontal 3x4m. Dealing 256% x 5 damage."
+    },
+    "tierlist": {
+      "damage": "47 UR Books",
+      "survival": "",
+      "offensiveSupport": "",
+      "defensiveSupport": "",
+      "utility": "",
+      "overall": ""
+    },
+    "requiredMats": ""
+  },
+  {
+    "grade": "SR",
+    "name": "Lagueta",
+    "classInfo": "Battle Type (Earth)",
+    "obtainFrom": "Collection Reward\nEP. 1",
+    "acquireBonus": "Block +22",
+    "leaderSkill": "",
+    "basicAttack": "100% Damage",
+    "skill1": "Fellow Brave Shout CD 8s Attack all target in 3.5m radius Dealing 855% damage",
+    "skill2": "Fellow Double Slash CD 8s Attack all target in 3.5mx1.75m frontal area Dealing 432% x 2 damage. Deal 25% more damage to 'stun' target",
+    "skill3": "",
+    "awakenSkill": "",
+    "rankEffects": {
+      "rank4": "Increase Maximum HP  Increase HP by 50%",
+      "rank5": "Increase Defense Increase Defense by 50%",
+      "rank6": "Increase Attack  Increase Attack by 25%",
+      "rank7": "Attack Speed Boost Increase attack speed by 25%",
+      "rank9": "Threats Increase damage by 25% when attacking enemy that has current HP lower than you"
+    },
+    "tierlist": {
+      "damage": "54 SR Books",
+      "survival": "",
+      "offensiveSupport": "",
+      "defensiveSupport": "",
+      "utility": "",
+      "overall": ""
+    },
+    "requiredMats": ""
+  },
+  {
+    "grade": "SR",
+    "name": "Nora Hutton",
+    "classInfo": "Pyromancer (Fire)",
+    "obtainFrom": "Story Quest\n(Free)",
+    "acquireBonus": "Defense +8",
+    "leaderSkill": "",
+    "basicAttack": "100% Fire damage to maximum 3 enemies in 2m range",
+    "skill1": "Fellow Fireball CD 5s Deals 618% Damage in a 2.5m Radius, 20% Chance to Burn upon hit",
+    "skill2": "Fellow Flame Ground CD 10s Deals 186% Damage within a 2.5m Range every 0.5s for 2s",
+    "skill3": "",
+    "awakenSkill": "",
+    "rankEffects": {
+      "rank4": "Increase Maximum HP  Increase HP by 50%",
+      "rank5": "Increase Defense Increase Defense by 50%",
+      "rank6": "Increase Attack  Increase Attack by 25%",
+      "rank7": "Penetration Boost Increase Penetration Rate by 13%",
+      "rank9": "Flame Shock 25% Chance to Burn with Basic Attack when attacking an Earth Property Enemy"
+    },
+    "tierlist": {
+      "damage": "54 SR Books",
+      "survival": "",
+      "offensiveSupport": "",
+      "defensiveSupport": "",
+      "utility": "",
+      "overall": ""
+    },
+    "requiredMats": ""
+  },
+  {
+    "grade": "SR",
+    "name": "Ronella",
+    "classInfo": "Battle Type (Earth)",
+    "obtainFrom": "Gacha",
+    "acquireBonus": "Crit Damage +8",
+    "leaderSkill": "",
+    "basicAttack": "100% Damage",
+    "skill1": "Fellow Double Slash CD 8s Attack all target in 3.5mx1.75m frontal area Dealing 114% x 2 damage. Deal 25% more damage to 'stun' target",
+    "skill2": "Fellow Brave Shout CD 8s Attack all target in 3.5m radius Dealing 226% damage",
+    "skill3": "",
+    "awakenSkill": "",
+    "rankEffects": {
+      "rank4": "Increase Maximum HP  Increase HP by 50%",
+      "rank5": "Increase Defense Increase Defense by 50%",
+      "rank6": "Increase Attack  Increase Attack by 25%",
+      "rank7": "Penetration Boost Increase Penetration Rate by 13%",
+      "rank9": "Threats Increase damage by 25% when attacking enemy that has current HP lower than you"
+    },
+    "tierlist": {
+      "damage": "54 SR Books",
+      "survival": "",
+      "offensiveSupport": "",
+      "defensiveSupport": "",
+      "utility": "",
+      "overall": ""
+    },
+    "requiredMats": ""
+  },
+  {
+    "grade": "R",
+    "name": "Lorena",
+    "classInfo": "Battle Type (Earth)",
+    "obtainFrom": "Gacha",
+    "acquireBonus": "Hit",
+    "leaderSkill": "",
+    "basicAttack": "100% Damage",
+    "skill1": "Fellow Double Slash CD 8s Attack all target in 3.5mx1.75m frontal area Dealing 114% x 2 damage. Deal 25% more damage to 'stun' target",
+    "skill2": "",
+    "skill3": "",
+    "awakenSkill": "",
+    "rankEffects": {
+      "rank4": "Increase Maximum HP  Increase HP by 50%",
+      "rank5": "Increase Defense Increase Defense by 50%",
+      "rank6": "Increase Attack  Increase Attack by 25%",
+      "rank7": "Penetration Boost Increase Penetration Rate by 13%",
+      "rank9": ""
+    },
+    "tierlist": {
+      "damage": "60 R Books",
+      "survival": "",
+      "offensiveSupport": "",
+      "defensiveSupport": "",
+      "utility": "",
+      "overall": ""
+    },
+    "requiredMats": ""
+  }
+]

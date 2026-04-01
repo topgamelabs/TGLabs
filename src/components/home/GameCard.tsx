@@ -9,6 +9,8 @@ interface GameCardProps {
 }
 
 export function GameCard({ game, onClick }: GameCardProps): React.JSX.Element {
+  const isImageBanner = game.banner.startsWith("/") || game.banner.startsWith("http");
+
   return (
     <div
       onClick={onClick}
@@ -34,7 +36,7 @@ export function GameCard({ game, onClick }: GameCardProps): React.JSX.Element {
       <div
         style={{
           height: 110,
-          background: game.banner,
+          background: isImageBanner ? `url(${game.banner}) center/cover no-repeat` : game.banner,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -42,12 +44,35 @@ export function GameCard({ game, onClick }: GameCardProps): React.JSX.Element {
           position: "relative",
         }}
       >
-        {game.icon}
+        {isImageBanner && (
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: `linear-gradient(to bottom, rgba(2,3,5,0.1) 0%, ${game.colorDim} 100%)`,
+            }}
+          />
+        )}
+        {!isImageBanner && game.icon}
+        {isImageBanner && (
+          <span
+            style={{
+              fontSize: 48,
+              filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.7))",
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            {game.icon}
+          </span>
+        )}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background: `radial-gradient(ellipse at center, ${game.colorDim} 0%, transparent 70%)`,
+            background: isImageBanner
+              ? "none"
+              : `radial-gradient(ellipse at center, ${game.colorDim} 0%, transparent 70%)`,
           }}
         />
         {game.tags.map((tag) => (

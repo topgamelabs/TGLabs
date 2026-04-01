@@ -17,11 +17,11 @@ export function Navbar({ currentGame, onSelect }: NavbarProps) {
         left: 0,
         right: 0,
         zIndex: 200,
-        height: 54,
+        height: 60,
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "0 26px",
+        padding: "0 32px",
         background: "rgba(2,3,5,0.92)",
         backdropFilter: "blur(20px)",
         borderBottom: "1px solid rgba(100,80,200,0.15)",
@@ -31,7 +31,7 @@ export function Navbar({ currentGame, onSelect }: NavbarProps) {
         onClick={() => onSelect(null)}
         style={{
           fontFamily: "Georgia, serif",
-          fontSize: 17,
+          fontSize: 19,
           fontWeight: 900,
           letterSpacing: 3,
           cursor: "pointer",
@@ -64,14 +64,15 @@ export function Navbar({ currentGame, onSelect }: NavbarProps) {
                   ? `1px solid ${g.color}55`
                   : "1px solid transparent",
                 fontFamily: "monospace",
-                fontSize: 10,
-                letterSpacing: 1,
+                fontSize: 12,
+                letterSpacing: 1.5,
                 textTransform: "uppercase",
-                color: isActive ? g.color : "#8878aa",
+                color: isActive ? g.color : "#c4a0ff",
                 cursor: "pointer",
-                padding: "4px 10px",
+                padding: "6px 14px",
                 borderRadius: 20,
                 transition: "all 0.2s ease",
+                fontWeight: isActive ? 600 : 400,
               }}
             >
               {g.short}

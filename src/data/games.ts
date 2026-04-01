@@ -56,7 +56,7 @@ export const GAMES: Game[] = [
     patch: "v2.4.1",
     color: "#4dcc8a",
     colorDim: "rgba(77,204,138,0.12)",
-    banner: "linear-gradient(135deg,#030f08,#071a10,#040e0a)",
+    banner: "/games/tosm-banner.jpg",
     tags: ["HOT"],
     tiers: [
       { label: "S", style: { background: "linear-gradient(135deg,#7c2020,#c0392b)", color: "#fff8ee", boxShadow: "0 0 18px rgba(192,57,43,0.4)" }, chars: [{ icon: "🌑", name: "Dark Lord", role: "Wizard", s: 3 }, { icon: "🔥", name: "Pyromancer", role: "Wizard", s: 3 }, { icon: "⚡️", name: "Electromancer", role: "Wizard", s: 3 }, { icon: "🏹", name: "Fletcher", role: "Archer", s: 3 }, { icon: "🌿", name: "Druid", role: "Cleric", s: 3 }] },

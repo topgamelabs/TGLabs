@@ -1,0 +1,3269 @@
+Grade,Name,Portrait,Class/Element/Tree,Obtain From,Acquire Bonus,"Leader Skill
+(Demigod Only)",Basic Attack,Skill 1,Skill 2,Skill 3,Awaken Skill,Rank Unlock Effect,,,,,,,,Tierlist,,,,,,Required Mats for Max Rank
+,,,,,,,,,Unlock at Rank 4,Unlock at Rank 7,,2,3,4,5,6,7,8,9,Damage,Survival,Offensive Support,Defensive Support,Utility,Overall,
+,,,,,,,,,,,,,,,,,,,,"How good damage this fellow
+Dealt?",How good they survive attacks,"How good they provide
+Benefical buff to make you hit harder?","How good they provide
+Benefical buff to make you die harder?",How versatile they go ? Specialist to any content or good on all contents ?,,
+"Demigod
+UR",Inferno Zaura,,"Demigod
+(Dark)
+-----
+Demigod","Gacha
+(Demigod Banner)",Penetration +22,"Darkest Blaze
+Fire and Dark element fellows (Except Demigod grade) ignore defense +1.25% x rank","100% dmg
+Base stat increase : HP +60% , Def +50% , Atk +25%
+","Sunder Flare
+CD 15s
+Smash axe to the ground and cause flame ground in landing area for 5s. Dealing 141% every 0.5s
+Reduce damage taken by 50% while using the skill","Chariot of Fire
+CD 12s
+Jump to the air and rotate swiftly with axe attack. Dealing 413% damage every 0.25s
+Then landing attack smash the ground dealing same damage with larger AoE.
+Reduce damage taken by 50% while using the skill","Whirlwind of Flame
+CD 20s
+Quickly spin with axe causing flame whirlwind. Dealing 201% damage every 0.5s continuously to enemy inside the area.
+Reduce damage taken by 50% while using the skill","Warcry Explosion
+[Unlock at Rank 1]
+CD 120s
+Unleash the anger around yourself. Dealing 740% damage and cause this fellow to enter 'Awakening' state for 30s
+[Awakening]
+Knockback immune , Attack speed +50% . Basic attack damage +300%, skill attack damage +200%","Overheat
+When got hit, cause an explosion dealing 734% damage around yourself (+66% per rank ,+134% additional at Rank 9)
+(CD 30s)
+Also grant herself 15s buff that increase block rate by 75%
+","Chaos Quake
+Using Sunder Flare will cause many fire pillar to erupt around yourself. Deal 3 hit for total of 196%(+17% per rank , +49% additional at rank 9) damage","The Huntress
+Damage increase +10% and Boss damage increase +1.5% (+0.5% per rank)
+Every 10s, grant Swordman and Scout fellow a 'Huntress' buff. Which increase crit rate and crit damage by 10% for 10s","Chaos Rush
+Spawn 5 fireballs when using Chariot of Fire that fly to random enemy. Each dealing 225%(+20% per rank, +96% at rank 9) damage","Inferno Berserker
+All skill attack deal additional hit equal to 29%(+2% per rank, +7% at rank 9) dark damage. This damage increase further by how much HP is lost. Up to 99%
+After using skill, grant all fellow and player 'Inferno Berserker' buff for 5s. 
+[Inferno Berserker]
+For Player : Imbue weapon with Fire and Dark element. Increase skill damage by 30%. Increase damage to Holy  & Earth type enemy by additional 20%
+Fire & Dark element fellows : Increase damage by 50%","Chaos Wave
+After finish attack with Whirlwind of Flame, slash the axe create flame shockwave forward. Dealing 383%(+32% per rank, +96% at rank 9) damage every 0.25s
+------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot",B,S,A,C,B,"A
+
+Not her reigning era anymore. But still good frontline for PVP and good 50% dmg amp vs Earth and Holy monster with imbue effect to ease on gearing","2240 Zaura Particle + 5 Zaura Memory Orb
+or
+700 Demigod Orb + 5 Zaura Memory Orb"
+,Little Star Candy Vakarine,,"Demigod
+(Ice)
+-----
+Demigod","Gacha
+(Demigod Banner)",Defense +84,"Star Point
+Every time Ice element fellows (Except this unit) using skill, grant 'Star Point' equal to half of that fellow's rank. (Max 100 stacks)
+'Star Point' will be reduced 1 stack every second and heal player for 2% HP and 1% SP
+When stack reach maximum, grant 15s buff to player and all fellows that increase damage by 7.5% (Except Demigod Fellow)
+You cannot stack 'Star Point' while this buff is active.","100% dmg
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%","Help Me! Dionys!
+CD 15s
+Attack target area with Dionys's doll. Deal 3 hits for total of 1676%","Sugar Crystal
+CD 20s
+Summon Sugar Crystal that shoot crystal missile every 2s. Up to 6 times.
+Each crystal missile dealing 165% damage and cause 'sticky' on hit for 3s
+[Sticky]
+Movement speed -10% , Atk -2%. Both effect can be stackable
+Atk down only damage that apply to player and your fellows.","Star Circle 
+CD 15s
+Summon star magic circle at enemy position. Dealing 1117% damage and 'Stun' enemy.
+After that, magic circle persist for 10s. Dealing 223% damage per second to enemy inside area.
+Also grant player and fellow 15% attack speed & movement speed buff in that area","Fantastic Show
+[Unlock at Rank 1]
+CD 120s
+'Stun' all enemies around you and enter 'Awakening' state for 30s
+Emit dance floor around her for 10s. Dealing 511% damage every 2s. Which reduce Hit Rate and Penetration Rate of enemy hit by 10% for 3s.
+[Awakening]
+Skill damage & DoT damage increase by 200%. Recover 7.5% HP every 5 second.","Lodestar
+Doll fell from Help Me! Dionys! will persist in that area for 10s. Dealing 73% (+24% at Rank 9) per second to enemies around it
+[Max 121%]","Joyful Kid
+Max HP +10%
+All damage from this unit has 35% chance to 'Crystalize' enemy. Dealing 87% Ice damage per second for 5s. 
+After 'Crystailize' duration expires, has 22% (+2% per rank) chance to 'Freeze' enemy.
+Cannot Crystalize enemy that already be crystalized.","Super Star Point
+Using Sugar Crystal will grant 'Star Point' too.
+While Sugar Crystal persists, every Star Point reduction will cause crystal to shoot extra missile. Dealing 66%(+6% per rank, +22% at Rank 9) damage.
+If this missile cannot target enemy in 7-8m range. Heal 5% HP instead.","Cheerleading
+Grant 37.5s (+2.5s per rank) buff to owner and all fellow after using Fantastic Show
+- Demigod & Fire unit : Increase damage by 10%
+- Owner and other fellows except yourself : Increase damage by 50%","Asteroid
+Increase number of crystal missile per 'Sugar Crystal' casting by 1 (+1 per rank)
+Also reduce interval time per crystal missile fire by 1s.
+While  Sugar Crystal persists, grant player buff reduce damage received by 6.5% (+1.5% per rank)","Sticky Feet
+Star Circle also slow enemy inside the area by 25%
+All Ice fellows attack has 5% (+2% per rank) chance to 'sticky' enemy for 3s.
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot",A,S,A,A,S,"S
+
+Jack of all trade that can healing, AoE for leveling alts and good buff, but low downtime compare to new character joining in roster.
+Still usable and comfy pick by many players","2240 Vakarine Particle + 5 Vakarine Memory Orb
+or
+700 Demigod Orb + 5 Vakarine Memory Orb"
+,Revenger Hauberk,,"Demigod
+(Earth)
+-----
+Demigod","Gacha
+(Demigod Banner)",Crit Rate +22,"Soul Fragment
+Increase attack to all fellows in the team (Except Demigod Fellow) by 0.85% x Rank of this unit
+When another fellow become incarpacitated, Absorb 100% of that fellow HP to heal itself and become 'Revenge' status for 45s. Increase self attack power by 50%. (Trigger this passive again will refresh this duration)","Swipe with both claws. Dealing 75% x2 damage
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%","Lionheart
+CD: 10s
+Attack frontal area
+Strike ground with the fist. Deal 3 hit for total of 1706% damage and gather enemy to the center of attack area.
+The higher of attack speed, the higher of cast speed of this skill as well.","Scratch
+CD: 10s
+Attack frontal area
+Swipe forward with both claws. Dealing 436% x 2 damage. Then finish attack with shockwave forward dealing 872% damage.
+The higher of attack speed, the higher of cast speed of this skill as well.","Venge of Souls
+CD: 20s
+Barrage mercilessly with claws. Dealing 427% x 7 damage.
+The higher of attack speed, the higher of cast speed of this skill as well.","Trauma Switch
+[Unlock at Rank 1]
+CD 120s
+Switch your form to dark form. Enter 'Awakening' state for 30s. During this state will emit dark aura around self. Dealing 410% damage per second.
+[Awakening]
+All damage increase by 75%
+Basic attack has 35% chance to create additional shockwave. ","Stone Crack
+Basic attack has 2% chance (per rank) to 'Petrify' enemy and set your evasion rate to 100% for 5s.
+Critical strike to enemy in 'Petrify' status heal 25% of lost HP.
+","Rapid Arousal
+When taking lethal damage, survive for 1.8 (+0.4 per rank). more seconds and provoke nearby enemy (Still incapacitated after duration is over). 
+Using any attack skill create 5 explosion waves. Each dealing 77% (+7% per rank, +25% at Rank 9) damage.","Hyperlink
+Every 60s, grant 45s 'Hyperlink' to player and self.
+[Hyperlink]
+Self Increase Critical rate by 10% of player's critical rate
+Everytime this unit is healed through skill or talent, increase critical rate and heal SP to player by the same percent amount.","Branded
+Increase attack and defense that increase from Goddess basic attack passive by 5% each.
+While in awakening from Trauma Switch, grant yourself 35% attack speed and heal 1%(+1% per rank) of all damage dealt.","Spiral
+Every 10s, grant 10s buff to fellows in the team depend on class tree;
+Cleric Tree : +50% healing power , using any skill heal this unit and all Scout class tree fellows  15% of healing power
+Scout Tree : +10% critical damage , Critical attack with skill decrease this unit and Cleric class tree fellow's cooldown by 0.2s
+","Clustering
+Reduce damage taken by 20%. Grant stacks everytime this unit using skill. When reaching 50 stacks, all stack will be used to grant this unit and player 'Clustering' buff for 30s.
+[Clustering]
+Player : Increase critical damage by 50%
+This unit : Increase crit rate by 50%. Reduce damage taken by additional 30%
+Stack is not accumulate while this buff is active.
+[Stack gain]
+Lionheart : 4 stack
+Scratch : 4 stack
+Venge of Souls : 12 stack
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot",S,C,A,B,C,"A
+
+Only his good is HP/SP regen from rank 5 and he still has his caveats from dying too much.
+
+Only Cleric Class can substain him enough","2240 Hauberk Particle + 5 Hauberk Memory Orb
+or
+700 Demigod Orb + 5 Hauberk Memory Orb"
+,Champion Gabija,,"Demigod
+(Fire)
+-----
+Demigod","Gacha
+(Demigod Banner)","Block
++22","Immortality
+Fire and Holy element fellows (except Demigod fellows) reduce damage received by 2% x this character's rank.
+This effect is not activate when this unit is incapacitated.
+Also grant this unit +5% block rate per unit that receive this buff. Maximum 25% increase","Random use between one of this 3 moves:
+High Kick : 80% damage, 50% chance to 'stun'
+Back Kick : 110% damage
+Low Kick : 90% damage, inflict 8s debuff that reduce block rate by 20% and increase damage received by 10%
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%","Flame Knee Kick
+CD 15s
+Stomp ground to take a leap to an enemy and attack with knee kick.
+Dealing 1778% Fire AoE damage.
+25% chance to 'stumble' enermy
+The higher of attack speed, the higher of cast speed of this skill as well.","Pummel Kick
+CD 15s
+Rapidly kick forward. Dealing 247% damage x 10 times
+The higher of attack speed, the higher of cast speed of this skill as well.
+[Additional Effect]
+Using this skill while awakened has a chance to use extra time immediately regardless of cooldown","Flame Wheelwind Kick
+CD 15s
+Spin around while kicking all enemies around this unit. Deal 5 hits for total of 1117% damage
+Then create a phoenix fly forward. Dealing 558% damage every 0.5s
+The higher of attack speed, the higher of cast speed of this skill as well.
+[Additional Effect]
+Enemy hit by the phoenix are 'Burn' for 10s. Taking 279% damage per second, and increase damage received by 15%","Faceoff
+[Unlock at Rank 1]
+CD 120s
+Gather fire energy to the foot then stomp the ground. Dealing 874% damage and enter 'Awakening' state for 30s. Also create 'Faceoff' area at yourself.
+[Awakening]
+Increase damage by 150%
+While inside Faceoff area. increase Max HP of this unit and master by 70% (no healing from increasing hp) and attack power by 30%
+also heal 200% of block value of this unit every 2s","Art of Cloud
+Using Flame Knee kick will emit mist area around target for 5s. This unit inside mist area cannot be targeted, and increase block and evasion rate by 3%(+3% per rank)
+When reaching Rank 9, master also get benefit from mist area","Elixir
+When master using HP Potion, grant 10s buff to master and this unit. Reduce damage taken by 30%
+(Cooldown 60s)
+When reaching Rank 9 while Elixir buff is active, damage received per 1 hit will not be excess 5% of Max HP","Art of Stone
+Increase HP and defense that increase from Goddess basic attack passive by 10% each
+Reduce damage from blocking +5%
+When attacked by enemy, increase threat rate to this unit by that damage amount.","Hot Pursuit
+Every 10s, grant 10s buff that increase attack speed by 25% to 1(+1 per rank) nearby fellow(s)
+When reaching rank 9, she also got this effect.","Art of Moon
+Succesfully blocking enemy's attack increase self attack by 6%(+6% per rank) of block value for 3s.
+blocking while buff is active refresh it duration.
+When reaching rank 9, double this buff duration.","Flow like Water
+Activate combo bonus every 2nd basic attack. Depend on which combination:
+High Kick + High Kick = Powerful Kick
+Back Kick + Back Kick = Powerful Back Kick
+Low Kick + Low Kick = Powerful Stun Blow
+Back Kick + High Kick or Low Kick + High Kick = Buff stun chance +1% every attack
+High Kick + Back Kick or Low Kick + Back Kick = Buff block rate +4%
+High Kick + Low Kick or Back Kick + Low Kick = Buff Attack Speed +5%
+All buffs maximum 10 stacks, 20s duration
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot",C,S,A,S,B,"A
+
+Her awakening is very strong despite of it is area effect. Make her useful even at 1 star.
+
+Not good as others for damage boost. But great pick for newbies that love to play DPS classes that lack on survival like Archer , Scout and Musketeer","2240 Gabija Particle + 5 Gabija Memory Orb
+or
+700 Demigod Orb + 5 Gabija Memory Orb"
+,"Gumiho
+Lada",,"Demigod
+(Lightning)
+-----
+Demigod","Gacha
+(Demigod Banner)","Block
++22","Allure of Gumiho
+Grant 'Tail Blessing' to all Lightning and Multi-element fellows (except Demigod Fellows). While this blessing is active, fellow with this blessing lose 5% HP every 5s then heal to master by the combine amount of HP loss. Also reduce damage taken from Ice-element enemy by 35% and increase Lightning damage (except DoT) by 9% x this character's rank.
+All attack from this fellow and all of fellows blessed by her grant 1 'Spark' stack to enemy hit
+","100% damage
+All attacks have 11% (+8% per rank, Maximum 75% at rank 9) chance to grand herself 1 'Absorption' Stack. When reaching 15 stacks, all stacks are reset and grant 30s buff to Master.
+- Imbue attack with Lightning Element
+- Increase damage done to enemy by 40%
+(This unit cannot get 'Absorption' stack while this buff is active)
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%","Spark Burst
+CD 15s
+Emit high current electric burst around yourself. Deal 5 hits for total of 896% damage. This attack grant 1-3 stacks of 'Spark' to each enemy hit for 20s
+[Spark]
+Deal 106% Lightning DoT. Stack up to 20 stacks. From stack 2 and higher increase this damage by 5%","Charm
+CD 60s
+Charm all enemies in frontal area. If success, 'Charmed' enemy cannot doing anything for 2s, then decrease movement speed by 25% and attack speed by 80% for 5s.
+[Additional Effect]
+Lada immune to all atack while using this skill. And grant 10s buff afterward to herself that immune to knockback, and reduce damage taken by 25%","Soul Eater
+CD 15s
+Attack all enemy in 1m radius. Dealing 938% damage. Grant herself 3 stacks of 'Absorbtion' per enemy hit.
+Also cause enemy hit with 'Lethargy' state for 10s","Night of Temptation
+[Unlock at Rank 1]
+CD 120s
+Enter 'Awakening' state for 30s and increase debuff duration of all enemy surround her by 100%
+[Awakening]
+Increase debuff duration inflicted to enemy by 100%
+Grant 'Night Parade' buff to all fellows (except demigod fellows) increase non DoT damage by 20%. All Attack has 30% chance to inflict 1 'Spark' to enemy hit.
+(For fellow with 'Tail Blessing' buff. This buff will coexist with 'Tail Blessing')","Mirage
+Using awakening skill inflict 60s debuff 'Mirage'' to all surrounding enemy. (This does not increase duration from awakening skill effect)
+[Mirage}
+- Enemy with this debuff deal 10% less damage to Master of this unit and all of his fellows
+- Reduce crit rate by 23% (+3% per rank)","Thunderous Night
+Every 60s, grant 20s buff 'Thunderous Might' to all Lightning and Multi-Element fellows (including herself)
+[Thunderous Might]
+- All attack ignore 5% def, and inflict additional fixed damage by the same percentage amount.
+- For normal fellows: Increase damage by 52% (+6% per rank)
+- For demigod fellows : Increase damage by 13% (+1.5% per rank)","Full Moon Blessing
+After reaching 15 'Absorbtion' stacks, grant herself 'Full Moon Blessing' buff for 10s.
+[Full Moon Blessing]
+- Emit Lightning Static field around herself. Dealing 57% damage every 0.5s (+5% per rank, +14% additionally at Rank 9).
+- All attack received while this buff is active has 10% chance to be negated.
+- (Rank 9 Bonus) After Full Moon Blessing is over, gain 3 'Absorbtion' stacks","Ecstasy
+When her taking Lethal damage, prevent damage once then using Charm skill immediately regardless of cooldown. Also recover 15% of Max HP (60s CD)","Lunar Eclipse
+Increase Maximum HP by 20%
+Also allow this unit to stack 'Absorbtion' stack even while buff is active.","Charming Spark
+'Spark' DoT to 'Charmed' enemy deal additional 3.5-9% of this unit's current HP (+10.5% per rank)
+(Half damage in PvP, only Spark inflict by this unit is counted)
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot",B,A,S,B,S,"S
+
+Must-pick for Wizard class. Her Rank 7 skill provide Lethargy status effect which combo nicely with Earthquake.
+Still useful around with AoE CC, hard to kill with extra life from Rank 5 effect and nearly permanent 40% dmg amp","2240 Lada Particle + 5 Lada Memory Orb
+or
+700 Demigod Orb + 5 Lada Memory Orb"
+,Holy Knight Arlene,,"Demigod
+(Holy)
+-----
+Demigod","Gacha
+(Demigod Banner)",Attack +56,"Subduer
+Grant buff to herself and all other fellows (Except Demigod fellow) that reduce damage taken from Boss and Demigod character by 25%. This bonus reduce by 5% per another Demigod fellow in the team.
+When fighting Boss or Demigod Character, also grant following bonus effect base on fellow's tree:
+Swordman / Cleric : Increase block rate by 5% x Holy Knight Rank
+Wizard : Increase penetration rate by 5% x Holy Knight Rank
+Archer / Gunner : Increase hit rate by 5% x Holy Knight Rank
+Scout : Increase evasion rate by 5% x Holy Knight Rank","100% dmg
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%","Divine Touch
+CD 15s
+Emit cleansing light around you. Dealing 913% damage. And nullify all debuffs from all allies.
+Grant herself 'Holy Knight' stacks by the number of ally affected by this skill.
+[Holy Knight]
+Permanent buff. Reduce damage taken from Boss and Demigod character by 1% per stack.
+Maximum 45 stacks","Purify Soul
+CD 20s
+Emit purify aura that rapidly expanding by 20% everytime it attack. Dealing 284% x 5 damage.
+Grant herself 'Purifier' stacks
+[Purifier]
+Permanent buff. Increase natural HP recovery by 0.15% of Max HP per stack. Maximum 45 stacks 
+(Normal Natural HP recovery is 3% Max HP every 3s)
+
+[Purifier stack gain condition]
+Hit boss : Gain 2 stacks
+Hit Demigod Character : Gain 1 stacks
+Other enemy : 10% chance per hit to gain 1 stacks","Verdict
+CD 15s
+Randomly attack enemies in range 6 times (target boss or demigod character first if possible). Each hit dealing 286% damage. Grant herself 5 'Slayer' stacks
+[Slayer]
+Permanent buff. Increase damage to Boss and Demigod character 4% per stack. Maximum 45 stacks.","Trinity
+[Unlock at Rank 1]
+CD 120s
+Enter 'Awakening' state for 30s. And grant 5 stacks of 'Holy Knight' , 'Purifier' and 'Slayer'
+
+[Awakening]
+Knockback Immune
+All attack deal additional damage equal to 1.5% of enemy's Maximum HP (This damage by Max HP is capped at 20% of This Unit's attack power)
+When attacked by boss or demigod character, reduce this skill cooldown by 10s","Illumination
+Reduce damage taken from boss and demigod character additionally by 20%","Holy Shock
+When using Trinity, grant 'Holy Shock' to owner and all of his fellows for 30s.
+[Holy Shock]
+When attack boss or demigod character, deal additional 3% (+0.75% per rank) Holy damage. (Except DoT)
+Arlene's Basic attack while awakening will lauch Holy Shockwave. Dealing 168% (+15% per rank , +38% additionally at Rank 9) damage.","Divine Favor
+Increase Attack from base stat increase additionally 10%
+When taking damage (Except DoT), deal 267% (+24% per rank, +60% additionally at rank 9) damage counter attack.
+CD 3s
+","Beacon
+Using Divine Touch while having 5 or more 'Holy Knigh' stacks  grant herself, owner and all of his fellows 'Holy Knight - Beacon' buff 
+[Holy Knight - Beacon]
+Duration 1.5 - 3s depend on block stat of each character. While buff is active, all damage received is considered blocked
+(Duration based on block stat of the character that receive a buff)","Purity
+Using Purify Soul while having 10 or more 'Purifier' stacks grant herself and owner 'Purity' buff for 13s
+[Purity]
+Arlene : Heal herself and owner 1% of all damage dealt
+Owner : Higher HP, higher damage buff. Maximum is +50%","Desition
+Using Verdict while having 10 or more 'Slayer' stacks apply following effect to Arlene for 10s:
+When attacking boss or demigod character, reduce their block and evasion by 50% and increase self critical rate by 75%.
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot",B,SS+,S,S,S,"S+
+
+Very useful unit that sadly get powercrept by Velcoffer.
+Provide substainable heal, 50% dmg boost that is multiplicative and guarantee block which mitigate good amount of damage. But her damage is not good without rings make her steep investment","2240 Arlene Particle + 5 Arlene Memory Orb
+or
+700 Demigod Orb + 5 Arlene Memory Orb"
+,Sweet Gothic Nebulas,,"Demigod
+(Dark)
+-----
+Demigod","Gacha
+(Demigod Banner)",Crit Resist +34,"Ghost Sharing
+Grant this unit minimum of 'Gothic Ghost' and 'Ghost' buff that depend on how many normal fellows in the team.
+- Gothic Ghost : number of normal fellows (Maximum 5 stacks)
+- Ghost : sum of normal fellows's rank (Maximum 100 stacks)
+
+When demigod fellow in team is incapacitated, grant a master 'Revenge' state for 10s (CD 60s)
+[Revenge]
+- Increase movement and attack speed by 20%. Also immune to slow 
+- Endurance +20%
+- Basic attack reduce all skill cooldown by 0.5s","100% dmg in AoE frontal area.
+When enemy is defeat around you. Grant this unit 1 Ghost stack (Maximum 100 stacks).
+When certain condition, spawn all Gothic Ghost bullet (Maximum 5) to home in and explode when touch enemy, dealing 707% damage.
+Gothic Ghost can be destroy when hit 1 time (+1 per rank)
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%","Ghastly Ghost
+CD 8s
+Shoot 6 Ghastly Ghost missile to attack enemy. Each ghost dealing 312% damage.
+[Additional Effect] If able, consume 0-4 Ghost stack to fire additional Ghastly Ghost missile.","Sad Ghost
+CD 30s
+For 30s, every 5s will spawn sadly ghost to haunt enemy. Dealing 370% damage and grant 'Nervous Struggle' debuff for 10s, increase damage received by master and all of his fellows by 15%.
+[Additional Effect] Each time sadly ghost attacks, consume 0-2 Ghost stacks to increase 'Nervous Struggle' duration by 5s per stack consumed.
+","Gothic Ghost
+CD 15s
+For 10s, Increase damage from Gothic Ghost by 50%.
+[Additional Effect] If able, consume 0-5 Ghost stacks to spwan Enhanced Gothic Ghost to attack enemy with more AoE. Also grant enemy 'Gothic Ghost - Curse' for 5s. (Everytime debuffed enemy try to use skill, it take 20% damage. Count as 'Curse')","Ghost Revolution
+[Unlock at Rank 1]
+CD 120s
+Enter 'Awakening' state for 30s.
+
+[Awakening]
+- Every 2s, spawn 1 Gothic Ghost and inflict 'Laziness' debuff to all enemy surrounding this unit for 10s. Reduce attack power, hit rate and penetration rate by 10%
+- Using any skill grant 30 Ghost stacks
+- Increase this unit's attack by 1% per Ghost stack it has.","A Good day
+Increase Attack, Defense and HP from base stat increase additionally 5%.
+Every 60s, grant master 60s buff stat increase as follows:
+- HP increase : 2% (+1% per rank) of this unit's Max HP
+- Atk increase : 4% (+2% per rank) of this unit's Attack Power
+- Def increase : 2% (+1% per rank) of this unit's Defense
+(Maximum 10%/20%/10% increase at Rank 9)
+","A Clear Day
+When dodging enemy's attack, 66% chance to spawn a Gothic Ghost.
+When receiving damage more than 15% of Max HP, destroy 1 Gothic Ghost on field to reduce that damage by 24% (+7% per rank)","A Gloomy Day
+Every time the sadly ghost inflict 'Nervous Struggle' to enemy, increase mental debuff duration on those enemy by 0.8s (2s at Rank 9)
+Duration increase cannot exceed more than 30% of origin debuff duration.","A Scorching Day
+Using Ghastly Ghost while on Awakening State fire additional ghost to enemy every second for 5s. Each ghost dealing 422% (+38% per rank , +84% additionally at rank 9) damage.","A Lively Day
+When this unit taking lethal damage. if having Ghost stacks, instantly use all Ghost stack to recover 0.5% x Ghost stacks Max HP. Then enter 'Lively Day - Awakening' for 30. (Same as Awakening benefit, but forced to do only basic attack)","An exciting day
+Using Gothic Ghost will command ghosts to rotate around master and all of their fellows for 4s. Dealing 84% (+8% per rank , +17% additionally at rank 9) damage every 0.5s. (Use this unit's attack power for ghost attacks)
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot",SS,"C
+(S After rank 6)","B-S
+(Depend on Rank)",A,S,"S+
+
+Deal a lot of damage as a range DPS character itself and provide passive 20% atk and hp boost. Which is consider very much on lategame where every attack point you have can make difference. But only consider usable after unlocking rank 6 make her steep investment
+
+She also good as PVP unit.","2240 Nebulas Particle + 5 Nebulas Memory Orb
+or
+700 Demigod Orb + 5 Nebulas Memory Orb"
+,Milky Way Starlight Jurate,,"Demigod
+(Ice)
+------
+Demigod","Gacha
+(Demigod Banner)",Crit Attack +17,"Milky Way
+When this unit using skills, activate [Resonance Effect] on Master and all Ice-Element fellows in team (Except Demigod Fellows)","100% dmg
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%","Stella Nova
+CD 10s
+Concentrate cosmic energy to attack small area. Dealing 922% damage. Enemy at the center of the area take more damage, up to 50% increase
+[Resonance Effect]
+Also cause Stella Nova to attack area around each member affected. Dealing same damage","Gleaming Light
+CD 10s
+Condense Milky Way Galaxy to a thin line then fire forward. Dealing 942% damage.
+Fire - Element enemy hit by this skill will be inflicted with 'Frostbite' debuff for 7.5s. Reduce damage by 25%
+[Resonance Effect]
+Also fire a beam from each member affected. Dealing same damage and debuff","Starlight Shower
+CD 10s
+Summon a shower of starlight to storm the area. A Large starlight will target random enemy. Attack all enemies in 3m radius dealing 2004% damage.
+After that, 2 Medium starlights will follow attack with 66% radius (2m). Dealing 835% damage.
+Then, 4 Small starlights attacks in 1.5m radius. Dealing 334% damage.
+Finally, 8 Tiny Starlights attack in 1m radius. Dealing 167% damage.
+[Resonance Effect]
+Add 1 Large Starlight for each member affected.
+
+","Storm Flood
+[Unlock at Rank 1]
+CD 120s
+Enter 'Awakening' state for 30s.
+
+[Awakening - Storm Flood]
+- Increase attack power by 75%
+- Every 5s, inflict 'Storm' debuff to 2 random enemies for 7s (Target non-debuff enemy first)
+- Enemy in 'Storm' state take 86% damage every 0.5 second in 3m radius","Deneb - Calmest in Cygnus
+When this unit attack, grant herself 'Crus' stacks by the number of allies in team (Max 100, cooldown 2s).
+Reduce damage taken by 0.15% per stack. When stacks reach 100, maximum stack buff is grant for 10s which also additionally increase Hit Rate & Penetration rate to Fire-Element enemy by 15%. After that, all stacks reset.
+When reaching rank 9, Also grant this unit and all units affect by Milky way passive 10% chance to negate attack from Fire-Element enemy.
+","Betelgeuse - Guiding Star of Orion
+Stella Nova explode 2 more times. Which comes bigger and bigger.
+Those 2 explosions dealing 144% damage (+13% per rank , +29% additionally at rank 9).
+When reaching rank 9, Fire-Element enemy hit by Stella Nova will cause small explosion around themself. Dealing 25% of Stella Nova damage in 1.5m radius. 
+(Up to 10 explosions can be occured per skill use)","Vega - Shinest in Lyre
+For each ally around Jurate in 2m radius. Power of Vega star shroud them. Reduce damage taken by 5% per alliy in area. (Maximum 25%)
+When reaching rank 9, further reduce damage from Fire Attack and Fire-Element enemy attack by 2.5% per ally (Maximum 12.5% , become 37.5% in total)","Aldebaran - Radiance of Taurus
+Increase Attack from base stat increase additionally 10% and increase Critical Rate and Hit Rate by 35%.
+While in Awakening State, increase Clean Hit damage by 4% (+2% per rank)","Sirius - Leader Pack of Canis Major
+When hitting enemy with Gleaming Light, additional beam emit from enemy. Dealing 298% (+27% per rank , +60% additionally at Rank 9). This beam also cause 'Frostbite'. Maximum 5 beams per cast.
+When reaching rank 9, using any skills grant master and all of their fellows 'Sirius' buff for 7.5s. Imbue all of their attack with Ice element.
+
+","Arcturus - Royal to Boothes
+Using Awakening skill grant all of this buff for 40s:
+Arcturus - Shepard : For master, increase damage by 0% (+4% per rank). Increase damage additionally to Fire-Element enemy by 24% (+2% perrank). For total of +24% increase (Max +72% at rank 9)
+Arcturus - Bear : For fellows, grant same buff with master. With additionally reduce damage taken by 12%. Every enemy defeat increase this buff duration by 0.05s (+0.5s per rank). Maximum buff duration is 120s
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot","A
+(SS vs. Fire)","A
+(S vs. fire)","A
+(SS vs. Fire enemy)","A
+(S vs. Fire Enemy)",B,"S-SS
+
+God of Water is OP as heck when facing any Fire enemy, but just so-so on everything else.
+She doing good damage after unlock rank 5-6 while provide mitigation from rank 4. Make her a bit versatile even not facing fire enemy","2240 Jurate Particle + 5 Jurate Memory Orb
+or
+700 Demigod Orb + 5 Jurate Memory Orb"
+,Iron Fan Marnox,,"Demigod
+(Earth)
+------
+Demigod","Gacha
+(Demigod Banner)",Accuracy +22,"Breeze
+When Marnox succesfully evade enemy's attack, grant 'Breeze' buff to himself, owner and non-demigod Archer/Gunner/Scout fellows for 5s.
+[Breeze]
+Last for 5s,Increase attack and movement speed by 10%.
+When duration is over, heal all affected by this buff by the Marnox's evasion amount (Maximum 20% of receiver's Max HP)
+Also restore 5% SP to the owner","100% dmg. Has 31.5% chance (+1.5% per rank) to attack twice
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%
+Increase threat rate from basic attack by 500%. ","Swift Strike
+CD 5s
+Quickly approach enemy and strike. Deal 2 hit for total of 1982% damage.
+The higher of attack speed, the higher of cast speed of this skill as well.","Full Swing
+CD 15s
+Attack enemy around yourself with fan. Deal 4 hit for total of 4878% damage.
+This damage split among enemies.","Iron Fan
+CD 30s
+Drop huge iron fan to trap enemy within. Dealing 991% damage.
+The fan last for 10s. Enemy inside area will be reduce hit rate by 20% and greatly reduce movement speed the closer they are at the  center","Typhoon
+[Unlock at Rank 1]
+CD 120s
+Enter 'Awakening' state for 30s.
+
+[Awakening - Typhoon]
+- Increase attack power by 30% and attack speed by 75%
+- Every 5s, randomly inflict 1 nearby enemy with 'Typhoon' that lauch enemy into the air. Stun them for 2s","Wind Pattern
+Every 30s, grant owner and all Archer/Gunner/Scout fellows 'Wind Pattern' buff.
+[Wind Pattern]
+Last for 16s (+1s per rank).
+Increase damage to Lightning-element enemy by 25%","Fox Mask
+Increase defense by 10% and evasion by 25%
+Grant owner 2% chance to nullify enemy's attack (+1% per rank). This scales with Marnox's evasion stat","Deep Scent
+Using any skill grant invisibility for 0.35 seconds. And inflict 'Typhoon' to enemy 1 time. (30s cooldown)
+","Dance of Flower Petals
+Using any skill grant 'Blossom Dance' for 7.5s.
+[Blossom Dance]
+Reduce damage taken by 10%. If taken damage equal to 50% of max HP during the buff. Instantly reduce threat rate by 75% and remove this buff. Next attack will inflict ""Full Bloom"" debuff to enemy hit.
+[Full Bloom]
+Last 15s, if enemy is Beast or Insect type. Increae damage taken from Owner and all of their fellows by 25%","Bond
+When Marnox's HP fall below 25%, grant himself knockback and all status immune.
+Reduce all skill cooldown (except Typhoon) by the %HP lost. Maximum of 50% reduction","Lifetime Scent
+When boss monster enter or leave 'Iron Fan' skill area. It will be inflict with 'Laziness' for 15s. Which increase damage taken from Owner and all of their fellows by 25%.
+Every 10s in Typhoon state, grant owner 1 stack of 'Time Flow' buff for 10s. Which increase attack speed by 25%, increase critical damage by 24% (+3% per rank). And 50% chance to critical hit if last basic attack is not critical 
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot",A,S,"B
+(S vs. Beast / Insect / Thunder enemy)
+(SS vs. Thunder-Beast / Thunder-Insect Boss)",A,A,"S
+
+PVP unit that can add-on as specialist vs. Thunder enemy, more bonus point if that enemy is insect or beast-type.
+With high evasion rate from rings, he can act as a tank as well. Provoke a lot of hit from boss.","2240 Marnox Particle + 5 Marnox Memory Orb
+or
+700 Demigod Orb + 5 Marnox Memory Orb"
+,Amberscale Velcoffer,,"Demigod
+(Fire)
+------
+Demigod","Gacha
+(Demigod Banner)","Block
++22","Flamescale
+Increase defense of all fellows (Except Demigod grade) by 2.5% x this character's rank
+Using Hush Veil Skill grant Demigod fellows 10% defense for 25s","40% x 4 dmg. in 3x6.5m frontal area.
+Deal more damage to enemy closer to you (up to 50% increase) and reduce damage taken (up to 30%)
+
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%","Hush Veil
+CD 45s
+Envelop herself within great wings for 10s while also gathering energy. Immune to all debuffs
+Enemy that attack her has 50% chance to be 'Petrified'
+After duration is over. Explode in large area around you. Dealing 1817% damage","Dragon Scale
+CD 10s
+Throw hot scale forward. Dealing 487% x 4 damage while also inflict 'Burn' and 'Bleeding' to enemy on hit","Ember Breath
+CD 10s
+Return to her dragon form for a moment then breath area forward with life energy. Dealing 926% damage to enemy while also recover 20% of lost HP to all allies in area.
+[Additional Effect] If ally with 80% or more HP is inside area of effect, instead of recovery they will receive 5 stacks of 'Emberscale' buff (Maximum 20 stacks)
+Each time taking damage. 1 stack is lost then recover 1% of max HP (cooldown 1s)","Phantom Velcoffer
+[Unlock at Rank 1]
+CD 120s
+Enter 'Awakening' state for 30s.
+
+[Awakening - Velcoffer]
+- Increase attack power and defense power by the 50% of the total defense power of master and all of their fellows nearby (Does not exceed 300% of base defense)
+- Every 5s, transform to dragon form and breath forward. Dealing 374% x 3 damage","Luminous Rainfall
+While awakening, rain down blazing fireball to random enemy around you every second. Dealing 257% damage (441% with +58% bonus at rank 9) and grant 1 'Blazing Rainfall' stack to owner on hit. If this damage kill enemy, also grant 5 'Blazing Rainfall' stacks.
+Each stack increase damage by 1% (Maximum 75 stacks). Decrease 1 stack every 10 seconds (Unless Scalefire Velcoffer is not on your team, then reduce 1 stack every second)","Echo from the Veil
+While using Hush Veil, unleash aura that dealing 157% (269% + 36% bonus at Rank 9) to all enemies around her every second and pull them to the center.
+When reaching rank 9, every 5 second also teleport enemies toward owner.","Whsper from the Veil
+While using Hush Veil, heal 1% (9% at Rank 9) of Max HP every second and reduce damage taken by 40%.
+When reaching rank 9, using Hush Veil also grant a buff that increase defense of the owner 15% of her defense for 30 seconds.","Eternity Scale
+Create a backfire scale that fly back from target to her every 5s. It travels slowly, dealing 147% (251% + 29% bonus at Rank 9) damage every 0.3s to all enemies along the way","Flame Wave
+Enemy hit by the attack of this character has 15% chance to be inflicted with 1 'Flame Wave"" stack. Each stack increase damage taken from owner by 0.3% (1.5% at Rank 9). Maximum 50 stacks
+Plant and Insect Type enemy has a chance tripled","Race of the Veil
+Increase HP by 5% and block rate by 10%.
+While using Hush Veil, randomly use Dragon Scale or Ember Breath every 3s.
+When reaching rank 9, Dragon Scale and Ember Breath cast by this effect is upgraded to be spread in 4 directions.
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot",SS,S+,SS,A,S,"SS
+
+75% damage amp from self that can ramped up by time, combine with 75% dmg amp debuff make her potential uncomparable to anyone currently.
+Rank 2 meteor effect also provide a lot damage ongoing and she also has healing at rank 7 skill. Make her great offensive support and best bossing unit in the game.","2240 Velcoffer Particle + 5 Velcoffer Memory Orb
+or
+700 Demigod Orb + 5 Velcoffer Memory Orb"
+,[TIP] Aura Black,,"Demigod
+(Lightning)
+------
+Demigod","Gacha
+(Demigod Banner)",Defense +84,"[TIP] (TOS Idol Project) Idol
+
+When the team has a combination of this element fellows. Grant all fellows this following effect:
+- Fire + Ice : All attack has 10% chance to inflict 'Heron Heron' (Mental-type debuff) to enemy. Decrease attack power by 3.5% for 10s
+- Ice + Lightning : All attack has 10% chance to inflict 'Surprise' (Physical-type debuff) to enemy. Reduce Hit and Penetration value by 5% for 10s.
+-  Fire + Lightning : All attack has 10% chance to inflict 'Dazzle' (Magical-type debuff) to enemy. Increase damage taken by 5% for 10s.","100% damage. Grant your self 1 'Performance' stack and heal lowest member in team for each [TIP] unit in team by 15% (+2% per rank) of healing power. Pririotize ally that is lowest HP and not affect by this unit's healing skill
+
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%","Perform
+CD 7s
+[Can only used when have 10 stacks of 'Performance']
+
+Start a perform for 10s. Affect all nearby allies.
+Every 2s, heal all allies that are not affect by this unit's healing skill for 25% of healing power.
+Reduce damage taken by 50% while performing",no skill,no skill,"On The Stage
+[Unlock at Rank 1]
+CD 120s
+Enter 'Awakening' state for 30s.
+
+[Awakening - On The Stage]
+- Constantly use Perform, healing all allies every 2s.","Neuve
+After Perform or On The Stage duration is over, 'Afterglow' buff will persist for 2s (+0.5s per rank). Which maintain Perform's AoE on that area
+While this unit is on the 'Afterglow' area, owner will receive healing regardless of their location
+","Romantic Wilderness
+Increase Attack, Defense and HP from base stat increase additionally 5%. And increase healing power by 50%
+While 'Perform' or 'On The Stage' is active, increase Max HP of all allies by 10%
+","UNITogether
+Using Perform or On the Stage grant this unit 'UNITogether' by the number of allies (Max 30 stacks). Increase damage dealt and reduce damage taken by the stack amount.
+[Damage increase]
+- 1-5 stacks : 5% per stack
+- 6-10 stacks : 12.5% + 2.5% per stack
+- 11-15 stacks : 22.5% + 1.5% per stack
+- 16-20 stacks : 37.5% + 0.5% per stack
+- 21-30 stacks : 42.5% + 0.2% per stack
+[Reduce damage taken]
+- 1-5 stacks : 2% per stack
+- 6-10 stacks : 5% + 1% per stack
+- 11-15 stacks : 9% + 0.6% per stack
+- 16-20 stacks : 15% + 0.2% per stack
+- 21-30 stacks : 17% + 0.1% per stack
+(Both effect only active while Perform/On The Stage is active)","Pristinee 2
+While Perform/On The Stage is active, refund 30% of SP used by the skill when SP is below 90%","Dienos Advento
+While Perform/On The Stage is active, Deal 221% (+20% per rank , +44% extra at rank 9) Lightning damage every 2s to 1 random enemy
+Also when attack with skills, deal 5 hit of 50% Lightning damage to random enemies. This effect has reactivation cooldown of 1.74s (-0.03s per rank)","Openup Po10
+While Perform/On The Stage is active, Increase Clean Hit/Pierce damage dealt by 20%
+Rank 9 Bonus : Increase Hit Rate/Evasion Rate/Penetration Rate/Block Rate/Critical Rate/Critical Resistance by 3%, Increase Endurance by 5%
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot","C
+(A at 6 star)",S,S,S,S,"S
+Healer demigod that very useful for field boss hunt.
+Usable since rank 1 make her useful. With every rank unlocked make her buff more and more potential. Healer fellows always be sought after.
+
+Her buff provide to all members make her always good for Guild Raid content. Must have at least 1 member in party","2240 Aura Black Particle + 5 Aura Black Memory Orb
+or
+700 Demigod Orb + 5 Aura Black Memory Orb"
+,Noble Giltine,,"Demigod
+(Holy)
+------
+Demigod","Gacha
+(Demigod Banner)",Crit Damage +17,"Fate Healer
+
+All fellows (Except Demigod fellows) reduce damage receive by Demon-type, Human-type and Demigod-type enemy by 1.5% x This Unit's Rank + 2% x That own unit's rank
+
+Giltine herself reduce damage taken from corresponding type of enemies by 8% x unit that receive above effect. (Maximum 40%) And increase attack power when attacking those enemies by 20% per Demigod character in the team (including herself, Maximum 80%)","100% damage.
+10% chance when damage enemy with skill will stack herself a 'Embrace' stack (Maximum 50 stacks, 1 stack reduced every 5 seconds)
+- Increase damage dealt to enemy 1% per stack
+- Reduce damage taken 0.4% per stack
+- Increase chance to resist Mental-base debuff 0.8% per stack
+
+When taking lethal damage,survive by consuming all stacks and heal self by number of stacks x1% HP. Then, cannot stack 'Embrace' for 30s.
+
+
+
+
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%","Dazzling Praise
+CD 10s
+
+Sanctify area around herself with brighting shining power. Dealing 337% Holy damage every 0.5s for 5s.
+[Additional Effect] If 'Holy Protection' is active, also cast extra 'Dazzling Praise' at that area.","Holy Protection
+CD 10s
+
+Purify surrounding area  with holy power. Dealing 225% Holy damage every 0.5s for 5s. Even leaving area will be inflicted with 'Stigmata' for 5s, dealing 225% Holy DOT damage every 0.5s for 2.5s.
+Grant owner and all of their fellows 'Protection' effect while skill is active and persist for extra 2.5s after leaving the area or after area is dissappeared. Cleanse all mental-base debuffs and reduce damage taken by 20%.
+[Additional Effect] If 'Dazzling Praise' is active, also cast extra 'Holy Protection' at that area.","Gift of Divine Tree
+CD 45s
+
+Grant 'Gift' buff to owner and all of their fellows for 30s. 
+[Gift]
+- Increase attack power by 10% of Giltine's attack power.
+- Increase damage dealt to enemy by the sum of the option 'Increase damage dealt to xx element enemy' (Maximum 60%)
+- Reduce damage taken by the sum of the option 'Reduce damage taken from xx type enemy' (Maximum 25%)
+
+The 'Gift' buff is removed when Giltine is remove from the team","Primal Tranquillity
+[Unlock at Rank 1]
+CD 120s
+Purify surrounding area with peaceful energy. Dealing 298% Holy damage every 0.5s for 5s and enter 'Awakening' state for 30s. While also grant a 'Tranquility' buff to owner and all of their fellows by the same duration.
+
+[Awakening - Giltine]
+- Reduce damage taken from Demon-type enemy by 95%
+
+[Tranquility]
+Immune to death once, when taking lethal damage. Survive and recover 50% of maximum HP and remove this buff","Stillness
+Attack has 9% chance (+2% per rank)  to 'Silence' enemy. And also has a same chance to dealing 7.5% of target's Max HP if enemy is human or Demigod. (This damage will not exceeding 100% of her attack power)
+
+[Silence - Mental Type debuff]
+Cannot using skill","Tolerance
+Increase maximum of 'Embrace' stack by 26 (+3 per rank).
+Increase chance to stack 'Embrace' by 20% when attacking Dark-element or Demon-type enemy","Consensus
+Grant 'Communion' buff to owner. When they using skill, give 1 'Embrace' stack to Giltine. And also receive buff depend on number of 'Embrace' stack:
+
+- Increase damage dealt 0.5% per stack
+- Reduce damage taken 0.1% per stack
+- Increase chance to resist Mental-base debuff 0.8% per stack
+
+'Communion' is removed when Giltine is remove from the team
+","Wheel of Fate
+When Dark-Element or Demon-Type enemy attacked by 'Dazzling Praise' they will be inflicted by 'Holy Light' debuff for 7.5s. Increase damage received from owner and all of their fellows by number of 'Embrace' stack x 0.1% (+0.1% per rank)","Controling
+Additionally increase attack power from base stat increase by 10%.
+
+When attacking Demon-type enemy with skill, skill will dealing extra 235% (+35% per rank) damage. (Except Divine Protection's DOT)
+Add this additional effect to 'Divine Protection':
+- 'Protection' buff : Heal 0.12% HP/SP per 'Embrace' stack every second.
+- 'Stigmata' DOT : Reduce HP/SP recovery rate by 0.12% per 'Embrace' stack every second.","Harmony
+Add this following effect to owner and all of their fellows who receive 'Gift' buff, the buff scales with Giltine's 'Embrace' stack:
+- Increase attack power 0.1% per stack
+- Increase damage dealt to Dark-Element enemy by 0.02% (+0.02% per rank) per stack, this also count to 'Gift' sum total of percent buff
+- Reduce damage taken from Demon-Type enemy by 0.015% (+0.015% per rank) per stack, this also count to 'Gift' sum total of percent buff
+
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot",S+,S,SS,A,S,"S+
+AoE DPS that come with a ton of support. 
+Replace Justina in role of team res and also can deal good damage & buff as meta unit should do. Very competitive in every content","2240 Giltine Particle + 5 Giltine Memory Orb
+or
+700 Demigod Orb + 5 Giltine Memory Orb"
+,Night Prophet Laima,,"Demigod
+(Dark)
+------
+Demigod","Gacha
+(Demigod Banner)",Evasion +22,"Zodiac
+
+Every 30s, cycle the buff to one of fellow's type (Demigod -> Archer/Gunner -> Wizard --> Swordman and Rider --> Scout --> Cleric , skip to next one if that type has no one in the team) that increase attack power by 12% duration by the sum of fellows's rank from that type (maximum is 30s).
+
+And also, stack this buff to owner by the number of fellows from each element in the team. 
+- Fire - Mars Gabija : Increase Fire damage by 3%
+- Water - Mercury Jurate : Increase Ice damage by 3%
+- Earth - Saturn Zemyna : Increase earth damage by 3%
+- Lightning - Jupiter Rexipher : Increase Lightning damage by 3%
+- Holy - Solar Saule : Increase Holy damage by 3%
+- Dark - Lunar Naktis : Increase Dark damage by 3%
+- Multi - Rainbow Lada : Reduce damage taken by 1%","Spawn 3 star projectiles that attack random enemy. Dealing 75% damage.
+
+Using any skills grant aura that reduce damage received by 50%. Duration stackable
+
+
+
+
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%","Ring of Shadow
+CD 30s
+
+Summon dark ring around yourself for 5s. Dealing 777% damage every 0.5s to enemy that touch the ring. And also provide random debuff to nearby enemies.
+[Debuff List]
+- (30% Chance) Reduce block and evasion by 16% for 15s.
+- (30% Chance) Reduce attack power by 33% for 15s.
+- (20% Chance) Stun 3s.
+- (20% Chance) Increase damage received by owner and all of their fellows by 45% for 15s
+
+Increase damage reduction aura by 3s","Luna of Fate
+CD 30s
+
+Manifest crescent moon of fate that orbit around yourself. Dealing 1454% every 0.5s for 5s to enemy that touch it. Also grant owner and all of their fellows random buff
+[Buff List]
+- (40% Chance) Increase attack power by 38% for 22s
+- (40% Chance) Reduce damage taken by 50% for 22s
+- (20% Chance) Reduce all skill cooldown by 66%
+
+Increase damage reduction aura by 3s","Cosmic Barrier
+CD 30s
+
+Create 11 cosmic fragments that linger around yourself for 15s. Each dealing 125% per second to enemies that touch it. When owner taking damage more than 15% of maximum HP, consume 1 fragment to absorb that damage (That fragment will disappear)
+
+Increase damage reduction aura by 6s","Fortune Signal
+[Unlock at Rank 1]
+CD 120s
+Spread the darkness around you. Enter Awakening state for 30s.
+
+[Awakening - Laima]
+- Increase maximum HP by 70% and increase attack power by 30%
+- Debuff enemies inside the darkness area, increase taken by owner and all of their fellows by 44%
+
+Increase damage reduction aura duration by 10s","Cereal
+Increase HP additionally from base stat by 20%. Damage reduction from blocking +5%.
+
+Increase movement speed and attack speed of all members in the team by 5%","Phase
+When using Ring of Shadow, determine if number of enemies or allies inside the aura is higher.
+
+If the ally has greater number : 5% (+5% per rank) chance to trigger Reduce block/evasion debuff and increase damage taken debuff to enemy at the same time. And if this fail, guarantee to trigger one of either debuff listed.
+If the enemy number is greater : 5% (+5% per rank) chance to trigger Stun and attack reduction debuff to enemies at the same time. And if this fail, guarantee to trigger one of either debuff listed.","Flow of Fate
+Every second, there is a chance that Laima will get a stack of  'Flow of Fate' (Maximum 25). Each stack reduce her skill's cooldown by 1%. 
+After reaching maximum stacks, maintain maximum buff for 15s (+5s per rank). After that, there is a chance that Laima lose a stack every second until all stacks are gone. Then this repeat as a cycle.
+
+As in game time is nearly midnight (0:00), the maximum her chance to getting stack and the lowest chance for her to lose stack. This reverse as getting to Noon","Karma
+When Laima taking damage, deal a counterattack dealing 1324% damage (+120% per rank, +301% extra at Rank 9). This effect has 30s cooldown.
+When Laima is defeated, grant owner and all of ther fellows 30s 'Karma' buff. All damage taken from enemies has 30% chance to be nullified. This chance gradually decreased over time.","Conjunction
+When using Luna of Fate, Guarantee buffs to all allies depend on time passed when accompanying Laima.
+
+- Start of the battle (0-45s) : Increase Attack Power
+- Middle of the battle (45-90s) : Reduce damage taken
+- Late battle (after 90s) : Cooldown reduction","Aspect of Stars
+Using awakening increase aura debuff range by 50%. 
+Also grant buff to all allies that increase skill damage by 88% for 12s (+2s per rank).
+
+This buff instantly gone when Laima is taken out of the team
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot",S,SS,S,S+,S+,"S+
+Has a tons of buffs & debuffs that might look too much RNG at first, but alleviete with Rank upgrade for more consistancy.
+But the best of her kit is she improve your survivalbility very much. Great pick for squishy class like Archer, Scout or Musketeer or even Wizard
+
+Still great to use and deal great damage. Compatible with anyone","2240 Laima Particle + 5 Laima Memory Orb
+or
+700 Demigod Orb + 5 Laima Memory Orb"
+,Penguin Queen Austeja,,"Demigod
+(Ice)
+------
+Demigod","Gacha
+(Demigod Banner)",Penetration +22,"Pioneer
+
+Increase maximum HP for owner and Cleric-type fellow in team by 20% (10% PvP).
+
+Every 2s, recover HP for those unit:
+Owner : 12% of HP lost
+Cleric fellows : 2x Rank% of HP lost","100% damage.
+
+Stack 'Vitality' from this action (Maximum 50):
+Basic attack : +1
+Moving 2m : +1
+Using skills : +1
+
+Each stack of 'Vitality' grant her +2% attack speed. And this additional effect when reaching certain threshold:
+- 5 or more : Increase movement speed by 10%
+- 10 or more : Healing effect +100%
+- 20 or more : Self damage reduction 30%. Grant aura to reduce owner/fellows damage taken by 10-30% depend on how close to her.
+- 50 : All attack has 50% chance to deal 50% more attack power
+
+
+
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%
+","Cold Wave
+CD 10s
+
+Spread cold air to attack surrounding enemy. Dealing 643%
+[Additional Effect] Reduce this skill's cooldown by the percent of your attack speed boost effect (Maximum 60%)","Cryo Essence
+CD 30s
+
+Heal 30% of max HP to self, owner and all of their fellows in 5m radius. And spawn a Cryo Essence at random nearby area for 10s.
+Austeja then will try to collect the essence. After collected, grant self, owner and all of their fellows 25% block rate for 10s","Wax Crystal
+CD 30s
+
+Drop Wax Crystal at enemy's location for 10s. Immobilize them
+
+Wax can be attacked by enemy. When Wax is destroyed or duration is over, apply 'Wax' to nearby enemy for 10s. Reduce movement speed by 20% and defense by 10%
+","(Not)Emperor Charge
+[Unlock at Rank 1]
+CD 120s
+Command penguins to charge forward continuously for 3s. Dealing 433% damage every 0.3s. 'Freeze' enemy on hit and grant 'Awakening' to self for 30s
+
+[Awakening - Austeja]
+- Increase movement speed by 50% and reduce damage taken by 35%","Frost
+
+Cold Wave attack has 7% (+7% per rank) to stack 'Frost'  to enemy for 20s. (Maximum 30 stacks)
+
+[Frost]
+- Reduce movement speed by 1% per stack
+- Increase damage taken by 2% per stack","Penguin March
+
+When having 30 or more 'Vitality' stacks, using (Not)Emperor's Charge grant self,owner and all of their fellows 'Penguin March' buff for 6s (+3s per rank)
+
+[Penguin March]
+- Increase damage dealt by 30% and reduce damage taken by 15%
+- Every 1s, increase damage increase effect by 1%","Journey
+
+When moving, grant herself 'Journey' buff for 10s (10s cooldown). And every 30s also grant owner 'Journey' buff for 10s.
+
+[Journey]
+- Reduce damage taken by 30%
+- Reduce chance to get CC by 50%
+","Queen's Oath
+
+Increase base attack,defense, HP from base stat increase additionally by 5%.
+When Austeja is in theam, grant 'Queen's Oath' effect to owner
+
+[Queen's Oath]
+- Increase Max HP by 7% (+1% per rank) of Austeja's Max HP
+- Increase attack by 7% (+1% per rank) of Austeja's Attack power
+- Increase defense by 7% (+1% per rank) of Austeja's defense
+
+*Buff is instantly removed when Austeja leaving the team","Trace of Vanguard
+
+Using Cryo Essense grant self,owner and all of their fellows 'Trace fo Vanguard' for 10s. When recover HP. Extend duration by 3s (Can extend once every 5s)
+
+- Owner : The more %HP you have, higher damage% boost. Maximum +50%
+- Self and fellows : If Ice or Earth type, increase skill damage by 50%. Else +20%","Crevasse
+
+Every 10s create seismic crack forward. Dealing 545% (937% + 114% additionally at rank 9) damage. On hit inflict 'Crevasse' for 5s. Reduce damage to self, owner and all of their fellows by 15%
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot","B
+(A After reaching rank 7)",SS+,SS,SS+,SS+,"OP
+
+Heal a lot, buff a lot, can be used at rank 2 and so on. Her rank upgrade is great. Stack on offensive & defensive every upgrade. Can use on every content.
+
+Max HP buff to you after rank 5 is huge (+30%). Make her really great on boosting squishy class as well","2240 Austeja Particle + 5 Austeja Memory Orb
+or
+700 Demigod Orb + 5 Austeja Memory Orb"
+,Dawn Raven Rexipher,,"Demigod
+(Earth)
+------
+Demigod","Gacha
+(Demigod Banner)",Attack +56,"The End of Dawn
+
+When Rexipher use awakening skill, summon Shadow of Earth and Multi-Element fellows in team except himself.
+(Maximum 3)
+
+Enemy near the Shadow receive 'Dawn' debuff that is stackable. Increase damage they taken by 4%.
+
+Shadow has 100% HP of fellow that is summoned from. And slowly chase nearby enemies without attacking","100% damage.
+
+Every 9th basic attack (-1 per rank , minimum 3 at rank 7) dealing 450% damage. And make him use 1 of his skill immediately (Except Awakening skill). Prefer not using last skill used if possible.
+
+
+
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%
+","Sunder
+[No cooldown, using after basic attack in accumulated amount]
+
+Strike earth with his weapon. Create shockwave that dealing 615% Earth damage every 0.3s for 2.5s and inflict 'Sunder' to enemy for 5s.
+
+[Sunder - Physical type debuff]
+Reduce crit resitance by 25%. Increase damage taken by 20%","Shadow Fall
+[No cooldown, using after basic attack in accumulated amount]
+
+Hide in the shadow then teleport to enemy's shadow, attack them from the back. Dealing 1736% x2 damage. 
+[Additional Effect] Deal 100% increase damage to 'Sunder' enemy","Eye of Dawn
+[No cooldown, using after basic attack in accumulated amount]
+
+Immediately stealth for 1.5s. After stealth duration is over, grant 'Protection of Dawn' to self and owner for 10s.
+
+[Protection of Dawn]
+Reduce damage taken by 40%.","Yata-Garasu
+[Unlock at Rank 1]
+CD 120s
+Enter awakening state for 30s and emit shadow area for 30s. Deal 627% damage to a random enemy inside area every second.
+
+[Awakening - Rexipher]
+Crit chance set to 100%. Crit damage +50%","Mountain Tactic
+
+The more enemy surrounded, more defense boost for Rexipher. Up to 100% increase
+The less enemy surrounded, more attack boost for Rexipher. Up to 100% increase","Journey of Dawn
+
+Grant 1 'Aversion' stack when dodging enemy's attack (Max 10 stack, cooldown 1s)
+Basic attack and using skill consume 1 'Aversion' stack if possible to boost it damage by 10% (+10% per rank)","Oracle ""Three Divine Treasures""
+
+Using non awakening skill grant 1 of 3 random buffs. If same effect already granted, will refresh it duration
+
+Sword : Increase attack power by 5% (+5% per rank) for 10s.
+Mirror : Reduce damage taken by 5% (+5% per rank) for 10s.
+Jade : For 10s, gain HP leech from attack","Gluttony
+
+Every time Rexipher defeat enemy, Heal self 5% HP and gain 1 'Gourd' stack.
+Increase attack power by 1% per stack (Maximum 50, lose 1 stack every 10s)","Swift Escape
+
+While using basic attack or skill, increase evasion stat by 8% (+8% per rank).
+30% chance to nullify boss's attack","Oracle ""Wayfinder""
+
+Additionally increase attack power from basic stat by 10%. And grant additional effects for his skills:
+
+Sunder : Grant  10s buff to owner and all of their fellows to increase Cleanhit/Pierce damage to enemy by 15-60%. Depend on how many physical debuffs are applied to them.
+
+Shadow Fall : Grant 10s 'Surge' buff to owner. Increase attack power by 20% of ""Skill damage increase"" stat (Maximum 12%) and increase damage to enemy by 50% of sum of ""Increase damage to xx element enemy & xx race enemy"" stat (Maximum 45% increase)
+
+Eye of Dawn : After stealth is over, grant 10s 'Dawn of Raven' to self. increase attack by 20% and critical damage by 25% 
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot",SS+,"A
+(SS After Rank 6)","A
+(S After Rank 7)",B,"A
+(S after rank 7)","S+
+
+Very high damage and ceiling fellows that costly. Like every other Male demigod fellow, they mainly used for PvP. But to be useful for PvE need high rank and specific investment. But for him it is very worthwhile if you lucky to R7 him early.
+
+","2240 Rexipher Particle + 5 Rexipher Memory Orb
+or
+700 Demigod Orb + 5 Rexipher Memory Orb"
+,Fortune Bunny Girl Lucy,,"Demigod
+(Fire)
+------
+Demigod","Gacha
+(Demigod Banner)",Crit Rate +22,"Fever Time
+
+Grant owner and all of their fellows +25 Crit Rate per character level.
+
+Critical Hit damage against enemy in control status effect increase by 333%","100% damage.
+
+Every time she use 'Shuffle' skill , grant 1 'token' (Maximum 36)
+Each token grant Hit Rate/Penetration Rate/Block/Evasion by 1%
+
+
+
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%
+","Shuffle
+[CD 5s]
+
+Shuffle her deck and draw a card. Grant effect base on card drawn:
+
+- Great : Grant 10s buff to herself, owner and all of their fellows. Reduce damage taken by 10%
+- Excellent : Grant 10s buff to herself, owner and all of their fellows. Increase damage by 25%
+- Perfect : Grant both 'Great' and 'Excellent' effects
+- Oh my Giltine! : Heal 100% Max HP to all allies, Grant 'Great' and 'Excellent' effects and deal 2345% damage to surrounding enemies","Rolling Board
+[CD 30s]
+
+Throw a dart to rotating dartboard. Grant effect base on number throw to:
+
+- 1 [Big Failure!] : Lucy become invisible for 2s from being shocked by her suck throwing skill
+- 2-19 : Grant 'Rolling' buff to self,owner and all of their fellows for 15s. Increase Attack Power by the number thrown amount%
+- 20 [Great Success !] : Grant 'Rolling' base on number 20 , and also grant 'Rolling - Bonus' buff for 15s. All Damage ignore 25% Def
+
+'Rolling' and 'Rolling Bonus' buff instantly remove when Lucy is removed from the team","Surprise Box
+[CD 30s]
+
+Hide in a box and suddenly appear. Attacking surrounding enemies dealing 1090% and knock them back. For player and fellow, greatly knock them back (In Arena, stun instead).
+
+Grant 'Surprise Box' to owner and all of their fellow that increase attack power by 15% for 15s","Lucky Chance
+[Unlock at Rank 1]
+CD 120s
+Enter awakening state for 30s and grant maximum 'Token' stacks
+
+[Awakening - Lucy]
+Every 5s, randomly buff 'Rouge' or 'Noir' to all allies
+Rouge : Increase damage by 25% for 5s
+Noir : Reduce damage taken by 10% for 5s","Double
+
+Every time Lucy deal critical damage, grant owner 2 'Double' stacks (+2 per rank).  Maximum stack is 100
+
+[Double]
+When owner attack, has a chance (stack)% to deal additional hit with same damage. Then remove all 'Double' stacks","Miss Fortune
+
+Increase HP additionally from base stat by 10%, attack power increase additionally by 5%, critical rate increase by 25%
+
+When Lucy's HP fall below her critical hit rate%, grant 30s buff that recover her HP 1.5% every 0.5 second.
+(60s CD)","Hidden Joker
+
+Enhance her skills:
+
+- Shuffle : Double the chance to get 'Oh my Giltine!' card. (Reduce the chance of 'Great' chance by the same amount)
+- Rolling Board : 10% Chance (+10% per rank) that the number applied in rolling buff will be changed to 20
+- Lucky Chance : 1% (+1% per rank) that each time she apply the buff, will apply both buff at the same time","Mochito 
+
+Every 11s (-1s per rank, lowest 5s at rank 7), she will fire a healing projectile to 1 ally with lowest HP (Excluding herself). Heal 20% of their max HP and boost their movement/attack speed by 20% for 10s.","Dopamine
+
+Stack 1 'Dopamine' to herself and owner when:
+- Use 'Shuffle' and draw 'Perfect' or 'Oh my Giltine!' card
+- Use Rolling Board and get number 15 or higher
+(Maximum 10 stacks)
+
+[Dopamine]
+- When dealing damage, deal additional hit of 7.77% damage per stack.
+(Cooldown 0.6 s)
+
+All stacks is removed when Lucy is removed from team","Flame Dealer
+
+Reduce damage taken from enemy by 6.5% (+1.5% per rank, max at 18.5%). This apply as twice for damage taken from enemy fellows & player
+Enemy hit by 'Surpise Box' is inflicted with 'Result of Curiosity' for 20s
+
+[Result of Curiosity]
+- Defense reduced by 5%
+- Take 50% increased Fire damage
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot","B
+Not much damage herself","S
+Look solid but not that tanky","SS
+Sounds OP for double mechanic & Additional hit. This is new damage multiplier","S
+Have teamwide heal if draw 'Oh my Giltine!' card often. But the chance surely is low. Rank 5 help somehow.","SS
+Very versatile without any team lock at all.","SS
+Double Mechanic and team wide buff prove her usage to be a nice replace to Aura Black slot. Very general and new buff that can be used for long time. At least for 6 months (2 Demigod rotations)
+","2240 Lucy Particle + 5 Lucy Memory Orb
+or
+700 Demigod Orb + 5 Lucy Memory Orb"
+,Blue Rose Sorcsha,,"Demigod
+(Lightning)
+------
+Demigod","Gacha
+(Demigod Banner)",Accuracy +22,"Code Duelo
+
+Grant owner and lightning & holy element fellows (Except demigods) 30% increase damage vs. boss / elites
+
+Grant [Counterattack] buff to owner and demigod fellows in team when one of this conditions:
+- When owner block or evade attacks
+- When this unit use 'Rose Blue' or 'Riposte'
+
+[Counterattack]
+Increase damage dealt by 20% for 10s","100% damage.
+
+Succesfully 'Block' or 'Evade' enemy's attack will make her counterattack. Dealing 176% damage (CD 1s)
+
+
+Base Stat Increase: HP +60%, Defense +50%, Atk +25%
+","Fente Eclat
+[CD 10s]
+
+Quickly dash forward. Dealing 3014% to enemy in direction.
+Large size enemy may receive multiple hits ","Riposte
+[CD 20s]
+
+Twirl a rapier in counterattack stance for 2s. Immune to all damage.
+When receiving hit, counterattack by slash forward. Dealing 3364% damage (Reactivation Cooldown 0.5s)
+
+After stance is over, rapidly stab forward. Dealing 1067% x 5 damage.","Fleche d'Epines
+[CD 30s]
+
+Stab and swing with lightning speed to create 12 magic thorns storm forward. Dealing 1656% x 12 damage","Rose Bleue
+[Unlock at Rank 1]
+CD 120s
+Enter awakening state for 30s
+
+[Awakening - Sorcsha]
+- Increase damage dealt by 50% of attack power x % of HP target missing.
+- At regular interval, teleport to random enemy in range and attack. Dealing 279% damage.","Prestige
+
+Every 10s and when this unit block or evade enemy's attack, grant 1 'Blue Rose Protection' stack. (Maximum 10)
+
+Counterattack damage increase by 25% per stack","Royal Garden
+
+When using Fente Eclat or when teleporting attack by her awakening skill, leave small garden area that dealing 180% damage per second.
+[308% at max rank , +41% extra at rank 9]
+Enemy inside that area receive 19% (+3% per rank) more damage. 
+While Sorcsha inside that area, her evasion and block rate will be increased to the sum of each other","Honor
+
+Using Riposte increase Attack Power by 35% and Attack Speed by 25% for 10s.
+Successfully counter enemy at least once with Riposte also share this buff to owner","Verdict
+
+'Blue Rose Protection' stack now increase damage to all of her attacks.
+(+25% per stack)","Noblesse
+
+Defense increase by 10%
+Reduce damage taken from boss by 26% (+4% per rank)
+Reduce all damage taken by 5% of her defense power","Majesty
+
+Using awakening skill consume all 'Blue Rose Protection' stacks to grant 'Majesty' buff to her and owner for 90s. You can still stack 'Blue Rose Protection' while this buff is active
+
+[Majesty]
+- Increase damage by 15% per stack consumed
+- 100% immume to knockback (For Sorcsha)
+- 38% chance to resist knockback (For owner)
+
+---------------
++1 Acc Slot","---------------
++1 Acc Slot","Alternate costume unlocked.
+Upgrade all skill damage
+----------
++1 Acc Slot","OP
+(Now the SFR goes beyond 10k per skill, nice)","SS
+(High defense, block and evade. Just need another sustain for prolong battle)","SS+
+(Not much but strong, 35% atk , 25% aspd , 150-237% Amp)","C
+(Provide nothing except knockback res)","SS
+(Easy to understand kit. Deal high damage, grant offensive buff to others. Can go for all scoing & bossing content. PvP seems to okay too)","SS+
+Has high power but take too long time to ramp up her ""Blue Rose Protection"" stacks make her only useful for a prolong fight. But debuff from Royal Garden (Rank 3) the make enemy takes more damage apply to all party member. That includes guildmate. Make her become must-have choice for challenging guild raid content.
+
+Damage amplify & Atk boost right now become saturated. So her offensive boost although look high on number, not much difference from other unit","2240 Sorcsha Particle + 5 Sorcsha Memory Orb
+or
+700 Demigod Orb + 5 Sorcsha Memory Orb"
+"Collaboration
+UR",Seol Hwa,,"Theurge
+(Multi)
+-------
+Magic Type","Gacha 
+(Limited Banner)",Penetration +14,,"100% dmg.
+Grant herself a 'Recharge' stack every time she using skill. Increase Penetration Rate, Block and Evasion rate by 0.5% per stack (Max 10 stacks)
+All stack lost on death","Windfall
+CD 8s
+Attack all target in projectile trajectory
+Throw a mystic orb that travel forward for 1s, then travel back to you in 1s. Dealing 240% Earth damage every 0.3s to enemy in pathway","Trance Illusion
+CD 10s
+Attack all target in 2m radius
+Emit illusion aura around yourself. Dealing 929% Dark damage to all enemies around target area and put them to 'Confusion' for 5s. Reduce hit rate by 30% and reduce damage done to owner by 10%","Tale of The Moon
+CD 40s
+Self buff.
+Summon a clone that replicate all Seolhwa skills for 30s. It only deal with 50% of base power. And also inherit 'Recharge' stacks.
+The clone cannot be targeted, and do not receive any damage.",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Trigram Charm Stance
+When 'Recharge' stack reaching 2 and 5, unlock new ability to use
+
+[2 Stacks - Restict Area] CD 10s
+Evoke a fire charm's power. Dealing 1045% Fire damage to all enemies in 3m radius around yourself and push them away by 1.5m
+
+[5 Stacks - Weather Art: The Tri Diasters] CD 14s
+Place a lightning charm to call down lightning strike to enemy in that area for 4s. Dealing 301% x 8 Lightning damage and 'Shock' them for 10s. Taking 10% DoT every second, 10% chance to be stunned when try using any skill","Fork Tale Art Stance
+When 'Recharge' stack reaching 3 and 6,
+unlock new ability to use
+
+[3 Stacks - Divine Spirit Art] CD 13s
+Summon Dragon spirit to strike enemies in 3x8m frontal area. Dealing 428% x 3 Ice damage and inflict 'Seizure' to enemy hit for 10s. Reduce Defense,Block and Evasion rate by 10%
+
+[6 Stacks - Flamboyance] CD 16s
+Perfrom an exorcism to purify the defile soul in 2x7m frontal area. Dealing 328% x 5 Holy damage and inflict 'Purified' to enemy for 15s. Increase damage taken from caster.owner and all of their fellows by 40%","Omnipotence
+When 'Recharge' stack reaching maximum, consume all stacks to buff herself and owner 'Omnipotence' for 15s.
+
+[Omnipotence]
+Increase Attack Power, Defense, Hit Rate, Penetration Rate, Block Rate and Evasion Rate by 20%
+Seolhwa can use all of her skills in every stance regardless of any Recharge stacks.
+Cannot stack 'Recharge' buff while this is active","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",S+,A,S,A,S,"S
+
+Can be considered as inferior but cheaper Nebulas. With 10x cheaper to build but can provide 80-90% buff potential and good amount of self damage. This unit can be interchangeable for account that F2P or low spenders",47 UR Books
+"Limited
+UR",Arlene Berg,,"Highlander
+(Fire)
+------
+Battle Type","Gacha 
+(Limited Banner)",Damage +17,,"100% dmg
+Ignore 20% def
+25% chance to put herself in 'Frenzy' state","Fellow Great Swing
+CD 10s
+Attack all target in 3.5m radius around yourself
+Spin your sword to attack enemy around you. Dealing 215% x 3 damage","Fellow Zornhau
+CD 7s
+Attack target in 3x3m frontal area
+Landing overhead smash. Dealing 697% damage","Fellow Great Finish
+CD 15s
+Attack all target in 4m radius around yourself
+Leap and then smash greatsword to the ground. Dealing 994% damage 
+50% chance to 'stun' enemy on hit",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Great Swing - Enhance
+Increase Fellow Great Swing damage by 100%","Zornhau - Combo
+After using Zornhau, can use 'Zucken' and 'Redel' after that
+
+Zucken : Attack frontal area 3x3m. Dealing 326% x 4 damage
+Redel : Attack frontal 3x4m. Dealing 256% x 5 damage.","Critical Finisher
+Attack has 100% critical rate to enemy inflicted with CC
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",A,C,C,C,B,"C
+
+Just a good AoE melee character. Not worth your limted banner quota",47 UR Books
+,Daisuke Yonaha,,"Kannushi
+(Holy)
+------
+Faith Type","Gacha 
+(Limited Banner)",HIt Rate +14,,"100% dmg
+When got any debuff, grant yourself 5s buff that increase defense by 20%","Fellow Gohei
+CD 8s
+Attack target in 2x2m frontal area
+Swipe divine wand forward. Dealing 2 hit for total of 868% Holy damage
+100% chance to 'stun' target","Fellow Hamaya
+CD 10s
+Attack target area in 3m radius
+Throw divine arrow to target area. Dealing 42% Holy damage every 0.5s for 5s","Fellow Clap
+CD 15s
+Affect player and all enemies in 4m radius
+Chant divine spirit and clapping. Grant player a 'Divine Spirit' buff and dealing 2 hit for total of 1158% Holy damage to enemy in area.
+Enemy will be 'stumbled'
+[Divine Spirit]
+Increase critical chance by 10% and hit rate by 20% for 10s",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Damage Reduction
+Reduce damage received by 15%","Hamaya - Purify
+Increase critical chance of this skill by 10%.
+20% instead if enemy is Devil type.","Gohei - O Gohei
+Grant player 5s buff after using Gohei, increase critical damage by 30%
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",B,B,B,B,A,"B
+
+20% crit buff and 20% accu buff is outdated in 2025.",47 UR Books
+,Swimsuit Amalia Black,,"Fletcher
+(Ice)
+-----
+Shooting Type","Gacha 
+(Limited Banner)",Damage +17,,"Shoot arrow in straight line piercing up to 3 targets
+Deal 110% damage if only 1 enemy hit
+Deal 50% damage otherwise","Fellow Spiral Arrow Ice
+CD 5s
+Attack 1 target
+Deal 3 hits for total of 697% damage
+Each hit deal additional 10% true damage
+20% chance to put 'Atrophy' on enemy, Chance triples if target is Fire Element ","Fellow Downfall Ice
+CD 10s
+Attack 1 target
+Deal 218% x 8 damage
+Reduces Attack & Movement Speed by 50%
+Deals +20% Damage to Fire Element ","Fellow Divine Machine Arrow Ice
+CD 20s
+Attack all enemy in 3m radius from target
+Deals 273% Damage to enemies within range maximum 10 times, Causes 'Divine Machine Arrow - Tainted Water' debuff, which Increases Damage Received from Owner by 30% for 10 seconds, and reduces ATK by 20% of Fellow's ATK.
+Increases the Damage Recieved from Owner effect of 'Tainted Water' for enemies with Fire Property additionally by 10% (40% total)",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Threat Reduction
+Reduce threat rate of self attack by 50%
+Reduce damage received by 10% when 2 or less enemy target you","Downfall Ice - Barbed Arrow
+Inflicts equal damage on enemies within a 3m range around the target.
+Enemy his by this skill also got debuff with 'Armor Break' for 10s. Damage received from Master, Amalia and all of their fellows will ignore 15% defense
+
+","I'll Blow Away the Heat!
+Critical hit rate increases by 30%. 
+Also, when attacking slowed enemies, there is a 15% chance to freeze them for 3 seconds
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",A,B,A,C,B,"A
+
+Still good vs. Fire enemy. But Ina Creek that is general unit now completely powercrept her",47 UR Books
+,Jennette,,"Dark Cleric
+(Dark)
+-------
+Faith Type","Gacha 
+(Limited Banner)","Damage
++17",,"100% Damage.
+Then, charge up for 1 second to landing strong attack. Dealing 60% damage x 2 hit","Fellow Dark Smite
+CD 7s
+Attack 2m radius area around target
+Smash enemy with spike hammer. Dealing 868% damage.
+20% Chance on hit to debuff enemy with 'Atrophy/Weak'
+","Fellow Condemn
+CD 20s
+Attack frontal area 3x1.5m
+Swing spike hammer to attack all enemies in area. Dealing 479% x 4 damage","Fellow Hammer of Repentance
+CD 25s
+Create sacred area 4.5m radius around yourself for 10s
+- All Jennette's attack restore HP to Player & Fellow inside area for 30% of healing power
+- Increase Player & Fellow damage by 10%
+- Increase damage to Devil type enemy by additional 10% (20% total)",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Fight for Repent
+Increase Jennette damage by 15% and also reduce damage taken by 15%","The Inquisitor
+Increase Dark Smite cooldown by 2s
+After using Dark Smite, can use 'Dark Conviction' and 'Dark Demolition' after as a combo.
+
+Dark Conviction : Attack 3x1m frontal area, deal 2 hit for total of 806% damage. Also restore 100 SP to player.
+
+Dark Demolition : Attack 3m radius around you. Dealing 286% x 3 damage and launch enemy into the air.","Atonement
+After using Condemn, grant 10s buff to yourself and player that increase damage by 30%
+
+Damage from Jennette to Devil-Type enemy will cause 'Guilty' status. Which reduce their defense by 10% for 10s
+--------------- 
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",B,A,S,S,S,"A+
+
+Healers always sought after. She is good for vs. Devil boss. So many use her in Guild Raid",47 UR Books
+,Justina Von Grimm,,"Pontifex
+(Holy)
+-------
+Faith Type","Gacha 
+(Limited Banner)",Penetration +14,,"90% Damage in 2m radius
+150% damage to Devil-type enemy","Fellow Didache : Absolution
+CD 10s
+Attack enemies in direction
+Launch Holy Flame orb forward. It persists for 3s dealing 257% Fire damage every 0.3s.
+30% chance per hit to inflict 'Absolute Flame' to enemy for 5s. Dealing 200% Fire damage per second.
+('Absolute Flame' count as 'Burn' debuff)","Fellow Gospel
+CD 15s
+Target all allies in 6m radius around yourself.
+Heal 500% of healing power and recover 300 SP to master.","Fellow Evangelism
+CD 15s
+Attacl all target in 3m radius area
+Rain down holy judgement to target area for 5s. Dealing 280% x 10 Holy damage.
+Grant enemy hit 'Evangelism Fear' debuff for 10s. Which decrease damage done and evasion by 30%",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Damage Reduction
+Reduce damage received by 15%","Didache Explosion
+After duration is over, Holy Flame Orb explodes 3 times. Each dealing 200% Fire damage. 
+Also, 'Absolute Flame' debuff got upgraded to 'Didache Explosion' Debuff. Which dealing 200% Fire damage per second for 10s, prevent healing received and decrease defense by 10%.","Indulgence
+grant 10s buff to master when receive healing from Gospel. 
+- Increase defense by 20%
+- Increase damage by 20%. Increase damage additionally by 20% to Dark-element enemy (40% total)","Goddess's Power
+(CD 30s)
+When yourself or any fellow in team taking lethal damage. Prevent death once and recover 50% of max HP and grant 2s invicible.
+In PVP, heal 15% and 1s invicible one time only
+--------------- 
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",A,S,S,S,S,"S
+
+The best UR unit that many still uses.
+
+Single target heal that can substain you through all contents and can deal some damage & buff by herself.",47 UR Books
+,Cordelier,,"Illusionist
+(Multi)
+-------
+Magic Type","Gacha 
+(Limited Banner)",Crit Atk +11,,"80% Damage with quicker attack speed then usual (1.3)
+20% chance per hit to reduce skill cooldown by 1s","Fellow Illusion Blade
+CD 10s
+Attack enemies in direction
+Throw out Illusion Blade that spin while moving then back to caster. Dealing 478% damage every 0.3s ","Fellow Deluge
+CD 15s
+Attack 2x6m frontal area
+Fire phantom beam forward. Dealing 484% x 5 damage.
+Knock enemy back and 'Silence' them for 2.5s","Fellow Nightmare
+CD 20s
+Draw 5m radius magic circle at yourself as center.
+Release Eye of Nightmare for 10s. Dealing 240% damage per second. Grant 'Illusion Armor' buff to Owner and all of his fellow inside the area, while debuff enemy in area with 'Nightmare'
+[Illusion Armor] : Reduce damage taken by 10%
+[Nightmare] : Increase damage taken from caster, owner and all of their fellows by 10%, reduce block and evasion rate by 20%",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Damage Reduction
+Reduce damage received by 15%","Illusion Seal
+Enemy hit by Illusion Blade will be inflicted with 'Illusion Seal' for 5s. Increase damage taken from Owner and all of their fellows by 30%","Time Distortion
+Deluge now fire 2 additional beams. And has 20% chance to reduce cooldown to 1s","Magical Illusion
+CD 30s
+When HP fall below 80%, taking damage will summon 1 Illusion and grant stealth for 2s.
+Illusion taunt all nearby enemies every 1.5s for 9s. While Illusion is active, reduce damage taken by 20%
+--------------- 
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",A,A,S,A,A,"A
+
+Good universal DPS & buff unit. Get overshadowed by SeolHwa",47 UR Books
+,Owynia Diiben,,"Keraunos
+(Lightning)
+-------
+Magic Type","Gacha 
+(Limited Banner)",Attack +17,,"100% damage.
+Inflict 'Electric Shock' to enemy for 10s (Maximum 10 stacks)
+[Electric Shock]
+- Reduce critical resistance by 0.5% per stack
+- Reduce damage dealt to owner and all of their fellows by 0.5% per stack","Fellow Lightning Spear
+CD 10s
+Attack all target in 2m radius area around main target
+Throw lightning spear to attack enemy. Dealing 1285% damage. And inflict 'Lightning Pierce' for 7s.
+[Lightning Pierce]
+Damage from owner and all of their fellows will ignore 5% defense. And ignore additionally 5% if target is Ice-Element (10% total)","Fellow Electric Orb
+CD 13s
+Attack enemies in direction
+Launch Electric Orb forward. It persists for 3s dealing  318% every 0.3s.
+Deal 100% increase damage to Ice-Element enemy","Fellow Static Field
+CD 20s
+Attack all target in 3m AoE
+Create Electric Storm that last for 4s. Dealing 287% x 8 damage.
+50% chance per hit to inflict 'Static Field - Shock' to enemy for 10s.
+[Shock]
+Take 20% damage every second as DoT. And when try to using skill, has 20% chance to be stunned.",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Damage Reduction
+Reduce damage received by 15%","Overvoltage
+Apply 'Electric Shock' to already maximum stack enemy change them to 'Overvoltage' debuff for 15s. Reduce damage done to owner and all of their master by 30% and reduce critical resistance by 30%.
+While enemy is applied with Overvoltage, cannot stack 'Electric Shock' to them.","Electric Drive
+Using skill 3 times consecutively grant herself and owner 'Electric Drive' for 10s.
+Increase attack speed, movement speed and damage buff by 30% (+10% additionally to Lightning-Element damage).
+While this buff is active, using skill is not counted.
+--------------- 
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot","B
+(S vs. Ice)",B,"B
+(S vs. Ice)",B,B,"B+
+
+Specialist vs. Ice enemy.Not needed if you have good demigod unit
+
+",47 UR Books
+,Goddess's Shield Maria,,"Peltasta
+(Earth)
+-------
+Battle Type","Gacha 
+(Limited Banner)",Block +14,,"100% dmg.
+5% chance when attacked will stun enemy that attack you for 2s.
+If she block that hit, stun chance increase to 20%.","Fellow Shield Bash
+CD 8s
+Attack all target in 2m radius area around main target
+Use shield to attack enemy, dealing 1028% damage.","Fellow Swash Buckling - Ascend
+CD 20s
+Affect all enemy in 5m radius around you.
+Taunt all enemy around you and increase your threat value by 100%. Decrease taunted enemy's defense and critical rate by 20% for 10s. And increase your defense, block rate and critical resistance by 30% for 10s","Fellow Shield Rush
+CD 13s
+Attack all target in 3m 120 degree frontal area
+Push enemy back, dealing 1590% damage and increase your threat rate by 100%. (Basically this means taunt enemy)
+Immune to CC and debuff while using skill",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Damage Reduction
+Reduce damage received by 15%","Noble Condemnation
+Increase Shield Bash cooldown by 2s, but unlock combo after that skill.
+
+[Shield Bash > Bash]
+Attack 2x3m frontral area. Dealing 1342% damage. 50% chance to stun enemy for 3s.
+
+[Bash > Targe Smash]
+Attack enemys in 2m radius around main target. Dealing 1285% damage. Decrease enemy's defense and block rate by 20% of Maria's stat for 5s. ","Echo of Victory
+For 10s after using Swash Buckling, grant 'Echo of Victory' to Owner and all of their fellows. Increase attack power by 10% and increase block and crit resist by 20%","Faith in Solidarity
+When start a battle, grant yourself 'Shield of Faith' for 10s and grant 'Fury of Faith' to owner and all of their fellows for the same duration. This buff reapply every 30s.
+
+[Shield of Faith]
+Reduce damage taken by 30% of her block rate amount (Maximum 20%)
+Reduce additional 20% damage taken from Thunder-element and Insect type enemy
+(40% total)
+
+[Fury of Faith]
+Increase damage dealt by 30% of Maria's block rate (Maximum 20%)
++60% damage to Thunder element enemy (80% total)
++80 damage vs. Insect type enemy (100% total)
+--------------- 
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",C,SS,"A
+(SS vs. Insect or Thunder)",S,SS,"S+
+
+Specialist vs. Thunder and Insect enemy. Also tanky as well. Tank UR is rarely useful in PvE but she is an exception.
+Great PVP Unit. Can hold your team from full Demigod team.",47 UR Books
+,Gabrielle,,"Desperado
+(Dark)
+-------
+Assassin Type","Gacha 
+(Limited Banner)",Crit Rate +20,,"100% damage
+
+Any critical hit dealt trigger 'Bad Guy' effect. Reduce 'Equilibrium' and 'Deadly Fire' cooldown by 1s
+(This effect has 3s cd)","Fellow Equilibrium
+CD 8s
+Slash twice with dagger. Attack all target in 3x3m frontal area. Deal 2 hit for total of 1032% x2  damage.
+Then retreat back 3m and fire pistol forward. Attack all target in 4m cone 120 degree. Dealing 2157%
+
+Damage from this skill increase by 200% vs. enemy with 'Bleeding' status","Fellow Deadly Fire
+CD 12s
+Attack all target in 4x6m frontal area
+Use dagger slash creating blade energy forward. Dealing 2528% damage and inflict 'Bleeding' to enemy hit for 10s.
+Then, retreat back 2m and follow with pistol shot. Dealing 2528% damage. Knock enemy back 1m","Fellow Last Man Standing
+CD 20s
+Attack all target in 5x8m frontal area
+Take a moment to aim all enemy. Get 3s invisibility. Then Rapidly fire pistol to all enemies forward. Dealing 1089% x 4 damage and inflict 'Death Sentence' to enemy on hit for 10s.
+
+[Death Sentence]
+- Slow 50%
+- Reduce Crit Resist value by 20%
+- Increase Damage taken from master and all of their fellows by 20%
+- Increase Damage taken from master and all of their fellows by extra 50% vs. Holy or Mutant enemy (70% total)",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Death is Coming
+Using any skill grant 'Death is Coming' buff to yourself for 3s. When reaching rank 9, also grant this buff to owner
+
+[Death is Coming]
+- Increase Penetration rate, Evasion Rate and Movement speed by 30%","Revenged
+Unlock new skill
+
+[Revenged - Cooldown 7s]
+Teleport to enemy's back side and fire forward. Attack all target in 3x3m frontal area. Dealing 1876% damage. Then retreat back 4m.
+Dealing 'Cleanhit' or 'Pierce' damage with this skill make her instantly use one more time and reduce it cooldown by 5s. 
+Increase this skill damage by 200% vs. enemy with 'Bleeding'
+Immune to CC & Knockback while using this skill","Russian Roulette
+At start of the battle and every 10s, either grant 'Lucky' or 'Unlucky' buff to owner and all of their fellows for 6s
+
+[Russian Roulette]
+- Lucky (5/6 Chance) : Reduce owner and self skill cooldown by 2s, reduce other fellows skill cooldown by 1s. Grant buff that increase critical rate & Increase damage vs. humanoid & Demigod by 30%
+- Unlucky (1/6 Chance) : Grant buff that increase critical rate & Increase damage vs. humanoid & Demigod by 15%
+Next time that this buff apply will guarantee to be 'Lucky' buff","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot","SS
+Can outdamage even Giltine in Holy dungeon","A
+Standard. Really need sustain from others. But her skill have many i-frames to help her not too squishy","S
+70% Amp is kinda BiS for any vs. Holy or Mutant boss. Also, this is first unit that Amp vs. Holy
+","C
+Just 30% Evasion buff. She provide non defensive at all","S
+Good damage in general, solid amp for PvE. Good buff & Kit maint for burst down enemy defense in PvP","S+
+
+Specialist vs. Holy and Mutant enemy. But also deal extremely good damage to the point of being new generation of fellows.
+Also good PvP Unit",47 UR Books
+,May Lily,,"Blossom Blader
+(Fire)
+-------
+Battle Type","Gacha 
+(Limited Banner)",Attack +17,,"100% damage
+
+All damage from this fellow inflict 'Flowering' debuff to enemy for 10 seconds. Maximum 20 stacks
+
+[Flowering - Mental Type debuff]
+Reduce Evasion Rate 1% per stack","Fellow Flash
+CD 7s
+Attack all target in 2x3.5m frontal area.
+ Charge forward slashing all enemies in a direction. Dealing 3709% damage.
+30% chance to inflict 'Burn' to enemy.
+At the end of the dash. Fallen Blossom scatters around for 5s. Dealing 3709% per second.
+This damage has 30% chance to inflict 'Burn' to enemy
+Immune to knockback and CC while using this skill","Fellow Fallen Blossom
+CD 9s
+Attack all target in 1.5m radius
+Teleport to enemy and slash them. Dealing 4665% AoE damage and  inflict 'Seize' to all enemy hits for 7s. If this damage crits, reduce this skill cooldown by 3s.
+Grant i-frame while using this skill
+
+[Seize - Physical Type Debuff]
+Reduce Defense,Block Rate and Evaion Rate by 10%","Fellow Control Blade
+CD 20s
+Attack all target in 3m radius around main target
+Summon 3 flying swords, then command them to attack enemy in attack radius. Dealing 1531% x 3 damage. After that, the sword keep attacking for 3s. Dealing 1531% damage every 0.5s.
+Enemy hit will be inflicted with 'Sword Mark' for 10s.
+
+[Sword Mark]
+- Reduce Accuracy and Crit Resist by 30%
+- Increase damage received from owner and all of their fellows by 40%
+- Increase damage received from owner and all of their fellows addittionally by 90% if enemy is Earth-Element or Insect Type (130% total)",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Damage Reduction
+Reduce damage received by 15%","Blossom Slash
+Unlock new skill
+
+[Blossom Slash - Cooldown 9s]
+Become invisible for 3s then rapidly slash all enemies in 3m radius around herself. Dealing 556% x 8 damage and inflict 'Burn' to enemy hit for 5s","Fellow Startup
+At start of the battle and every 30s, grant 'Startup' to owner and herself fellows for 20s
+
+[Startup]
+- Owner increase Atk & Def by 30%
+- Using 'Flash' will grant owner and herself 15% reduce damage taken for 7s
+- Using 'Fallen Blossom' Guarantee to critical hit
+- Using 'Blossom Slash' will also grant 3s invisibility to owner
+- Increase 'Control Blade' damage by 300%","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot","OP
+This damage level surpass all fellows in the game.","S
+Very good. Has long i-frames and very agile","SS
+130% Amp vs. Earth & Insect is insanely good. Also 30% Atk & Def already make Nebulas useless","S
+3s i-frame every 9s ?? Really ??","SS
+Insane damage to carry you. Can bossing by herself, can buff you a lot. I already afraid what power level of the next demigod coming","OP
+
+If Gabrielle damage is not insanely high enough. May can do about 2-3x more damage while also provide good buff to you to push you damage to another level.",47 UR Books
+,Aliza Tal,,"Zealot
+(Multi)
+-------
+Faith Type",Gacha,Accuracy +14,,"100% damage.
+Taking lethal damage instead revive you back with 10% HP x rank and grant yourself ""Zealot Rage"" for 10s, increase damage by 30% and reduce damage taken by 30%
+60s CD","Fellow Immolation
+CD 15s
+Attack all target in 3m radius around yourself.
+Burn yourself for 10s. Create flame aura around you that dealing 258% Fire damage every 0.5s
+30% chance per hit to 'Burn' enemy. 
+Grant yourself 'Burning Sacrifice' for 10s.  Increase critical rate by 30% but lose 1% HP per second.
+When HP is below 30% or reaching rank 9, no longer lose HP and deal 200% more damage to  'burn' enemy.","Fellow Fanatic Illusion
+CD 18s
+Attack all target in 2m radius around yourself.
+Surround yourself with lightning aura for 12s. Create flame aura around you that dealing 297% Lightning damage every 0.5s
+30% chance per hit to 'Shock' enemy. 
+Grant yourself 'Armor of Faith' for 12s.  Reduce damage taken by 10% and increase block value by 10%
+When reaching rank 9, this skill deal 200% more damage to 'Shock' enemy","Fellow Emphatic Trust
+CD 20s
+Attack all target in 8m radius around yourself.
+Borrow the power from goddess and create sanctified area around yourself for 10s. Dealing 288% Holy damage per second.
+Enemy inside the area reduce attack speed and movement speed by 30%. While Owner, self and all of their fellows gain 'Emphatic Trust' for 10s.
+[Emphatic Trust]
+- Heal 30% of healing power every second. Also grant 100 SP to master 
+- Increase damage by 20%
+- Increase damage additionally by 60% vs. Devil and Beast type enemy (80% total)",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Block
+Increase block rate by 20%","Damage Boost
+Increase damage to enemy by 25%","Fellow Beady Eyed
+Unlock new skill
+
+[Beady Eyed - CD 10s]
+Attack all target in 1.5m radius around main target. Teleport behind enemy and dealing 1999% Dark damage and 'silence' them for 3s.
+Immune to CC and knockback while using this skill ","Fellow Paradictus
+Every 40s, grant self and owner  1 stack of 'Paradictus' buff for 20s.
+- Self : 25% increase attack power, accuracy and immune to knockback
+- Owner : 10% increase attack power, accuracy and 50% chance to knockback immune.
+Using other skills increase stack by 1, increase attack and accuracy additionally by 1% per stack (Maximum 5)
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",SS+,S,SS,SS,SS,"OP
+
+2025 general healer unit. Come with 10-15% atk , 10-15% accu, 80% amp, 50 effective SP regen per second. (66.7 at 25% CDR), Dealing very good damage and second life passive. Even has some CC and knockback immunity so she also good PvP unit too
+
+New content require maximum of 20 fellows to beat it. And healer fellow always good to have",47 UR Books
+,Fiona Ieva,,"Hunter
+(Lightning)
+--------
+Shooting Type",Gacha,Attack +17,,"100% damage.
+Every 30s, grant herself 'Hunting Start' buff for 15s. Increase damage dealt by 2% per fellow in team.
+
+When reaching Rank 9, owner also getting this effect. ","Fellow Cousing
+CD 7s
+Attack in 2m around main target
+Command Velheider to attack enemy. Dealing 685% x 3 damage.","Fellow Growling
+CD 20s
+Affect all enemies in 6m radius
+Command bear to roar. Cause enemy in area to fear. Remove their stealth effect and inflict 'Prey's Fear' for 10s
+[Prey's Fear]
+- Reduce damage by 20%
+- Reduce evasion rate by 20%
+- Increase damage taken by 20% , +60% extra for Ice-elment. (80% total)","Fellow Rush Dog
+CD 12s
+Attack all enemies in projectile trajectory
+Command 3 Rocksodons to charge 3 times in 2.4s. Each dealing 1114% damage. Has 50% chance to 'Stun' enemy. 
+100% damage increase to 'Bleeding' enemy and cause stagger to them on hit
+",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Damage Reduction
+Reduce damage received by 15%","Fellow Retrieve
+Enemy hit by Cousing is pulled 1m toward caster. And has 50% chance to be inflicted with 'Powerful Bite' for 5s. Reduce their defense,block and evasion by 10%.
+If enemy is 'Bleeding', chance to inflict 'Powerful Bite' increase to 100% and duration increase to 8s","Fellow Phrase
+Using Growling grant master and herself 'Praise' effect for 10s. 
+- Increase movement speed , attack speed by 50%
+- 50% chance to knockback resist
+- Increase damage to Plant-Type enemy by 80%
+
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",A,A,S,A,A,"A+
+
+Specialist vs. Ice or Plant enemy",47 UR Books
+,Ina Creek,,"Sciwarzer Reiter
+(Ice)
+-------
+Shooting Type",Gacha,Attack + 17,,"80% damage pierce all enemy in line.
+grant 30% movement speed for 3s.","Fellow Assault Charge
+CD 10s
+Fire several crossbow shots in 3x4m frontal area. Dealing 309% x 3 damage. Enemy hit will be reduce attack speed by 30% for 3s.
+Then dash forward dealing 309% damage in 2x2m frontal area. Launch enemy hit into the air","Fellow Limacon
+CD 20s
+Attack in 2.5m area around main target
+Shoot crossbow continuously to target area. Dealing 408% x 6 damage.
+Inflict 'Piercing Armor' to enemy hit for 10s, reduce block value by 30% and increase damage taken from owner and all of their fellows by 30% (+60% extra to 90% total if target is Beast-type enemy)","Fellow Piercing Shot
+CD 15s
+Attack in 3x7m frontal area
+Fire powerful piercing shot forward. Dealing 606% x 3 damage. 
+Knock enemy back by 2m and inflict enemy hit with 'Ice Pierce' for 10s. Attack fron owner and all of their fellows ignore 10% defense (+10% extra vs. Fire element enemy)",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Block
+Increase block rate by 20%","Assault Boost
+Increase hit rate and penetration rate by 5%","Tactic - Caracole
+Unlock new skill
+
+[Caracole - CD 8s]
+Attack 2x6m frontal area. Dealing 1032% damage and dash to enemy hit.
+50% chance to reset this skill cooldown immediately, 100% chance to reset if attack from this skill scores 'Clean Hit' or 'Pierce' (Cooldown Reset maximum apply up to 3 times per cast)","Perfect Aim
+Using skill 5 times grant herself and owner ""Perfect Aim"" for 15s. Increase hit rate value and penetration value by 30%, also increase damage when scores 'Clean Hit' or 'Pierce' by 40%.
+While buff is active, using skills will not counting as number of skills used
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",A,B,SS,C,S+,"S+
+
+After Episode 20 update. Now Hit Rate and Penetration rate is harder to reach the cap. So her buff is very good to cap your stats
+
+Specialist vs. Beast or Fire unit",47 UR Books
+,Beatrice,,"Asssassin Type
+(Holy)
+--------
+Asssassin Type",Gacha,Crit Rate +20,,"100% damage.
+When crit, become stealth for 2s and reduce threat rate by 10%
+(10s cooldown)","Fellow Sliding Stab
+CD 6s
+Attack 2x3.5m forward area
+Dash forward and slice enemies with dagger. Dealing 880% damage. This damage increase by 100% to 'Bleeding' enemy.
+Immune to knockback and all status effect while using this skill
+","Fellow Marking
+CD 20s
+Attack 2 x 2m forward area
+Deal 2991% to all enemies forward. And inflict 'Enhanced Marking' for 10s.
+[Enhance Marking]
+Reduce crit resist by 30% and increase damage received by 30%.
+Increase damage received +90% extra for Mutant and Dark-Element enemy (120% total)","Fellow Smoke Bomb
+CD 10s
+Affect all target in 3m radius
+Throw a smoke bomb that create smoke screen for 7s. Inflict 'VIsion Blocked' to enemy inside and grant buff 'Vision Secured' to self, owner and all of their fellows in area.
+[Vision Blocked]
+Reduce hit rate and penetration rate by 30%
+[Vision Secured]
+Increase Evasion rate by 30% and reduce damage taken by 30%.
+30% Chance when evading attack to inflict 'stumble/stagger' to enemy that attack you",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Evasion Boost
+Increase evasion rate by 20%","Beatrice Dagger Combo
+Increase cooldown of Sliding Stab by 2s. But also unlock new skill as a combo after using that skill.
+[Sliding Stab -> Dagger Slash]
+Attack 2.5x2.5m frontal area. Slash Twice with dagger. Dealing 590% x2 damage. 50% chance to 'Bleeding' enemy for 10s. Bleeding deal 20% per second that ignore 20% of enemy's defense. 
+[Dagger Slash -> Dagger Finish]
+Attack 2x4m frontal area. Stab forward dealing 1166% damage. This attack apply +100% Crit Rate and Hit Rate. If this attack crit, stun enemy hit for 2s","Mission Start
+After starting of battle, grant 15s buff to self and owner that increase crit rate and crit damage by 30%. Also increase damage dealt by 30% of Beatrice's evasion rate (Maximum 30% boost)
+This buff reapply after 30s Cooldown
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",A,A,"S
+(SS for vs, Mutant or Dark)",A,B,"S
+
+Specialist vs. Dark or Mutant enemy
+Also can use as PVP unit for evasion team
+Best unit to fit in Argent Temple ",47 UR Books
+,Memet Culag,,"Cataphract
+(Earth)
+-------
+Battle Type",Gacha,Defense + 17,,"80% damage
+10% Chance to silence enemy for 2s","Fellow Earth Wave
+CD 8s
+Attack all target in 2m radius area
+Slam spear to the ground causing shockwave around you. Dealing 585% x 2 damage.
+30% chance to 'Stun' enemy for 3s","Fellow Snare Shot
+CD 10s
+Attack in 2.5m area around main target
+Shoot crossbow to hinder enemy's movement. Dealing 1113% damage and causing 'Slow' for 5s, reduce attack speed and movement speed by 30%.
+Also cause ministun to enemy hit by this skill.","Fellow Trot
+CD 17s
+Buff self, owner and all of their fellows in 7m radius around yourself for 10s.
+[Trot]
+- Movement speed increase by 30%
+- Block value increase by 20%
+- Reduce damage taken by 20% , reduce 10% extra from lightning damage (30% total)",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Block
+Increase block rate by 20%","Damage Reduction
+Reduce damage received by 15%","Tactical Reinforcement
+Increase cooldown of 'Earth Wave' and 'Snare Shot' by 2s, but unlock new combo after using that skill :
+[Earth Wave -> Steed Charge]
+Attack 2.5x6m frontal area. Charge forward dealing 1035% damage. Launch target to the air and has 50% chance to cause 'Fear' for 5s, Reduce Block and Evasion by 10%
+Immune to knockback and debuff while using this skill
+[Snare Shot -> Impaler]
+Attack 2x5m frontal area. Stab enemy and drag them toward you. Dealing 595% x 2 damage. Enemy is pulled toward you by 1.5m","Acrobatic Mount
+Using Trot grant 7m aura while buff is active, reduce chance to get CC by 50% and increase chance to inflict debuff to enemy by 50%
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",F,S,F,SS,A,"A
+
+PvP Defense specialist. Need high resource to be able to withstand demigods. Can be annoying to fight with 3 CCs in his kit
+20% DR & Block really help squishy class on leveling. (Like Musketeer)",47 UR Books
+,Valeska Himil,,"Dragoon
+(Dark)
+--------
+Battle Type",Gacha,Accuracy +14,,"100% damage.
+3rd attack always critical","Fellow Crush
+CD 10s
+Attack 2x5m forward area
+Stab forward with mighty force. Dealing 458% x2 damage.
+","Fellow Serpentine
+CD 13s
+Attack 2.5 x 4m forward area
+Lauch a lance combo forward. Dealing 238% x 5 damage.
+50% chance per hit to inflict 'Bleeding' to enermy for 10s.
+[Bleeding]
+Cannot recover HP naturally, take damage overtime that ignore 20% defense","Fellow Dragon Fall
+CD 10s
+Attack all target in 3m radius
+Jump high to the air then slam to the ground. Dealing 1608% damage. Launch enemy hit into the air and stun them for 3s.
+Immune to CC while casting this skill",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Damage Reduction
+Reduce damage received by 15%","Dragonoid
+At the starting of the battle, gain 'Dragonoid' state for 30s. While on this state, using Crush and Serpentine skill can be follow combo with Dragontooth and Dragon Soar respectvely. After Dragonoid state ends, it will reapply after 20 seconds.
+[Crush -> Dragontooth]
+Attack 7x2.5m frontal area. Stab forward strongly that pierce forward like dragon. Dealing 217% x 4 damage. Enemy hit will be inflicted with 'Armor Piercing' for 10s, damage taken from master and all of their fellows ignore 20% defense. 
+[Serpentine -> Dragon Soar]
+Attack 2.5x2.5m frontal area. Rise a lance upward making ascending attack. Dealing 610% x 2 damage. Immobile enemy hit for 3s. If enemy is bleeding, also 'Stumble' them.","Dragon Fear
+After attack enemy 15 times, grant herself 'Dragon's Tenecity' buff for 15s.
+(This attack will not accumulate while this buff is active)
+While on this state. Enemy attacked by master and all of their fellows will be debuff with
+- Increase damage taken by 30%
+- Reduce damage done by 30%
+- Reduce attack and movement speed by 30%
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",A,B,A,A,B,"B
+
+Good general DPS that also has good buff. But not reliable uptime.",47 UR Books
+,Alexas,,"Librarian
+(Earth)
+-------
+Magic Type",Gacha,Evasion + 14,,"80% damage
+20% chance to increase own evasion by 10% for 5s","Fellow Magic Arrow
+CD 10s
+Attack all target in 2m radius area
+Fire 3 arcane arrow to target area. Each hit dealing 727% damage.
+Enemy hit will be inflicted with 'Weak' debuff for 5s. Which increase damage received from Owner and all of their fellows by 10%","Fellow Wisdom Burst 
+CD 13s
+Attack all target in 3x6m frontal area
+Release arcane beam from ancient book forward. Dealing 1019% x 3 damage.
+50% chance to 'Immobilized' enemy for 3s.","Fellow Knowlege Blast
+CD 15s
+Attack all target in 4m radius around yourself
+Channel arcane energy from ancient book and blast around yourself. Dealing 2726% damage. Inflict 'Confusion' to enemy hit for 10s.
+[Confusion]
+Reduce damage dealt to Owner and all of their fellows by 10% and reduce hit rate by 30%
+",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Evasion
+Increase evasion rate by 20%","Damage Reduction
+Reduce damage received by 15%","Wisdom of Avoidance
+Using Magic Arrow or Wisdom Burst buff Owner and all of their other fellows for 7s. Increase evasion rate by 30% of this unit's evasion","Defensive Insight
+When this unit success to evade enemy's attack, grant 'Defensive Insight' to Owner and all of their fellows for 20s. Stackable up to 3 stacks.
+[Defensive Insight]
+Increase defense and reduce damage taken by 15/20/25%
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",C,S,F,S,B,"B
+
+Another PvP Specialist that focus on Evasion team. Not currently used much in meta. But sometimes he can turn the tide in battle.... just sometimes",47 UR Books
+,Ophelia,,"Paladin
+(Ice)
+--------
+Faith Type",Gacha,Defense +17,,75% dmg x2,"Fellow Protection Field
+CD 25s
+Create 5m radius Magic Circle that affect self, owner and all of his fellows.
+Create ""Water Field"" for 10s. Unit inside the field will receive 'Wave of Protection' buff. Increase defense and block value by 20% of Ophelia's stat","Fellow Sea Fury
+CD 15s
+Attack all target in 3m radius area
+Channel a water tornado for 5s to attack target area. Dealing 258% damage every 0.5s
+30% chance per hit to inflict 'Erosion' for 10s, decrease defense by 20%
+('Erosion' also count as 'Lethargy' debuff)","Fellow Rip current field
+CD 10s
+Attack all enemies in 3x8m frontal area
+Launch a water wave forward that travel 2m every 0.5s for 2s. Dealing 839% damage and launch enemy into the air. Also apply 'slow' debuff, reduce enemy movement speed by 30% for 3s.",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Damage Reduction
+Reduce damage received by 15%","Power of the Sea
+Add following effect to each skill:
+Protection Field : Also grant 10% damage reduction 
+Sea Fury: Not require Ophelia to channeling skill anymore","Jurate's Blessing
+Apply permanent buff to self and owner:
+- Reduce damage taken by 10%
+- Reduce damage taken from Electric-property enemy by additional 10% (20% total)
+- Increase Ice damage by 10%
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",C,A,A,A,B,"B
+
+Niche tank that can carry F2P account who wanna play squishy class. Can be good unit in PvP too but do not expect her too much",47 UR Books
+,Flint Winterwood,,"Bullet Marker
+(Lightning)
+-------
+Shooting Type",Gacha,Crit Rate +20,,Attack with dual pistol. Dealing 70% x 2 damage in medium range,"Fellow Mozambique Drill
+CD 10s
+Attack all enemy in  2m around target
+Shoot piercing bullet. Dealing 228% x 4 damage.
+Each hit has 20% chance to 'Slow' enemy, reduce attack and movement speed by 30% for 8s","Fellow R.I.P.
+CD 15s
+Attack all target in 3x7m frontal area
+Barrage a set of bullets. Dealing 184% x 7 damage","Fellow Bloody Overdrive
+CD 20s
+Attack all target in 3m radius around yourself
+Barrage gunfire in all directions around you continuously for 5s. Deal 150% damage for maximum of 20 hits. While perform this skill, reduce damage taken by 50% and immume to all CC and knockback effects.
+Each hit has 20% change to cause enemy 'Bleeding' for 10s",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Damage Reduction
+Reduce damage received by 15%","Outrage
+Using R.I.P. will cause Master and all of his fellows enter 'Outrage' status for 10s. Which increase attack and hit rate by 20%. And increase 'Clean Hit' damage by 30%","Tracer Bullet
+Using any skill 3 times in total grant yourself and master 'Tracer Bullet Activated' for 15s. Increase Hit Rate and Penetration Rate by 20%
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",A,C,S,C,A,"A+
+
+Another good general DPS unit. Good buff but sometimes sluggish to use skills to acquire buffs.",47 UR Books
+,Seraphina,,"Merchant
+(Multi)
+--------
+Faith Type",Gacha,Block Rate +14,,"90% damage
+Owner deal +50% damage to enemies in ""Ardent Temple"" content","Fellow  Sprinkle Potion
+CD 20s
+Affect owner and all fellows in 5m radius
+Throw a potion to the ground. Spreading it effect to wide radius for 10s.
+Owner : Heal 50% of healing power and grant +50 SP every second
+Fellows : Heal 100% of healing power every second","Fellow Silver Strike
+CD 15s
+Attack target in 3m radius
+Throw a lot of money to attack target area. Dealing 1344% non-element damage","Fellow Unfair Trade
+CD 30s
+Affect all targets in 6m radius
+Grant 10s 'Unfair Trade' debuff to all enemies inside area. And 10s buff 'Fair Trade' to owner and all fellows.
+[Unfair Trade]
+Deal 300% damage every second. Also reduce critical resist by 20%
+[Fair Trade]
++20% crit rate",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Healing
+Increase healing power by 50%","Damage Reduction
+Reduce damage received by 15%","Discount
+Enemy hit by Silver Strike are debuff with 'Discounted' for 10s.
+Discounted enemy take 10/20/30% increase damage at 34/33/33% chance.
+(Chance apply when hitting enemy with Silver Strike. And will apply that value for full duration)","Trade Expert
+Add following effect to each skill:
+Sprinkle Potion : Also grant +30% movement and attack speed 
+Unfair Trade : +20% crit damage to owner and fellows
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",F,A,A,S,S,"A+
+
+Best healer for F2P that cannot access rerun limited or cannot afford demigod characters.
+
+Must have for everyone for Silver buff in Ardent Temple",47 UR Books
+,Ada,,"Cannoneer
+(Fire)
+-------
+Shooting Type",Gacha,Crit Atk +11,,"100% damage.
+Very slow attack (0.5 speed). But dealing damage in 2.5m AoE
+**Very far attack range than usual range character (about 3x)**","Fellow Explosion
+CD 10s
+Attack 1 Target
+Shoot an explosion shell to target that will explode in 3m area. Dealing 984% to all enemies in range.","Fellow Canister Shot
+CD 30s
+Attack 1 Target
+Shoot a gravity shell that gather enemy to center in 3m radius area. After 3s it will explodes. Dealing 639% to all enemies ","Fellow Sweeping Cannon
+CD 20s
+Attack all target in 120 degree frontal area, up to 10m range.
+Install a cannon then fire a huge blast forward. Dealing 1584% damage.",,"Hit Rate Boost
+Increase Hit Rate by 13%","Critical Boost
+Increase Critical Rate by 25%","Increase Attack
+Increase Attack by 25%","Damage Boost
+Increase damage to enemy by 25%","Explosion - Chain Explosion
+Each enemy hit by Explosion's AoE has 30% chance to cause Explosion area damage again","Heat of Explosion
+Using any skill grant 6.5s buff to yourself and player, increase damage by 15%. Add extra +15% damage to insect-type enemy, effectively increase damage to them by 30%
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",B,F,B,F,C,"C
+
+Slow, squishy. Rarely used",47 UR Books
+,Burneli,,"Sharpshooter
+(Dark)
+--------
+Shooting Type",Gacha,Hit Rate +14,,"100% damage
+**Very far attack range than usual range character (about 3x)**","Fellow  Pinpoint Fire
+CD 10s
+Attack 2x7m frontal direction
+Aim throughly and fire a piercing bullet. Dealing 1150% damage to all enemies.
+If this skill only hit 1 target, hit rate increase by 20%
+[Additional Effect] Also 'stun' enemy on hit
+","Fellow  Precision Fire
+CD 20s
+Attack target in 2m radius
+Enter rapid fire mode for 5s. Every 0.5s will fire a piercing shot to enemy in attack range. Dealing 230% damage
+If this skill only hit 1 target, hit rate increase by 20%","Fellow Cloaking
+CD 30s
+Grant yourself 'Stealth' buff for 10s.
+While in 'Stealth' state, attack range increase to 3m.
+First attack will put you out from 'Stealth' state. But that attack also increase damage by 400% and score as 'Critical' and 'Clean Hit'",,"Hit Rate Boost
+Increase Hit Rate by 13%","Penetration Boost
+Increase Penetration Rate by 13%","Increase Attack
+Increase Attack by 25%","Critical Damage Boost
+Increase Critical Damage by 25%","Perfect Shot
+If this fellow skill only hit one target
+Increase damage by 50%","Crossfire
+Enemy hit by Precision Fire will get a stack of  'Crossfire' debuff for 10s. Maximum 10 stack.
+Each stack increase damage received from player by 4%.
+At 10 stack, also cause 'Fear'
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",A,F,A,F,C,"C
+
+Lowest health in the game. Trust me even her buff is good, she always dead before apply those to you.",47 UR Books
+,Leonie Klein,,"Sapper
+(Fire)
+-------
+Shooting Type",Gacha,Penetration +14,,Throw bomb dealing 100% damage. Reduce all her skill cooldown by 1s,"Fellow Claymore
+CD 8s
+Attack 6m 120 degree frontal area
+Install a claymore trap and trigger it. Cause explosion in cone shape forward dealing 920% damage","Fellow Bloom Trap
+CD 20s
+Attack target in 3m radius
+Install a string trap that spin around. Dealing 69% damage continuously to enemy inside the area.","Fellow Minefield
+CD 30s
+Attack all target in 4,5m radius
+Throw numerous landmine around you. Each dealing 288% damage to enemy who trigger it",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","SP Recovery
+Basic attack recover player's SP by 5%","Firepower Improvement
+Improve each following skills:
+Claymore : Crit chance +30%
+Bloom Trap : Reduce enemy block rate 20% for 1s","Mineloader Trap
+Changing Fellow Bloom Trap skill to summon the Mineloader that sweep area with lasers. Dealing 179% damage in 4m radius
+Also grant buff to master and fellows inside the area. Reduce damage taken by 10% and increase damage by 30%
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",A,B,S,C,S,"A
+
+Good AoE DPS that can buff your damage and regen your SP.
+
+Good unit to carry Lanistar stage 1 and 3",47 UR Books
+,Grace,,"Corsair 
+(Ice)
+--------
+Asssassin Type",Gacha,Damage +17,,"After 2 basic attacks with a dagger, make 1 attack that penetrates a 2x3m frontal area with a pistol.
+When attacking with a pistol, deals 120% damage when the enemy is 1, 100% when the enemy is 2, and 80% when the enemy is 3 or more.","Fellow Hexen Dropper
+CD 10s
+Attack target in 2x3m range
+Rapidly stab with dagger. Dealing 192% x 7 damage, Each attack has 20% chance to inflict  'bleeding' effect for 5 seconds, which dealing
+ 50% of Fellow's Attack as damage that ignores defense every second.","Fellow Quick and Dead
+CD 20s
+Enemies with a range of 2x4m
+Deals 432% damage to enemies within range 6 times","Fellow Jolly Roger
+CD 30s
+Buffs Allies within a 4,5m Radius
+Plant a pirate flag and grant 'fellow' to allies within range for 10 seconds
+Generates the 'Merciless' buff. During the Fellow's Merciless buff, the damage dealt to the enemy increases by 10%, and the penetration value increases by 30% of the Fellow's penetration.",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Brutality
+Ignores enemy's Defense by 20%","Vicious Attack
+Quick and Dead will now have a 20% chance per hit to inflict 'Bleeding' for 10s
+Inflicts 50% of Fellow's Attack as damage that ignores defense every 1 second","Seize the Opportunity
+2 basic attacks with a pistol trigger the following effects for 15 seconds.
+Basic attack only with a pistol, and when attacked, the enemy explodes, dealing 200% damage in a 2m range.
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",C,C,C,F,F,"F
+
+Increase penetration rate solely does not justify her uses.",47 UR Books
+,Genklas Metai,,"Falconer
+(Earth)
+------
+Shooting Type",Gacha,Crit Rate +20,,"100% dmg
++50% dmg on beast enemy","Fellow Pheasant
+CD 7s
+Command falcon to attack in area
+Dealing 648% damage","Fellow Sonic Strike
+CD 12s
+Attack target and area around target in 2m radius
+Command Falcon to attack in area. Dealing 299% x 5 damage","Fellow Circling
+CD 30s
+Grant all fellows and master in 4m radius buff for 10s. Hit rate increase by 20%
+Also cause enemy in area to ""Weak""",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Attack Speed Boost
+Increase attack speed by 25%","Feather Arrow
+Using any skill grant 5s buff to master that increase damage by 15%.
+If enemy is beast, increase 15% extra damage (30% total)","Sonic Strike - Tomahawk
+Add 1110% fire damage to all eneies in 4m radius
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",B,B,B,B,C,"B
+
+Specialist vs. Beast enemy. You can just use Ina Creek instead",47 UR Books
+,Yura Swajone,,"Shinobi
+(Multi)
+-----
+Asssassin Type",Gacha,Evasion +14,,"90% dmg long range atk
+del 30% AoE dmg in 3m around target","Fellow Ninpo - Suiton no Jutsu 
+CD 7s
+Attack all enemies in 2m radius around target
+Conjure water energy and create geyser at enemy position. Dealing 526% damage.","Fellow Ninpo - Raiton no Jutsu
+CD 10s
+Attack 1 target and 3 other nearby enemies in 4m range.
+Conjure thunder element to attack enemy in range. Dealing 686% damage
+10% chance to 'Shock' enemy","Fellow Senpo - Shime no Jutsu
+CD 15s
+Attack enemies in 2x5m area forward
+Conjure dark element to attack enemy's mind. Dealing 247% damage
+Grant 10s debuff that reduce hit rate by 30%. And take 100% dark damage every second.",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Suiton no Jutsu  - Avoidance
+Grant 5s buff that increase evasion rate by 30% for 5s after using the skill","Shadow Strengthen
+Grant 1 stack when using skill. After collecting 4 stacks, all stack convert to 10s buff that increase damage by 20% and attack&movement speed by 40%
+Cannot stack while buff is active","Suiton no Jutsu  - Prepared Mind
+Grant 5s buff to master that increase damage by 50%.
+Also, avoidance effect further increase evasion by 30%
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",B,B,C,B,C,"C
+
+Niche evasion unit for PvP. Might be good sometimes. But currently evasion team is in tough spot in meta",47 UR Books
+,Ian Karolas,,"Winged Hussar
+(Fire)
+-------
+Battle Type",Gacha,Defense +17,,"100% dmg pierce attack
+second attack will sweep area forward with spear. Dealing 100% AoE damage","Fellow Psebletz
+CD 8s
+Attack target in 2x3m frontal area
+Rapidly stab forward. Dealing 447% x 3 damage","Fellow Doom Rush
+CD 6s
+Attack target in 2x4m frontal area
+Rush forward. Launch enemy up to the air and dealing 915% damage","Fellow Uchisk
+CD 15s
+Attack all target in 4m radius
+Command companion to jump and stomp the ground. Create earthquake to attack all enemies around you. Dealing 1736% damage 
+Also reduce enemy's attack by 20% and block rate by 30% for 10s",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Psebletz - Armor Pierce
+If enemy hit by last hit of this skill. Grant 5s buff to Player and all fellows that add ignore def +20%","Doom Rush - Shield
+Grant 5s buff to yourself that reduce damage received by 50% after using skill","Glory of Winged Hussar
+Increase penetration stat by 20%
+Grant all status immune and knockback immune while using skill
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",B,B,B,F,C,"C
+
+Niche offensive unit for PvP. Can use a bit in PvE for defense shred. But not that good",47 UR Books
+,Hitomiko,,"Miko
+(Holy)
+----------
+Faith Type",Gacha,Damage +17,,"100% dmg
+When got any debuff, grant yourself 5s buff that increase defense by 20%","Fellow Gohei
+CD 8s
+Attack target in 2x2m frontal area
+Swipe divine wand forward. Dealing 2 hit for total of 868% Holy damage
+100% chance to 'stun' target","Fellow Omikuji
+CD 20s
+Grant one of this buff by random to player and yourself for 10s
+- Damage increase by 50% (10% chance)
+- Damage increase by 20% (30% chance)
+- Damage increase by 10% (60% chance)","Fellow Kagura
+CD 30s
+Affect player in 5m radius
+Perfrom sacred dance for 10s. Healing player for 50% of healing power and 3% of max SP per second.
+Immune to all status effect while performing, and will canceled early if player is not in the area",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Damage Reduction
+Reduce damage received by 15%","Omikuji - Great Forture
+Chance for getting 50/20/10% damage increase buff
+changed to 20/30/50%","Gohei - Trust
+Grant player 5s buff after using Gohei, increase Critical Rate by 15%
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",F,A,A,S,A,"B
+
+Out of date healer that must rank 7 to be able to heal.",47 UR Books
+,Winona Ende,,"Linker
+(Multi)
+----------
+Magic Type",Gacha,Crit Damage +11,,"120% dmg
+50% chance to chain up to 2 other enemy","Fellow Joint Penalty
+CD 8s
+Attack 1 target and other target in 3m radius up to 5 enemy
+Bind them together with chains. Dealing 145% damage per second.
+Deal 10% more damage when 2 or more enemy hit","Fellow Physical Link
+CD 60s
+Link fellow and player together. Reduce damage player taken by 50% which fellow will receive that damage instead.
+Fellow cannot doing anything during using this skill","Fellow Link Overmind
+CD 15s
+Attack up to 8 target in 5m radius around yourself
+Link enemy together and gather them. Dealing 602% damage",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","SP Recovery
+Basic attack recover player's SP by 5%","Physical Pressure
+While Physcial Link is active, reduce damage taken by 20%","Joint Penalty - Spread
+Max target increase from 5->8
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",F,B,C,B,F,"F
+
+Does the change of her element to multi really help her? No",47 UR Books
+,Amalia Black,,"Fletcher
+(Fire)
+-------
+Shooting Type",Gacha ,Damage +17,,"Shoot arrow in straight line piercing up to 3 targets
+Deal 110% damage if only 1 enemy hit
+Deal 50% damage otherwise","Fellow Spiral Arrow
+CD 5s
+Attack 1 target
+Deal 3 hits for total of 668% damage
+Each hit deal additional 10% true damage
+15% chance to 'Atrohy/weak' enemy, ","Fellow Downfall
+CD 10s
+Attack 1 target
+Deal 189% x 8 damage","Fellow Divine Machine Arrow
+CD 20s
+Attack all enemy in 3m radius from target
+Deals 177% Damage and causes 'Divine Machine Arrow - Burn' Debuff, which Increases Damage from Owner by 30% for 10 Seconds. ",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Threat Reduction
+Reduce threat rate of self attack by 50%
+Reduce damage received by 10% when 2 or less enemy target you","Fixed Target
+Increase critical rate by 7% when attacking same target
+This bonus reset when changing target.","Downfall - Broaden
+Now also affect all enemies in 3m radius from target
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",A,C,A,F,B,"B
+
+Good old unit. Bad current unit",47 UR Books
+,Valentinas Naimon,,"Paladin
+(Holy)
+-----
+Faith Type",Gacha ,Crit Res +25,,75% dmg x2,"Fellow Divine Shield
+CD 20s
+Buff all allies in 5m radius around you for 15s. Increase defense by 20% of this unit's Defense","Fellow Demolition
+CD 8s
+Attak target and all enemy in 2.5m radius
+Smash hammer multiple times. Dealing 225% x 3 damage
+[Additional Effect] Each smash also heal all allies for 20% of healing power on hit.","Fellow Sanctuary
+CD 20s
+Attack all target in 5m radius around you
+Create holy area around yourself for 3s. Dealing 282% damage per second
+[Additional Effect] Reduce damage taken by 50% when using skill",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Damage Reduction
+Reduce damage received by 15%","Grace of Goddess
+5% chance on attacking to heal all allies for 50% of healing power.
+(10s cd for PVP)","Holy Shield - Duration
+Increase Holy Shield duration by 5s
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",C,B,F,A,C,"C
+
+Has some niche in defensive team in PvP. Or just use demigod unit.",47 UR Books
+,Maria Leed,,"Peltasta
+(Ice)
+------
+Battle Type",Gacha ,Block Rate +14,,"100% dmg
+Def +20%
+while attacking","Fellow Swashbuckling
+CD 30s
+Knock your shield to provoke all enemies in 5m radius around you for 10s. Force them to attack you and reduce defense by 20%","Fellow Hard Shield
+CD 30s
+Buff yourself for 10s. Increase block rate by 20%.
+5% chance to 'stun' enemy that attack them","Fellow Scutum Hit
+CD 8s
+Attack frontal area in 1.75m range
+Use shield to sweep enemies in frontal area. Dealing 634% damage
+30% chance to 'stun' enemy on hit.",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Damage Reduction
+Reduce damage received by 15%","Skillful Provoke
+Also reduce crit rate and crit res of enemy provoked by 10%","Swashbuckling - Echo
+1s after using skill, create echo that affect like Swashbuckling with 50% less range on 1 main enemy. Provoking 1 more time
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",C,B,B,A,B,"B
+
+Her taunt can shread defense. Useful for early use in PvE. No need to invest anything on her",47 UR Books
+,Sorscha Hutton,,"Fencer
+(Lightning)
+--------
+Battle Type",Gacha ,Crit Rate +20,,"100% dmg
+Faster attack
+Penetrate rate -30%
+but Crit Rate +30%","Fellow Sept Etoiles
+CD 8s
+Attack frontal area in 1x2m
+Stab multiple times with rapier. Dealing 9 hits for total of 1196% damage.
+30% chance to 'Shock' enemy","Fellow Esquive Toucher 
+CD 15s
+Attack 2.5x3m frontal area
+Dealing swift barrage of rapier attack. Dealing 422% x 5 damage
+","Fellow Preparation
+CD 30s
+Buff yourself for 10s, increase attack by 25%
+[Additional Effect] Deal 12.5% increase damage to human enemy (player & fellow) for each hit. Maximum 3 times (37.5%)",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Accuracy Boost
+Increase hit rate by 13%","Epee Guarde
+All attack ignore 20% defense","Sept Etoiles - Break
+Incrase skill crit damage by 100%
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",B,B,F,F,F,"F
+
+Sad DPS unit that only has self buff.",47 UR Books
+,Gema,,"Rogue
+(Fire)
+------
+Asssassin Type",Gacha ,Evasion +14,,"75% dmg
+20% chance to
+'Stab Wound' enemy, which dealing 30% dmg every second and ignore def.
+(Count as 'bleeding')","Fellow Backstab
+CD 8s
+Attack 1 target
+Warp to enemy's backside and dealing 1898% damage
+50% chance to 'bleed' enemy","Fellow Mangle
+CD 8s
+Attack target in 2.5x3m range
+Swipe multiple times with dagger, dealing 247% x 8 damage
+3% chance per hit to inflict 'Atropy' on enemy ","Fellow Sneak Hit
+CD 40s
+Buff all ally fellow and player for 20s, increase crit chance by 30% when attack enemy at backside",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Critical Damage Boost
+Increase Critical Damage by 25%","Deep Stab
+Increase 'Stab Wound' chance by 30%","Backstab - Multihit
+Deal 1 more hit equal to 50% of base skill damage.
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",B,B,F,F,C,"C
+
+Has some use in PVP. Good single target damage make her sometimes use as bossing unit for early game.",47 UR Books
+,Nemoken,,"Ranger
+(Lightning)
+---------
+Shooting Type",Gacha ,Penetration Rate +14,,"100% dmg
+25% chance to hit twice","Fellow Ankle Sling Shot
+CD 10s
+Attack in 3m range frontal area
+Dealing 695% damage. 100% chance to 'immobile' enemy for 3s","Fellow Bounce Shot
+CD 10s
+Attack 1 target then bounce to max 5 enemy
+Dealing 828% damage to main target, then arrow bounce to 5 more enemy dealing 621% damage.
+30% chance to inflict 'Atropy' on enemy when hit","Fellow Blindside
+CD 30s
+Buff all ally fellows for 20s. Increase hit rate by 20%
+Within duration, 'Clean Hit' attack to enemy in 'immobile' status will 'stun' them",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Attack Speed Boost
+Increase attack speed by 25%","Leg Shot
+7.5% chance that basic attack will 'slow' target","Ankle Sling Shot - Wiring
+Ankle sling shot will also 'immobile' enemy around main target 
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",C,C,C,F,F,"F
+
+Worst unit you can get from banner",47 UR Books
+,Wican Celestic,,"Elementalist
+(Multi)
+------
+Magic Type",Gacha ,Accuracy +14,,"100% dmg
++100% dmg if enemy is 'burn' , 'freeze' , 'shock' or 'petrified'","Fellow Elemental Bolt
+CD 8s
+Attack 1 target
+Shoot elemental bolt to target, dealing 965% damage.
+If target is Fire,Ice,Lightning or Earth element. Always use weakness element to attack enemy","Fellow Elemental Amplify
+CD 30s
+Buff yourself and all ally in 5m radius around you for 15s. Increase Fire, Ice, Lightning and Earth damage by 20%","Fellow Elemental Burst
+CD 15s
+Attack enemy in 3.5x7m range
+Shoot elemental beam for 2s. Dealing 287% every 0.5s 
+If target is Fire, Ice, Lightning or Earth element. Always use weakness element to attack enemy
+[Additional Effect] If Elemental Amplify is active, damage increase by 5% each consecutive hit",,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","SP Recovery
+Basic attack recover player's SP by 5%","Elemental Resistance
+Reduce FIre, Ice, Lightning and Earth damage received by 30%","Elemental Bolt - Drop Down
+Attacking same target with consecutive Elemental Bolt will landing Elemental Comet. Attacking in 2.5m radius around target.
+Elemental Comet dealing 30% of Elemental Bolt damage
+------------
++1 Acc Slot","--------------- 
++1 Acc Slot","Unlock Costume Slot
+Patience +10%
+--------------- 
++1 Acc Slot",C,B,B,C,C,"C
+
+Just use Valentina (SR Elementalist) if you really need SP regen and buffs. Save your book for Leonie or others, please.",47 UR Books
+SR,Lagueta,,"Battle Type
+(Earth)","Collection Reward
+EP. 1",Block +22,,100% Damage,"Fellow Brave Shout
+CD 8s
+Attack all target in 3.5m radius
+Dealing 855% damage","Fellow Double Slash
+CD 8s
+Attack all target in 3.5mx1.75m frontal area
+Dealing 432% x 2 damage. Deal 25% more damage to 'stun' target",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Attack Speed Boost
+Increase attack speed by 25%","Threats
+Increase damage by 25% when attacking enemy that has current HP lower than you","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Auste,,"Faith Type
+(Holy)","Collection Reward
+EP. 2",Damage +44,,100% Damage,"Fellow Grand Namot
+CD 10s
+Attack target area in 3m radius
+Create light magic circle at target area for 3s. Dealing 238% damage per second","Fellow Aspersion
+CD 30s
+Buff all allies in 5m radius around yourself
+Grant allies 20s buff. Everytime you receiving damage, heal 12% of healing power
+(Can only healed once per second)",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Block Mastery
+Increase block rate by 20%","Faith
+Reduce damage received from Devil type monster by (Level)%","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Edmandas,,"Asssassin Type
+(Lightning)","Collection Reward
+EP. 3",Penetration +22,,100% Damage,"Fellow Smoke Bomb
+CD 12s
+Create smoke bomb area in 2.5m radius around yourself
+Dealing 888% damage. Dodging enemy inside smoke area grant 6s debuff to attacker, which reduce damage by 10%","Fellow Dagger Slash
+CD 6s
+Attack all target in 2x1.5m area forward
+Slash dagger twice. Dealing 249% x2 damage.
+15% chance to 'silence' enemy",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Damage Boost
+Increase damage by 25%","Double Attack
+50% chance that basic attack changed to 75% x 2 hit","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Lord Delmore,,"Magic Type
+(Lightning)","Collection Reward
+EP. 5",Hit Rate +52,,100% Damage,"Fellow Energy Shock
+CD 8s
+Attack all target in 3m radius area
+Dealing 791% damage ","Fellow Energy Supernova
+CD 20s
+Attack all target in 5m radius around you.
+Dealing 5 hits for total of 1934% damage.
+60% chance to 'shock' target",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack
+Increase Attack by 25%","Damage Boost
+Increase damage by 25%","Hallucination
+Taking melee damage summon magic clone that taunt nearby enemies for 5s.
+This ability has 40s cd.","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Rose,,"Peddler
+(Earth)
+------
+Faith Type","Collection Reward
+EP. 6",Evasion +52,,"100% Damage
+20% chance to grant yourself ""Trade-in"" buff that increase next basic attack damage by 20%","Fellow Discount
+CD 20s
+Buff yourself and all allies in 5m radius around you.
+Reduce damage received by 20% for 10s","Fellow Ample Supply
+CD 30s
+Target fellow and player
+Heal 84% of healing power",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Survival Boost
+Reduce damage received by 15%","Great Supply
+Using ""Fellow Discout"" heal player for 10% HP and 5% SP
+Also heal yourself for 20% of healing power","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Odell,,"Historian
+(Dark)
+------
+Magic Type","Collection Reward
+EP. 7",Crit Damage +32,,"100% Damage
+Every 10th attack will deal AoE damage in 3m radius around target for 50% Damage","Fellow Dimension Distortion
+CD 60s
+Buff yourself and all allies in 5m radius around you.
+Reduce damage received by 20% for 20s","Fellow Ultimate Dimension
+CD 15s
+Attack target area in 3m radius
+Dealing 112% damage every 0.5s for 5s",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Damage Boost
+Increase damage by 25%","Distortion
+Increase AoE damage from special attack to 100% dmg","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Uska,,"Templar
+(Earth)
+------
+Swordsman","Collection Reward
+EP. 8",Defense +20,,"100% Damage
+Every 60s, taunt all nearby enemies","Fellow Heavy Slash
+CD 10s
+Attack enemy in 1.25m area forward
+Dealing 1169% damage","Fellow Shield Bash
+CD 10s
+Attack enemy in 1.75m range forward
+Dealing 792%
+30% chance to 'stun' enemy",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Block Mastery
+Increase block rate by 20%","Battle Order
+Taunting enemy grant yourself 5s buff that reduce damage received by 10%","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Grita,,"Pyromancer
+(Fire)","Collection Reward
+EP. 9",Crit Res +31,,100% Fire Damage to maximum 3 enemies in 2m range ,"Fellow Flare
+CD 15s
+Attack all targets in 4m radius around you.
+Dealing 992% damage","Fellow Flame Incarnate
+CD 40s
+Grant 15s buff to fellow that increase damage by 10%.
+Also reflect 30% melee damage received back to attacker as Fire damage. (Cannot reflect more than fellow's base damage)",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Flare - Burn
+50% chance to 'Burn' enemy hit by ""Fellow Flare""
+Basic attack to 'Burn' enemy also has 15% chance to 'stun' them","Flame Incarnate - Symbiote
+Using skill will buff both fellow and player","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Aurelius,,"Faith Type
+(Holy)","Collection Reward
+EP. 10",Defense +20,,100% Damage,"Fellow Divine Protection
+CD 40s
+Buff self , master and all fellows in 6m radius around yourself.
+Grant [Divine Protection] for 15s, reduce damage received by 5%","Fellow Heal
+CD 30s
+Heal self, master and all fellows in 5m radius around yourself for 84% of healing power",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Divine Explosion
+When [Divine Protection] buff duration is over. Explode 3m area around, dealing 270% damage of Aurelios's attack power","Resistance of Soul
+Reduce physical and range attack damage received by 30%","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+SR,Nora Hutton,,"Pyromancer
+(Fire)","Story Quest
+(Free)",Defense +8,,100% Fire damage to maximum 3 enemies in 2m range ,"Fellow Fireball
+CD 5s
+Deals 618% Damage in a 2.5m Radius, 20% Chance to Burn upon hit ","Fellow Flame Ground
+CD 10s
+Deals 186% Damage within a 2.5m Range every 0.5s for 2s",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Penetration Boost
+Increase Penetration Rate by 13%","Flame Shock
+25% Chance to Burn with Basic Attack when attacking an Earth Property Enemy","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Villunde,,"Cryomancer
+(Ice)","Story Quest
+(Free)",Damage +14,,"Shoot snowball that damage vary by distance to target
+Reduce up to 50% at close range. And deal maximum of 200% damage at max distance","Fellow Freezing Sphere
+CD 8s
+Shoots an Ice Sphere that lasts for 5s, and when touched deals 108% Damage every 0.3 Seconds, with a 5% chance to Freeze","Fellow Ice Pike
+CD 8s
+Deals 661% Damage within a 1m radius, with a 25% chance to Freeze",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Cooldown Reduction
+Reduces Skill Cooldown by 20%","Rapid Cooling
+5% Chance to Freeze with Basic Attack when attacking a Fire Property Enemy","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Zurgita,,"Mergen
+(Lightning)","Story Quest
+(Free)",Damage +8,,Can attack 3 targets at the same time. But basic attack damage reduce by 20% if attack more than 1 target.,"Fellow Homing Arrow
+CD 8s
+Targets up to 5 Enemies in a 3m Radius
+Dealing 281% Damage","Fellow Spread Shot
+CD 8s
+ Fire 5 Arrows in a 7m Radius within a 120° Spread (30° difference between each Arrow)
+Dealing 251% Damage per Arrow which Pierce through enemies",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Threat Reduction
+Reduce threat rate of self attack by 50%
+Reduce damage received by 10% when 2 or less enemy target you","Close-range Archery
+Increases Damage by 10% to Enemies in a 5m or below Range","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+SR,Ronella,,"Battle Type
+(Earth)",Gacha,Crit Damage +8,,100% Damage,"Fellow Double Slash
+CD 8s
+Attack all target in 3.5mx1.75m frontal area
+Dealing 114% x 2 damage. Deal 25% more damage to 'stun' target","Fellow Brave Shout
+CD 8s
+Attack all target in 3.5m radius
+Dealing 226% damage",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Penetration Boost
+Increase Penetration Rate by 13%","Threats
+Increase damage by 25% when attacking enemy that has current HP lower than you","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Miella,,"Highlander
+(Ice)",Gacha,Crit Resist +20,,"140% Damage
+Reduced Attack Speed","Fellow Skyliner
+CD 5s
+Deals 2 hits for total of 576%  Damage within a 1.25m Radius
++25% Damage to Bleeding enemies","Fellow Moulinet
+CD 10s
+Deals 5 hits for total of 1318% Damage within a 4x2.5m Radius",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Damage Boost
+Increase damage by 25%","Toughness
+If HP is lower than 50%, Reduces Damage Recieved by 50%","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Rohnut,,"Peltasta
+(Ice)",Gacha,Crit Rate +14,,"100% Damage
+Def +20%
+while attacking","Fellow Swashbuckling
+CD 30s
+Knock your shield to provoke all enemies in 5m radius around you for 10s. Force them to attack you and reduce defense by 20%","Fellow Hard Shield
+CD 30s
+Buff yourself for 10s. Increase block rate by 20%.
+5% chance to 'stun' enemy that attack them",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Survival Boost
+Reduce damage received by 15%","Skillful Provoke
+Also reduce crit rate and crit res of enemy provoked by 10%","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Raul,,"Murmillo
+(Earth)",Gacha,Crit Rate +14,,"100% Damage
+Every 2nd Attack will be a Stab that ignores 30% of enemy's Defense","Fellow Headbutt
+CD 8s
+Deals 845% Damage to a Single Target, 30% Chance to inflict 'No Movement' Status","Fellow Sonic Wave
+CD 15s
+Deals 864% Damage in a 3.5m Radius, 45% Chance to inflict 'Atrophy' Status",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Threat Increase
+Increases Threat when attacking by 100%, and Decreases Damage taken by 10% when 2 or more Monsters are nearby","Stun Expert
+Reduces chance to be Stunned by 80%, 5% Chance to stun enemy when using Basic Attack","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Erwin,,"Magic Type
+(Lightning)",Gacha,Accuracy +11,,100% Damage,"Fellow Magic Missile
+CD 8s
+Deals 281% x3 Damage to a Single Target, 7% Chance to inflict 'Petrified' Status","Fellow Energy Shock
+CD 8s
+Attack all target in 3m radius area
+Dealing 791% damage ",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Cooldown Reduction
+Reduces Skill Cooldown by 20%","Hallucination
+Taking melee damage summon magic clone that taunt nearby enemies for 5s.
+This ability has 40s cd.","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Salah,,"Pyromancer
+(Fire)",Gacha,Crit Damage +8,,100% Fire damage to maximum 3 enemies in 2m range ,"Fellow Flame Ground
+CD 10s
+Deals 186% Damage within a 2.5m Range every 0.5s for 2s","Fellow Fireball
+CD 5s
+Deals 618% Damage in a 2.5m Radius, 20% Chance to Burn upon hit ",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Penetration Boost
+Increase Penetration Rate by 13%","Flame Shock
+25% Chance to Burn with Basic Attack when attacking an Earth Property Enemy","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Christina,,"Cryomancer
+(Ice)",Gacha,Crit Resist +20,,"Shoot snowball that damage vary by distance to target
+Reduce up to 50% at close range. And deal maximum of 200% damage at max distance","Fellow Ice Pike
+Deals 661% Damage within a 1m radius, with a 25% chance to Freeze","Fellow Freezing Sphere
+Shoots an Ice Sphere that lasts for 5s, and when touched deals 108% Damage every 0.3s, with a 5% chance to Freeze",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Cooldown Reduction
+Reduces Skill Cooldown by 20%","Rapid Cooling
+5% Chance to Freeze with Basic Attack when attacking a Fire Property Enemy","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Valentina,,"Elementalist
+(Multi)",Gacha,Penetration +11,,"100% Damage
++100% dmg if enemy is 'burn' , 'freeze' , 'shock' or 'petrified'","Fellow Elemental Bolt
+CD 8s
+Attack 1 target
+Shoot elemental bolt to target, dealing 965% damage.
+If target is Fire,Ice,Lightning or Earth element. Always use weakness element to attack enemy","Fellow Elemental Amplify
+CD 30s
+Buff yourself and all ally in 5m radius around you for 15s. Increase Fire, Ice, Lightning and Earth damage by 20%",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","SP Recovery
+Basic attack recover player's SP by 5%","Elemental Resistance
+Reduce FIre, Ice, Lightning and Earth damage received by 30%","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Louise,,"Shooting Type
+(Earth)",Gacha,Crit Damage +8,,100% Damage,"Fellow Multishot
+CD 10s
+Deals 351% x5 Damage to a Single Target","Fellow Double Take
+CD 5s
+Pierces through enemies within a 2x7m Radius, dealing 641% x2 Damage",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Threat Reduction
+Reduce threat rate of self attack by 50%
+Reduce damage received by 10% when 2 or less enemy target you","Oblique Shot
+25% Chance for Basic Attack to Ricochet
+Ricochet deals 50% of Basic Attack's damage","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Leonard,,"Ranger
+(Lightning)",Gacha,Crit Rate +14,,"100% Damage
+25% chance to hit twice","Fellow Ankle Sling Shot
+CD 10s
+Attack in 3m range frontal area
+Dealing 695% damage. 100% chance to 'immobile' enemy for 3s","Fellow Bounce Shot
+CD 10s
+Attack 1 target then bounce to max 5 enemy
+Dealing 828% damage to main target, then arrow bounce to 5 more enemy dealing 621% damage.
+30% chance to inflict 'Atropy' on enemy when hit",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Attack Speed Boost
+Increase attack speed by 25%","Leg Shot
+7.5% chance that basic attack will 'slow' target","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Logan,,"Fletcher
+(Fire)",Gacha,Crit Resist +20,,"Shoot arrow in straight line piercing up to 3 targets
+Deal 110% damage if only 1 enemy hit
+Deal 50% damage otherwise","Fellow Spiral Arrow
+CD 5s
+Attack 1 target
+Deal 3 hits for total of 668% damage
+Each hit deal additional 10% true damage
+15% chance to 'Atrohy/weak' enemy, ","Fellow Downfall
+CD 10s
+Attack 1 target
+Deal 189% x 8 damage",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Threat Reduction
+Reduce threat rate of self attack by 50%
+Reduce damage received by 10% when 2 or less enemy target you","Fixed Target
+Increase critical rate by 7% when attacking same target
+This bonus reset when changing target.","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Kayla,,"Mergen
+(Lightning)",Gacha,Crit Rate +14,,Can attack 3 targets at the same time. But basic attack damage reduce by 20% if attack more than 1 target.,"Fellow Spread Shot
+CD 8s
+ Fire 5 Arrows in a 7m Radius within a 120° Spread (30° difference between each Arrow)
+Dealing 251% Damage per Arrow which Pierce through enemies","Fellow Homing Arrow
+CD 8s
+Targets up to 5 Enemies in a 3m Radius
+Dealing 281% Damage",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Threat Reduction
+Reduce threat rate of self attack by 50%
+Reduce damage received by 10% when 2 or less enemy target you","Close-range Archery
+Increases Damage by 10% to Enemies in a 5m or below Range","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Joseph,,"Faith Type
+(Holy)",Gacha,Crit Resist +20,,100% Damage,"Fellow Aspersion
+CD 30s
+Buff all allies in 5m radius around yourself
+Grant allies 20s buff. Everytime you receiving damage, heal 12% of healing power
+(Can only healed once per second)","Fellow Grand Namot
+CD 10s
+Attack target area in 3m radius
+Create light magic circle at target area for 3s. Dealing 173% damage per second",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Block Mastery
+Increase block rate by 20%","Faith
+Reduce damage received from Devil type monster by (Level)%","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Lucia,,"Paladin 
+(Holy)",Gacha,Evasion +11,,75% Damage x2,"Fellow Divine Shield
+CD 20s
+Buff all ally in 5m radius around you for 15s. Increase defense by 20%","Fellow Demolition
+CD 8s
+Attak target and all enemy in 2.5m radius
+Smash hammer multiple times. Dealing 70% x 3 damage
+[Additional Effect] Each smash also heal all allies for 20% of healing power on hit.",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Damage Reduction
+Reduce damage received by 15%","Goddess' Shield
+Increases Block by 30% against Devil-race Enemies","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Sophia,,"Plague Doctor
+(Fire)",Gacha,Crit Resist +20,,"50% Damage, 100% Chance for 'Infection - Poison' Status
+'Infection - Poison' Deals 6% of Attack as Damage every 0.5s for 5s","Fellow Incineration
+CD 10s
+Deals 330% Damage within a 1.75x3.5m Radius and inflicts 'Incineration - Flame' debuff
+'Incineration - Flame' deals 55% Damage every second
+[Additional Effect] Removes 1 DoT Debuff of you & your allies by a 20% Chance when using the skill ","Fellow Healing Factor
+CD 20s
+Restores Allies HP by 18% of Healing Power every second",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Cooldown Reduction
+Reduces Skill Cooldown by 20%","Increase Healing Power
+Increases Healing Power by 50%
+","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Claudine,,"Inquisitor
+(Dark)",Gacha,Crit Rate +14,,"200% Damage
+Reduced Attack Speed
+20% Chance for 'Faint' debuff","Fellow Pear of Anguish
+CD 8s
+Throws Pears at 120° forward within a 5m Radius dealing 886% Damage 
+25% Chance to inflict 'Lethargy' Debuff upon hit","Fellow God Smash
+CD 8s
+Deals 1037% Damage within a 2m Radius",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Penetration Boost
+Increase Penetration Rate by 13%","Gods Punishment
+30% Chance to cause 'Bleeding' when using Basic Attack","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Bourbon,,"Asssassin Type
+(Lightning)",Gacha,Block +11,,100% Damage,"Fellow Marking
+CD 6s
+Deals 632% Damage to a Single Target
+Reduces enemy's Critical Resistance by 10% of Fellow's Attack for 5s","Fellow Dagger Slash
+CD 6s
+Attack all target in 2x1.5m area forward
+Slash dagger twice. Dealing 249% x2 damage.
+15% chance to 'silence' enemy",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Hit Rate Boost
+Increase Hit Rate by 13%","Double Attack
+50% chance that basic attack changed to 75% x 2 hit","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Roane,,"Rogue
+(Fire)",Gacha,Crit Rate +14,,"75% Damage
+20% chance to
+'Stab Wound' enemy, which dealing 30% dmg every second and ignore def.
+(Count as 'bleeding')","Fellow Backstab
+CD 8s
+Attack 1 target
+Warp to enemy's backside and dealing 1898% damage
+50% chance to 'blind' enemy","Fellow Mangle
+CD 8s
+Attack target in 2.5x3m range
+Swipe multiple times with dagger, dealing 247% x 8 damage
+3% chance per hit to inflict 'Atropy' on enemy ",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Critical Damage Boost
+Increase Critical Damage by 25%","Deep Stab
+Increase 'Stab Wound' chance by 30%","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Jade,,"Asssassin
+(Dark)",Gacha,Crit Resist +20,,75% Damage x2,"Fellow Instant Accel
+CD 10s
+Attack Target in 2x4m
+Deals 1070% Damage","Fellow Piercing Heart
+CD 10s
+Deals 1406% Damage to a Single Target, inflicts 'Bleed' debuff",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Critical Damage Boost
+Increase Critical Damage by 25%","Opportunist
+Increases Damage by 50% to enemies Below 20% HP","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+,Ken,,"Shinobi
+(Multi)",Gacha,Crit Damage +8,,"100% Damage
+Long Ranged","Fellow Suiton no Jutsu 
+CD 7s
+Attack all enemies in 2m radius around target
+Conjure water energy and create geyser at enemy position. Dealing 665% damage.","Fellow Raiton no Jutsu
+CD 10s
+Attack 1 target and 3 other nearby enemies in 4m range.
+Conjure thunder element to attack enemy in range. Dealing 665% damage
+10% chance to 'Shock' enemy",,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Triggering Silence
+5% Chance to 'Silence' enemy when using Basic Attack","Shadow Assassination
+Increases Damage by 25% on Debuffed enemies","--------------- 
++1 Acc Slot",,,,,,,,,54 SR Books
+R,Lorena,,"Battle Type
+(Earth)",Gacha,Hit,,100% Damage,"Fellow Double Slash
+CD 8s
+Attack all target in 3.5mx1.75m frontal area
+Dealing 114% x 2 damage. Deal 25% more damage to 'stun' target",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Penetration Boost
+Increase Penetration Rate by 13%",,,,,,,,,,,60 R Books
+,Aurela,,"Highlander
+(Ice)",Gacha,Attack,,"140% Damage
+Reduced Attack Speed","Fellow Skyliner
+CD 5s
+Deals 2 hits for total of 576%  Damage within a 1.25m Radius
++25% Damage to Bleeding enemies",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Damage Boost
+Increase damage by 25%",,,,,,,,,,,60 R Books
+,Daniel,,"Peltasta
+(Ice)",Gacha,Defense ,,"100% Damage
+Def +20%
+while attacking","Fellow Swashbuckling
+CD 30s
+Knock your shield to provoke all enemies in 5m radius around you for 10s. Force them to attack you and reduce defense by 20%",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Survival Boost
+Reduce damage received by 15%",,,,,,,,,,,60 R Books
+,Mikhail,,"Murmillo
+(Earth)",Gacha,Penetration,,"100% Damage
+Every 2nd Attack will be a Stab that ignores 30% of enemy's Defense","Fellow Headbutt
+CD 8s
+Deals 845% Damage to a Single Target, 30% Chance to inflict 'No Movement' Status",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Threat Increase
+Increases Threat when attacking by 100%, and Decreases Damage taken by 10% when 2 or more Monsters are nearby",,,,,,,,,,,60 R Books
+,Alberto,,"Magic Type
+(Lightning)",Gacha,Attack ,,100% Damage,"Fellow Magic Missile
+CD 8s
+Deals 281% x3 Damage to a Single Target, 7% Chance to inflict 'Petrified' Status",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Cooldown Reduction
+Reduces Skill Cooldown by 20%",,,,,,,,,,,60 R Books
+,Edgar,,"Pyromancer
+(Fire)",Gacha,Defense,,100% Fire damage to maximum 3 enemies in 2m range ,"Fellow Flame Ground
+CD 10s
+Deals 186% Damage within a 2.5m Range every 0.5s for 2s",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Penetration Boost
+Increase Penetration Rate by 13%",,,,,,,,,,,60 R Books
+,Armina,,"Cryomancer
+(Ice)",Gacha,Crit Damage,,"Shoot snowball that damage vary by distance to target
+Reduce up to 50% at close range. And deal maximum of 200% damage at max distance","Fellow Ice Pike
+Deals 661% Damage within a 1m radius, with a 25% chance to Freeze",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Cooldown Reduction
+Reduces Skill Cooldown by 20%",,,,,,,,,,,60 R Books
+,Elena,,"Elementalist
+(Multi)",Gacha,Dodge,,"100% Damage
++100% dmg if enemy is 'burn' , 'freeze' , 'shock' or 'petrified'","Fellow Elemental Bolt
+CD 8s
+Attack 1 target
+Shoot elemental bolt to target, dealing 965% damage.
+If target is Fire,Ice,Lightning or Earth element. Always use weakness element to attack enemy",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","SP Recovery
+Basic attack recover player's SP by 5%",,,,,,,,,,,60 R Books
+,Hermina,,"Shooting Type
+(Earth)",Gacha,Hit,,100% Damage,"Fellow Multishot
+CD 10s
+Deals 351% x5 Damage to a Single Target",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Threat Reduction
+Reduce threat rate of self attack by 50%
+Reduce damage received by 10% when 2 or less enemy target you",,,,,,,,,,,60 R Books
+,Doru?,,"Ranger
+(Lightning)",Gacha,Block,,"100% Damage
+25% chance to hit twice","Fellow Ankle Sling Shot
+CD 10s
+Attack in 3m range frontal area
+Dealing 695% damage. 100% chance to 'immobile' enemy for 3s",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Attack Speed Boost
+Increase attack speed by 25%",,,,,,,,,,,60 R Books
+,Shima,,"Fletcher
+(Fire)",Gacha,Attack,,"Shoot arrow in straight line piercing up to 3 targets
+Deal 110% damage if only 1 enemy hit
+Deal 50% damage otherwise","Fellow Spiral Arrow
+CD 5s
+Attack 1 target
+Deal 3 hits for total of 668% damage
+Each hit deal additional 10% true damage
+15% chance to 'Atrohy/weak' enemy, ",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Threat Reduction
+Reduce threat rate of self attack by 50%
+Reduce damage received by 10% when 2 or less enemy target you",,,,,,,,,,,60 R Books
+,Anita,,"Mergen
+(Lightning)",Gacha,Defense,,Can attack 3 targets at the same time. But basic attack damage reduce by 20% if attack more than 1 target.,"Fellow Spread Shot
+CD 8s
+ Fire 5 Arrows in a 7m Radius within a 120° Spread (30° difference between each Arrow)
+Dealing 251% Damage per Arrow which Pierce through enemies",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Threat Reduction
+Reduce threat rate of self attack by 50%
+Reduce damage received by 10% when 2 or less enemy target you",,,,,,,,,,,60 R Books
+,Emmanuel,,"Faith Type
+(Holy)",Gacha,Crit Damage,,100% Damage,"Fellow Aspersion
+CD 30s
+Buff all allies in 5m radius around yourself
+Grant allies 20s buff. Everytime you receiving damage, heal 12% of healing power
+(Can only healed once per second)",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Block Mastery
+Increase block rate by 20%",,,,,,,,,,,60 R Books
+,Sonar,,"Paladin 
+(Holy)",Gacha,Defense,,75% Damage x2,"Fellow Divine Shield
+CD 20s
+Buff all ally in 5m radius around you for 15s. Increase defense by 20%",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Damage Reduction
+Reduce damage received by 15%",,,,,,,,,,,60 R Books
+,Michelle,,"Plague Doctor
+(Fire)",Gacha,Penetration,,"50% Damage, 100% Chance for 'Infection - Poison' Status
+'Infection - Poison' Deals 6% of Attack as Damage every 0.5s for 5s","Fellow Incineration
+CD 10s
+Deals 330% Damage within a 1.75x3.5m Radius and inflicts 'Incineration - Flame' debuff
+'Incineration - Flame' deals 55% Damage every second
+[Additional Effect] Removes 1 DoT Debuff of you & your allies by a 20% Chance when using the skill ",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Cooldown Reduction
+Reduces Skill Cooldown by 20%",,,,,,,,,,,60 R Books
+,Daniela,,"Inquisitor
+(Dark)",Gacha,Attack ,,"200% Damage
+Reduced Attack Speed
+20% Chance for 'Faint' debuff","Fellow Pear of Anguish
+CD 8s
+Throws Pears at 120° forward within a 5m Radius dealing 886% Damage 
+25% Chance to inflict 'Lethargy' Debuff upon hit",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Penetration Boost
+Increase Penetration Rate by 13%",,,,,,,,,,,60 R Books
+,Hockey,,"Asssassin Type
+(Lightning)",Gacha,Block,,100% Damage,"Fellow Marking
+CD 6s
+Deals 632% Damage to a Single Target
+Reduces enemy's Critical Resistance by 10% of Fellow's Attack for 5s",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Hit Rate Boost
+Increase Hit Rate by 13%",,,,,,,,,,,60 R Books
+,Sika,,"Rogue
+(Fire)",Gacha,Defense,,"75% Damage
+20% chance to
+'Stab Wound' enemy, which dealing 30% dmg every second and ignore def.
+(Count as 'bleeding')","Fellow Backstab
+CD 8s
+Attack 1 target
+Warp to enemy's backside and dealing 1898% damage
+50% chance to 'blind' enemy",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Critical Damage Boost
+Increase Critical Damage by 25%",,,,,,,,,,,60 R Books
+,Yash,,"Asssassin
+(Dark)",Gacha,Dodge,,75% Damage x2,"Fellow Instant Accel
+CD 10s
+Attack Target in 2x4m
+Deals 1070% Damage",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Critical Damage Boost
+Increase Critical Damage by 25%",,,,,,,,,,,60 R Books
+,Tarot,,"Shinobi
+(Multi)",Gacha,Attack,,"100% Damage
+Long Ranged","Fellow Suiton no Jutsu 
+CD 7s
+Attack all enemies in 2m radius around target
+Conjure water energy and create geyser at enemy position. Dealing 665% damage.",,,,"Increase Maximum HP 
+Increase HP by 50%","Increase Defense
+Increase Defense by 50%","Increase Attack 
+Increase Attack by 25%","Triggering Silence
+5% Chance to 'Silence' enemy when using Basic Attack",,,,,,,,,,,60 R Books
