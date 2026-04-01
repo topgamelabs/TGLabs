@@ -103,7 +103,7 @@ export default function Home() {
           </span>
         </div>
         <div style={{ fontSize: 12, color: "#3d3560" }}>
-          ศูนย์รวมข้อมูล Mobile Gaming · ข้อมูลอิงจาก patch ล่าสุดของแต่ละเกม
+          ศูนย์รวมข้อมูล Mobile Gaming ถ่าคุณชอบเกม เราคือเพื่อนกัน
         </div>
       </div>
     </div>

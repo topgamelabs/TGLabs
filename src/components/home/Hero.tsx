@@ -19,11 +19,11 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
       g.genre.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Featured data: latest patch from first game (ToS M), top S-tier char, latest tip
+  // Featured data from ToS M
   const featuredGame = games[0];
   const latestPatch = featuredGame?.patches[0];
-  const topTierChar = featuredGame?.tiers[0]?.chars[0];
-  const featuredTip = featuredGame?.tips[1] ?? featuredGame?.tips[0];
+  const newsUpdate = featuredGame?.patches[1] ?? featuredGame?.patches[0];
+  const latestArticle = featuredGame?.tips[0];
 
   // Stats from ToS M data
   const stats = [
@@ -312,7 +312,7 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
             marginBottom: 64,
           }}
         >
-          {/* 🗺️ Patch Notes Card */}
+          {/* 📰 News Update Card */}
           <div
             style={{
               background: "#0c1020",
@@ -334,7 +334,7 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <span style={{ fontSize: 28 }}>🗺️</span>
+              <span style={{ fontSize: 28 }}>📰</span>
               <span
                 style={{
                   fontFamily: "monospace",
@@ -344,7 +344,209 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
                   textTransform: "uppercase",
                 }}
               >
-                Patch Notes
+                News Update
+              </span>
+            </div>
+            {newsUpdate && (
+              <>
+                <div
+                  style={{
+                    fontFamily: "monospace",
+                    fontSize: 10,
+                    color: "#3d3560",
+                    letterSpacing: 1,
+                    marginBottom: 6,
+                  }}
+                >
+                  {newsUpdate.ver} · {newsUpdate.date}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "Georgia, serif",
+                    fontSize: 15,
+                    fontWeight: 700,
+                    color: "#e8e0ff",
+                    marginBottom: 8,
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {newsUpdate.title}
+                </div>
+                <p
+                  style={{
+                    fontSize: 12,
+                    color: "#5a5080",
+                    lineHeight: 1.6,
+                    marginBottom: 12,
+                  }}
+                >
+                  {newsUpdate.desc}
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                  {newsUpdate.tags.map(([tag, type]) => (
+                    <span
+                      key={tag}
+                      style={{
+                        fontFamily: "monospace",
+                        fontSize: 9,
+                        letterSpacing: 1,
+                        padding: "2px 8px",
+                        borderRadius: 3,
+                        background:
+                          type === "new"
+                            ? "rgba(77,204,138,0.15)"
+                            : type === "buff"
+                            ? "rgba(90,180,255,0.15)"
+                            : type === "nerf"
+                            ? "rgba(255,92,122,0.15)"
+                            : "rgba(157,111,255,0.1)",
+                        border: `1px solid ${
+                          type === "new"
+                            ? "#4dcc8a55"
+                            : type === "buff"
+                            ? "#5ab4ff55"
+                            : type === "nerf"
+                            ? "#ff5c7a55"
+                            : "#9d6fff44"
+                        }`,
+                        color:
+                          type === "new"
+                            ? "#4dcc8a"
+                            : type === "buff"
+                            ? "#5ab4ff"
+                            : type === "nerf"
+                            ? "#ff5c7a"
+                            : "#9d6fff",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* 📖 Latest Article Card */}
+          <div
+            style={{
+              background: "#0c1020",
+              border: "1px solid rgba(100,80,200,0.2)",
+              borderRadius: 16,
+              padding: "22px 20px",
+              cursor: "pointer",
+              transition: "all 0.25s",
+            }}
+            onMouseOver={(e) => {
+              (e.currentTarget as HTMLDivElement).style.transform = "translateY(-5px)";
+              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 40px rgba(77,204,138,0.1)";
+              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(77,204,138,0.4)";
+            }}
+            onMouseOut={(e) => {
+              (e.currentTarget as HTMLDivElement).style.transform = "";
+              (e.currentTarget as HTMLDivElement).style.boxShadow = "";
+              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(100,80,200,0.2)";
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+              <span style={{ fontSize: 28 }}>📖</span>
+              <span
+                style={{
+                  fontFamily: "monospace",
+                  fontSize: 11,
+                  letterSpacing: 2,
+                  color: "#4dcc8a",
+                  textTransform: "uppercase",
+                }}
+              >
+                Latest Article
+              </span>
+            </div>
+            {latestArticle && (
+              <>
+                <div
+                  style={{
+                    display: "inline-block",
+                    fontFamily: "monospace",
+                    fontSize: 9,
+                    letterSpacing: 1,
+                    padding: "2px 8px",
+                    borderRadius: 3,
+                    background:
+                      latestArticle.lvk === "beg"
+                        ? "rgba(77,204,138,0.15)"
+                        : latestArticle.lvk === "mid"
+                        ? "rgba(157,111,255,0.15)"
+                        : "rgba(255,92,122,0.15)",
+                    color:
+                      latestArticle.lvk === "beg"
+                        ? "#4dcc8a"
+                        : latestArticle.lvk === "mid"
+                        ? "#9d6fff"
+                        : "#ff5c7a",
+                    marginBottom: 10,
+                  }}
+                >
+                  {latestArticle.lv}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "Georgia, serif",
+                    fontSize: 15,
+                    fontWeight: 700,
+                    color: "#e8e0ff",
+                    marginBottom: 8,
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {latestArticle.title}
+                </div>
+                <p
+                  style={{
+                    fontSize: 12,
+                    color: "#5a5080",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {latestArticle.desc}
+                </p>
+              </>
+            )}
+          </div>
+
+          {/* 🗺️ Patch Note Card */}
+          <div
+            style={{
+              background: "#0c1020",
+              border: "1px solid rgba(100,80,200,0.2)",
+              borderRadius: 16,
+              padding: "22px 20px",
+              cursor: "pointer",
+              transition: "all 0.25s",
+            }}
+            onMouseOver={(e) => {
+              (e.currentTarget as HTMLDivElement).style.transform = "translateY(-5px)";
+              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 40px rgba(90,180,255,0.1)";
+              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(90,180,255,0.4)";
+            }}
+            onMouseOut={(e) => {
+              (e.currentTarget as HTMLDivElement).style.transform = "";
+              (e.currentTarget as HTMLDivElement).style.boxShadow = "";
+              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(100,80,200,0.2)";
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+              <span style={{ fontSize: 28 }}>🗺️</span>
+              <span
+                style={{
+                  fontFamily: "monospace",
+                  fontSize: 11,
+                  letterSpacing: 2,
+                  color: "#5ab4ff",
+                  textTransform: "uppercase",
+                }}
+              >
+                Patch Note
               </span>
             </div>
             {latestPatch && (
@@ -426,290 +628,11 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
               </>
             )}
           </div>
-
-          {/* ⚔️ Tier List Card */}
-          <div
-            style={{
-              background: "#0c1020",
-              border: "1px solid rgba(100,80,200,0.2)",
-              borderRadius: 16,
-              padding: "22px 20px",
-              cursor: "pointer",
-              transition: "all 0.25s",
-            }}
-            onMouseOver={(e) => {
-              (e.currentTarget as HTMLDivElement).style.transform = "translateY(-5px)";
-              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 40px rgba(77,204,138,0.1)";
-              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(77,204,138,0.4)";
-            }}
-            onMouseOut={(e) => {
-              (e.currentTarget as HTMLDivElement).style.transform = "";
-              (e.currentTarget as HTMLDivElement).style.boxShadow = "";
-              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(100,80,200,0.2)";
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <span style={{ fontSize: 28 }}>⚔️</span>
-              <span
-                style={{
-                  fontFamily: "monospace",
-                  fontSize: 11,
-                  letterSpacing: 2,
-                  color: "#4dcc8a",
-                  textTransform: "uppercase",
-                }}
-              >
-                Tier List
-              </span>
-            </div>
-            <div
-              style={{
-                fontFamily: "Georgia, serif",
-                fontSize: 13,
-                color: "#5a5080",
-                marginBottom: 14,
-                lineHeight: 1.5,
-              }}
-            >
-              Top S-Tier Fellows — ToS M
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {featuredGame?.tiers.slice(0, 2).map((tier) =>
-                tier.chars.slice(0, 2).map((char) => (
-                  <div
-                    key={char.name}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 10,
-                      padding: "8px 12px",
-                      background: "rgba(77,204,138,0.06)",
-                      border: "1px solid rgba(77,204,138,0.15)",
-                      borderRadius: 8,
-                    }}
-                  >
-                    <span style={{ fontSize: 20 }}>{char.icon}</span>
-                    <div>
-                      <div
-                        style={{
-                          fontFamily: "Sarabun, sans-serif",
-                          fontSize: 13,
-                          fontWeight: 600,
-                          color: "#e8e0ff",
-                        }}
-                      >
-                        {char.name}
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: "monospace",
-                          fontSize: 9,
-                          color: "#3d3560",
-                          letterSpacing: 1,
-                        }}
-                      >
-                        {char.role} ·{" "}
-                        {Array.from({ length: char.s })
-                          .map(() => "◆")
-                          .join("")}
-                      </div>
-                    </div>
-                    <div
-                      style={{
-                        marginLeft: "auto",
-                        fontFamily: "monospace",
-                        fontSize: 10,
-                        fontWeight: 700,
-                        color: "#c0392b",
-                        background: "rgba(192,57,43,0.2)",
-                        padding: "1px 7px",
-                        borderRadius: 4,
-                      }}
-                    >
-                      {tier.label}
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-
-          {/* 🧭 Tips & Guides Card */}
-          <div
-            style={{
-              background: "#0c1020",
-              border: "1px solid rgba(100,80,200,0.2)",
-              borderRadius: 16,
-              padding: "22px 20px",
-              cursor: "pointer",
-              transition: "all 0.25s",
-            }}
-            onMouseOver={(e) => {
-              (e.currentTarget as HTMLDivElement).style.transform = "translateY(-5px)";
-              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 12px 40px rgba(90,180,255,0.1)";
-              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(90,180,255,0.4)";
-            }}
-            onMouseOut={(e) => {
-              (e.currentTarget as HTMLDivElement).style.transform = "";
-              (e.currentTarget as HTMLDivElement).style.boxShadow = "";
-              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(100,80,200,0.2)";
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <span style={{ fontSize: 28 }}>🧭</span>
-              <span
-                style={{
-                  fontFamily: "monospace",
-                  fontSize: 11,
-                  letterSpacing: 2,
-                  color: "#5ab4ff",
-                  textTransform: "uppercase",
-                }}
-              >
-                Tips & Guides
-              </span>
-            </div>
-            {featuredTip && (
-              <>
-                <div
-                  style={{
-                    display: "inline-block",
-                    fontFamily: "monospace",
-                    fontSize: 9,
-                    letterSpacing: 1,
-                    padding: "2px 8px",
-                    borderRadius: 3,
-                    background:
-                      featuredTip.lvk === "beg"
-                        ? "rgba(77,204,138,0.15)"
-                        : featuredTip.lvk === "mid"
-                        ? "rgba(157,111,255,0.15)"
-                        : "rgba(255,92,122,0.15)",
-                    color:
-                      featuredTip.lvk === "beg"
-                        ? "#4dcc8a"
-                        : featuredTip.lvk === "mid"
-                        ? "#9d6fff"
-                        : "#ff5c7a",
-                    marginBottom: 10,
-                  }}
-                >
-                  {featuredTip.lv}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "Georgia, serif",
-                    fontSize: 15,
-                    fontWeight: 700,
-                    color: "#e8e0ff",
-                    marginBottom: 8,
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {featuredTip.title}
-                </div>
-                <p
-                  style={{
-                    fontSize: 12,
-                    color: "#5a5080",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  {featuredTip.desc}
-                </p>
-              </>
-            )}
-          </div>
         </div>
 
-        {/* ── COMING SOON SECTION ── */}
-        <div
-          style={{
-            background: "linear-gradient(135deg, rgba(12,16,32,0.9), rgba(8,10,20,0.9))",
-            border: "1px solid rgba(100,80,200,0.15)",
-            borderRadius: 18,
-            padding: "32px 28px",
-            textAlign: "center",
-            marginBottom: 64,
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          {/* Decorative accent */}
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              top: "-40px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "300px",
-              height: "80px",
-              background: "radial-gradient(ellipse, rgba(157,111,255,0.1) 0%, transparent 70%)",
-              pointerEvents: "none",
-            }}
-          />
-          <div
-            style={{
-              fontFamily: "monospace",
-              fontSize: 11,
-              letterSpacing: 5,
-              color: "#9d6fff",
-              marginBottom: 14,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 10,
-            }}
-          >
-            <span>🔮</span>
-            <span>More Games Coming Soon</span>
-            <span>🔮</span>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              gap: "10px 24px",
-              marginTop: 16,
-            }}
-          >
-            {[
-              { icon: "⚔️", name: "ROV", color: "#f7931e" },
-              { icon: "🔥", name: "Mobile Legends", color: "#ff5c7a" },
-              { icon: "🎯", name: "PUBG Mobile", color: "#c9a84c" },
-              { icon: "💎", name: "Free Fire", color: "#5ab4ff" },
-            ].map((g) => (
-              <div
-                key={g.name}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "6px 16px",
-                  background: "rgba(255,255,255,0.03)",
-                  border: `1px solid ${g.color}22`,
-                  borderRadius: 30,
-                }}
-              >
-                <span style={{ fontSize: 16 }}>{g.icon}</span>
-                <span
-                  style={{
-                    fontFamily: "Sarabun, sans-serif",
-                    fontSize: 13,
-                    fontWeight: 600,
-                    color: g.color,
-                  }}
-                >
-                  {g.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
 
-        {/* ── ALL GAMES GRID ── */}
+
+        {/* ── GAME CARD — ToS M Only ── */}
         <div
           style={{
             fontFamily: "monospace",
@@ -720,7 +643,7 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
             textTransform: "uppercase",
           }}
         >
-          // เลือกเกม — {filtered.length} เกม //
+          // Tree of Savior M //
         </div>
         <div
           style={{
@@ -729,7 +652,7 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
             gap: 14,
           }}
         >
-          {filtered.map((g) => (
+          {games.slice(0, 1).map((g) => (
             <GameCard key={g.id} game={g} onClick={() => onSelect(g)} />
           ))}
         </div>

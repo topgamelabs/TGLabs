@@ -48,38 +48,7 @@ export function Navbar({ currentGame, onSelect }: NavbarProps) {
           GLabs
         </span>
       </div>
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-        {GAMES.map((g) => {
-          const isActive = currentGame?.id === g.id;
-          return (
-            <button
-              key={g.id}
-              onClick={() => onSelect(g)}
-              /*
-               * P2-2: Active state → background pill + border in game color
-               */
-              style={{
-                background: isActive ? `${g.colorDim}` : "transparent",
-                border: isActive
-                  ? `1px solid ${g.color}55`
-                  : "1px solid transparent",
-                fontFamily: "monospace",
-                fontSize: 12,
-                letterSpacing: 1.5,
-                textTransform: "uppercase",
-                color: isActive ? g.color : "#c4a0ff",
-                cursor: "pointer",
-                padding: "6px 14px",
-                borderRadius: 20,
-                transition: "all 0.2s ease",
-                fontWeight: isActive ? 600 : 400,
-              }}
-            >
-              {g.short}
-            </button>
-          );
-        })}
-      </div>
+
     </nav>
   );
 }
