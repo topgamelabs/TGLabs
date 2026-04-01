@@ -38,32 +38,46 @@ export function Navbar({ currentGame, onSelect }: NavbarProps) {
         }}
       >
         <span style={{ color: "#e8e0ff" }}>T</span>
-        <span style={{ background: "linear-gradient(90deg,#c4a0ff,#5ab4ff)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+        <span
+          style={{
+            background: "linear-gradient(90deg,#c4a0ff,#5ab4ff)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
           GLabs
         </span>
       </div>
       <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-        {GAMES.map((g) => (
-          <button
-            key={g.id}
-            onClick={() => onSelect(g)}
-            style={{
-              background: "none",
-              border: "none",
-              fontFamily: "monospace",
-              fontSize: 10,
-              letterSpacing: 1,
-              textTransform: "uppercase",
-              color: currentGame?.id === g.id ? g.color : "#8878aa",
-              cursor: "pointer",
-              padding: "4px 8px",
-              borderRadius: 4,
-              transition: "color 0.2s",
-            }}
-          >
-            {g.short}
-          </button>
-        ))}
+        {GAMES.map((g) => {
+          const isActive = currentGame?.id === g.id;
+          return (
+            <button
+              key={g.id}
+              onClick={() => onSelect(g)}
+              /*
+               * P2-2: Active state → background pill + border in game color
+               */
+              style={{
+                background: isActive ? `${g.colorDim}` : "transparent",
+                border: isActive
+                  ? `1px solid ${g.color}55`
+                  : "1px solid transparent",
+                fontFamily: "monospace",
+                fontSize: 10,
+                letterSpacing: 1,
+                textTransform: "uppercase",
+                color: isActive ? g.color : "#8878aa",
+                cursor: "pointer",
+                padding: "4px 10px",
+                borderRadius: 20,
+                transition: "all 0.2s ease",
+              }}
+            >
+              {g.short}
+            </button>
+          );
+        })}
       </div>
     </nav>
   );

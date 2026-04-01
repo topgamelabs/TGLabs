@@ -1,8 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { GAMES } from "@/data/games";
 import type { Game } from "@/data/games";
+
+// Temporary: show only Tree of Savior M
+const VISIBLE_GAMES = GAMES.filter((g) => g.id === "tosm");
 import { Navbar } from "@/components/nav/Navbar";
 import { Hero } from "@/components/home/Hero";
 import { GamePage } from "@/components/game/GamePage";
@@ -37,11 +41,35 @@ export default function Home() {
 
       {/* CONTENT */}
       <div style={{ position: "relative", zIndex: 1 }}>
-        {!currentGame ? (
-          <Hero games={GAMES} onSelect={setCurrentGame} />
-        ) : (
-          <GamePage game={currentGame} onBack={() => setCurrentGame(null)} />
-        )}
+        {/*
+         * P2-3: framer-motion page transitions
+         */}
+        <AnimatePresence mode="wait">
+          {currentGame ? (
+            <motion.div
+              key={currentGame.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+            >
+              <GamePage
+                game={currentGame}
+                onBack={() => setCurrentGame(null)}
+              />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="home"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+            >
+              <Hero games={VISIBLE_GAMES} onSelect={setCurrentGame} />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* FOOTER */}
