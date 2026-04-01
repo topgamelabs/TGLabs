@@ -1,18 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GAMES } from "@/data/games";
 import type { Game } from "@/data/games";
 
-// Show all games with Coming Soon section for unreleased ones
-const VISIBLE_GAMES = GAMES;
 import { Navbar } from "@/components/nav/Navbar";
 import { Hero } from "@/components/home/Hero";
 import { GamePage } from "@/components/game/GamePage";
 
 export default function Home() {
   const [currentGame, setCurrentGame] = useState<Game | null>(null);
+
+  // Handle browser back button
+  useEffect(() => {
+    const handlePopState = () => {
+      // Browser back pressed - go to home
+      setCurrentGame(null);
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // Navigate to game page and add to history
+  const handleSelectGame = useCallback((game: Game) => {
+    setCurrentGame(game);
+    // Add to browser history so back button works
+    window.history.pushState({ gameId: game.id }, "");
+  }, []);
+
+  // Navigate back to home
+  const handleBack = useCallback(() => {
+    setCurrentGame(null);
+    // Go back in history (this will trigger popstate on next back press)
+    if (window.history.length > 1) {
+      window.history.back();
+    }
+  }, []);
 
   return (
     <div
@@ -37,13 +61,10 @@ export default function Home() {
       />
 
       {/* NAV */}
-      <Navbar currentGame={currentGame} onSelect={setCurrentGame} />
+      <Navbar currentGame={currentGame} onSelect={handleSelectGame} />
 
       {/* CONTENT */}
       <div style={{ position: "relative", zIndex: 1 }}>
-        {/*
-         * P2-3: framer-motion page transitions
-         */}
         <AnimatePresence mode="wait">
           {currentGame ? (
             <motion.div
@@ -55,7 +76,7 @@ export default function Home() {
             >
               <GamePage
                 game={currentGame}
-                onBack={() => setCurrentGame(null)}
+                onBack={handleBack}
               />
             </motion.div>
           ) : (
@@ -66,7 +87,7 @@ export default function Home() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
             >
-              <Hero games={VISIBLE_GAMES} onSelect={setCurrentGame} />
+              <Hero games={GAMES} onSelect={handleSelectGame} />
             </motion.div>
           )}
         </AnimatePresence>
