@@ -1,7 +1,18 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import fellowsData from "@/data/fellows-db.json";
+
+function useIsMobile(breakpoint = 640) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= breakpoint);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, [breakpoint]);
+  return isMobile;
+}
 
 type Fellow = typeof fellowsData[number];
 
@@ -448,6 +459,7 @@ function FellowCard({ fellow, onClick }: { fellow: Fellow; onClick: () => void }
 }
 
 export function FellowsPanel(): React.JSX.Element {
+  const isMobile = useIsMobile();
   const [search, setSearch] = useState("");
   const [elementFilter, setElementFilter] = useState("All");
   const [gradeFilter, setGradeFilter] = useState("All");
@@ -625,12 +637,12 @@ export function FellowsPanel(): React.JSX.Element {
           Showing {filtered.length} of {fellowsData.length} fellows
         </div>
 
-        {/* Grid */}
+        {/* Grid - responsive: 1 col on mobile, auto-fill on desktop */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
-            gap: 14,
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fill, minmax(160px, 1fr))",
+            gap: isMobile ? 10 : 14,
           }}
         >
           {filtered.map((f) => (
