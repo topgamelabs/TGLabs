@@ -229,6 +229,82 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
             }}
           />
         </div>
+
+        {/* Game Banner Visual */}
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            maxWidth: 700,
+            marginTop: 36,
+            borderRadius: 16,
+            overflow: "hidden",
+            border: "1px solid rgba(100,80,200,0.2)",
+            boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
+            aspectRatio: "16/9",
+            background: "#0c1020",
+          }}
+        >
+          <img
+            src="/games/tosm-banner.jpg"
+            alt="Tree of Savior M Banner"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+          {/* Overlay gradient at bottom */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: "50%",
+              background: "linear-gradient(to bottom, transparent, rgba(2,3,5,0.8))",
+              pointerEvents: "none",
+            }}
+          />
+          {/* Game title badge */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: 12,
+              left: 16,
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "Georgia, serif",
+                fontSize: 16,
+                fontWeight: 700,
+                color: "#e8e0ff",
+                textShadow: "0 2px 8px rgba(0,0,0,0.8)",
+              }}
+            >
+              Tree of Savior M
+            </span>
+            <span
+              style={{
+                fontFamily: "monospace",
+                fontSize: 10,
+                padding: "2px 8px",
+                borderRadius: 4,
+                background: "rgba(77,204,138,0.2)",
+                border: "1px solid rgba(77,204,138,0.4)",
+                color: "#4dcc8a",
+                letterSpacing: 1,
+              }}
+            >
+              v2.4.1
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* ── FEATURED CONTENT HUB ── */}
