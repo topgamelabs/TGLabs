@@ -675,57 +675,28 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
 
 
 
-        {/* ── GAME CARDS — Horizontal Scroll ── */}
+        {/* ── GAME CARD — ToS M Only ── */}
         <div
           style={{
             fontFamily: "monospace",
             fontSize: 10,
             letterSpacing: 4,
             color: "#3d3560",
-            marginBottom: 8,
+            marginBottom: 20,
             textTransform: "uppercase",
           }}
         >
-          // All Games //
+          // Tree of Savior M //
         </div>
-
-        {/* Scroll hint */}
         <div
           style={{
-            textAlign: "center",
-            fontSize: 10,
-            color: "#3d3560",
-            marginBottom: 8,
-            letterSpacing: 1,
-          }}
-        >
-          ← เลื่อนดูเกมอื่น →
-        </div>
-
-        <div
-          className="hero-cards-scroll"
-          style={{
-            display: "flex",
-            overflowX: "auto",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
             gap: 14,
-            paddingBottom: 10,
-            scrollSnapType: "x mandatory",
-            WebkitOverflowScrolling: "touch",
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
           }}
         >
-          {games.map((g) => (
-            <div
-              key={g.id}
-              style={{
-                width: "280px",
-                scrollSnapAlign: "start",
-                flexShrink: 0,
-              }}
-            >
-              <GameCard game={g} onClick={() => onSelect(g)} />
-            </div>
+          {games.slice(0, 1).map((g) => (
+            <GameCard key={g.id} game={g} onClick={() => onSelect(g)} />
           ))}
         </div>
       </div>
