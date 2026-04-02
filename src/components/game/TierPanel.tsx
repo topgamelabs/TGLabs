@@ -254,9 +254,9 @@ function FellowModal({ fellow, onClose }: { fellow: Fellow; onClose: () => void 
                   </div>
                 ))}
               </div>
-              {tl.notes && (
+              {(tl as any).notes && (
                 <p style={{ margin: "8px 0 0 0", fontFamily: "Sarabun, sans-serif", fontSize: 11, color: "#7a6a9a", lineHeight: 1.5, fontStyle: "italic" }}>
-                  💬 {tl.notes}
+                  💬 {(tl as any).notes}
                 </p>
               )}
             </div>
@@ -350,9 +350,9 @@ function KupoleModal({ kupole, onClose }: { kupole: Kupole; onClose: () => void 
                   </div>
                 ))}
               </div>
-              {tl.notes && (
+              {(tl as any).notes && (
                 <p style={{ margin: "8px 0 0 0", fontFamily: "Sarabun, sans-serif", fontSize: 11, color: "#7a6a9a", lineHeight: 1.5, fontStyle: "italic" }}>
-                  💬 {tl.notes}
+                  💬 {(tl as any).notes}
                 </p>
               )}
             </div>
