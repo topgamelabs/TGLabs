@@ -7,8 +7,8 @@
     "obtainFrom": "Gacha  (Limited Banner)",
     "rankBonus": "Critical Damage 5% + 2r%",
     "bondBonus": "Crit Resist 25 + 7r",
-    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
-    "activeSkill": "Master, It is not time to sleep! CD : 700s (Automatically use when player taking lethal damage) Protect you from lethal damage once. Grant 0.7s invicibility and instantly heal 75% of Max HP, then grant 60s buff that heal 0.5% every 2s. In PvP, this effect can only apply once. Invisibility time reduce to 0.14s",
+    "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
+    "activeSkill": "Master, It is not time to sleep! CD : 700s (ใช้อัตโนมัติเมื่อผู้เล่นกำลังจะตาย) ปกป้องจากความเสียหายครั้งฆาตรกรรมครั้งเดียว ให้ความไม่แน่นอน 0.7 วินาที และฮีล 75% ของ Max HP ทันที จากนั้นให้บัฟ 60 วินาที ที่ฮีล 0.5% ทุก 2 วินาที ใน PvP ผลนี้ใช้ได้ครั้งเดียว เวลา Invisibility ลดเหลือ 0.14 วินาที",
     "rankUnlock": [
       "CD 600s Heal 1% every 2s Invisible time 1s (0.20s in pvp)",
       "CD 500s Heal 1.5% every 2s Invisible time 1.3s (0.26s in pvp)",
@@ -24,7 +24,7 @@
       "partyBuff": "C",
       "overall": "SS"
     },
-    "notes": "Second life = the most broken thing in PvP. Think of you have another 50% of Max HP reserve for you.\nFor PvE, she also save your resurrection crystal for squishy class like Archer, Scout or Musketeer to the point that \"Must Have\" this unit before even consider to play."
+    "notes": "ชีวิตสำรอง = สิ่งที่โหดที่สุดใน PvP คิดซะว่าคุณมี HP สำรองอีก 50% ของ Max HP นั่นแหละ\nสำหรับ PvE เธอก็ช่วยประหยัด resurrection crystal ให้คลาสที่ไม่ทนทานอย่าง Archer, Scout หรือ Musketeer ได้ด้วย จนกลายเป็นว่า \"จำเป็นต้องมี\" unit นี้ก่อนจะเริ่มเล่น"
   },
   {
     "id": "kp002",
@@ -34,8 +34,8 @@
     "obtainFrom": "Gacha  (Limited Banner)",
     "rankBonus": "HP Recovery 12% + 5r%",
     "bondBonus": "Defense 17 + 5r",
-    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
-    "activeSkill": "Fun Lunch Time! CD : 71s Create pathway forward for 10s. Standing in pathway grant debuff immune and increase movement speed by 1. Also +30% evasion fellow in pathway also get +15% evasion [Additional Effect] Attacking while on pathway will trigger kupole's coordinate attack. Dealing 22% damage.This effect can occur once per second",
+    "passiveSkill": "เพิ่ม Evasion - Effect ช่องแรก: เพิ่มอัตรา Evasion 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
+    "activeSkill": "Fun Lunch Time! CD : 71s สร้างเส้นทางไปข้างหน้า 10 วินาที ยืนอยู่ในเส้นทางจะได้รับภูมิคุ้มกันต่อ debuff และเพิ่มความเร็วเคลื่อนที่ 1 นอกจากนี้ยังได้ +30% evasion เพื่อนในเส้นทางก็ได้ +15% evasion [Effect เพิ่มเติม] โจมตีขณะอยู่ในเส้นทางจะเรียก coordinate attack ของ kupole ออกมา สร้างความเสียหาย 22% ผลนี้เกิดได้วินาทีละครั้ง",
     "rankUnlock": [
       "CD: 65s Coordinate Attack Factor : 32%",
       "CD: 59s Coordinate Attack Factor : 42%",
@@ -51,7 +51,7 @@
       "partyBuff": "C",
       "overall": "B"
     },
-    "notes": "Niche PvP unit for evasion team & some use for debuff prevention & free damage in PvE."
+    "notes": "PvP unit เฉพาะทางสำหรับทีม evasion และมีประโยชน์บ้างสำหรับป้องกัน debuff กับ damage ฟรีใน PvE"
   },
   {
     "id": "kp003",
@@ -61,7 +61,7 @@
     "obtainFrom": "Gacha (Limited Banner)",
     "rankBonus": "Critical Damage  5% +2r%",
     "bondBonus": "Crit Rate 20 + 13r",
-    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Aqua Wind CD : 100s Creates a whirlpool at the enemy location that reduces the enemy's movement speed by 70%, and after 2 seconds strikes enemies within the range with a whirlwind, dealing ice damage equal to 443% of the owner's attack power. Targets damaged by this skill receive 12% more damage from 'master' and 'master's accompanying fellows' for 10 seconds.",
     "rankUnlock": [
       "Damage: 520% Damage Increase Debuff: 15%",
@@ -88,7 +88,7 @@
     "obtainFrom": "Gacha (Limited Banner)",
     "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
     "bondBonus": "Crit Damage 11 + 6r",
-    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Block - Effect ช่องแรก: เพิ่มอัตรา Block 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Merry Christmas! CD : 90s Throw Christmas presents to master. Increase attack,defense, attack speed, crit rate and crit damage by 12.25% to master and all fellows for 12s. Additionally, the Owner's damage to Plant-Type enemies is increased by 30% for 10 seconds.",
     "rankUnlock": [
       "CD : 85s",
@@ -115,7 +115,7 @@
     "obtainFrom": "Gacha (Limited Banner)",
     "rankBonus": "Critical Damage  5% +2r%",
     "bondBonus": "Hit Rate 17 + 4r",
-    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Pouring Apocalypse CD: 70s Cut the reality with overhelming power. Create dimension crack in line-shape that will rain down thunder of apocalypse. Dealing 1165% Dark damage. (50% reduce damage to Player and Fellow.) Cause Enemy hit by Dark Thunder in 'Apocalypse' state for 10s. Increase damage received from player by 8% and ignore 9% defense.",
     "rankUnlock": [
       "Damage: 1332% Damage Increase Debuff: +10% Defense Ignore: -10%",
@@ -142,7 +142,7 @@
     "obtainFrom": "Gacha  (Limited Banner)",
     "rankBonus": "HP Recovery 12% + 5r%",
     "bondBonus": "Penetration 14 +4r",
-    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "You there! Become candy! CD: 65s Pour hot candy to attack all enemies in area. Dealing 142% Fire damage every second. Enemy hit will become a candy, stun for 2s, also inflicted 'Burn' and debuff that decrease block and evasion rate by 13% for 10s 'Burn' from this skill dealing 20% of base skill damage per second for 10s. Also reduce attack power of enemy burned by 20% Additionally, the Owner's damage to Fire Property enemies is increased by 30% for 10 seconds.",
     "rankUnlock": [
       "Damage : 179%  Block & Evasion Debuff : -15%",
@@ -169,7 +169,7 @@
     "obtainFrom": "Gacha  (Limited Banner)",
     "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
     "bondBonus": "Crit Damage 11 + 6r",
-    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Sakura Wind CD: 60s Bless the weather with cherry blossom's petal. Grant master and all of their fellows \"Sakura Blessing\" for 10s. [Sakura Blessing] - Increase hit rate by 13% , Penetration Rate by 9%. - Damage that scores 'Clean Hit/Pierce' increase by 3% - Heal 2.6% of Max HP and 10% Max SP every second - Reduce debuff duration received by 50% (Fellow only got halved effect) Additionally, the Owner's damage to Earth Property enemies is increased by 30% for 10 seconds.",
     "rankUnlock": [
       "Hit Rate +15% Penetration +10% Clean Hit / Pierce Damage +5% Heal 3.0% every second",
@@ -196,7 +196,7 @@
     "obtainFrom": "Gacha  (Limited Banner)",
     "rankBonus": "Critical Damage  5% +2r%",
     "bondBonus": "Attack 17 + 4r",
-    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Help me! Popolion! CD: 480s Ruta bring the crayon-drawing Popolion to life to help her in battle Passive : Once every 5 second, when the owner attacks, a 'Very Strong Popolion' appeared for 4s. It will go to enemy and attack, dealing 60% damage. Enemy attacked by the popolion will be guity by the cuteness of Ruta and then 'Pretend to be sick' for 12s, increase damage received from owner by 0.045% stack up to 50 times. - At 10-19 stacks, increase damage received from owner increase additionally +0.01% per stack - At 20-29 stacks, increase damage received from owner increase additionally +0.04% per stack - At 30-39 stacks, increase damage received from owner increase additionally +0.09% per stack - At 40-49 stacks, increase damage received from owner increase additionally +0.16% per stack - At 50 stacks, the debuff becomes 'Pretend to be very sick' that greatly increase damage received from owner for 60s. While debuff is active, cannot stack 'Pretend to be sick'   Active: If the owner taking lethal damage, this skill activated automatically. A large popolion appeared to roaring. Nullify that damage and grant 1.5s invicibility to the owner. Then grant 9s buff that increase attack power by 10% and debuff all enemies in 6m radius with 'Pretend to be weak' for 9s. Decrease damage deal to owner by 20% (in PVP, invisibility time changed to 0.5s)",
     "rankUnlock": [
       "CD : 420s 'Pretend to be sick' damage increase per stack : 0.075% Attack Power buff & 'Pretend to be weak' debuff duration : 10s",
@@ -223,7 +223,7 @@
     "obtainFrom": "Gacha  (Limited Banner)",
     "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
     "bondBonus": "Crit Damage 11 + 6r",
-    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "One! Two! Cheese! CD: 100s Come and enjoy festival with Laima ! Apply following buffs depend on number of fellows in your team  [0 Fellow in team - Enjoy Festival Food] For 100s, increase your attack and defense by 5%  [1-2 fellows - Try making mochi] Laima (intend to) mistakingly smash mochi-hammer to nearby enemies. Dealing 1018% damage. Enemy hit will be debuff for 7.5s, increase damage taken from master by 45%  [3 or more fellows - Enjoy memorable firework together !] For 100s, Increase movement speed of everyone in team by 5 and reduce damage taken by 11%  All effects cannot stack.",
     "rankUnlock": [
       "[Food Buff] 6% [Mochi Hammer Damage] : 1118% [Memorable Firework Movement Speed Buff] : +6",
@@ -250,7 +250,7 @@
     "obtainFrom": "Gacha  (Limited Banner)",
     "rankBonus": "Critical Damage  5% +2r%",
     "bondBonus": "Attack 17 + 4r",
-    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Bastard Extermination Bombing Stance CD: 70s Enter stance for 30s. During this stance, increase damage to normal/elite monster by 30% .When owner using any skill, this unit will shoot carrot missile to enemy. (Maximum 30 times) [Carrot Missile] Dealing 182% damage in 3m radius. Inflict 1 stack of 'Rabbit Missile - Armor Break' to enemy hit. Inflict 'Rabbit Missile - Armor Break' debuff for 20s, damage taken from owner will ignore 0.8% defense. Stack up to 3 times (When stack is at maximum, duration is not refreshed when getting hit by another missile). Every 6th missile will be powered up to Giant Carrot Rocket, dealing 309% damage in 5m radius and inflict 3 stacks of same debuff.  Unfortunately, Humanoid enemies are considered less bastard than others. So all missile damage to humanoid type will be reduced by 90%",
     "rankUnlock": [
       "[Armor Break] Maximum stack: 5 Missile Damage : 214% Rocket Damage : 342%",
@@ -277,7 +277,7 @@
     "obtainFrom": "Gacha  (Limited Banner)",
     "rankBonus": "Critical Damage  5% +2r%",
     "bondBonus": "Hit Rate 17 + 4r",
-    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Nice to meet you! Take care! CD: 70s Base on 'Precious Bond' stacks, grant owner 'New Bond' effect for 10s. Increase damage by 20%.  Passive : Every 45 enemies defeated within buff period in Dungeon content, grant 1 'Precious Bond' stack (Maximum 9 stacks). - Increase movement speed by 3% + 3% per stack - SP natural recovery by 10 + 10 per stack. - Increase 'New Bond' duration in next time use by 5s.",
     "rankUnlock": [
       "Number of enemies require per stack : 40",
@@ -304,7 +304,7 @@
     "obtainFrom": "Gacha  (Limited Banner)",
     "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
     "bondBonus": "Crit Rate 20 + 13r",
-    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Blessing to you and my future CD: 90s Grant blessing to all allies. The more guests (any unit) inside area, more duration increase.   - Duration 10s. +5s per every 11 ally unit. Maximum is 30s - Heal player 2% HP and 3% SP per second. Heal all of their fellows 2% HP per second.  - Increase damage that owner and all of their fellows attack by 3% per 7 ally unit. (Maximum 90% increase)",
     "rankUnlock": [
       "Duration +5 per 10 ally unit.  Damage +3% per 6 ally unit",
@@ -331,7 +331,7 @@
     "obtainFrom": "Gacha  (Limited Banner)",
     "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
     "bondBonus": "Attack 17 + 4r",
-    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Once upon the time, there was a witch lived in wood... CD: 60s Vaivora bring fairytales to become reality. Grant buff to owner for 15 seconds. More fairytale stories unfold on more rank upgrade.  [Rank 1 - \"There was path lied with sweets\"]  Recover 10% SP per second.",
     "rankUnlock": [
       "\"There was a house made entirely from candy\"  Recover 5% HP per second",
@@ -358,7 +358,7 @@
     "obtainFrom": "Gacha  (Limited Banner)",
     "rankBonus": "Critical Damage  5% +2r%",
     "bondBonus": "Crit Damage 11 + 4r",
-    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Exciting Grading Time CD: 195s Buff all fellows for 18s. Start to grading their score base on their performance.  [Grading] - When fellow using skill, gain 1 grade point (Demigod fellows give 2 points instead) - Heal fellows 1% HP for every 1 point gained. [Scoring] - 10 Points : Increase fellow damage by 25%. And when score increase, send small kupoles fly toward enemy dealing 50% damage. This damage ignore 30% Def - 20 Points : Extend buff duration by 5s. Small Kupole SFR become 80% - 35 Points : All fellows decrease damage taken by 15%. Small Kupole SFR become 90% - 50 Points : Extend buff duration by 5s. Small Kupole SFR become 110% - 75 Points : Increase damage/reduce damage taken buff doubled. Small Kupole SFR become 170% - 100 Points : Extend buff duration by 5s. Release 5 Small Kupoles at once.  Once the score reach 100 it can no longer accumulate any grade points. But fellow damage/DR buff persists until duration is over.",
     "rankUnlock": [
       "Buff duration : 20s CD : 175s",
@@ -385,7 +385,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Chance to negate Mental debuff 4% + 1%",
     "bondBonus": "Defense 17  +5r",
-    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Block - Effect ช่องแรก: เพิ่มอัตรา Block 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Barrier of Rejection CD : 50s Summon a barrier that block all incoming projectiles in front of master for 4s.   Every 2s, the wall pulse energy wave forward. Dealing 108% damage and knock enemy up to the air (Only knock up once per cast). Enemy hit by this attack also inflict with debuff for 10s. Reduce block rate by 20% and damage received by owner attack will ignore 20% of owner's defense.",
     "rankUnlock": [
       "Barrier Duration : 5s  Pulse Wave damage : 157%",
@@ -412,7 +412,7 @@
     "obtainFrom": "Story Quest (Episode 21)",
     "rankBonus": "Chance to negate Physical debuff 4% + 1%",
     "bondBonus": "Endurance 17 +5r",
-    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Fateful Reunion CD: 700s (Automatically use when player taking lethal damage)  Protect you from lethal damage once. Grant 2s invicibility and instantly heal 50% of Max HP,SP then grant 10s buff that increase movement speed by 20%  In PvP, this effect can only apply once. Invisibility time reduce to 0.5s",
     "rankUnlock": [
       "CD : 600s PvE Invisibility time : 2.5s",
@@ -439,7 +439,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural SP Recovery  10 + 4r",
     "bondBonus": "Penetration 14 +4r",
-    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Sadistic Predation CD : 45s Use chain and hounds to track enemy's soul. Passive: Every 3s, Kartas will release 4 chains to attack nearby enemies in 6m radius. Chain dealing 120% Dark damage + 30% for each chain count that more than 2 on the same target (Up to 5). Each chain reduce 15 enemy's SP and restore 7 SP to owner. Damage is tripled vs. Normal/Elite monster. Active: If chain attack boss monster or Holy enemy fellow, also slow enemy on hit 99% for 2s and command Hounds to crush enemy's soul. Dealing 370% damage and grant owner 30% of Max SP. Enemy hit by the hound increase damage taken from owner  by 20% for 5s",
     "rankUnlock": [
       "Number of Chains attack : 5 Hound Damage : 415%",
@@ -466,7 +466,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural HP Recovery  12% + 5r%",
     "bondBonus": "Penetration 14 +4r",
-    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Evasion - Effect ช่องแรก: เพิ่มอัตรา Evasion 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Joy of Pain CD: 70s  Curse the owner for 10s, Lose 5% of Max HP per second (This damage will not kill the user). But the pain will bring joy, make their damage increase by 5% stack up every second for 15s (Maximum is 75%). When this duration is over, heal 5% of Max HP",
     "rankUnlock": [
       "HP Loss : 4.75% HP Heal : 10%",
@@ -493,7 +493,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural SP Recovery  10 + 4r",
     "bondBonus": "Crit Rate 20 +4r",
-    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "In The Arm of Goddess CD : 70s Goddess appear to cover a defeated soul. Grant 30s buff. - When your fellows is defeated, grant a 'Comrade's Protection' stack that increase defense by 3% - When you defeat humanoid enemy or enemy's fellow, grant a 'Spirit of Competition' that increase attack by 2% 'Comrade's Protection' and 'Spirit of Competition' stack last for 10 seconds. Both share the same maximum of 5 stacks. When you gain either stack after having 5 stacks, 1 stack from other buff is replaced.",
     "rankUnlock": [
       "[Comrade's Protection] Def Buff : 4% [Spirit of Competition] Atk Buff : 2.5%",
@@ -520,7 +520,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural HP Recovery  12% + 5r%",
     "bondBonus": "Defense 17 +5r",
-    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Block - Effect ช่องแรก: เพิ่มอัตรา Block 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Protection from The Earth CD: 75s (Automatically used when taking damage) When taking damage, decrease damage received by 95% for 4 seconds or until 10 hits received (Including damage that activate this skill). Damage from boss attack count as 3 hits. Each time succesfully block attack with this effect, inflict 92% Earth damage to attacker. If hit count reach maximum before skill duration ends, heal 0.5% of Max HP per second.",
     "rankUnlock": [
       "Duration : 5s Damage : 125% Heal : 1% per second CD : 70s",
@@ -547,7 +547,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural HP Recovery  12% + 5r%",
     "bondBonus": "Crit Rate 14 +4r",
-    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Block - Effect ช่องแรก: เพิ่มอัตรา Block 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Record Reconstruction CD : 65s (Automatically used when receiving any debuff) Cleanse all debuffs and enter 'Record Reconstuction' state for 10s. While this state is active, you immune to all debuffs (Except CC and Dungeon specific debuffs) For each debuff cleanse or prevented by this effect, grant owner 1 'Hero's Record' stack for 5s (Max 10 stacks). Increase damage by 2% and reduce damage taken by 3% per stack. For all fellows, they enter 'Record Reconstuction' state for 5s without gaining any benefit from 'Hero's Record'",
     "rankUnlock": [
       "CD 60s",
@@ -574,7 +574,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural HP Recovery  12% + 5r%",
     "bondBonus": "Block 17 +5r",
-    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Block - Effect ช่องแรก: เพิ่มอัตรา Block 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Space Hardening CD: 60s Protect the owner with 'Hardening Space' for 10s. Increase owner block rate by 12% and grant knockback/knockdown immune. Also deal 19% damage every 0.5 second in 2m radius around the owner. Grant 10s buff to all fellows, provide knockback/knockdown immune. Additionally, the Owner's damage to Mutant-Type enemies is increased by 30% for 10 seconds.",
     "rankUnlock": [
       "Block Rate increase : 15% Damage : 23%",
@@ -601,7 +601,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural SP Recovery  10 + 4r",
     "bondBonus": "Evasion 14 +4r",
-    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Evasion - Effect ช่องแรก: เพิ่มอัตรา Evasion 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "A Killer Solution CD : 60s Gather enemy infront of you. Binding them and then slam with arcana cards. Dealing 495% damage. Enemy hit will be inflicted with 'Madness' debuff for 10s. Reduce movement speed by 50% and evasion rate by 13%. While Humanoid enemy type in 'Madness' state dealing damage with Basic attack or Skill attack, they received 4% of damage dealt. (50% effect on Fellow & Demigod unit) Additionally, the Owner's damage to Insect-Type enemies is increased by 30% for 10 seconds.",
     "rankUnlock": [
       "Damage : 579% Evasion debuff : 15% Madness self damage : 5%",
@@ -628,7 +628,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural SP Recovery  10 + 4r",
     "bondBonus": "Evasion 14 +4r",
-    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Evasion - Effect ช่องแรก: เพิ่มอัตรา Evasion 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "The fragile beautiful dream CD : 60s Summon beautiful area with dream energy. Heal owner and owner's fellow 4% of Max HP per second for 5s. After duration is over, the dream area collapse and grant 'Painful Dream' to enemies inside area. Dealing 50% damage per second for 10s and reduce hit rate by 6% Additionally, the Owner's damage to Dark Property enemies is increased by 30% for 10 seconds.",
     "rankUnlock": [
       "Heal 5%  Hit Rate Debuff 7.5%",
@@ -655,7 +655,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural SP Recovery  10 + 4r",
     "bondBonus": "Penetration 14 +4r",
-    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Evasion - Effect ช่องแรก: เพิ่มอัตรา Evasion 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Soul Hunting CD: 60s Rushes at up to 10 enemies in turn to hunt their souls, inflicting 548% Lightning Damage. This damage increase by 50% to boss monster 'Stun' enemy hit for 2 seconds, and have their Damage Reduced by 6% for 10 seconds. Attack Speed and Movement Speed are reduced by 30%. Additionally, the Owner's damage to Ice Property enemies is increased by 30% for 10 seconds.",
     "rankUnlock": [
       "Damage : 632%  Damage reduction : 7.5%",
@@ -682,7 +682,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
     "bondBonus": "Crit Resist 25 + 7r",
-    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Inevitable Fate CD : 60s Chain all enemies in 5m radius around her. Dealing 552% Light damage and lock them in the spot for 3.5s Also grant 10s debuff that decrease evasion rate by 12% and take 30% more damage If it is Thunder-Element",
     "rankUnlock": [
       "Damage: 628% Evasion Rate Debuff: 15%",
@@ -709,7 +709,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural SP Recovery  10 + 4r",
     "bondBonus": "Attack  17 + 5r",
-    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Block - Effect ช่องแรก: เพิ่มอัตรา Block 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Ghost Bullet CD : 65s Summons 8 ghost bullets to bombard nearby enemies. Inflicts dark property damage equal to 58% of owner's attack power in a 1m range per bombardment, and inflicts a Fear debuff that lasts for 8 seconds when hit. Additionally, the Owner's Damage to Devil-Type enemies is increased by 30% for 10 seconds.",
     "rankUnlock": [
       "Damage: 72%",
@@ -736,7 +736,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural SP Recovery  10 + 4r",
     "bondBonus": "Hit Rate 17 + 4r",
-    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Trail of the Beast CD : 60s Grant master 'Trail of the Beast' for 10s. Running will leave a footprint, and also attacking enemy has 40% chance to leave footpring on that enemy for 1 second. Enemy inside footprint area got swipe rapidly. Dealing 37% Earth damage  twice per second. Under 'Trail of the Beast', Damage to Beast-type enemies is increased by 30%",
     "rankUnlock": [
       "Damage: 42%",
@@ -763,7 +763,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Critical Damage 5% + 2r%",
     "bondBonus": "Block 17 + 5r",
-    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Warcry CD : 40s Roar to causing shockwave from master, attacking all enemies in 4m range. Dealing 427% damage. Stun enemy for 2s and grant 'Uplift' for 10s [Uplift] +1 movement speed and knockback immune +10% defense ignore",
     "rankUnlock": [
       "Damage: 488%",
@@ -790,7 +790,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural HP Recovery 12% + 5r%",
     "bondBonus": "Crit Resist 25 + 7r",
-    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Evasion - Effect ช่องแรก: เพิ่มอัตรา Evasion 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Nourishing Aura CD : 180s (For auto battle, automatically uses when HP below 80%) Emit aura around master in 4m radius for 60s. Grant 'Recovery Aura' to master and allies inside the aura area every 2s. [Recovery Aura] - Heal 0.5% HP to master. If HP is more than 90%, heal SP instead - For ally other than master, grant 2% defense buff for 5s. Stack up to 25 stacks.",
     "rankUnlock": [
       "Heal 1% every 2s",
@@ -817,7 +817,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
     "bondBonus": "Defense  17 +5r",
-    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Black Night Fog CD : 90s Emitting night mist in 5m radius around yourself for 10s. Dealing 89% Dark damage per second Mist increase ally's movement speed by 50% and reduce enemy block rate by 26%",
     "rankUnlock": [
       "Damage : 100% block rate reduction : 30%",
@@ -844,7 +844,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Non Combat SP Recovery 25 + 10r",
     "bondBonus": "Attack 17 +5r",
-    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Bloody Wave CD : 50s Cover player with thorn of blood, then explode it. Dealing 354% damage to all enemy around player and cause 'bleeding' to all enemy hit for 10s Also buff player for 20s, increase penetration rate by 3.5%",
     "rankUnlock": [
       "Damage : 384% Buff : 7%",
@@ -871,7 +871,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Natural HP Recovery 12% + 5r%",
     "bondBonus": "Evasion 14 +4r",
-    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Wheel of Fate CD : 150s Summon 1-3 Wheel of Fate in random position around yourself last for 3s. Each wheel grant you random buff as follows: - Heal 1% HP per second - Heal 1% SP per second - Increase movement speed",
     "rankUnlock": [
       "CD : 140s",
@@ -898,7 +898,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "SP Recovery 3 + 3r",
     "bondBonus": "Crit Rate 20 + 13r",
-    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Block - Effect ช่องแรก: เพิ่มอัตรา Block 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Aukuras CD : 120s Create Flame Purification Area in 5m radius around yourself for 10s. Dealing 50% damage per second to all enemy inside area and grant debuff to them, which increase damage received by 30% from owner Debuff persist until area is gone",
     "rankUnlock": [
       "Damage : 57% per second",
@@ -925,7 +925,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Critical Damage 5 + 2r%",
     "bondBonus": "Penetration 14 +4r",
-    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Block - Effect ช่องแรก: เพิ่มอัตรา Block 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Daylight CD : 120s Create Daylight beam focus in 3m radius that become narrower as the time passes, to minimum 0.3m radius for 10s. Dealing 75% Holy damage per second. Increase this skill damage by 10% in each second pass. After Daylight is over, emit 5m radius buff around attack area. Increase damage to all allies by 3% for 10s",
     "rankUnlock": [
       "Damage : 80% Buff : 6%",
@@ -952,7 +952,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "HP Recovery 12% + 5r%",
     "bondBonus": "Hit Rate 14 + 4r",
-    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Evasion - Effect ช่องแรก: เพิ่มอัตรา Evasion 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Nectar CD : 75s Create honey pool at your position in 5m radius for 10s. Healing all allies inside 5% of Max HP per second. Also generate Honey Fruit at the center of area. Restore 15% HP to who eat it.",
     "rankUnlock": [
       "CD 70s",
@@ -979,7 +979,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "SP Recovery 3 + 3r",
     "bondBonus": "Block 14 +4r",
-    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Sea of Tranquility CD : 90s (Automatically use when player is affected by CC status) Cleanse all status effects. Then grant yourself 7.5s buff that immune to all status effects.",
     "rankUnlock": [
       "CD 84s",
@@ -1006,7 +1006,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "Non-Combat SP Recovery 15",
     "bondBonus": "Crit Damage 11",
-    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Block - Effect ช่องแรก: เพิ่มอัตรา Block 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Traveler's Shelter CD : 100s Create Midnight Area at your position for 10s. Heal 1.2% HP and SP to all allies inside area per second",
     "rankUnlock": [
       "Heal 2.4% HP and SP per second",
@@ -1033,7 +1033,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
     "bondBonus": "Attack 17 +5r",
-    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Block - Effect ช่องแรก: เพิ่มอัตรา Block 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Dark Lightning CD : 60s Target maximum 5 enemies in 8m radius around you. Attack them with Dark Lightning, dealing 394% Dark damage. Also grant them 15s 'Dark Lightning - Curse' debuff, reduce attack by 3%",
     "rankUnlock": [
       "Damage : 424% Debuff : 6%",
@@ -1060,7 +1060,7 @@
     "obtainFrom": "Gacha",
     "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
     "bondBonus": "Defense 17 + 5r",
-    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Blade Wind Storm CD : 90s Create whirlwind of blades for 15s. Dealing 88% damage per second and grant them 6s debuff that increase damage received by 2%",
     "rankUnlock": [
       "Damage : 100% Debuff : 4%",
@@ -1087,7 +1087,7 @@
     "obtainFrom": "Package",
     "rankBonus": "HP Recovery 12%",
     "bondBonus": "Evasion 14 +4r",
-    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Fate CD : 100s Channel beam forward attacking in 5x2.5m area for 4.5s. Dealing 50% damage per second.  Grant 30s buff to player that increase damage by 10% You will be slowed by 25% while attacking with this skill. Can moving but cannot changing direction",
     "rankUnlock": [
       "Damage :61%",
@@ -1114,7 +1114,7 @@
     "obtainFrom": "Package",
     "rankBonus": "SP recovery 3",
     "bondBonus": "Block 14 +4r",
-    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "passiveSkill": "เพิ่ม Evasion - Effect ช่องแรก: เพิ่มอัตรา Evasion 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
     "activeSkill": "Sea Blessing CD : 150s Instantly heal player HP 50% of max hp, and grant 20s buff that can immune to debuff 1 time. Automatically used when HP fall below 80% when using auto battle",
     "rankUnlock": [
       "Immune Debuff 2 time(s)",

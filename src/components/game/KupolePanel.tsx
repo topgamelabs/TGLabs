@@ -530,22 +530,7 @@ export function KupolePanel(): React.JSX.Element {
   const [sortBy, setSortBy] = useState("tier-desc");
   const [selectedKupole, setSelectedKupole] = useState<Kupole | null>(null);
 
-  // Handle hardware back button when modal is open
-  useEffect(() => {
-    if (!selectedKupole) return;
-
-    // Push a history entry so back button can close modal instead of navigating away
-    window.history.pushState({ modal: "kupole" }, "");
-
-    const handlePopState = () => {
-      setSelectedKupole(null);
-    };
-
-    window.addEventListener("popstate", handlePopState);
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, [selectedKupole]);
+  // NOTE: Hardware back button on mobile closes modal via page.tsx handler
 
   const filtered = useMemo(() => {
     let list = [...kupoleData] as Kupole[];

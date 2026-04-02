@@ -467,21 +467,7 @@ export function FellowsPanel(): React.JSX.Element {
   const [selectedFellow, setSelectedFellow] = useState<Fellow | null>(null);
 
   // Handle hardware back button when modal is open
-  useEffect(() => {
-    if (!selectedFellow) return;
-
-    // Push a history entry so back button can close modal instead of navigating away
-    window.history.pushState({ modal: "fellow" }, "");
-
-    const handlePopState = () => {
-      setSelectedFellow(null);
-    };
-
-    window.addEventListener("popstate", handlePopState);
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, [selectedFellow]);
+  // NOTE: Hardware back button on mobile closes modal via page.tsx handler
 
   const filtered = useMemo(() => {
     let list = [...fellowsData] as Fellow[];
