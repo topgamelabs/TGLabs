@@ -12,17 +12,21 @@ type Kupole = typeof kupoleData[number];
 // ─── Shared color constants ──────────────────────────────────────────────────
 
 const TIER_COLORS: Record<string, string> = {
+  PVP: "#c026d3",
   S: "#ff4757",
   A: "#ffd43b",
   B: "#4dcc8a",
   C: "#74c0fc",
+  Junk: "#868e96",
 };
 
 const TIER_BG: Record<string, string> = {
+  PVP: "rgba(192,38,211,0.15)",
   S: "rgba(255,71,87,0.15)",
   A: "rgba(255,212,59,0.15)",
   B: "rgba(77,204,138,0.15)",
   C: "rgba(116,192,252,0.15)",
+  Junk: "rgba(134,142,150,0.10)",
 };
 
 const ELEMENT_COLORS: Record<string, string> = {
@@ -55,17 +59,27 @@ const TYPE_COLORS: Record<string, string> = {
   Demon: "#9d6fff",
 };
 
-// ─── Tier order (only S, A, B, C) ────────────────────────────────────────────
+// ─── Tier order (PVP, S, A, B, C, Junk) ─────────────────────────────────────
 
-const TIER_LIST = ["S", "A", "B", "C"];
+const TIER_LIST = ["PVP", "S", "A", "B", "C", "Junk"];
 
 function getTierKey(tier: string): string {
-  // Normalize any tier name to S/A/B/C
-  const upper = tier?.toUpperCase();
+  // Normalize any tier name to S/A/B/C/Junk
+  const upper = tier?.toUpperCase().split(" ")[0].trim() ?? "";
   if (upper === "S+" || upper === "SS" || upper === "SS+" || upper === "OP") return "S";
   if (upper === "A+" || upper === "A") return "A";
   if (upper === "B+" || upper === "B") return "B";
-  return "C";
+  if (upper === "C" || upper === "C+") return "C";
+  // D, F, or anything unrecognized → Junk
+  return "Junk";
+}
+
+// ─── PVP detection for Kupoles ──────────────────────────────────────────────
+
+function isKupolePVP(kupole: Kupole): boolean {
+  const overall = kupole.tierlist?.overall ?? "";
+  // PVP kupoles have an overall tier but do NOT have "(PVE)" in it
+  return overall.length > 0 && !overall.includes("PVE");
 }
 
 // ─── Skill Row (reused in modals) ─────────────────────────────────────────────
@@ -440,7 +454,10 @@ function KupoleMiniCard({ kupole, onClick }: { kupole: Kupole; onClick: () => vo
 function SoulTideTierRow({ tier, chars }: { tier: string; chars: React.ReactNode[] }) {
   if (chars.length === 0) return null;
   const color = TIER_COLORS[tier] ?? "#868e96";
-  const bg = TIER_BG[tier] ?? "rgba(100,100,100,0.1)";
+  const bg = TIER_BG[tier] ?? "rgba(100,100,100,0.10)";
+
+  const isPVP = tier === "PVP";
+  const isJunk = tier === "Junk";
 
   return (
     <div style={{
@@ -450,31 +467,43 @@ function SoulTideTierRow({ tier, chars }: { tier: string; chars: React.ReactNode
       marginBottom: 12,
       background: bg,
       borderRadius: 10,
-      border: `1px solid ${color}33`,
+      border: `1px solid ${color}33${isPVP ? " #ffd43b44" : ""}`,
       overflow: "hidden",
+      boxShadow: isPVP ? `0 0 16px rgba(192,38,211,0.15), inset 0 0 20px rgba(255,212,59,0.03)` : undefined,
     }}>
       {/* Tier label on the left */}
       <div style={{
-        width: 36,
-        minWidth: 36,
+        width: 44,
+        minWidth: 44,
         height: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: color,
+        background: isPVP
+          ? "linear-gradient(135deg, #7c3aed 0%, #c026d3 50%, #ffd43b 100%)"
+          : isJunk
+          ? "#495057"
+          : color,
         padding: "8px 0",
         gap: 2,
       }}>
         <span style={{
           fontFamily: "Georgia, serif",
-          fontSize: 18,
+          fontSize: isPVP ? 11 : 18,
           fontWeight: 900,
           color: "#fff",
           lineHeight: 1,
+          letterSpacing: isPVP ? 0.5 : undefined,
+          textShadow: isPVP ? "0 0 8px rgba(255,255,255,0.5)" : undefined,
         }}>
           {tier}
         </span>
+        {isPVP && (
+          <span style={{ fontSize: 8, color: "#ffd43b", fontFamily: "monospace", fontWeight: 700 }}>
+            ⚔ PVP
+          </span>
+        )}
       </div>
 
       {/* Divider */}
@@ -505,32 +534,47 @@ export function TierPanel(): React.JSX.Element {
   const [selectedFellow, setSelectedFellow] = useState<Fellow | null>(null);
   const [selectedKupole, setSelectedKupole] = useState<Kupole | null>(null);
 
-  // Group fellows by normalized tier (S/A/B/C only)
+  // Group fellows by normalized tier (PVP, S, A, B, C, Junk)
+  // Fellows don't have a PVP designation → they go S/A/B/C or Junk
   const fellowsByTier = useMemo(() => {
     const map: Record<string, Fellow[]> = {
-      S: [], A: [], B: [], C: [],
+      PVP: [], S: [], A: [], B: [], C: [], Junk: [],
     };
     for (const f of fellowsData as Fellow[]) {
-      const tier = getTierKey(f.tierlist?.overall ?? "C");
-      if (!map[tier]) map[tier] = [];
-      map[tier].push(f);
+      if (!f.tierlist || !f.tierlist.overall) {
+        map.Junk.push(f);
+      } else {
+        const tier = getTierKey(f.tierlist.overall);
+        if (!map[tier]) map[tier] = [];
+        map[tier].push(f);
+      }
     }
     // Sort within each tier by rarity desc then name asc
     for (const t of Object.keys(map)) {
-      map[t].sort((a, b) => b.rarity - a.rarity || a.name.localeCompare(b.name));
+      map[t].sort((a, b) => (b.rarity ?? 0) - (a.rarity ?? 0) || a.name.localeCompare(b.name));
     }
     return map;
   }, []);
 
-  // Group kupoles by normalized tier (S/A/B/C only)
+  // Group kupoles by normalized tier (PVP, S, A, B, C, Junk)
+  // PVP kupoles = those with an overall tier that does NOT contain "(PVE)"
   const kupolesByTier = useMemo(() => {
     const map: Record<string, Kupole[]> = {
-      S: [], A: [], B: [], C: [],
+      PVP: [], S: [], A: [], B: [], C: [], Junk: [],
     };
     for (const k of kupoleData as Kupole[]) {
-      const tier = getTierKey(k.tierlist?.overall ?? "C");
-      if (!map[tier]) map[tier] = [];
-      map[tier].push(k);
+      if (!k.tierlist || !k.tierlist.overall || k.tierlist.overall.trim() === "") {
+        // No tier data → Junk
+        map.Junk.push(k);
+      } else if (!isKupolePVP(k)) {
+        // Has "(PVE)" → regular PVE tier
+        const tier = getTierKey(k.tierlist.overall);
+        if (!map[tier]) map[tier] = [];
+        map[tier].push(k);
+      } else {
+        // PVP kupole → PVP tier (keep original tier label for display)
+        map.PVP.push(k);
+      }
     }
     for (const t of Object.keys(map)) {
       map[t].sort((a, b) => a.name.localeCompare(b.name));
