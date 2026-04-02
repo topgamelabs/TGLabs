@@ -12,17 +12,17 @@ type Kupole = typeof kupoleData[number];
 // ─── Shared color constants ──────────────────────────────────────────────────
 
 const TIER_COLORS: Record<string, string> = {
-  "S+": "#ff4757",
-  S: "#ff6b6b",
-  "A+": "#ffa94d",
+  S: "#ff4757",
   A: "#ffd43b",
-  "B+": "#8ce99a",
-  B: "#69db7c",
+  B: "#4dcc8a",
   C: "#74c0fc",
-  D: "#868e96",
-  F: "#495057",
-  OP: "#ff4757",
-  SS: "#9d6fff",
+};
+
+const TIER_BG: Record<string, string> = {
+  S: "rgba(255,71,87,0.15)",
+  A: "rgba(255,212,59,0.15)",
+  B: "rgba(77,204,138,0.15)",
+  C: "rgba(116,192,252,0.15)",
 };
 
 const ELEMENT_COLORS: Record<string, string> = {
@@ -45,12 +45,9 @@ const ELEMENT_ICONS: Record<string, string> = {
   Multi: "🔮",
 };
 
-const FELLOW_GRADE_COLORS: Record<string, string> = {
-  "Demigod UR": "#9d6fff",
-  "Collaboration UR": "#ff6b9d",
-  "Limited UR": "#ffd43b",
-  SR: "#4dcc8a",
-  R: "#868e96",
+const TYPE_ICONS: Record<string, string> = {
+  Goddess: "👑",
+  Demon: "😈",
 };
 
 const TYPE_COLORS: Record<string, string> = {
@@ -58,124 +55,17 @@ const TYPE_COLORS: Record<string, string> = {
   Demon: "#9d6fff",
 };
 
-const GRADE_COLORS_KUPOLE: Record<string, string> = {
-  "Limited UR": "#9d6fff",
-  UR: "#4dcc8a",
-};
+// ─── Tier order (only S, A, B, C) ────────────────────────────────────────────
 
-// ─── Tier order maps ─────────────────────────────────────────────────────────
+const TIER_LIST = ["S", "A", "B", "C"];
 
-const FELLOW_TIER_ORDER: Record<string, number> = {
-  "SS+": 0, "SS": 1, "S+": 2, S: 3, "A+": 4, A: 5, "B+": 6, B: 7, C: 8, D: 9, F: 10,
-};
-
-const KUPOLE_TIER_ORDER: Record<string, number> = {
-  OP: 0, SS: 1, "SS+": 2, S: 3, "S+": 4, "A+": 5, A: 6, "B+": 7, B: 8, C: 9, F: 10,
-};
-
-const FELLOW_TIER_LIST = ["SS+","SS","S+","S","A+","A","B+","B","C","D","F"];
-const KUPOLE_TIER_LIST = ["OP","SS","SS+","S","S+","A+","A","B+","B","C","F"];
-
-// ─── Badge helpers ────────────────────────────────────────────────────────────
-
-function TierBadge({ tier }: { tier: string }) {
-  const color = TIER_COLORS[tier] ?? "#868e96";
-  return (
-    <span style={{
-      display: "inline-block",
-      padding: "1px 6px",
-      borderRadius: 4,
-      fontSize: 10,
-      fontFamily: "monospace",
-      fontWeight: 700,
-      color: "#fff",
-      background: color,
-      letterSpacing: 0.5,
-    }}>
-      {tier}
-    </span>
-  );
-}
-
-function ElementBadge({ element }: { element: string }) {
-  const color = ELEMENT_COLORS[element] ?? "#868e96";
-  const icon = ELEMENT_ICONS[element] ?? "❓";
-  return (
-    <span style={{
-      display: "inline-flex",
-      alignItems: "center",
-      gap: 3,
-      padding: "2px 8px",
-      borderRadius: 20,
-      fontSize: 10,
-      fontFamily: "monospace",
-      letterSpacing: 0.5,
-      color,
-      border: `1px solid ${color}44`,
-      background: `${color}11`,
-    }}>
-      {icon} {element}
-    </span>
-  );
-}
-
-function GradeBadge({ grade }: { grade: string }) {
-  const color = FELLOW_GRADE_COLORS[grade] ?? "#868e96";
-  return (
-    <span style={{
-      display: "inline-block",
-      padding: "2px 8px",
-      borderRadius: 4,
-      fontSize: 10,
-      fontFamily: "monospace",
-      fontWeight: 700,
-      letterSpacing: 0.5,
-      color: "#fff",
-      background: color,
-    }}>
-      {grade}
-    </span>
-  );
-}
-
-function KupoleGradeBadge({ grade }: { grade: string }) {
-  const color = GRADE_COLORS_KUPOLE[grade] ?? "#868e96";
-  return (
-    <span style={{
-      display: "inline-block",
-      padding: "2px 8px",
-      borderRadius: 4,
-      fontSize: 10,
-      fontFamily: "monospace",
-      fontWeight: 700,
-      letterSpacing: 0.5,
-      color: "#fff",
-      background: color,
-    }}>
-      {grade}
-    </span>
-  );
-}
-
-function TypeBadge({ type }: { type: string }) {
-  const color = TYPE_COLORS[type] ?? "#9d6fff";
-  return (
-    <span style={{
-      display: "inline-flex",
-      alignItems: "center",
-      gap: 3,
-      padding: "2px 8px",
-      borderRadius: 20,
-      fontSize: 10,
-      fontFamily: "monospace",
-      letterSpacing: 0.5,
-      color,
-      border: `1px solid ${color}44`,
-      background: `${color}11`,
-    }}>
-      {type === "Goddess" ? "✨" : "😈"} {type}
-    </span>
-  );
+function getTierKey(tier: string): string {
+  // Normalize any tier name to S/A/B/C
+  const upper = tier?.toUpperCase();
+  if (upper === "S+" || upper === "SS" || upper === "SS+" || upper === "OP") return "S";
+  if (upper === "A+" || upper === "A") return "A";
+  if (upper === "B+" || upper === "B") return "B";
+  return "C";
 }
 
 // ─── Skill Row (reused in modals) ─────────────────────────────────────────────
@@ -211,7 +101,6 @@ function FellowModal({ fellow, onClose }: { fellow: Fellow; onClose: () => void 
   const tl = fellow.tierlist;
   const isDemigod = fellow.grade === "Demigod UR";
   const elemColor = ELEMENT_COLORS[fellow.element] ?? "#9d6fff";
-  const gradeColor = FELLOW_GRADE_COLORS[fellow.grade] ?? "#868e96";
 
   return (
     <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(2,3,5,0.85)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
@@ -222,8 +111,12 @@ function FellowModal({ fellow, onClose }: { fellow: Fellow; onClose: () => void 
             <div style={{ flex: 1 }}>
               <h2 style={{ fontFamily: "Georgia, serif", fontSize: 22, fontWeight: 900, color: "#e8e0ff", margin: "0 0 8px 0" }}>{fellow.name}</h2>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }}>
-                <ElementBadge element={fellow.element} />
-                <GradeBadge grade={fellow.grade} />
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 3, padding: "2px 8px", borderRadius: 20, fontSize: 10, fontFamily: "monospace", letterSpacing: 0.5, color: elemColor, border: `1px solid ${elemColor}44`, background: `${elemColor}11` }}>
+                  {ELEMENT_ICONS[fellow.element] ?? "❓"} {fellow.element}
+                </span>
+                <span style={{ display: "inline-block", padding: "2px 8px", borderRadius: 4, fontSize: 10, fontFamily: "monospace", fontWeight: 700, letterSpacing: 0.5, color: "#fff", background: fellow.grade === "Demigod UR" ? "#9d6fff" : fellow.grade === "Collaboration UR" ? "#ff6b9d" : fellow.grade === "Limited UR" ? "#ffd43b" : fellow.grade === "SR" ? "#4dcc8a" : "#868e96" }}>
+                  {fellow.grade}
+                </span>
                 <span style={{ fontFamily: "monospace", fontSize: 10, color: "#5a5478", letterSpacing: 1 }}>{fellow.classInfo}</span>
               </div>
             </div>
@@ -238,7 +131,7 @@ function FellowModal({ fellow, onClose }: { fellow: Fellow; onClose: () => void 
           {tl && tl.overall && (
             <div style={{ padding: "12px 14px", borderRadius: 10, background: "#080b18", border: "1px solid rgba(100,80,200,0.15)", marginBottom: 16 }}>
               <div style={{ fontFamily: "monospace", fontSize: 9, letterSpacing: 2, color: "#3d3560", textTransform: "uppercase", marginBottom: 10 }}>
-                Tierlist — Overall: <span style={{ color: TIER_COLORS[tl.overall] ?? "#fff", fontWeight: 700 }}>{tl.overall}</span>
+                Tierlist — Overall: <span style={{ color: TIER_COLORS[getTierKey(tl.overall)] ?? "#fff", fontWeight: 700 }}>{getTierKey(tl.overall)}</span>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
                 {[
@@ -250,7 +143,9 @@ function FellowModal({ fellow, onClose }: { fellow: Fellow; onClose: () => void 
                 ].map(([label, val]) => (
                   <div key={label} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "4px 8px", background: "#0c1020", borderRadius: 4 }}>
                     <span style={{ fontFamily: "monospace", fontSize: 9, color: "#8878aa", letterSpacing: 0.5 }}>{label}</span>
-                    <TierBadge tier={val ?? ""} />
+                    <span style={{ padding: "1px 6px", borderRadius: 4, fontSize: 10, fontFamily: "monospace", fontWeight: 700, color: "#fff", background: TIER_COLORS[getTierKey(val ?? "")] ?? "#868e96" }}>
+                      {getTierKey(val ?? "")}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -316,8 +211,12 @@ function KupoleModal({ kupole, onClose }: { kupole: Kupole; onClose: () => void 
             <div style={{ flex: 1 }}>
               <h2 style={{ fontFamily: "Georgia, serif", fontSize: 22, fontWeight: 900, color: "#e8e0ff", margin: "0 0 8px 0" }}>{kupole.name}</h2>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }}>
-                <TypeBadge type={kupole.type} />
-                <KupoleGradeBadge grade={kupole.grade} />
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 3, padding: "2px 8px", borderRadius: 20, fontSize: 10, fontFamily: "monospace", letterSpacing: 0.5, color: typeColor, border: `1px solid ${typeColor}44`, background: `${typeColor}11` }}>
+                  {TYPE_ICONS[kupole.type] ?? "👤"} {kupole.type}
+                </span>
+                <span style={{ display: "inline-block", padding: "2px 8px", borderRadius: 4, fontSize: 10, fontFamily: "monospace", fontWeight: 700, letterSpacing: 0.5, color: "#fff", background: kupole.grade === "Limited UR" ? "#9d6fff" : "#4dcc8a" }}>
+                  {kupole.grade}
+                </span>
                 <span style={{ fontFamily: "monospace", fontSize: 10, color: "#5a5478", letterSpacing: 1 }}>{kupole.obtainFrom}</span>
               </div>
             </div>
@@ -333,8 +232,8 @@ function KupoleModal({ kupole, onClose }: { kupole: Kupole; onClose: () => void 
             <div style={{ padding: "12px 14px", borderRadius: 10, background: "#080b18", border: "1px solid rgba(100,80,200,0.15)", marginBottom: 16 }}>
               <div style={{ fontFamily: "monospace", fontSize: 9, letterSpacing: 2, color: "#3d3560", textTransform: "uppercase", marginBottom: 10 }}>
                 Tierlist — Overall:
-                <span style={{ color: TIER_COLORS[tl.overall] ?? "#fff", fontWeight: 700, marginLeft: 8 }}>
-                  {tl.overall}
+                <span style={{ color: TIER_COLORS[getTierKey(tl.overall)] ?? "#fff", fontWeight: 700, marginLeft: 8 }}>
+                  {getTierKey(tl.overall)}
                 </span>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
@@ -346,7 +245,9 @@ function KupoleModal({ kupole, onClose }: { kupole: Kupole; onClose: () => void 
                 ].map(([label, val]) => (
                   <div key={label} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "4px 8px", background: "#0c1020", borderRadius: 4 }}>
                     <span style={{ fontFamily: "monospace", fontSize: 9, color: "#8878aa", letterSpacing: 0.5 }}>{label}</span>
-                    <TierBadge tier={val ?? ""} />
+                    <span style={{ padding: "1px 6px", borderRadius: 4, fontSize: 10, fontFamily: "monospace", fontWeight: 700, color: "#fff", background: TIER_COLORS[getTierKey(val ?? "")] ?? "#868e96" }}>
+                      {getTierKey(val ?? "")}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -398,260 +299,198 @@ function KupoleModal({ kupole, onClose }: { kupole: Kupole; onClose: () => void 
   );
 }
 
-// ─── Fellow Card ──────────────────────────────────────────────────────────────
+// ─── Soul Tide Compact Fellow Card ─────────────────────────────────────────
 
-function FellowTierCard({ fellow, onClick }: { fellow: Fellow; onClick: () => void }) {
-  const [hovered, setHovered] = useState(false);
+function FellowMiniCard({ fellow, onClick }: { fellow: Fellow; onClick: () => void }) {
   const elemColor = ELEMENT_COLORS[fellow.element] ?? "#9d6fff";
-  const gradeColor = FELLOW_GRADE_COLORS[fellow.grade] ?? "#868e96";
-  const tierColor = TIER_COLORS[fellow.tierlist?.overall ?? ""] ?? "#868e96";
+  const icon = ELEMENT_ICONS[fellow.element] ?? "👤";
 
   return (
     <div
       onClick={onClick}
-      onMouseOver={() => setHovered(true)}
-      onMouseOut={() => setHovered(false)}
       style={{
-        background: hovered ? "#111828" : "#0c1020",
-        border: `1px solid ${hovered ? elemColor + "44" : "rgba(100,80,200,0.15)"}`,
-        borderRadius: 14,
-        padding: "20px 14px 16px",
-        textAlign: "center",
-        transition: "all 0.2s ease",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 4,
         cursor: "pointer",
-        transform: hovered ? "scale(1.04)" : "scale(1)",
-        boxShadow: hovered ? `0 6px 24px ${elemColor}22` : "none",
-        position: "relative",
-        overflow: "hidden",
+        padding: "8px 6px 6px",
+        borderRadius: 10,
+        transition: "background 0.15s",
+        minWidth: 64,
+        maxWidth: 80,
       }}
+      onMouseEnter={(e) => (e.currentTarget.style.background = `${elemColor}18`)}
+      onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
     >
-      {/* Top accent */}
+      {/* Portrait circle */}
       <div style={{
-        position: "absolute",
-        top: 0, left: 0, right: 0,
-        height: 2,
-        background: `linear-gradient(90deg, transparent, ${elemColor}, transparent)`,
-        opacity: hovered ? 1 : 0,
-        transition: "opacity 0.2s",
-      }} />
-
-      {/* Portrait */}
-      <div style={{
-        width: 72,
-        height: 72,
-        borderRadius: 14,
-        background: `linear-gradient(135deg, ${elemColor}22, ${gradeColor}22)`,
-        border: `1px solid ${elemColor}33`,
+        width: 52,
+        height: 52,
+        borderRadius: "50%",
+        background: `${elemColor}28`,
+        border: `2px solid ${elemColor}66`,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        margin: "0 auto 10px",
-        fontSize: 36,
-        position: "relative",
+        fontSize: 26,
+        flexShrink: 0,
+        boxShadow: `0 0 12px ${elemColor}33`,
       }}>
-        <span style={{ opacity: 0.9 }}>{ELEMENT_ICONS[fellow.element] ?? "👤"}</span>
-        <span style={{
-          position: "absolute",
-          bottom: -4,
-          left: "50%",
-          transform: "translateX(-50%)",
-          fontSize: 9,
-          color: gradeColor,
-          letterSpacing: -1,
-          fontFamily: "monospace",
-        }}>
-          {"★".repeat(fellow.rarity)}
-        </span>
-        {/* Tier badge top-right */}
-        {fellow.tierlist?.overall && (
-          <span style={{
-            position: "absolute",
-            top: -6,
-            right: -6,
-            padding: "1px 5px",
-            borderRadius: 4,
-            fontSize: 9,
-            fontFamily: "monospace",
-            fontWeight: 700,
-            color: "#fff",
-            background: tierColor,
-            border: `1px solid #fff2`,
-          }}>
-            {fellow.tierlist.overall}
-          </span>
-        )}
+        {icon}
       </div>
-
       {/* Name */}
       <div style={{
-        fontFamily: "Georgia, serif",
-        fontSize: 12,
-        fontWeight: 700,
-        color: "#e8e0ff",
-        marginBottom: 6,
+        fontFamily: "Sarabun, sans-serif",
+        fontSize: 10,
+        fontWeight: 600,
+        color: "#c4b5e0",
+        textAlign: "center",
         lineHeight: 1.2,
-        minHeight: 28,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        maxWidth: 68,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
       }}>
         {fellow.name}
       </div>
-
-      {/* Badges */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 4, justifyContent: "center" }}>
-        <ElementBadge element={fellow.element} />
-        <GradeBadge grade={fellow.grade} />
+      {/* Element indicator */}
+      <div style={{
+        fontSize: 8,
+        color: elemColor,
+        fontFamily: "monospace",
+        opacity: 0.8,
+      }}>
+        {fellow.element}
       </div>
     </div>
   );
 }
 
-// ─── Kupole Card ──────────────────────────────────────────────────────────────
+// ─── Soul Tide Compact Kupole Card ──────────────────────────────────────────
 
-function KupoleTierCard({ kupole, onClick }: { kupole: Kupole; onClick: () => void }) {
-  const [hovered, setHovered] = useState(false);
+function KupoleMiniCard({ kupole, onClick }: { kupole: Kupole; onClick: () => void }) {
   const typeColor = TYPE_COLORS[kupole.type] ?? "#9d6fff";
-  const gradeColor = GRADE_COLORS_KUPOLE[kupole.grade] ?? "#868e96";
-  const tierColor = TIER_COLORS[kupole.tierlist?.overall ?? ""] ?? "#868e96";
+  const icon = TYPE_ICONS[kupole.type] ?? "👤";
 
   return (
     <div
       onClick={onClick}
-      onMouseOver={() => setHovered(true)}
-      onMouseOut={() => setHovered(false)}
       style={{
-        background: hovered ? "#111828" : "#0c1020",
-        border: `1px solid ${hovered ? typeColor + "44" : "rgba(100,80,200,0.15)"}`,
-        borderRadius: 14,
-        padding: "20px 14px 16px",
-        textAlign: "center",
-        transition: "all 0.2s ease",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 4,
         cursor: "pointer",
-        transform: hovered ? "scale(1.04)" : "scale(1)",
-        boxShadow: hovered ? `0 6px 24px ${typeColor}22` : "none",
-        position: "relative",
-        overflow: "hidden",
+        padding: "8px 6px 6px",
+        borderRadius: 10,
+        transition: "background 0.15s",
+        minWidth: 64,
+        maxWidth: 80,
       }}
+      onMouseEnter={(e) => (e.currentTarget.style.background = `${typeColor}18`)}
+      onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
     >
-      {/* Top accent */}
+      {/* Portrait circle */}
       <div style={{
-        position: "absolute",
-        top: 0, left: 0, right: 0,
-        height: 2,
-        background: `linear-gradient(90deg, transparent, ${typeColor}, transparent)`,
-        opacity: hovered ? 1 : 0,
-        transition: "opacity 0.2s",
-      }} />
-
-      {/* Portrait */}
-      <div style={{
-        width: 72,
-        height: 72,
-        borderRadius: 14,
-        background: `linear-gradient(135deg, ${typeColor}22, ${gradeColor}22)`,
-        border: `1px solid ${typeColor}33`,
+        width: 52,
+        height: 52,
+        borderRadius: "50%",
+        background: `${typeColor}28`,
+        border: `2px solid ${typeColor}66`,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        margin: "0 auto 10px",
-        fontSize: 36,
-        position: "relative",
+        fontSize: 26,
+        flexShrink: 0,
+        boxShadow: `0 0 12px ${typeColor}33`,
       }}>
-        <span style={{ opacity: 0.9 }}>{kupole.type === "Goddess" ? "✨" : "😈"}</span>
-        {/* Tier badge top-right */}
-        {kupole.tierlist?.overall && (
-          <span style={{
-            position: "absolute",
-            top: -6,
-            right: -6,
-            padding: "1px 5px",
-            borderRadius: 4,
-            fontSize: 9,
-            fontFamily: "monospace",
-            fontWeight: 700,
-            color: "#fff",
-            background: tierColor,
-            border: `1px solid #fff2`,
-          }}>
-            {kupole.tierlist.overall}
-          </span>
-        )}
+        {icon}
       </div>
-
       {/* Name */}
       <div style={{
-        fontFamily: "Georgia, serif",
-        fontSize: 12,
-        fontWeight: 700,
-        color: "#e8e0ff",
-        marginBottom: 6,
+        fontFamily: "Sarabun, sans-serif",
+        fontSize: 10,
+        fontWeight: 600,
+        color: "#c4b5e0",
+        textAlign: "center",
         lineHeight: 1.2,
-        minHeight: 28,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        maxWidth: 68,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
       }}>
         {kupole.name}
       </div>
-
-      {/* Badges */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 4, justifyContent: "center" }}>
-        <TypeBadge type={kupole.type} />
-        <KupoleGradeBadge grade={kupole.grade} />
+      {/* Type indicator */}
+      <div style={{
+        fontSize: 8,
+        color: typeColor,
+        fontFamily: "monospace",
+        opacity: 0.8,
+      }}>
+        {kupole.type}
       </div>
     </div>
   );
 }
 
-// ─── Section header ──────────────────────────────────────────────────────────
+// ─── Soul Tide Compact Tier Row ─────────────────────────────────────────────
 
-function SectionHeader({ label }: { label: string }) {
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-      <div style={{ flex: 1, height: 1, background: "rgba(100,80,200,0.15)" }} />
-      <span style={{ fontFamily: "monospace", fontSize: 9, letterSpacing: 3, color: "#3d3560", textTransform: "uppercase", whiteSpace: "nowrap" }}>
-        {label}
-      </span>
-      <div style={{ flex: 1, height: 1, background: "rgba(100,80,200,0.15)" }} />
-    </div>
-  );
-}
-
-function TierRow({ tier, chars }: { tier: string; chars: React.ReactNode[] }) {
+function SoulTideTierRow({ tier, chars }: { tier: string; chars: React.ReactNode[] }) {
   if (chars.length === 0) return null;
   const color = TIER_COLORS[tier] ?? "#868e96";
+  const bg = TIER_BG[tier] ?? "rgba(100,100,100,0.1)";
+
   return (
-    <div style={{ marginBottom: 20 }}>
-      {/* Tier label */}
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-        <div style={{
-          width: 36,
-          height: 36,
-          borderRadius: 8,
-          background: color,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+    <div style={{
+      display: "flex",
+      alignItems: "center",
+      gap: 0,
+      marginBottom: 12,
+      background: bg,
+      borderRadius: 10,
+      border: `1px solid ${color}33`,
+      overflow: "hidden",
+    }}>
+      {/* Tier label on the left */}
+      <div style={{
+        width: 36,
+        minWidth: 36,
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        background: color,
+        padding: "8px 0",
+        gap: 2,
+      }}>
+        <span style={{
           fontFamily: "Georgia, serif",
-          fontSize: 16,
+          fontSize: 18,
           fontWeight: 900,
           color: "#fff",
-          flexShrink: 0,
-          boxShadow: `0 2px 12px ${color}44`,
+          lineHeight: 1,
         }}>
           {tier}
-        </div>
-        <div style={{ flex: 1, height: 1, background: `${color}22` }} />
-        <span style={{ fontFamily: "monospace", fontSize: 9, color: color, letterSpacing: 1 }}>
-          {chars.length} {chars.length === 1 ? "unit" : "units"}
         </span>
       </div>
-      {/* Cards grid */}
+
+      {/* Divider */}
+      <div style={{ width: 1, alignSelf: "stretch", background: `${color}33`, flexShrink: 0 }} />
+
+      {/* Horizontal scroll of cards */}
       <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))",
-        gap: 10,
+        display: "flex",
+        flexDirection: "row",
+        gap: 4,
+        padding: "8px 12px",
+        overflowX: "auto",
+        flex: 1,
+        alignItems: "center",
+        scrollbarWidth: "thin",
+        scrollbarColor: `${color}44 transparent`,
       }}>
         {chars}
       </div>
@@ -666,11 +505,13 @@ export function TierPanel(): React.JSX.Element {
   const [selectedFellow, setSelectedFellow] = useState<Fellow | null>(null);
   const [selectedKupole, setSelectedKupole] = useState<Kupole | null>(null);
 
-  // Group fellows by tier
+  // Group fellows by normalized tier (S/A/B/C only)
   const fellowsByTier = useMemo(() => {
-    const map: Record<string, Fellow[]> = {};
+    const map: Record<string, Fellow[]> = {
+      S: [], A: [], B: [], C: [],
+    };
     for (const f of fellowsData as Fellow[]) {
-      const tier = f.tierlist?.overall ?? "C";
+      const tier = getTierKey(f.tierlist?.overall ?? "C");
       if (!map[tier]) map[tier] = [];
       map[tier].push(f);
     }
@@ -681,11 +522,13 @@ export function TierPanel(): React.JSX.Element {
     return map;
   }, []);
 
-  // Group kupoles by tier
+  // Group kupoles by normalized tier (S/A/B/C only)
   const kupolesByTier = useMemo(() => {
-    const map: Record<string, Kupole[]> = {};
+    const map: Record<string, Kupole[]> = {
+      S: [], A: [], B: [], C: [],
+    };
     for (const k of kupoleData as Kupole[]) {
-      const tier = k.tierlist?.overall ?? "C";
+      const tier = getTierKey(k.tierlist?.overall ?? "C");
       if (!map[tier]) map[tier] = [];
       map[tier].push(k);
     }
@@ -695,16 +538,13 @@ export function TierPanel(): React.JSX.Element {
     return map;
   }, []);
 
-  const fellowTierOrder = FELLOW_TIER_LIST;
-  const kupoleTierOrder = KUPOLE_TIER_LIST;
-
   const fellowCount = fellowsData.length;
   const kupoleCount = kupoleData.length;
 
   return (
     <>
       {/* Section tabs */}
-      <div style={{ display: "flex", gap: 8, marginBottom: 28 }}>
+      <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
         <button
           onClick={() => setSection("fellows")}
           style={{
@@ -746,15 +586,17 @@ export function TierPanel(): React.JSX.Element {
       {/* Fellow Tier List */}
       {section === "fellows" && (
         <div>
-          <SectionHeader label={`Fellow Tier List · ${fellowCount} Fellows`} />
-          {fellowTierOrder.map((tier) => {
+          <div style={{ fontFamily: "monospace", fontSize: 10, letterSpacing: 2, color: "#3d3560", textTransform: "uppercase", marginBottom: 16 }}>
+            Fellow Tier List · {fellowCount} Fellows
+          </div>
+          {TIER_LIST.map((tier) => {
             const chars = fellowsByTier[tier] ?? [];
             return (
-              <TierRow
+              <SoulTideTierRow
                 key={tier}
                 tier={tier}
                 chars={chars.map((f) => (
-                  <FellowTierCard
+                  <FellowMiniCard
                     key={f.name}
                     fellow={f}
                     onClick={() => setSelectedFellow(f)}
@@ -763,37 +605,23 @@ export function TierPanel(): React.JSX.Element {
               />
             );
           })}
-          {/* Fallback for any tiers not in the ordered list */}
-          {Object.keys(fellowsByTier)
-            .filter((t) => !fellowTierOrder.includes(t))
-            .map((tier) => (
-              <TierRow
-                key={tier}
-                tier={tier}
-                chars={(fellowsByTier[tier] ?? []).map((f) => (
-                  <FellowTierCard
-                    key={f.name}
-                    fellow={f}
-                    onClick={() => setSelectedFellow(f)}
-                  />
-                ))}
-              />
-            ))}
         </div>
       )}
 
       {/* Kupole Tier List */}
       {section === "kupoles" && (
         <div>
-          <SectionHeader label={`Kupole Tier List · ${kupoleCount} Kupoles`} />
-          {kupoleTierOrder.map((tier) => {
+          <div style={{ fontFamily: "monospace", fontSize: 10, letterSpacing: 2, color: "#3d3560", textTransform: "uppercase", marginBottom: 16 }}>
+            Kupole Tier List · {kupoleCount} Kupoles
+          </div>
+          {TIER_LIST.map((tier) => {
             const chars = kupolesByTier[tier] ?? [];
             return (
-              <TierRow
+              <SoulTideTierRow
                 key={tier}
                 tier={tier}
                 chars={chars.map((k) => (
-                  <KupoleTierCard
+                  <KupoleMiniCard
                     key={k.id}
                     kupole={k}
                     onClick={() => setSelectedKupole(k)}
@@ -802,22 +630,6 @@ export function TierPanel(): React.JSX.Element {
               />
             );
           })}
-          {/* Fallback for any tiers not in the ordered list */}
-          {Object.keys(kupolesByTier)
-            .filter((t) => !kupoleTierOrder.includes(t))
-            .map((tier) => (
-              <TierRow
-                key={tier}
-                tier={tier}
-                chars={(kupolesByTier[tier] ?? []).map((k) => (
-                  <KupoleTierCard
-                    key={k.id}
-                    kupole={k}
-                    onClick={() => setSelectedKupole(k)}
-                  />
-                ))}
-              />
-            ))}
         </div>
       )}
 
