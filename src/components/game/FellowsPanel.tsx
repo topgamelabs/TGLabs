@@ -283,7 +283,7 @@ function FellowModal({ fellow, onClose }: { fellow: Fellow; onClose: () => void 
             }}>
               Tierlist — Overall: <span style={{ color: TIER_COLORS[tl.overall] ?? "#fff", fontWeight: 700 }}>{tl.overall}</span>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 6 }}>
               {[
                 ["⚔️ DMG", tl.damage],
                 ["🛡️ SURV", tl.survival],
@@ -337,7 +337,7 @@ function FellowModal({ fellow, onClose }: { fellow: Fellow; onClose: () => void 
           {/* Info footer */}
           <div style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "repeat(4, 1fr)",
             gap: 8,
             padding: "12px 14px",
             background: "#080b18",

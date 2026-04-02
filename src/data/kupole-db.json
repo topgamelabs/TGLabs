@@ -62,7 +62,7 @@
     "rankBonus": "Critical Damage  5% +2r%",
     "bondBonus": "Crit Rate 20 + 13r",
     "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
-    "activeSkill": "Aqua Wind CD : 100s Creates a whirlpool at the enemy location that reduces the enemy's movement speed by 70%, and after 2 seconds strikes enemies within the range with a whirlwind, dealing ice damage equal to 443% of the owner's attack power. Targets damaged by this skill receive 12% more damage from 'master' and 'master's accompanying fellows' for 10 seconds.",
+    "activeSkill": "Aqua Wind CD : 100s สร้างน้ำวนที่ตำแหน่งศัตรู ลดความเร็วเคลื่อนที่ของศัตรู 70% และหลังจาก 2 วินาที จะโจมตีศัตรูในรัศมีด้วยลมหมุน สร้างความเสียหายน้ำแข็ง 443% ของพลังโจมตี ศัตรูที่โดนสกิลนี้จะได้รับความเสียหายจาก 'master' และพันธมิตรของ master เพิ่มขึ้น 12% เป็นเวลา 10 วินาที",
     "rankUnlock": [
       "Damage: 520% Damage Increase Debuff: 15%",
       "Damage: 597% Damage Increase Debuff: 18%",
@@ -78,7 +78,7 @@
       "partyBuff": "C",
       "overall": "A+"
     },
-    "notes": "Somehow even boost damage better than normal Gesti, nor tempting to pull her much on this form because of lacking SP recovery passive.\nStill have caveat from long cooldown & low downtime make her fall of meta very fast"
+    "notes": "บางทีก็เพิ่มความเสียหายได้ดีกว่า Gesti ปกติด้วยซ้ำ แต่ก็ไม่ค่อยอยากดึงเธอในรูปแบบนี้เพราะขาด passive ฟื้นฟู SP\nยังมีข้อจำกัดจาก cooldown ที่นานและ downtime ต่ำทำให้เธอตก meta เร็วมาก"
   },
   {
     "id": "kp004",
@@ -89,7 +89,7 @@
     "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
     "bondBonus": "Crit Damage 11 + 6r",
     "passiveSkill": "เพิ่ม Block - Effect ช่องแรก: เพิ่มอัตรา Block 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
-    "activeSkill": "Merry Christmas! CD : 90s Throw Christmas presents to master. Increase attack,defense, attack speed, crit rate and crit damage by 12.25% to master and all fellows for 12s. Additionally, the Owner's damage to Plant-Type enemies is increased by 30% for 10 seconds.",
+    "activeSkill": "Merry Christmas! CD : 90s ขว้างของขวัญคริสต์มาสให้ master เพิ่ม attack, defense, ความเร็วโจมตี, crit rate และ crit damage 12.25% ให้ master และพันธมิตรทั้งหมด 12 วินาที นอกจากนี้ ความเสียหายต่อศัตรูประเภท Plant จะเพิ่มขึ้น 30% เป็นเวลา 10 วินาที",
     "rankUnlock": [
       "CD : 85s",
       "CD : 80s",
@@ -105,7 +105,7 @@
       "partyBuff": "C",
       "overall": "S"
     },
-    "notes": "Atk boost & crit boost is general buff that can be used for long time. Even not top meta, you will always glad to have her in slot."
+    "notes": "การเพิ่ม Atk และ crit boost เป็น buff ทั่วไปที่ใช้ได้นาน แม้ไม่ใช่ top meta แต่คุณจะดีใจเสมอที่มีเธอใน slot"
   },
   {
     "id": "kp005",
@@ -116,7 +116,7 @@
     "rankBonus": "Critical Damage  5% +2r%",
     "bondBonus": "Hit Rate 17 + 4r",
     "passiveSkill": "เพิ่ม Hit - Effect ช่องแรก: เพิ่มอัตรา hit rate 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
-    "activeSkill": "Pouring Apocalypse CD: 70s Cut the reality with overhelming power. Create dimension crack in line-shape that will rain down thunder of apocalypse. Dealing 1165% Dark damage. (50% reduce damage to Player and Fellow.) Cause Enemy hit by Dark Thunder in 'Apocalypse' state for 10s. Increase damage received from player by 8% and ignore 9% defense.",
+    "activeSkill": "Pouring Apocalypse CD: 70s ตัดความเป็นจริงด้วยพลังมหาศาล สร้างรอยแตกของมิติเป็นเส้น ฝนเทพพยางค์แห่ง apocalypse ลงมา สร้างความเสียหายความมืด 1165% (ลดความเสียหาย 50% สำหรับ Player และ Fellow) ทำให้ศัตรูที่โดน Dark Thunder อยู่ในสถานะ 'Apocalypse' 10 วินาที เพิ่มความเสียหายที่ได้รับจาก player 8% และเพิกเฉย 9% defense",
     "rankUnlock": [
       "Damage: 1332% Damage Increase Debuff: +10% Defense Ignore: -10%",
       "Damage: 1499% Damage Increase Debuff: +12% Defense Ignore: -11%",
@@ -132,7 +132,7 @@
       "partyBuff": "B",
       "overall": "S"
     },
-    "notes": "Def Shred & Dmg boost. Still great, but high cooldown & high competition for def shred kupole make her position in meta not high as before."
+    "notes": "Def Shred และ Dmg boost เธอก็ยังเจ๋งอยู่ แต่ cooldown สูงและมีการแข่งขันสูงสำหรับ def shred kupole ทำให้ตำแหน่งของเธอใน meta ไม่สูงเหมือนก่อน"
   },
   {
     "id": "kp006",
@@ -143,7 +143,7 @@
     "rankBonus": "HP Recovery 12% + 5r%",
     "bondBonus": "Penetration 14 +4r",
     "passiveSkill": "เพิ่ม Penetration - Effect ช่องแรก: เพิ่มอัตรา Penetration 1.5% ต่อ rank - Effect Company: เมื่อ HP ของ master ลดต่ำกว่า 60% จะฮีล HP ทันที 35% (CD 45s)",
-    "activeSkill": "You there! Become candy! CD: 65s Pour hot candy to attack all enemies in area. Dealing 142% Fire damage every second. Enemy hit will become a candy, stun for 2s, also inflicted 'Burn' and debuff that decrease block and evasion rate by 13% for 10s 'Burn' from this skill dealing 20% of base skill damage per second for 10s. Also reduce attack power of enemy burned by 20% Additionally, the Owner's damage to Fire Property enemies is increased by 30% for 10 seconds.",
+    "activeSkill": "You there! Become candy! CD: 65s สาดลูกกวาดน้ำร้อนโจมตีศัตรูทั้งหมดในพื้นที่ สร้างความเสียหายไฟ 142% ทุกวินาที ศัตรูที่โดนจะกลายเป็นลูกกวาด stun 2 วินาที และได้รับ 'Burn' พร้อม debuff ลด block และ evasion rate 13% 10 วินาที 'Burn' จากสกิลนี้สร้างความเสียหาย 20% ของความเสียหายสกิลพื้นฐานต่อวินาที 10 วินาที นอกจากนี้ยังลดพลังโจมตีของศัตรูที่ถูกเผา 20% และเพิ่มความเสียหายต่อศัตรูธาตุ Fire 30% เป็นเวลา 10 วินาที",
     "rankUnlock": [
       "Damage : 179%  Block & Evasion Debuff : -15%",
       "Damage : 216%  Block & Evasion Debuff : -17%",
