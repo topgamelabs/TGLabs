@@ -618,7 +618,7 @@ function SectionHeader({ label }: { label: string }) {
   );
 }
 
-function TierRow({ tier, chars, renderCard }: { tier: string; chars: React.ReactNode[]; renderCard: (index: number) => React.ReactNode }) {
+function TierRow({ tier, chars }: { tier: string; chars: React.ReactNode[] }) {
   if (chars.length === 0) return null;
   const color = TIER_COLORS[tier] ?? "#868e96";
   return (
