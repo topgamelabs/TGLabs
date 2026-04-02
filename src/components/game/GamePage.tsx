@@ -28,9 +28,21 @@ export function GamePage({ game, onBack }: GamePageProps): React.JSX.Element {
 
   return (
     <div style={{ position: "relative", zIndex: 1 }}>
-      <div style={{ height: 200, background: game.banner, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 72, position: "relative", marginTop: 54 }}>
-        <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${game.colorDim} 0%, transparent 70%)` }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(2,3,5,0.3) 0%, rgba(2,3,5,0.9) 100%)" }} />
+      <div style={{ height: 200, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 72, position: "relative", marginTop: 54, overflow: "hidden" }}>
+        {/* Banner image or gradient background */}
+        {game.banner.startsWith("/") || game.banner.startsWith("http") ? (
+          <>
+            <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${game.banner})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+            <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, rgba(2,3,5,0.2) 0%, rgba(2,3,5,0.85) 100%)` }} />
+          </>
+        ) : (
+          <>
+            <div style={{ position: "absolute", inset: 0, background: game.banner }} />
+            <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${game.colorDim} 0%, transparent 70%)` }} />
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(2,3,5,0.3) 0%, rgba(2,3,5,0.9) 100%)" }} />
+          </>
+        )}
+        {/* Game icon */}
         <span style={{ position: "relative", zIndex: 1 }}>{game.icon}</span>
       </div>
 
