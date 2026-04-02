@@ -23,10 +23,12 @@ export default function Home() {
   }, []);
 
   // Navigate to game page and add to history
-  const handleSelectGame = useCallback((game: Game) => {
-    setCurrentGame(game);
-    // Add to browser history so back button works
-    window.history.pushState({ gameId: game.id }, "");
+  const handleSelectGame = useCallback((game: Game | null) => {
+    if (game) {
+      setCurrentGame(game);
+      // Add to browser history so back button works
+      window.history.pushState({ gameId: game.id }, "");
+    }
   }, []);
 
   // Navigate back to home
