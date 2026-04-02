@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import type { Game } from "@/data/games";
 import { TierPanel } from "./TierPanel";
 import { PatchPanel } from "./PatchPanel";
 import { TipsPanel } from "./TipsPanel";
@@ -9,7 +8,7 @@ import { FellowsPanel } from "./FellowsPanel";
 import { KupolePanel } from "./KupolePanel";
 
 interface GamePageProps {
-  game: Game;
+  game: import("@/data/games").Game;
   onBack: () => void;
 }
 
@@ -73,7 +72,7 @@ export function GamePage({ game, onBack }: GamePageProps): React.JSX.Element {
         </div>
 
         <div style={{ padding: "24px 0 80px" }}>
-          {tab === "tier" && <TierPanel game={game} />}
+          {tab === "tier" && <TierPanel />}
           {tab === "patch" && <PatchPanel game={game} />}
           {tab === "tips" && <TipsPanel game={game} />}
           {tab === "fellow" && <FellowsPanel />}
