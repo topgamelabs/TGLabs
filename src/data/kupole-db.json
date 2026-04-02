@@ -159,7 +159,7 @@
       "partyBuff": "C",
       "overall": "B"
     },
-    "notes": "PvP Unit that has some use in PvE for vs. Fire monster. Not top pick."
+    "notes": "PvP Unit ที่มีประโยชน์บ้างใน PvE สำหรับด่านมอนสเตอร์ธาตุไฟ ไม่ใช่ตัวเลือกยอดฮิต"
   },
   {
     "id": "kp007",
@@ -186,7 +186,7 @@
       "partyBuff": "C",
       "overall": "OP"
     },
-    "notes": "The best and most broken kupole of all time.\n- Can heal HP&SP\n- Can buff your base stat\n- Can buff your damage by a LOT. Because Cleanhit/Pierce damage boost option is seperate multiplier and really hard to obtain."
+    "notes": "Kupole ที่ดีที่สุดและโหดที่สุดตลอดกาล\n- ฮีล HP และ SP ได้\n- เพิ่ม base stat ให้คุณได้\n- เพิ่มความเสียหายให้คุณมากมาย เพราะ Cleanhit/Pierce damage boost เป็นตัวคูณแยกต่างหากและหายากมากที่จะได้มา"
   },
   {
     "id": "kp008",
@@ -213,7 +213,7 @@
       "partyBuff": "C",
       "overall": "S"
     },
-    "notes": "Best dmg boost kupole for any fight that linger more than 2.40 minutes. Also have second life for your but no healing. Make her sometimes not reliable lifesaver as Maid Ruta"
+    "notes": "Kupole เพิ่มความเสียหายดีที่สุดสำหรับการต่อสู้ที่ยาวนานเกิน 2.40 นาที และยังมีชีวิตสำรองให้คุณ แต่ไม่มีการฮีล ทำให้บางครั้งเธอไว้ใจไม่ได้เท่า Maid Ruta"
   },
   {
     "id": "kp009",
@@ -240,7 +240,7 @@
       "partyBuff": "C",
       "overall": "S"
     },
-    "notes": "Think of her as Swiss knife. Good at many situations but not the best. Her best content is Memory 2-4F for speed boost for faster clearing. And Crystal Hall for 11% Atk buff with no downtime at all. 45% dmg amp can make you clear Argent Temple & Convent fast.\nAnd SP Reco passive always make her good kupole."
+    "notes": "คิดซะว่าเธอเป็น Swiss knife ดีในหลายสถานการณ์แต่ไม่ใช่ที่สุด เนื้อหาที่ดีที่สุดของเธอคือ Memory 2-4F เพื่อเพิ่มความเร็วในการ clear เร็วขึ้น และ Crystal Hall เพื่อ 11% Atk buff โดยไม่มี downtime เลย 45% dmg amp ทำให้คุณ clear Argent Temple และ Convent ได้เร็ว\nและ SP Reco passive เธอก็ทำให้เธอเป็น kupole ที่ดีเสมอ"
   },
   {
     "id": "kp010",
@@ -267,7 +267,7 @@
       "partyBuff": "C",
       "overall": "SS"
     },
-    "notes": "Best kupole for field farm & Top row daily dungeon. Really improve AoE potential and deal considerable damage & def shred by itself. To the point that can slot at all content if you lack damage"
+    "notes": "Kupole ดีที่สุดสำหรับ farm ทุ่ง & แถวบน daily dungeon ปรับปรุง AoE potential และสร้างความเสียหาย & def shred ที่ดีพอสมควรด้วยตัวเอง จนกระทั่งสามารถใส่ในทุกเนื้อหาได้เลยถ้าคุณขาดความเสียหาย"
   },
   {
     "id": "kp011",
@@ -294,7 +294,7 @@
       "partyBuff": "C",
       "overall": "SS"
     },
-    "notes": "Best kupole for any dungeons that have many mobs to whack of. She alone can solve your SP issue with innate high SP recovery."
+    "notes": "Kupole ดีที่สุดสำหรับ dungeon ในๆ ที่มีมอนสเตอร์ให้ฆ่ามาก เธอคนเดียวสามารถแก้ปัญหา SP ของคุณได้ด้วย SP recovery สูงติดตัว"
   },
   {
     "id": "kp012",
@@ -321,7 +321,7 @@
       "partyBuff": "C",
       "overall": "SS"
     },
-    "notes": "Best dmg boost kupole for challenging high competitive content like field boss & guild raid. But her mechanic requires to have many friendly units in screen as much as possible make her not good for solo content. Which is 90% of contents in TOSM\nHas some healing make her good choice for general usage. Although high downtime"
+    "notes": "Kupole เพิ่มความเสียหายดีที่สุดสำหรับด่านที่แข่งขันสูงอย่าง field boss & guild raid แต่กลไกของเธอต้องการให้มี unit ฝ่ายเราในหน้าจอมากที่สุด ทำให้เธอไม่ดีสำหรับเนื้อหา solo ซึ่งก็คือ 90% ของเนื้อหาใน TOSM\nมีการฮีลบ้างทำให้เธอเป็นตัวเลือกที่ดีสำหรับใช้ทั่วไป แม้ว่า downtime จะสูง"
   },
   {
     "id": "kp013",
@@ -348,7 +348,7 @@
       "partyBuff": "C",
       "overall": "OP"
     },
-    "notes": "New and updated Sakura Jurate with a bit lowered cooldown and more duration. But you know what ? They can be used together !\nEven has debuff nullify from her base Vaivora form. Can use her on all contents"
+    "notes": "Sakura Jurate รุ่นใหม่ที่อัปเดตแล้วพร้อม cooldown ที่ต่ำกว่าเล็กน้อยและระยะเวลานานกว่า แต่รู้ไหม? พวกเขาใช้งานด้วยกันได้!\nมี debuff nullify จาก Vaivora รุ่นพื้นฐานด้วย ใช้เธอได้ทุกเนื้อหา"
   },
   {
     "id": "kp014",
@@ -375,7 +375,7 @@
       "partyBuff": "F",
       "overall": "S"
     },
-    "notes": "Niche kupole that buff fellows a LOT. The best kupole for fellow-focused content like Lanista or some PvP team.\n\nDoes not provide buff to owner. But use owner damage to attack enemy. So in some content like Lab / Conquest that can bring 8 fellows. This might works well too"
+    "notes": "Kupole เฉพาะทางที่บัฟพันธมิตรมากมาย Kupole ดีที่สุดสำหรับเนื้อหาที่เน้นพันธมิตรอย่าง Lanista หรือทีม PvP บางตัว\nไม่ได้ให้ buff แก่เจ้าของ แต่ใช้ความเสียหายของเจ้าของในการโจมตีศัตรู ดังนั้นในบางเนื้อหาอย่าง Lab / Conquest ที่สามารถพา 8 พันธมิตรได้ นี่อาจจะเวิร์กได้ดี"
   },
   {
     "id": "kp015",
@@ -402,7 +402,7 @@
       "partyBuff": "C",
       "overall": "S"
     },
-    "notes": "Blocking projectile might shape the meta in PvP. But at least defense ignore for 50% uptime is already good to Zaura tier."
+    "notes": "การบล็อก projectile อาจจะ shaping the meta ใน PvP แต่อย่างน้อย defense ignore 50% uptime ก็ดีพอสมควรแล้วสำหรับ Zaura tier"
   },
   {
     "id": "kp016",
@@ -429,7 +429,7 @@
       "partyBuff": "C",
       "overall": "SS"
     },
-    "notes": "Free Maid Ruta for everyone, that's TLDR\n\nMaid form is still a bit better because of healing effect after revival"
+    "notes": "Maid Ruta ฟรีสำหรับทุกคน นั่นแหละ TLDR\nรูปแบบ Maid ยังดีกว่าเล็กน้อยเพราะมีผลฮีลหลังรีไววัล"
   },
   {
     "id": "kp017",
@@ -456,7 +456,7 @@
       "partyBuff": "C",
       "overall": "S"
     },
-    "notes": "General kupole that surprisingly useful for solving your SP issue. Think of it like pseudo Kinder Ruta + Lucy + Vakarine (Limited)."
+    "notes": "Kupole ทั่วไปที่ทำให้แก้ปัญหา SP ของคุณได้อย่างน่าประหลาดใจ คิดซะว่าเป็น pseudo Kinder Ruta + Lucy + Vakarine (Limited)"
   },
   {
     "id": "kp018",
@@ -483,7 +483,7 @@
       "partyBuff": "F",
       "overall": "S (Cleric , Rankers)"
     },
-    "notes": "B (Others)\n\nThe best dmg boost kupole in the game right now. But leech HP from you a lot to the point that you cannot use her casually or you will be dead."
+    "notes": "B (Others)\n\nKupole เพิ่มความเสียหายดีที่สุดในเกมตอนนี้ แต่ดูด HP จากคุณมากจนคุณไม่สามารถใช้เธอได้อย่างสบายใจ หรือคุณจะตาย"
   },
   {
     "id": "kp019",
@@ -510,7 +510,7 @@
       "partyBuff": "F",
       "overall": "F (PVE)"
     },
-    "notes": "S (PVP)\n\nOnly use for PvP attacker team."
+    "notes": "S (PVP)\n\nใช้ได้แค่สำหรับทีมโจมตี PvP เท่านั้น"
   },
   {
     "id": "kp020",
@@ -537,7 +537,7 @@
       "partyBuff": "B",
       "overall": "A+"
     },
-    "notes": "Can be substutant for player that cannot pull for Maid Ruta for lifesaver kupole. Really make you tanky.\nMust have for PvP defense team. Also use for Extra life in Memory 2-4F"
+    "notes": "สามารถใช้แทนสำหรับผู้เล่นที่ดึง Maid Ruta ไม่ได้เป็น kupole ช่วยชีวิต ทำให้คุณแน่นมาก\nจำเป็นสำหรับทีมป้องกัน PvP และใช้เป็นชีวิตสำรองใน Memory 2-4F"
   },
   {
     "id": "kp021",
@@ -564,7 +564,7 @@
       "partyBuff": "C",
       "overall": "B (PVE)"
     },
-    "notes": "SS (PVP)\n\nPvP Specialist. Useful for debuff cleanse & prevention."
+    "notes": "SS (PVP)\n\nPvP Specialist มีประโยชน์สำหรับล้าง debuff & ป้องกัน debuff"
   },
   {
     "id": "kp022",
@@ -591,7 +591,7 @@
       "partyBuff": "C",
       "overall": "A"
     },
-    "notes": "Specialist vs. Mutant boss. Which has many in late game\nAlso boost your block rate a lot. Useful for squishy class that need defensive kupole"
+    "notes": "Specialist vs. Mutant boss ซึ่งมีเยอะมากในช่วง late game\nเพิ่ม block rate ของคุณมากเลย มีประโยชน์สำหรับคลาสที่ไม่ทนทานที่ต้องการ kupole ที่ป้องกัน"
   },
   {
     "id": "kp023",
@@ -618,7 +618,7 @@
       "partyBuff": "C",
       "overall": "A"
     },
-    "notes": "Specialist vs. Insect enemy. Self damage debuff make this kupole also useful for some PvP arena setup. To counter High burst damage meta"
+    "notes": "Specialist vs. ศัตรูประเภท Insect Self damage debuff ทำให้ kupole นี้มีประโยชน์สำหรับบาง Arena PvP setup ด้วย เพื่อต้าน High burst damage meta"
   },
   {
     "id": "kp024",
@@ -645,7 +645,7 @@
       "partyBuff": "B",
       "overall": "A"
     },
-    "notes": "Specialist vs. Dark enemy (Which mostly herself). can be used as healer but not that reliable."
+    "notes": "Specialist vs. ศัตรูธาตุ Dark (ซึ่งส่วนใหญ่ก็ตัวเธอเอง) สามารถใช้เป็น healer ได้แต่ไม่ค่อยน่าเชื่อถือ"
   },
   {
     "id": "kp025",
@@ -672,7 +672,7 @@
       "partyBuff": "B",
       "overall": "A"
     },
-    "notes": "Specialist vs. Ice enemy. Useful for counter evasion team in PvP. But not that high usage rate\n\nYou can keep him 1 star"
+    "notes": "Specialist vs. ศัตรูธาตุ Ice มีประโยชน์สำหรับต้านทีม evasion ใน PvP แต่ไม่ค่อยมี usage rate สูง\nเก็บเขาไว้ 1 ดาวก็ได้"
   },
   {
     "id": "kp026",
@@ -699,7 +699,7 @@
       "partyBuff": "B",
       "overall": "A"
     },
-    "notes": "Specialist vs. Thunder enemy. Useful for counter evasion team in PvP. But not that high usage rate.\nYou can keep her 1 star\n\nUseful for counter EP 14 final boss if you are stuck Episode quest"
+    "notes": "Specialist vs. ศัตรูธาตุ Thunder มีประโยชน์สำหรับต้านทีม evasion ใน PvP แต่ไม่ค่อยมี usage rate สูง\nเก็บเธอไว้ 1 ดาวก็ได้\nมีประโยชน์สำหรับต้าน EP 14 final boss ถ้าคุณติด Episode quest"
   },
   {
     "id": "kp027",
@@ -726,7 +726,7 @@
       "partyBuff": "B",
       "overall": "B"
     },
-    "notes": "Useful for vs. devil enemy. But just for dmg boost\nYou can keep her 1 star"
+    "notes": "มีประโยชน์สำหรับ vs. ศัตรูประเภท Devil แต่ก็แค่เพื่อเพิ่มความเสียหาย\nเก็บเธอไว้ 1 ดาวก็ได้"
   },
   {
     "id": "kp028",
@@ -753,7 +753,7 @@
       "partyBuff": "B",
       "overall": "B"
     },
-    "notes": "Useful for vs. Beast enemy. Dealing good damage itself as well.\nYou can keep him 1 star. Unless you are ranker"
+    "notes": "มีประโยชน์สำหรับ vs. ศัตรูประเภท Beast สร้างความเสียหายดีในตัวเองด้วย\nเก็บเขาไว้ 1 ดาวก็ได้ เว้นแต่คุณเป็น ranker"
   },
   {
     "id": "kp029",
@@ -780,7 +780,7 @@
       "partyBuff": "S",
       "overall": "S"
     },
-    "notes": "The best point is knockback prevention & AoE stun make him can be used at many contents. Even have def shred & Very low CD.\n\nBest kupole to pick for JP player"
+    "notes": "จุดเด่นคือป้องกัน knockback & AoE stun ทำให้เขาสามารถใช้ได้ในหลายเนื้อหา ยังมี def shred & CD ต่ำมาก\nKupole ดีที่สุดที่จะเลือกสำหรับผู้เล่น JP"
   },
   {
     "id": "kp030",
@@ -807,7 +807,7 @@
       "partyBuff": "C",
       "overall": "C"
     },
-    "notes": "Too high cooldown to provide her must pick. But if you are tanky enough, in some PvP defense team she can make your team stall for much longer time"
+    "notes": "CD สูงเกินไปที่จะบอกว่าจำเป็นต้องเลือก แต่ถ้าคุณแน่นพอ ในบางทีมป้องกัน PvP เธอสามารถทำให้ทีมของคุณ stall ได้นานขึ้นมาก"
   },
   {
     "id": "kp031",
@@ -834,7 +834,7 @@
       "partyBuff": "B",
       "overall": "A"
     },
-    "notes": "Shred tank team in Arena to pieces. Also very wide AoE & SP recovery passive make her somehow useful for PvE as well"
+    "notes": "Shred ทีม tank ใน Arena เป็นชิ้นเลย AoE กว้างมาก & SP recovery passive ทำให้เธอมีประโยชน์สำหรับ PvE ด้วย"
   },
   {
     "id": "kp032",
@@ -861,7 +861,7 @@
       "partyBuff": "C",
       "overall": "C"
     },
-    "notes": "If you really need bleeding for combo with class (Mostly Highlander & Rogue pre-masterclass patch) then you can consider pick her.\n\nBut with the coming of Naktis make her fall of meta very fast"
+    "notes": "ถ้าคุณจำเป็นต้องมี bleeding สำหรับคอมโบกับคลาส (ส่วนใหญ่ Highlander & Rogue ก่อน masterclass patch) คุณก็พิจารณาดึงเธอได้\nแต่การมาของ Naktis ทำให้เธอตก meta เร็วมาก"
   },
   {
     "id": "kp033",
@@ -888,7 +888,7 @@
       "partyBuff": "C",
       "overall": "C"
     },
-    "notes": "You already use RNG to get her, and then really need RNG for her buff ? No\nWell.... maybe yes if you accidentally have her at high star. But 1% per second is too low to sustain you, however"
+    "notes": "คุณต้องใช้ RNG เพื่อได้เธอมา แล้วก็ต้องใช้ RNG อีกเพื่อให้ได้บัฟจากเธอ? ไม่\nเออ.... อาจจะใช่ถ้าคุณบังเอิญมีเธอดาวสูง แต่ 1% ต่อวินาทีต่ำเกินไปที่จะทำให้คุณยั่งยืน"
   },
   {
     "id": "kp034",
@@ -915,7 +915,7 @@
       "partyBuff": "C",
       "overall": "B"
     },
-    "notes": "Keep her 1 star for 30% dmg boost. Very useful earlygame. Does not work with party member anymore"
+    "notes": "เก็บเธอไว้ 1 ดาวสำหรับ 30% dmg boost มีประโยชน์มากในช่วง early game ไม่ทำงานกับพันธมิตรแล้วตอนนี้"
   },
   {
     "id": "kp035",
@@ -942,7 +942,7 @@
       "partyBuff": "A",
       "overall": "B"
     },
-    "notes": "For some raid & field boss hunt party setup, this kupole can boost party damage very well but need high rank."
+    "notes": "สำหรับบาง raid & field boss hunt party setup, kupole นี้สามารถเพิ่ม party damage ได้ดีมากแต่ต้องการดาวสูง"
   },
   {
     "id": "kp036",
@@ -969,7 +969,7 @@
       "partyBuff": "SS+",
       "overall": "A"
     },
-    "notes": "Best healer kupole. You always want to bring her into raid. Except if your party has too much Clerics"
+    "notes": "Kupole healer ดีที่สุด คุณอยากพาเธอเข้า raid เสมอ ยกเว้นถ้าทีมของคุณมี Clerics มากเกินไป"
   },
   {
     "id": "kp037",
@@ -996,7 +996,7 @@
       "partyBuff": "C",
       "overall": "C"
     },
-    "notes": "Debuff prevention alone cannot make you win PvP."
+    "notes": "การป้องกัน debuff อย่างเดียวไม่สามารถทำให้คุณชนะ PvP ได้"
   },
   {
     "id": "kp038",
@@ -1023,7 +1023,7 @@
       "partyBuff": "SS+",
       "overall": "A"
     },
-    "notes": "Only way to AoE SP healing before miko patch. If you are support cleric and got her. Always bring her in raid. Everyone will love you"
+    "notes": "วิธีเดียวที่จะ AoE SP healing ก่อน miko patch ถ้าคุณเป็น support cleric และได้เธอมา พาเธอเข้า raid เสมอ ทุกคนจะรักคุณ"
   },
   {
     "id": "kp039",
@@ -1050,7 +1050,7 @@
       "partyBuff": "C",
       "overall": "C"
     },
-    "notes": "Useful for early leveling. Atk down really not much impact on lategame"
+    "notes": "มีประโยชน์สำหรับ early leveling Atk down จริงๆ แล้วไม่ค่อยมีผลกระทบใน late game"
   },
   {
     "id": "kp040",
@@ -1077,7 +1077,7 @@
       "partyBuff": "B",
       "overall": "A"
     },
-    "notes": "Best kupole for first release patch of the game.\nBoost your damage and also boost your SP recovery. 2 in 1\n\nWorth to build at all cost. Better than her limited form even buff less.\n(Not high tier because many new units now better than her. But she always worth to honorable mention)"
+    "notes": "Kupole ดีที่สุดใน patch แรกที่ปล่อยเกม\nเพิ่มความเสียหายของคุณและยังเพิ่ม SP recovery ของคุณ 2 in 1\nสร้างได้คุ้มทุน ดีกว่ารูปแบบ Limited แม้ buff จะน้อยกว่า\n(ไม่ใช่ tier สูงเพราะ unit ใหม่หลายตัวดีกว่าเธอตอนนี้ แต่เธอก็คุ้มค่าที่จะเอ่ยถึงอยู่เสมอ)"
   },
   {
     "id": "kp041",
