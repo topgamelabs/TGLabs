@@ -12,7 +12,6 @@ type Kupole = typeof kupoleData[number];
 // ─── Shared color constants ──────────────────────────────────────────────────
 
 const TIER_COLORS: Record<string, string> = {
-  PVP: "#c026d3",
   S: "#ff4757",
   A: "#ffd43b",
   B: "#4dcc8a",
@@ -21,7 +20,6 @@ const TIER_COLORS: Record<string, string> = {
 };
 
 const TIER_BG: Record<string, string> = {
-  PVP: "rgba(192,38,211,0.15)",
   S: "rgba(255,71,87,0.15)",
   A: "rgba(255,212,59,0.15)",
   B: "rgba(77,204,138,0.15)",
@@ -59,9 +57,9 @@ const TYPE_COLORS: Record<string, string> = {
   Demon: "#9d6fff",
 };
 
-// ─── Tier order (PVP, S, A, B, C, Junk) ─────────────────────────────────────
+// ─── Tier order (S, A, B, C, Junk) ───────────────────────────────────────────
 
-const TIER_LIST = ["PVP", "S", "A", "B", "C", "Junk"];
+const TIER_LIST = ["S", "A", "B", "C", "Junk"];
 
 function getTierKey(tier: string): string {
   // Normalize any tier name to S/A/B/C/Junk
@@ -72,14 +70,6 @@ function getTierKey(tier: string): string {
   if (upper === "C" || upper === "C+") return "C";
   // D, F, or anything unrecognized → Junk
   return "Junk";
-}
-
-// ─── PVP detection for Kupoles ──────────────────────────────────────────────
-
-function isKupolePVP(kupole: Kupole): boolean {
-  const overall = kupole.tierlist?.overall ?? "";
-  // PVP kupoles have an overall tier but do NOT have "(PVE)" in it
-  return overall.length > 0 && !overall.includes("PVE");
 }
 
 // ─── Skill Row (reused in modals) ─────────────────────────────────────────────
@@ -456,7 +446,6 @@ function SoulTideTierRow({ tier, chars }: { tier: string; chars: React.ReactNode
   const color = TIER_COLORS[tier] ?? "#868e96";
   const bg = TIER_BG[tier] ?? "rgba(100,100,100,0.10)";
 
-  const isPVP = tier === "PVP";
   const isJunk = tier === "Junk";
 
   return (
@@ -467,9 +456,8 @@ function SoulTideTierRow({ tier, chars }: { tier: string; chars: React.ReactNode
       marginBottom: 12,
       background: bg,
       borderRadius: 10,
-      border: `1px solid ${color}33${isPVP ? " #ffd43b44" : ""}`,
+      border: `1px solid ${color}33`,
       overflow: "hidden",
-      boxShadow: isPVP ? `0 0 16px rgba(192,38,211,0.15), inset 0 0 20px rgba(255,212,59,0.03)` : undefined,
     }}>
       {/* Tier label on the left */}
       <div style={{
@@ -480,30 +468,19 @@ function SoulTideTierRow({ tier, chars }: { tier: string; chars: React.ReactNode
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: isPVP
-          ? "linear-gradient(135deg, #7c3aed 0%, #c026d3 50%, #ffd43b 100%)"
-          : isJunk
-          ? "#495057"
-          : color,
+        background: isJunk ? "#495057" : color,
         padding: "8px 0",
         gap: 2,
       }}>
         <span style={{
           fontFamily: "Georgia, serif",
-          fontSize: isPVP ? 11 : 18,
+          fontSize: 18,
           fontWeight: 900,
           color: "#fff",
           lineHeight: 1,
-          letterSpacing: isPVP ? 0.5 : undefined,
-          textShadow: isPVP ? "0 0 8px rgba(255,255,255,0.5)" : undefined,
         }}>
           {tier}
         </span>
-        {isPVP && (
-          <span style={{ fontSize: 8, color: "#ffd43b", fontFamily: "monospace", fontWeight: 700 }}>
-            ⚔ PVP
-          </span>
-        )}
       </div>
 
       {/* Divider */}
@@ -534,11 +511,10 @@ export function TierPanel(): React.JSX.Element {
   const [selectedFellow, setSelectedFellow] = useState<Fellow | null>(null);
   const [selectedKupole, setSelectedKupole] = useState<Kupole | null>(null);
 
-  // Group fellows by normalized tier (PVP, S, A, B, C, Junk)
-  // Fellows don't have a PVP designation → they go S/A/B/C or Junk
+  // Group fellows by normalized tier (S, A, B, C, Junk)
   const fellowsByTier = useMemo(() => {
     const map: Record<string, Fellow[]> = {
-      PVP: [], S: [], A: [], B: [], C: [], Junk: [],
+      S: [], A: [], B: [], C: [], Junk: [],
     };
     for (const f of fellowsData as Fellow[]) {
       if (!f.tierlist || !f.tierlist.overall) {
@@ -556,24 +532,19 @@ export function TierPanel(): React.JSX.Element {
     return map;
   }, []);
 
-  // Group kupoles by normalized tier (PVP, S, A, B, C, Junk)
-  // PVP kupoles = those with an overall tier that does NOT contain "(PVE)"
+  // Group kupoles by normalized tier (S, A, B, C, Junk)
   const kupolesByTier = useMemo(() => {
     const map: Record<string, Kupole[]> = {
-      PVP: [], S: [], A: [], B: [], C: [], Junk: [],
+      S: [], A: [], B: [], C: [], Junk: [],
     };
     for (const k of kupoleData as Kupole[]) {
       if (!k.tierlist || !k.tierlist.overall || k.tierlist.overall.trim() === "") {
         // No tier data → Junk
         map.Junk.push(k);
-      } else if (!isKupolePVP(k)) {
-        // Has "(PVE)" → regular PVE tier
+      } else {
         const tier = getTierKey(k.tierlist.overall);
         if (!map[tier]) map[tier] = [];
         map[tier].push(k);
-      } else {
-        // PVP kupole → PVP tier (keep original tier label for display)
-        map.PVP.push(k);
       }
     }
     for (const t of Object.keys(map)) {
