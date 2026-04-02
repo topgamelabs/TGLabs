@@ -19,10 +19,10 @@ export function GamePage({ game, onBack }: GamePageProps): React.JSX.Element {
 
   const tabs: { key: Tab; label: string }[] = [
     { key: "tier", label: "Tier List" },
-    { key: "patch", label: "Patch Notes" },
-    { key: "tips", label: "Tips" },
     { key: "fellow", label: "Fellow" },
     { key: "kupole", label: "Kupole" },
+    { key: "tips", label: "Tips" },
+    { key: "patch", label: "Patch Notes" },
   ];
 
   return (
