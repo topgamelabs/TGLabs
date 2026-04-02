@@ -641,7 +641,7 @@ export function FellowsPanel(): React.JSX.Element {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fill, minmax(160px, 1fr))",
+            gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(auto-fill, minmax(160px, 1fr))",
             gap: isMobile ? 10 : 14,
           }}
         >
