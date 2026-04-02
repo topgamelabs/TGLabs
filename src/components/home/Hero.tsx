@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, CSSProperties } from "react";
 import type { Game } from "@/data/games";
 import { GameCard } from "./GameCard";
 
@@ -22,7 +22,18 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
     };
     checkSize();
     window.addEventListener("resize", checkSize);
-    return () => window.removeEventListener("resize", checkSize);
+
+    // Hide webkit scrollbar for game cards horizontal scroll
+    const style = document.createElement("style");
+    style.id = "hero-cards-scroll-style";
+    style.textContent = `.hero-cards-scroll::-webkit-scrollbar { display: none }`;
+    document.head.appendChild(style);
+
+    return () => {
+      window.removeEventListener("resize", checkSize);
+      const existing = document.getElementById("hero-cards-scroll-style");
+      if (existing) existing.remove();
+    };
   }, []);
 
   const filtered = games.filter(
@@ -230,7 +241,7 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
           />
         </div>
 
-        {/* Game Banner Visual */}
+        {/* Game Banner Visual — clickable */}
         <div
           style={{
             position: "relative",
@@ -243,7 +254,9 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
             boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
             aspectRatio: "16/9",
             background: "#0c1020",
+            cursor: "pointer",
           }}
+          onClick={() => featuredGame && onSelect(featuredGame)}
         >
           <img
             src="/games/tosm-banner.jpg"
@@ -662,28 +675,57 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
 
 
 
-        {/* ── GAME CARD — ToS M Only ── */}
+        {/* ── GAME CARDS — Horizontal Scroll ── */}
         <div
           style={{
             fontFamily: "monospace",
             fontSize: 10,
             letterSpacing: 4,
             color: "#3d3560",
-            marginBottom: 20,
+            marginBottom: 8,
             textTransform: "uppercase",
           }}
         >
-          // Tree of Savior M //
+          // All Games //
         </div>
+
+        {/* Scroll hint */}
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-            gap: 14,
+            textAlign: "center",
+            fontSize: 10,
+            color: "#3d3560",
+            marginBottom: 8,
+            letterSpacing: 1,
           }}
         >
-          {games.slice(0, 1).map((g) => (
-            <GameCard key={g.id} game={g} onClick={() => onSelect(g)} />
+          ← เลื่อนดูเกมอื่น →
+        </div>
+
+        <div
+          className="hero-cards-scroll"
+          style={{
+            display: "flex",
+            overflowX: "auto",
+            gap: 14,
+            paddingBottom: 10,
+            scrollSnapType: "x mandatory",
+            WebkitOverflowScrolling: "touch",
+            scrollbarWidth: "none",
+            MsOverflowStyle: "none",
+          }}
+        >
+          {games.map((g) => (
+            <div
+              key={g.id}
+              style={{
+                width: "280px",
+                scrollSnapAlign: "start",
+                flexShrink: 0,
+              }}
+            >
+              <GameCard game={g} onClick={() => onSelect(g)} />
+            </div>
           ))}
         </div>
       </div>
