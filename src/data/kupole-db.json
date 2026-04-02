@@ -1,0 +1,1136 @@
+[
+  {
+    "id": "kp001",
+    "name": "Maid Ruta",
+    "grade": "Limited UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha  (Limited Banner)",
+    "rankBonus": "Critical Damage 5% + 2r%",
+    "bondBonus": "Crit Resist 25 + 7r",
+    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Master, It is not time to sleep! CD : 700s (Automatically use when player taking lethal damage) Protect you from lethal damage once. Grant 0.7s invicibility and instantly heal 75% of Max HP, then grant 60s buff that heal 0.5% every 2s. In PvP, this effect can only apply once. Invisibility time reduce to 0.14s",
+    "rankUnlock": [
+      "CD 600s Heal 1% every 2s Invisible time 1s (0.20s in pvp)",
+      "CD 500s Heal 1.5% every 2s Invisible time 1.3s (0.26s in pvp)",
+      "CD 400s Heal 2% every 2s Invisible time 1.6s (0.32s in pvp)",
+      "CD 300s Heal 2.5% every 2s Invisible time 1.9s (0.38s in pvp)",
+      "CD 200s Heal 3% every 2s Invisible time 2.2s (0.44s in pvp)",
+      "CD 100s Heal 3.5% every 2s Invisible time 2.5s (0.50s in pvp)"
+    ],
+    "tierlist": {
+      "damageBuff": "C",
+      "survival": "SS+",
+      "utility": "SS+",
+      "partyBuff": "C",
+      "overall": "SS"
+    },
+    "notes": "Second life = the most broken thing in PvP. Think of you have another 50% of Max HP reserve for you.\nFor PvE, she also save your resurrection crystal for squishy class like Archer, Scout or Musketeer to the point that \"Must Have\" this unit before even consider to play."
+  },
+  {
+    "id": "kp002",
+    "name": "Schoolgirl Saule",
+    "grade": "Limited UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha  (Limited Banner)",
+    "rankBonus": "HP Recovery 12% + 5r%",
+    "bondBonus": "Defense 17 + 5r",
+    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Fun Lunch Time! CD : 71s Create pathway forward for 10s. Standing in pathway grant debuff immune and increase movement speed by 1. Also +30% evasion fellow in pathway also get +15% evasion [Additional Effect] Attacking while on pathway will trigger kupole's coordinate attack. Dealing 22% damage.This effect can occur once per second",
+    "rankUnlock": [
+      "CD: 65s Coordinate Attack Factor : 32%",
+      "CD: 59s Coordinate Attack Factor : 42%",
+      "CD: 53s Coordinate Attack Factor : 52%",
+      "CD: 47s Coordinate Attack Factor : 62%",
+      "CD: 41s Coordinate Attack Factor : 72%",
+      "CD: 35s Coordinate Attack Factor : 82%"
+    ],
+    "tierlist": {
+      "damageBuff": "C",
+      "survival": "S",
+      "utility": "C",
+      "partyBuff": "C",
+      "overall": "B"
+    },
+    "notes": "Niche PvP unit for evasion team & some use for debuff prevention & free damage in PvE."
+  },
+  {
+    "id": "kp003",
+    "name": "Swimsuit Gesti",
+    "grade": "Limited UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha (Limited Banner)",
+    "rankBonus": "Critical Damage  5% +2r%",
+    "bondBonus": "Crit Rate 20 + 13r",
+    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Aqua Wind CD : 100s Creates a whirlpool at the enemy location that reduces the enemy's movement speed by 70%, and after 2 seconds strikes enemies within the range with a whirlwind, dealing ice damage equal to 443% of the owner's attack power. Targets damaged by this skill receive 12% more damage from 'master' and 'master's accompanying fellows' for 10 seconds.",
+    "rankUnlock": [
+      "Damage: 520% Damage Increase Debuff: 15%",
+      "Damage: 597% Damage Increase Debuff: 18%",
+      "Damage: 674% Damage Increase Debuff: 21%",
+      "Damage: 751% Damage Increase Debuff: 24%",
+      "Damage: 828% Damage Increase Debuff: 27%",
+      "Damage: 905% Damage Increase Debuff: 30%"
+    ],
+    "tierlist": {
+      "damageBuff": "S",
+      "survival": "B",
+      "utility": "S",
+      "partyBuff": "C",
+      "overall": "A+"
+    },
+    "notes": "Somehow even boost damage better than normal Gesti, nor tempting to pull her much on this form because of lacking SP recovery passive.\nStill have caveat from long cooldown & low downtime make her fall of meta very fast"
+  },
+  {
+    "id": "kp004",
+    "name": "Santa Zemyna",
+    "grade": "Limited UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha (Limited Banner)",
+    "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
+    "bondBonus": "Crit Damage 11 + 6r",
+    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Merry Christmas! CD : 90s Throw Christmas presents to master. Increase attack,defense, attack speed, crit rate and crit damage by 12.25% to master and all fellows for 12s. Additionally, the Owner's damage to Plant-Type enemies is increased by 30% for 10 seconds.",
+    "rankUnlock": [
+      "CD : 85s",
+      "CD : 80s",
+      "CD : 75s",
+      "CD : 70s",
+      "CD : 65s",
+      "CD : 60s"
+    ],
+    "tierlist": {
+      "damageBuff": "S",
+      "survival": "A",
+      "utility": "SS",
+      "partyBuff": "C",
+      "overall": "S"
+    },
+    "notes": "Atk boost & crit boost is general buff that can be used for long time. Even not top meta, you will always glad to have her in slot."
+  },
+  {
+    "id": "kp005",
+    "name": "Giltine",
+    "grade": "Limited UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha (Limited Banner)",
+    "rankBonus": "Critical Damage  5% +2r%",
+    "bondBonus": "Hit Rate 17 + 4r",
+    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Pouring Apocalypse CD: 70s Cut the reality with overhelming power. Create dimension crack in line-shape that will rain down thunder of apocalypse. Dealing 1165% Dark damage. (50% reduce damage to Player and Fellow.) Cause Enemy hit by Dark Thunder in 'Apocalypse' state for 10s. Increase damage received from player by 8% and ignore 9% defense.",
+    "rankUnlock": [
+      "Damage: 1332% Damage Increase Debuff: +10% Defense Ignore: -10%",
+      "Damage: 1499% Damage Increase Debuff: +12% Defense Ignore: -11%",
+      "Damage: 1666% Damage Increase Debuff: +14% Defense Ignore: -12%",
+      "Damage: 1833% Damage Increase Debuff: +16% Defense Ignore: -13%",
+      "Damage: 2000% Damage Increase Debuff: +18% Defense Ignore: -14%",
+      "Damage: 2167% Damage Increase Debuff: +20% Defense Ignore: -15%"
+    ],
+    "tierlist": {
+      "damageBuff": "S",
+      "survival": "B",
+      "utility": "S",
+      "partyBuff": "B",
+      "overall": "S"
+    },
+    "notes": "Def Shred & Dmg boost. Still great, but high cooldown & high competition for def shred kupole make her position in meta not high as before."
+  },
+  {
+    "id": "kp006",
+    "name": "Sugar Candy Gabija",
+    "grade": "Limited UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha  (Limited Banner)",
+    "rankBonus": "HP Recovery 12% + 5r%",
+    "bondBonus": "Penetration 14 +4r",
+    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "You there! Become candy! CD: 65s Pour hot candy to attack all enemies in area. Dealing 142% Fire damage every second. Enemy hit will become a candy, stun for 2s, also inflicted 'Burn' and debuff that decrease block and evasion rate by 13% for 10s 'Burn' from this skill dealing 20% of base skill damage per second for 10s. Also reduce attack power of enemy burned by 20% Additionally, the Owner's damage to Fire Property enemies is increased by 30% for 10 seconds.",
+    "rankUnlock": [
+      "Damage : 179%  Block & Evasion Debuff : -15%",
+      "Damage : 216%  Block & Evasion Debuff : -17%",
+      "Damage : 253%  Block & Evasion Debuff : -19%",
+      "Damage : 290%  Block & Evasion Debuff : -21%",
+      "Damage : 327%  Block & Evasion Debuff : -23%",
+      "Damage : 354%  Block & Evasion Debuff : -25%"
+    ],
+    "tierlist": {
+      "damageBuff": "B",
+      "survival": "A",
+      "utility": "B",
+      "partyBuff": "C",
+      "overall": "B"
+    },
+    "notes": "PvP Unit that has some use in PvE for vs. Fire monster. Not top pick."
+  },
+  {
+    "id": "kp007",
+    "name": "Sakura Jurate",
+    "grade": "Limited UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha  (Limited Banner)",
+    "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
+    "bondBonus": "Crit Damage 11 + 6r",
+    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Sakura Wind CD: 60s Bless the weather with cherry blossom's petal. Grant master and all of their fellows \"Sakura Blessing\" for 10s. [Sakura Blessing] - Increase hit rate by 13% , Penetration Rate by 9%. - Damage that scores 'Clean Hit/Pierce' increase by 3% - Heal 2.6% of Max HP and 10% Max SP every second - Reduce debuff duration received by 50% (Fellow only got halved effect) Additionally, the Owner's damage to Earth Property enemies is increased by 30% for 10 seconds.",
+    "rankUnlock": [
+      "Hit Rate +15% Penetration +10% Clean Hit / Pierce Damage +5% Heal 3.0% every second",
+      "Hit Rate +17% Penetration +11% Clean Hit / Pierce Damage +7% Heal 3.4% every second",
+      "Hit Rate +19% Penetration +12% Clean Hit / Pierce Damage +9% Heal 3.8% every second",
+      "Hit Rate +21% Penetration +13% Clean Hit / Pierce Damage +11% Heal 4.2% every second",
+      "Hit Rate +23% Penetration +14% Clean Hit / Pierce Damage +13% Heal 4.6% every second",
+      "Hit Rate +25% Penetration +15% Clean Hit / Pierce Damage +15% Heal 5% every second"
+    ],
+    "tierlist": {
+      "damageBuff": "SS",
+      "survival": "SS+",
+      "utility": "SS+",
+      "partyBuff": "C",
+      "overall": "OP"
+    },
+    "notes": "The best and most broken kupole of all time.\n- Can heal HP&SP\n- Can buff your base stat\n- Can buff your damage by a LOT. Because Cleanhit/Pierce damage boost option is seperate multiplier and really hard to obtain."
+  },
+  {
+    "id": "kp008",
+    "name": "Kindergarten Ruta",
+    "grade": "Limited UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha  (Limited Banner)",
+    "rankBonus": "Critical Damage  5% +2r%",
+    "bondBonus": "Attack 17 + 4r",
+    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Help me! Popolion! CD: 480s Ruta bring the crayon-drawing Popolion to life to help her in battle Passive : Once every 5 second, when the owner attacks, a 'Very Strong Popolion' appeared for 4s. It will go to enemy and attack, dealing 60% damage. Enemy attacked by the popolion will be guity by the cuteness of Ruta and then 'Pretend to be sick' for 12s, increase damage received from owner by 0.045% stack up to 50 times. - At 10-19 stacks, increase damage received from owner increase additionally +0.01% per stack - At 20-29 stacks, increase damage received from owner increase additionally +0.04% per stack - At 30-39 stacks, increase damage received from owner increase additionally +0.09% per stack - At 40-49 stacks, increase damage received from owner increase additionally +0.16% per stack - At 50 stacks, the debuff becomes 'Pretend to be very sick' that greatly increase damage received from owner for 60s. While debuff is active, cannot stack 'Pretend to be sick'   Active: If the owner taking lethal damage, this skill activated automatically. A large popolion appeared to roaring. Nullify that damage and grant 1.5s invicibility to the owner. Then grant 9s buff that increase attack power by 10% and debuff all enemies in 6m radius with 'Pretend to be weak' for 9s. Decrease damage deal to owner by 20% (in PVP, invisibility time changed to 0.5s)",
+    "rankUnlock": [
+      "CD : 420s 'Pretend to be sick' damage increase per stack : 0.075% Attack Power buff & 'Pretend to be weak' debuff duration : 10s",
+      "CD : 360s 'Pretend to be sick' damage increase per stack : 0.105% Attack Power buff & 'Pretend to be weak' debuff duration : 11s",
+      "CD : 300s 'Pretend to be sick' damage increase per stack : 0.135% Attack Power buff & 'Pretend to be weak' debuff duration : 12s",
+      "CD : 240s 'Pretend to be sick' damage increase per stack : 0.165% Attack Power buff & 'Pretend to be weak' debuff duration : 13s",
+      "CD : 180s 'Pretend to be sick' damage increase per stack : 0.195% Attack Power buff & 'Pretend to be weak' debuff duration : 14s",
+      "CD : 120s 'Pretend to be sick' damage increase per stack : 0.225% Attack Power buff & 'Pretend to be weak' debuff duration : 15s"
+    ],
+    "tierlist": {
+      "damageBuff": "SS",
+      "survival": "S",
+      "utility": "B",
+      "partyBuff": "C",
+      "overall": "S"
+    },
+    "notes": "Best dmg boost kupole for any fight that linger more than 2.40 minutes. Also have second life for your but no healing. Make her sometimes not reliable lifesaver as Maid Ruta"
+  },
+  {
+    "id": "kp009",
+    "name": "Festival Laima",
+    "grade": "Limited UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha  (Limited Banner)",
+    "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
+    "bondBonus": "Crit Damage 11 + 6r",
+    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "One! Two! Cheese! CD: 100s Come and enjoy festival with Laima ! Apply following buffs depend on number of fellows in your team  [0 Fellow in team - Enjoy Festival Food] For 100s, increase your attack and defense by 5%  [1-2 fellows - Try making mochi] Laima (intend to) mistakingly smash mochi-hammer to nearby enemies. Dealing 1018% damage. Enemy hit will be debuff for 7.5s, increase damage taken from master by 45%  [3 or more fellows - Enjoy memorable firework together !] For 100s, Increase movement speed of everyone in team by 5 and reduce damage taken by 11%  All effects cannot stack.",
+    "rankUnlock": [
+      "[Food Buff] 6% [Mochi Hammer Damage] : 1118% [Memorable Firework Movement Speed Buff] : +6",
+      "[Food Buff] 7% [Mochi Hammer Damage] : 1218% [Memorable Firework Movement Speed Buff] : +7",
+      "[Food Buff] 8% [Mochi Hammer Damage] : 1318% [Memorable Firework Movement Speed Buff] : +8",
+      "[Food Buff] 9% [Mochi Hammer Damage] : 1418% [Memorable Firework Movement Speed Buff] : +9",
+      "[Food Buff] 10% [Mochi Hammer Damage] : 1518% [Memorable Firework Movement Speed Buff] : +10",
+      "[Food Buff] 11% [Mochi Hammer Damage] : 1618% [Memorable Firework Movement Speed Buff] : +11"
+    ],
+    "tierlist": {
+      "damageBuff": "S",
+      "survival": "A",
+      "utility": "S",
+      "partyBuff": "C",
+      "overall": "S"
+    },
+    "notes": "Think of her as Swiss knife. Good at many situations but not the best. Her best content is Memory 2-4F for speed boost for faster clearing. And Crystal Hall for 11% Atk buff with no downtime at all. 45% dmg amp can make you clear Argent Temple & Convent fast.\nAnd SP Reco passive always make her good kupole."
+  },
+  {
+    "id": "kp010",
+    "name": "Little Rabbit Lucy",
+    "grade": "Limited UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha  (Limited Banner)",
+    "rankBonus": "Critical Damage  5% +2r%",
+    "bondBonus": "Attack 17 + 4r",
+    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Bastard Extermination Bombing Stance CD: 70s Enter stance for 30s. During this stance, increase damage to normal/elite monster by 30% .When owner using any skill, this unit will shoot carrot missile to enemy. (Maximum 30 times) [Carrot Missile] Dealing 182% damage in 3m radius. Inflict 1 stack of 'Rabbit Missile - Armor Break' to enemy hit. Inflict 'Rabbit Missile - Armor Break' debuff for 20s, damage taken from owner will ignore 0.8% defense. Stack up to 3 times (When stack is at maximum, duration is not refreshed when getting hit by another missile). Every 6th missile will be powered up to Giant Carrot Rocket, dealing 309% damage in 5m radius and inflict 3 stacks of same debuff.  Unfortunately, Humanoid enemies are considered less bastard than others. So all missile damage to humanoid type will be reduced by 90%",
+    "rankUnlock": [
+      "[Armor Break] Maximum stack: 5 Missile Damage : 214% Rocket Damage : 342%",
+      "[Armor Break] Maximum stack: 7 Missile Damage : 246% Rocket Damage : 375%",
+      "[Armor Break] Maximum stack: 9 Missile Damage : 278% Rocket Damage : 408%",
+      "[Armor Break] Maximum stack: 11 Missile Damage : 310% Rocket Damage : 441%",
+      "[Armor Break] Maximum stack: 13 Missile Damage : 342% Rocket Damage : 474%",
+      "[Armor Break] Maximum stack: 15 Missile Damage : 374% Rocket Damage :  507%"
+    ],
+    "tierlist": {
+      "damageBuff": "S+",
+      "survival": "S",
+      "utility": "SS",
+      "partyBuff": "C",
+      "overall": "SS"
+    },
+    "notes": "Best kupole for field farm & Top row daily dungeon. Really improve AoE potential and deal considerable damage & def shred by itself. To the point that can slot at all content if you lack damage"
+  },
+  {
+    "id": "kp011",
+    "name": "Transfer Student Vakarine",
+    "grade": "Limited UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha  (Limited Banner)",
+    "rankBonus": "Critical Damage  5% +2r%",
+    "bondBonus": "Hit Rate 17 + 4r",
+    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Nice to meet you! Take care! CD: 70s Base on 'Precious Bond' stacks, grant owner 'New Bond' effect for 10s. Increase damage by 20%.  Passive : Every 45 enemies defeated within buff period in Dungeon content, grant 1 'Precious Bond' stack (Maximum 9 stacks). - Increase movement speed by 3% + 3% per stack - SP natural recovery by 10 + 10 per stack. - Increase 'New Bond' duration in next time use by 5s.",
+    "rankUnlock": [
+      "Number of enemies require per stack : 40",
+      "Number of enemies require per stack : 35",
+      "Number of enemies require per stack : 30",
+      "Number of enemies require per stack : 25",
+      "Number of enemies require per stack : 20",
+      "Number of enemies require per stack : 15"
+    ],
+    "tierlist": {
+      "damageBuff": "S",
+      "survival": "S",
+      "utility": "SS",
+      "partyBuff": "C",
+      "overall": "SS"
+    },
+    "notes": "Best kupole for any dungeons that have many mobs to whack of. She alone can solve your SP issue with innate high SP recovery."
+  },
+  {
+    "id": "kp012",
+    "name": "Lady Bride Lada",
+    "grade": "Limited UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha  (Limited Banner)",
+    "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
+    "bondBonus": "Crit Rate 20 + 13r",
+    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Blessing to you and my future CD: 90s Grant blessing to all allies. The more guests (any unit) inside area, more duration increase.   - Duration 10s. +5s per every 11 ally unit. Maximum is 30s - Heal player 2% HP and 3% SP per second. Heal all of their fellows 2% HP per second.  - Increase damage that owner and all of their fellows attack by 3% per 7 ally unit. (Maximum 90% increase)",
+    "rankUnlock": [
+      "Duration +5 per 10 ally unit.  Damage +3% per 6 ally unit",
+      "Duration +5 per 9 ally unit.  Damage +3% per 5 ally unit",
+      "Duration +5 per 8 ally unit.  Damage +3% per 4 ally unit",
+      "Duration +5 per 7 ally unit.  Damage +3% per 3 ally unit",
+      "Duration +5 per 6 ally unit.  Damage +3% per 2 ally unit",
+      "Duration +5 per 5 ally unit.  Damage +3% per 1 ally unit"
+    ],
+    "tierlist": {
+      "damageBuff": "SS+",
+      "survival": "SS",
+      "utility": "A",
+      "partyBuff": "C",
+      "overall": "SS"
+    },
+    "notes": "Best dmg boost kupole for challenging high competitive content like field boss & guild raid. But her mechanic requires to have many friendly units in screen as much as possible make her not good for solo content. Which is 90% of contents in TOSM\nHas some healing make her good choice for general usage. Although high downtime"
+  },
+  {
+    "id": "kp013",
+    "name": "Fairytale Witch Vaivora",
+    "grade": "Limited UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha  (Limited Banner)",
+    "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
+    "bondBonus": "Attack 17 + 4r",
+    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Once upon the time, there was a witch lived in wood... CD: 60s Vaivora bring fairytales to become reality. Grant buff to owner for 15 seconds. More fairytale stories unfold on more rank upgrade.  [Rank 1 - \"There was path lied with sweets\"]  Recover 10% SP per second.",
+    "rankUnlock": [
+      "\"There was a house made entirely from candy\"  Recover 5% HP per second",
+      "\"There, they met the witch\"  Silence nearby enemies when casting",
+      "\"The witch grant the most desired thing. But come with a prize\"  Accuracy increase by 25%",
+      "\"There is a thread that when stab you, you will fall asleep forever\"  Penetration increase by 25%",
+      "\"The prince overcome all trails and hardship to save the princess\"  Nullify debuffs and CCs up to 5 times while buff is active",
+      "\"...And they all live happily ever after\"  Increase Cleanhit/Pierce damage by 30%"
+    ],
+    "tierlist": {
+      "damageBuff": "SS+",
+      "survival": "SS+",
+      "utility": "SS+",
+      "partyBuff": "C",
+      "overall": "OP"
+    },
+    "notes": "New and updated Sakura Jurate with a bit lowered cooldown and more duration. But you know what ? They can be used together !\nEven has debuff nullify from her base Vaivora form. Can use her on all contents"
+  },
+  {
+    "id": "kp014",
+    "name": "Teacher Austeja",
+    "grade": "Limited UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha  (Limited Banner)",
+    "rankBonus": "Critical Damage  5% +2r%",
+    "bondBonus": "Crit Damage 11 + 4r",
+    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Exciting Grading Time CD: 195s Buff all fellows for 18s. Start to grading their score base on their performance.  [Grading] - When fellow using skill, gain 1 grade point (Demigod fellows give 2 points instead) - Heal fellows 1% HP for every 1 point gained. [Scoring] - 10 Points : Increase fellow damage by 25%. And when score increase, send small kupoles fly toward enemy dealing 50% damage. This damage ignore 30% Def - 20 Points : Extend buff duration by 5s. Small Kupole SFR become 80% - 35 Points : All fellows decrease damage taken by 15%. Small Kupole SFR become 90% - 50 Points : Extend buff duration by 5s. Small Kupole SFR become 110% - 75 Points : Increase damage/reduce damage taken buff doubled. Small Kupole SFR become 170% - 100 Points : Extend buff duration by 5s. Release 5 Small Kupoles at once.  Once the score reach 100 it can no longer accumulate any grade points. But fellow damage/DR buff persists until duration is over.",
+    "rankUnlock": [
+      "Buff duration : 20s CD : 175s",
+      "Buff duration : 22s CD : 155s",
+      "Buff duration : 24s CD : 135s",
+      "Buff duration : 26s CD : 115s",
+      "Buff duration : 28s CD : 95s",
+      "Buff duration : 30s CD : 75s"
+    ],
+    "tierlist": {
+      "damageBuff": "F\nWell.... technically. Because this kupole buff fellows only. Not buffing you at all",
+      "survival": "B\nShe heal fellows, but still heal you because of passive UR unit",
+      "utility": "S\nA lot I guess ?",
+      "partyBuff": "F",
+      "overall": "S"
+    },
+    "notes": "Niche kupole that buff fellows a LOT. The best kupole for fellow-focused content like Lanista or some PvP team.\n\nDoes not provide buff to owner. But use owner damage to attack enemy. So in some content like Lab / Conquest that can bring 8 fellows. This might works well too"
+  },
+  {
+    "id": "kp015",
+    "name": "Baiga",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Chance to negate Mental debuff 4% + 1%",
+    "bondBonus": "Defense 17  +5r",
+    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Barrier of Rejection CD : 50s Summon a barrier that block all incoming projectiles in front of master for 4s.   Every 2s, the wall pulse energy wave forward. Dealing 108% damage and knock enemy up to the air (Only knock up once per cast). Enemy hit by this attack also inflict with debuff for 10s. Reduce block rate by 20% and damage received by owner attack will ignore 20% of owner's defense.",
+    "rankUnlock": [
+      "Barrier Duration : 5s  Pulse Wave damage : 157%",
+      "Barrier Duration : 6s  Pulse Wave damage : 206%",
+      "Barrier Duration : 7s  Pulse Wave damage : 255%",
+      "Barrier Duration : 8s  Pulse Wave damage : 304%",
+      "Barrier Duration : 9s  Pulse Wave damage : 353%",
+      "Barrier Duration : 10s  Pulse Wave damage : 402%"
+    ],
+    "tierlist": {
+      "damageBuff": "A",
+      "survival": "S",
+      "utility": "S",
+      "partyBuff": "C",
+      "overall": "S"
+    },
+    "notes": "Blocking projectile might shape the meta in PvP. But at least defense ignore for 50% uptime is already good to Zaura tier."
+  },
+  {
+    "id": "kp016",
+    "name": "Companion Ruta",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Story Quest (Episode 21)",
+    "rankBonus": "Chance to negate Physical debuff 4% + 1%",
+    "bondBonus": "Endurance 17 +5r",
+    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Fateful Reunion CD: 700s (Automatically use when player taking lethal damage)  Protect you from lethal damage once. Grant 2s invicibility and instantly heal 50% of Max HP,SP then grant 10s buff that increase movement speed by 20%  In PvP, this effect can only apply once. Invisibility time reduce to 0.5s",
+    "rankUnlock": [
+      "CD : 600s PvE Invisibility time : 2.5s",
+      "CD : 500s PvE Invisibility time : 3s",
+      "CD : 400s PvE Invisibility time : 3.5s",
+      "CD : 300s PvE Invisibility time : 4s",
+      "CD : 200s PvE Invisibility time : 4.5s",
+      "CD : 100s PvE Invisibility time : 5s"
+    ],
+    "tierlist": {
+      "damageBuff": "C",
+      "survival": "SS",
+      "utility": "SS",
+      "partyBuff": "C",
+      "overall": "SS"
+    },
+    "notes": "Free Maid Ruta for everyone, that's TLDR\n\nMaid form is still a bit better because of healing effect after revival"
+  },
+  {
+    "id": "kp017",
+    "name": "Kartas",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural SP Recovery  10 + 4r",
+    "bondBonus": "Penetration 14 +4r",
+    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Sadistic Predation CD : 45s Use chain and hounds to track enemy's soul. Passive: Every 3s, Kartas will release 4 chains to attack nearby enemies in 6m radius. Chain dealing 120% Dark damage + 30% for each chain count that more than 2 on the same target (Up to 5). Each chain reduce 15 enemy's SP and restore 7 SP to owner. Damage is tripled vs. Normal/Elite monster. Active: If chain attack boss monster or Holy enemy fellow, also slow enemy on hit 99% for 2s and command Hounds to crush enemy's soul. Dealing 370% damage and grant owner 30% of Max SP. Enemy hit by the hound increase damage taken from owner  by 20% for 5s",
+    "rankUnlock": [
+      "Number of Chains attack : 5 Hound Damage : 415%",
+      "Number of Chains attack : 6 Hound Damage : 460%",
+      "Number of Chains attack : 7 Hound Damage : 505%",
+      "Number of Chains attack : 8 Hound Damage : 550%",
+      "Number of Chains attack : 9 Hound Damage : 595%",
+      "Number of Chains attack : 10 Hound Damage : 640%"
+    ],
+    "tierlist": {
+      "damageBuff": "A",
+      "survival": "C",
+      "utility": "S",
+      "partyBuff": "C",
+      "overall": "S"
+    },
+    "notes": "General kupole that surprisingly useful for solving your SP issue. Think of it like pseudo Kinder Ruta + Lucy + Vakarine (Limited)."
+  },
+  {
+    "id": "kp018",
+    "name": "Ragana",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural HP Recovery  12% + 5r%",
+    "bondBonus": "Penetration 14 +4r",
+    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Joy of Pain CD: 70s  Curse the owner for 10s, Lose 5% of Max HP per second (This damage will not kill the user). But the pain will bring joy, make their damage increase by 5% stack up every second for 15s (Maximum is 75%). When this duration is over, heal 5% of Max HP",
+    "rankUnlock": [
+      "HP Loss : 4.75% HP Heal : 10%",
+      "HP Loss : 4.5% HP Heal : 15%",
+      "HP Loss : 4.25% HP Heal : 20%",
+      "HP Loss : 4% HP Heal : 25%",
+      "HP Loss : 3.75% HP Heal : 30%",
+      "HP Loss : 3.5% HP Heal : 35%"
+    ],
+    "tierlist": {
+      "damageBuff": "SS+",
+      "survival": "F",
+      "utility": "A",
+      "partyBuff": "F",
+      "overall": "S (Cleric , Rankers)"
+    },
+    "notes": "B (Others)\n\nThe best dmg boost kupole in the game right now. But leech HP from you a lot to the point that you cannot use her casually or you will be dead."
+  },
+  {
+    "id": "kp019",
+    "name": "Austrine",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural SP Recovery  10 + 4r",
+    "bondBonus": "Crit Rate 20 +4r",
+    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "In The Arm of Goddess CD : 70s Goddess appear to cover a defeated soul. Grant 30s buff. - When your fellows is defeated, grant a 'Comrade's Protection' stack that increase defense by 3% - When you defeat humanoid enemy or enemy's fellow, grant a 'Spirit of Competition' that increase attack by 2% 'Comrade's Protection' and 'Spirit of Competition' stack last for 10 seconds. Both share the same maximum of 5 stacks. When you gain either stack after having 5 stacks, 1 stack from other buff is replaced.",
+    "rankUnlock": [
+      "[Comrade's Protection] Def Buff : 4% [Spirit of Competition] Atk Buff : 2.5%",
+      "[Comrade's Protection] Def Buff : 5% [Spirit of Competition] Atk Buff : 3%",
+      "[Comrade's Protection] Def Buff : 6% [Spirit of Competition] Atk Buff : 3.5%",
+      "[Comrade's Protection] Def Buff : 7% [Spirit of Competition] Atk Buff : 4%",
+      "[Comrade's Protection] Def Buff : 8% [Spirit of Competition] Atk Buff : 4.5%",
+      "[Comrade's Protection] Def Buff : 9% [Spirit of Competition] Atk Buff : 5%"
+    ],
+    "tierlist": {
+      "damageBuff": "C (PVE)\nSS (PVP)",
+      "survival": "B (PVE)\nSS (PVP)",
+      "utility": "B (PVE)\nS (PVP)",
+      "partyBuff": "F",
+      "overall": "F (PVE)"
+    },
+    "notes": "S (PVP)\n\nOnly use for PvP attacker team."
+  },
+  {
+    "id": "kp020",
+    "name": "Zemyna",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural HP Recovery  12% + 5r%",
+    "bondBonus": "Defense 17 +5r",
+    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Protection from The Earth CD: 75s (Automatically used when taking damage) When taking damage, decrease damage received by 95% for 4 seconds or until 10 hits received (Including damage that activate this skill). Damage from boss attack count as 3 hits. Each time succesfully block attack with this effect, inflict 92% Earth damage to attacker. If hit count reach maximum before skill duration ends, heal 0.5% of Max HP per second.",
+    "rankUnlock": [
+      "Duration : 5s Damage : 125% Heal : 1% per second CD : 70s",
+      "Duration : 6s Damage : 158% Heal : 1.5% per second CD : 65s",
+      "Duration : 7s Damage : 191% Heal : 2% per second CD : 60s",
+      "Duration : 8s Damage : 224% Heal : 2.5% per second CD : 55s",
+      "Duration : 9s Damage : 257% Heal : 3% per second CD : 50s",
+      "Duration : 10s Damage : 290% Heal : 3.5% per second CD : 45s"
+    ],
+    "tierlist": {
+      "damageBuff": "C",
+      "survival": "SS+",
+      "utility": "S",
+      "partyBuff": "B",
+      "overall": "A+"
+    },
+    "notes": "Can be substutant for player that cannot pull for Maid Ruta for lifesaver kupole. Really make you tanky.\nMust have for PvP defense team. Also use for Extra life in Memory 2-4F"
+  },
+  {
+    "id": "kp021",
+    "name": "Vaivora",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural HP Recovery  12% + 5r%",
+    "bondBonus": "Crit Rate 14 +4r",
+    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Record Reconstruction CD : 65s (Automatically used when receiving any debuff) Cleanse all debuffs and enter 'Record Reconstuction' state for 10s. While this state is active, you immune to all debuffs (Except CC and Dungeon specific debuffs) For each debuff cleanse or prevented by this effect, grant owner 1 'Hero's Record' stack for 5s (Max 10 stacks). Increase damage by 2% and reduce damage taken by 3% per stack. For all fellows, they enter 'Record Reconstuction' state for 5s without gaining any benefit from 'Hero's Record'",
+    "rankUnlock": [
+      "CD 60s",
+      "CD 55s",
+      "CD 50s",
+      "CD 45s",
+      "CD 40s",
+      "CD 35s"
+    ],
+    "tierlist": {
+      "damageBuff": "A",
+      "survival": "B",
+      "utility": "B",
+      "partyBuff": "C",
+      "overall": "B (PVE)"
+    },
+    "notes": "SS (PVP)\n\nPvP Specialist. Useful for debuff cleanse & prevention."
+  },
+  {
+    "id": "kp022",
+    "name": "Solcomn",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural HP Recovery  12% + 5r%",
+    "bondBonus": "Block 17 +5r",
+    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Space Hardening CD: 60s Protect the owner with 'Hardening Space' for 10s. Increase owner block rate by 12% and grant knockback/knockdown immune. Also deal 19% damage every 0.5 second in 2m radius around the owner. Grant 10s buff to all fellows, provide knockback/knockdown immune. Additionally, the Owner's damage to Mutant-Type enemies is increased by 30% for 10 seconds.",
+    "rankUnlock": [
+      "Block Rate increase : 15% Damage : 23%",
+      "Block Rate increase : 18% Damage : 27%",
+      "Block Rate increase : 21% Damage : 31%",
+      "Block Rate increase : 24% Damage : 35%",
+      "Block Rate increase : 27% Damage : 39%",
+      "Block Rate increase : 30% Damage : 43%"
+    ],
+    "tierlist": {
+      "damageBuff": "A",
+      "survival": "SS+",
+      "utility": "A",
+      "partyBuff": "C",
+      "overall": "A"
+    },
+    "notes": "Specialist vs. Mutant boss. Which has many in late game\nAlso boost your block rate a lot. Useful for squishy class that need defensive kupole"
+  },
+  {
+    "id": "kp023",
+    "name": "Warpulis",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural SP Recovery  10 + 4r",
+    "bondBonus": "Evasion 14 +4r",
+    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "A Killer Solution CD : 60s Gather enemy infront of you. Binding them and then slam with arcana cards. Dealing 495% damage. Enemy hit will be inflicted with 'Madness' debuff for 10s. Reduce movement speed by 50% and evasion rate by 13%. While Humanoid enemy type in 'Madness' state dealing damage with Basic attack or Skill attack, they received 4% of damage dealt. (50% effect on Fellow & Demigod unit) Additionally, the Owner's damage to Insect-Type enemies is increased by 30% for 10 seconds.",
+    "rankUnlock": [
+      "Damage : 579% Evasion debuff : 15% Madness self damage : 5%",
+      "Damage : 663% Evasion debuff : 17% Madness self damage : 6%",
+      "Damage : 747% Evasion debuff : 19% Madness self damage : 7%",
+      "Damage : 831% Evasion debuff : 21% Madness self damage : 8%",
+      "Damage : 915% Evasion debuff : 23% Madness self damage : 9%",
+      "Damage : 999% Evasion debuff : 25% Madness self damage : 10%"
+    ],
+    "tierlist": {
+      "damageBuff": "B",
+      "survival": "S",
+      "utility": "A",
+      "partyBuff": "C",
+      "overall": "A"
+    },
+    "notes": "Specialist vs. Insect enemy. Self damage debuff make this kupole also useful for some PvP arena setup. To counter High burst damage meta"
+  },
+  {
+    "id": "kp024",
+    "name": "Diena",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural SP Recovery  10 + 4r",
+    "bondBonus": "Evasion 14 +4r",
+    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "The fragile beautiful dream CD : 60s Summon beautiful area with dream energy. Heal owner and owner's fellow 4% of Max HP per second for 5s. After duration is over, the dream area collapse and grant 'Painful Dream' to enemies inside area. Dealing 50% damage per second for 10s and reduce hit rate by 6% Additionally, the Owner's damage to Dark Property enemies is increased by 30% for 10 seconds.",
+    "rankUnlock": [
+      "Heal 5%  Hit Rate Debuff 7.5%",
+      "Heal 6%  Hit Rate Debuff 9%",
+      "Heal 7%  Hit Rate Debuff 10.5%",
+      "Heal 8%  Hit Rate Debuff 12%",
+      "Heal 9%  Hit Rate Debuff 13.5%",
+      "Heal 10%  Hit Rate Debuff  15%"
+    ],
+    "tierlist": {
+      "damageBuff": "B",
+      "survival": "A",
+      "utility": "A",
+      "partyBuff": "B",
+      "overall": "A"
+    },
+    "notes": "Specialist vs. Dark enemy (Which mostly herself). can be used as healer but not that reliable."
+  },
+  {
+    "id": "kp025",
+    "name": "Littleberk (Hauberk)",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural SP Recovery  10 + 4r",
+    "bondBonus": "Penetration 14 +4r",
+    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Soul Hunting CD: 60s Rushes at up to 10 enemies in turn to hunt their souls, inflicting 548% Lightning Damage. This damage increase by 50% to boss monster 'Stun' enemy hit for 2 seconds, and have their Damage Reduced by 6% for 10 seconds. Attack Speed and Movement Speed are reduced by 30%. Additionally, the Owner's damage to Ice Property enemies is increased by 30% for 10 seconds.",
+    "rankUnlock": [
+      "Damage : 632%  Damage reduction : 7.5%",
+      "Damage : 716%%  Damage reduction : 9%",
+      "Damage : 800%  Damage reduction : 10.5%",
+      "Damage : 884%  Damage reduction : 12%",
+      "Damage : 968%  Damage reduction : 13.5%",
+      "Damage : 1052%  Damage reduction : 15%"
+    ],
+    "tierlist": {
+      "damageBuff": "B",
+      "survival": "A",
+      "utility": "A",
+      "partyBuff": "B",
+      "overall": "A"
+    },
+    "notes": "Specialist vs. Ice enemy. Useful for counter evasion team in PvP. But not that high usage rate\n\nYou can keep him 1 star"
+  },
+  {
+    "id": "kp026",
+    "name": "Dahlia",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha",
+    "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
+    "bondBonus": "Crit Resist 25 + 7r",
+    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Inevitable Fate CD : 60s Chain all enemies in 5m radius around her. Dealing 552% Light damage and lock them in the spot for 3.5s Also grant 10s debuff that decrease evasion rate by 12% and take 30% more damage If it is Thunder-Element",
+    "rankUnlock": [
+      "Damage: 628% Evasion Rate Debuff: 15%",
+      "Damage: 704% Evasion Rate Debuff: 18%",
+      "Damage: 780% Evasion Rate Debuff: 21%",
+      "Damage: 856% Evasion Rate Debuff: 24%",
+      "Damage: 932% Evasion Rate Debuff: 27%",
+      "Damage: 1008% Evasion Rate Debuff: 30%"
+    ],
+    "tierlist": {
+      "damageBuff": "A",
+      "survival": "B",
+      "utility": "A",
+      "partyBuff": "B",
+      "overall": "A"
+    },
+    "notes": "Specialist vs. Thunder enemy. Useful for counter evasion team in PvP. But not that high usage rate.\nYou can keep her 1 star\n\nUseful for counter EP 14 final boss if you are stuck Episode quest"
+  },
+  {
+    "id": "kp027",
+    "name": "Nebulas",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural SP Recovery  10 + 4r",
+    "bondBonus": "Attack  17 + 5r",
+    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Ghost Bullet CD : 65s Summons 8 ghost bullets to bombard nearby enemies. Inflicts dark property damage equal to 58% of owner's attack power in a 1m range per bombardment, and inflicts a Fear debuff that lasts for 8 seconds when hit. Additionally, the Owner's Damage to Devil-Type enemies is increased by 30% for 10 seconds.",
+    "rankUnlock": [
+      "Damage: 72%",
+      "Damage: 86%",
+      "Damage: 100%",
+      "Damage: 114%",
+      "Damage: 128%",
+      "Damage: 142%"
+    ],
+    "tierlist": {
+      "damageBuff": "B",
+      "survival": "B",
+      "utility": "B",
+      "partyBuff": "B",
+      "overall": "B"
+    },
+    "notes": "Useful for vs. devil enemy. But just for dmg boost\nYou can keep her 1 star"
+  },
+  {
+    "id": "kp028",
+    "name": "Maru (Marnox)",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural SP Recovery  10 + 4r",
+    "bondBonus": "Hit Rate 17 + 4r",
+    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Trail of the Beast CD : 60s Grant master 'Trail of the Beast' for 10s. Running will leave a footprint, and also attacking enemy has 40% chance to leave footpring on that enemy for 1 second. Enemy inside footprint area got swipe rapidly. Dealing 37% Earth damage  twice per second. Under 'Trail of the Beast', Damage to Beast-type enemies is increased by 30%",
+    "rankUnlock": [
+      "Damage: 42%",
+      "Damage: 47%",
+      "Damage: 52%",
+      "Damage: 57%",
+      "Damage: 62%",
+      "Damage: 67%"
+    ],
+    "tierlist": {
+      "damageBuff": "B",
+      "survival": "C",
+      "utility": "B",
+      "partyBuff": "B",
+      "overall": "B"
+    },
+    "notes": "Useful for vs. Beast enemy. Dealing good damage itself as well.\nYou can keep him 1 star. Unless you are ranker"
+  },
+  {
+    "id": "kp029",
+    "name": "Zaura",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Critical Damage 5% + 2r%",
+    "bondBonus": "Block 17 + 5r",
+    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Warcry CD : 40s Roar to causing shockwave from master, attacking all enemies in 4m range. Dealing 427% damage. Stun enemy for 2s and grant 'Uplift' for 10s [Uplift] +1 movement speed and knockback immune +10% defense ignore",
+    "rankUnlock": [
+      "Damage: 488%",
+      "Damage: 549%",
+      "Damage: 610%",
+      "Damage: 671%",
+      "Damage: 732%",
+      "Damage: 793%"
+    ],
+    "tierlist": {
+      "damageBuff": "S",
+      "survival": "A",
+      "utility": "S",
+      "partyBuff": "S",
+      "overall": "S"
+    },
+    "notes": "The best point is knockback prevention & AoE stun make him can be used at many contents. Even have def shred & Very low CD.\n\nBest kupole to pick for JP player"
+  },
+  {
+    "id": "kp030",
+    "name": "Lada",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural HP Recovery 12% + 5r%",
+    "bondBonus": "Crit Resist 25 + 7r",
+    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Nourishing Aura CD : 180s (For auto battle, automatically uses when HP below 80%) Emit aura around master in 4m radius for 60s. Grant 'Recovery Aura' to master and allies inside the aura area every 2s. [Recovery Aura] - Heal 0.5% HP to master. If HP is more than 90%, heal SP instead - For ally other than master, grant 2% defense buff for 5s. Stack up to 25 stacks.",
+    "rankUnlock": [
+      "Heal 1% every 2s",
+      "Heal 1.5% every 2s",
+      "Heal 2% every 2s",
+      "Heal 2.5% every 2s",
+      "Heal 3% every 2s",
+      "Heal 3.5% every 2s"
+    ],
+    "tierlist": {
+      "damageBuff": "C",
+      "survival": "A",
+      "utility": "C",
+      "partyBuff": "C",
+      "overall": "C"
+    },
+    "notes": "Too high cooldown to provide her must pick. But if you are tanky enough, in some PvP defense team she can make your team stall for much longer time"
+  },
+  {
+    "id": "kp031",
+    "name": "Naktis",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
+    "bondBonus": "Defense  17 +5r",
+    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Black Night Fog CD : 90s Emitting night mist in 5m radius around yourself for 10s. Dealing 89% Dark damage per second Mist increase ally's movement speed by 50% and reduce enemy block rate by 26%",
+    "rankUnlock": [
+      "Damage : 100% block rate reduction : 30%",
+      "Damage : 111% block rate reduction : 34%",
+      "Damage : 122% block rate reduction : 38%",
+      "Damage : 133% block rate reduction : 42%",
+      "Damage : 144% block rate reduction : 46%",
+      "Damage : 155% block rate reduction : 50%"
+    ],
+    "tierlist": {
+      "damageBuff": "A",
+      "survival": "S",
+      "utility": "A",
+      "partyBuff": "B",
+      "overall": "A"
+    },
+    "notes": "Shred tank team in Arena to pieces. Also very wide AoE & SP recovery passive make her somehow useful for PvE as well"
+  },
+  {
+    "id": "kp032",
+    "name": "Helga",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Non Combat SP Recovery 25 + 10r",
+    "bondBonus": "Attack 17 +5r",
+    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Bloody Wave CD : 50s Cover player with thorn of blood, then explode it. Dealing 354% damage to all enemy around player and cause 'bleeding' to all enemy hit for 10s Also buff player for 20s, increase penetration rate by 3.5%",
+    "rankUnlock": [
+      "Damage : 384% Buff : 7%",
+      "Damage : 414% Buff : 10.5%",
+      "Damage : 444% Buff : 14%",
+      "Damage : 474% Buff : 17.5%",
+      "Damage : 504% Buff : 21%",
+      "Damage : 534% Buff : 24.5%"
+    ],
+    "tierlist": {
+      "damageBuff": "B",
+      "survival": "C",
+      "utility": "B",
+      "partyBuff": "C",
+      "overall": "C"
+    },
+    "notes": "If you really need bleeding for combo with class (Mostly Highlander & Rogue pre-masterclass patch) then you can consider pick her.\n\nBut with the coming of Naktis make her fall of meta very fast"
+  },
+  {
+    "id": "kp033",
+    "name": "Laima",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Natural HP Recovery 12% + 5r%",
+    "bondBonus": "Evasion 14 +4r",
+    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Wheel of Fate CD : 150s Summon 1-3 Wheel of Fate in random position around yourself last for 3s. Each wheel grant you random buff as follows: - Heal 1% HP per second - Heal 1% SP per second - Increase movement speed",
+    "rankUnlock": [
+      "CD : 140s",
+      "CD : 130s",
+      "CD : 120s",
+      "CD : 110s *Better buff",
+      "CD : 100s",
+      "CD : 90s **Better buff"
+    ],
+    "tierlist": {
+      "damageBuff": "C",
+      "survival": "B",
+      "utility": "B",
+      "partyBuff": "C",
+      "overall": "C"
+    },
+    "notes": "You already use RNG to get her, and then really need RNG for her buff ? No\nWell.... maybe yes if you accidentally have her at high star. But 1% per second is too low to sustain you, however"
+  },
+  {
+    "id": "kp034",
+    "name": "Gabija",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha",
+    "rankBonus": "SP Recovery 3 + 3r",
+    "bondBonus": "Crit Rate 20 + 13r",
+    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Aukuras CD : 120s Create Flame Purification Area in 5m radius around yourself for 10s. Dealing 50% damage per second to all enemy inside area and grant debuff to them, which increase damage received by 30% from owner Debuff persist until area is gone",
+    "rankUnlock": [
+      "Damage : 57% per second",
+      "Damage : 65% per second",
+      "Damage : 72% per second",
+      "Damage : 80% per second",
+      "Damage : 87% per second",
+      "Damage : 95% per second"
+    ],
+    "tierlist": {
+      "damageBuff": "A",
+      "survival": "C",
+      "utility": "A",
+      "partyBuff": "C",
+      "overall": "B"
+    },
+    "notes": "Keep her 1 star for 30% dmg boost. Very useful earlygame. Does not work with party member anymore"
+  },
+  {
+    "id": "kp035",
+    "name": "Saule",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Critical Damage 5 + 2r%",
+    "bondBonus": "Penetration 14 +4r",
+    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Daylight CD : 120s Create Daylight beam focus in 3m radius that become narrower as the time passes, to minimum 0.3m radius for 10s. Dealing 75% Holy damage per second. Increase this skill damage by 10% in each second pass. After Daylight is over, emit 5m radius buff around attack area. Increase damage to all allies by 3% for 10s",
+    "rankUnlock": [
+      "Damage : 80% Buff : 6%",
+      "Damage : 85% Buff : 9%",
+      "Damage : 90% Buff : 12%",
+      "Damage : 95% Buff : 15%",
+      "Damage : 100% Buff : 18%",
+      "Damage : 105% Buff : 21%"
+    ],
+    "tierlist": {
+      "damageBuff": "A",
+      "survival": "C",
+      "utility": "B",
+      "partyBuff": "A",
+      "overall": "B"
+    },
+    "notes": "For some raid & field boss hunt party setup, this kupole can boost party damage very well but need high rank."
+  },
+  {
+    "id": "kp036",
+    "name": "Austeja",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha",
+    "rankBonus": "HP Recovery 12% + 5r%",
+    "bondBonus": "Hit Rate 14 + 4r",
+    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Nectar CD : 75s Create honey pool at your position in 5m radius for 10s. Healing all allies inside 5% of Max HP per second. Also generate Honey Fruit at the center of area. Restore 15% HP to who eat it.",
+    "rankUnlock": [
+      "CD 70s",
+      "CD 65s",
+      "CD 60s",
+      "CD 55s",
+      "CD 50s",
+      "CD 45s"
+    ],
+    "tierlist": {
+      "damageBuff": "C",
+      "survival": "S",
+      "utility": "C",
+      "partyBuff": "SS+",
+      "overall": "A"
+    },
+    "notes": "Best healer kupole. You always want to bring her into raid. Except if your party has too much Clerics"
+  },
+  {
+    "id": "kp037",
+    "name": "Jurate",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha",
+    "rankBonus": "SP Recovery 3 + 3r",
+    "bondBonus": "Block 14 +4r",
+    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Sea of Tranquility CD : 90s (Automatically use when player is affected by CC status) Cleanse all status effects. Then grant yourself 7.5s buff that immune to all status effects.",
+    "rankUnlock": [
+      "CD 84s",
+      "CD 78s",
+      "CD 72s",
+      "CD 66s",
+      "CD 60s",
+      "CD 54s"
+    ],
+    "tierlist": {
+      "damageBuff": "C",
+      "survival": "B",
+      "utility": "B",
+      "partyBuff": "C",
+      "overall": "C"
+    },
+    "notes": "Debuff prevention alone cannot make you win PvP."
+  },
+  {
+    "id": "kp038",
+    "name": "Vakarine",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Gacha",
+    "rankBonus": "Non-Combat SP Recovery 15",
+    "bondBonus": "Crit Damage 11",
+    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Traveler's Shelter CD : 100s Create Midnight Area at your position for 10s. Heal 1.2% HP and SP to all allies inside area per second",
+    "rankUnlock": [
+      "Heal 2.4% HP and SP per second",
+      "Heal 3.6% HP and SP per second",
+      "Heal 4.8% HP and SP per second",
+      "Heal 6% HP and SP per second",
+      "Heal 7.2% HP and SP per second",
+      "Heal 8.4% HP and SP per second"
+    ],
+    "tierlist": {
+      "damageBuff": "C",
+      "survival": "A",
+      "utility": "A",
+      "partyBuff": "SS+",
+      "overall": "A"
+    },
+    "notes": "Only way to AoE SP healing before miko patch. If you are support cleric and got her. Always bring her in raid. Everyone will love you"
+  },
+  {
+    "id": "kp039",
+    "name": "Rexipher",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
+    "bondBonus": "Attack 17 +5r",
+    "passiveSkill": "Block Increase - First slot effect : Increase Block rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Dark Lightning CD : 60s Target maximum 5 enemies in 8m radius around you. Attack them with Dark Lightning, dealing 394% Dark damage. Also grant them 15s 'Dark Lightning - Curse' debuff, reduce attack by 3%",
+    "rankUnlock": [
+      "Damage : 424% Debuff : 6%",
+      "Damage : 454% Debuff : 9%",
+      "Damage : 484% Debuff : 12%",
+      "Damage : 514% Debuff : 15%",
+      "Damage : 544% Debuff : 18%",
+      "Damage : 574% Debuff : 21%"
+    ],
+    "tierlist": {
+      "damageBuff": "C",
+      "survival": "B",
+      "utility": "C",
+      "partyBuff": "C",
+      "overall": "C"
+    },
+    "notes": "Useful for early leveling. Atk down really not much impact on lategame"
+  },
+  {
+    "id": "kp040",
+    "name": "Gesti",
+    "grade": "UR",
+    "type": "Demon",
+    "obtainFrom": "Gacha",
+    "rankBonus": "SP Recovery on Basic Attack 10 + 4r",
+    "bondBonus": "Defense 17 + 5r",
+    "passiveSkill": "Penetration Increase - First slot effect : Increase Penetration rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Blade Wind Storm CD : 90s Create whirlwind of blades for 15s. Dealing 88% damage per second and grant them 6s debuff that increase damage received by 2%",
+    "rankUnlock": [
+      "Damage : 100% Debuff : 4%",
+      "Damage : 112% Debuff : 6%",
+      "Damage : 124% Debuff : 8%",
+      "Damage : 136% Debuff : 10%",
+      "Damage : 148% Debuff : 12%",
+      "Damage : 160% Debuff : 14%"
+    ],
+    "tierlist": {
+      "damageBuff": "A",
+      "survival": "B",
+      "utility": "A",
+      "partyBuff": "B",
+      "overall": "A"
+    },
+    "notes": "Best kupole for first release patch of the game.\nBoost your damage and also boost your SP recovery. 2 in 1\n\nWorth to build at all cost. Better than her limited form even buff less.\n(Not high tier because many new units now better than her. But she always worth to honorable mention)"
+  },
+  {
+    "id": "kp041",
+    "name": "Little Laima",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Package",
+    "rankBonus": "HP Recovery 12%",
+    "bondBonus": "Evasion 14 +4r",
+    "passiveSkill": "Hit Increase - First slot effect : Increase hit rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Fate CD : 100s Channel beam forward attacking in 5x2.5m area for 4.5s. Dealing 50% damage per second.  Grant 30s buff to player that increase damage by 10% You will be slowed by 25% while attacking with this skill. Can moving but cannot changing direction",
+    "rankUnlock": [
+      "Damage :61%",
+      "Damage :72%",
+      "Damage :83%",
+      "Damage :94%",
+      "Damage :105%",
+      "Damage :116%"
+    ],
+    "tierlist": {
+      "damageBuff": "",
+      "survival": "",
+      "utility": "",
+      "partyBuff": "",
+      "overall": ""
+    },
+    "notes": ""
+  },
+  {
+    "id": "kp042",
+    "name": "Little Jurate",
+    "grade": "UR",
+    "type": "Goddess",
+    "obtainFrom": "Package",
+    "rankBonus": "SP recovery 3",
+    "bondBonus": "Block 14 +4r",
+    "passiveSkill": "Evasion Increase - First slot effect : Increase Evasion rate by 1.5% x rank - Company effect : When master's HP fall below 60%, instantly heal 35% HP (45s CD)",
+    "activeSkill": "Sea Blessing CD : 150s Instantly heal player HP 50% of max hp, and grant 20s buff that can immune to debuff 1 time. Automatically used when HP fall below 80% when using auto battle",
+    "rankUnlock": [
+      "Immune Debuff 2 time(s)",
+      "Immune Debuff 3 time(s)",
+      "Immune Debuff 4 time(s)",
+      "Immune Debuff 5 time(s)",
+      "Immune Debuff 6 time(s)",
+      "Immune Debuff 7 time(s)"
+    ],
+    "tierlist": {
+      "damageBuff": "",
+      "survival": "",
+      "utility": "",
+      "partyBuff": "",
+      "overall": ""
+    },
+    "notes": ""
+  }
+]

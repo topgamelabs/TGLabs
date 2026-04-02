@@ -6,13 +6,14 @@ import { TierPanel } from "./TierPanel";
 import { PatchPanel } from "./PatchPanel";
 import { TipsPanel } from "./TipsPanel";
 import { FellowsPanel } from "./FellowsPanel";
+import { KupolePanel } from "./KupolePanel";
 
 interface GamePageProps {
   game: Game;
   onBack: () => void;
 }
 
-type Tab = "tier" | "patch" | "tips" | "fellow";
+type Tab = "tier" | "patch" | "tips" | "fellow" | "kupole";
 
 export function GamePage({ game, onBack }: GamePageProps): React.JSX.Element {
   const [tab, setTab] = useState<Tab>("tier");
@@ -22,6 +23,7 @@ export function GamePage({ game, onBack }: GamePageProps): React.JSX.Element {
     { key: "patch", label: "Patch Notes" },
     { key: "tips", label: "Tips" },
     { key: "fellow", label: "Fellow" },
+    { key: "kupole", label: "Kupole" },
   ];
 
   return (
@@ -63,6 +65,7 @@ export function GamePage({ game, onBack }: GamePageProps): React.JSX.Element {
           {tab === "patch" && <PatchPanel game={game} />}
           {tab === "tips" && <TipsPanel game={game} />}
           {tab === "fellow" && <FellowsPanel />}
+          {tab === "kupole" && <KupolePanel />}
         </div>
       </div>
     </div>
