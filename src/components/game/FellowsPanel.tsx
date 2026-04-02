@@ -466,6 +466,23 @@ export function FellowsPanel(): React.JSX.Element {
   const [sortBy, setSortBy] = useState("rarity-desc");
   const [selectedFellow, setSelectedFellow] = useState<Fellow | null>(null);
 
+  // Handle hardware back button when modal is open
+  useEffect(() => {
+    if (!selectedFellow) return;
+
+    // Push a history entry so back button can close modal instead of navigating away
+    window.history.pushState({ modal: "fellow" }, "");
+
+    const handlePopState = () => {
+      setSelectedFellow(null);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [selectedFellow]);
+
   const filtered = useMemo(() => {
     let list = [...fellowsData] as Fellow[];
 
