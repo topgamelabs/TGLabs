@@ -712,7 +712,7 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
             scrollSnapType: "x mandatory",
             WebkitOverflowScrolling: "touch",
             scrollbarWidth: "none",
-            MsOverflowStyle: "none",
+            msOverflowStyle: "none",
           }}
         >
           {games.map((g) => (
