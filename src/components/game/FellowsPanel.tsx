@@ -445,11 +445,6 @@ function FellowCard({ fellow, onClick }: { fellow: Fellow; onClick: () => void }
         {fellow.name}
       </div>
 
-      {/* Element */}
-      <div style={{ marginBottom: 6 }}>
-        <ElementBadge element={fellow.element} />
-      </div>
-
       {/* Grade */}
       <div>
         <GradeBadge grade={fellow.grade} />
