@@ -707,6 +707,14 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
             <GameCard key={g.id} game={g} onClick={() => onSelect(g)} />
           ))}
         </div>
+
+        {/* Ad Position 2: After Featured Content (970x90) */}
+        <div style={{ margin: '32px 0' }}>
+          <div className="ad-placeholder" style={{ width: 970, height: 90, maxWidth: '100%' }}>
+            <span className="ad-placeholder-label">AD SLOT</span>
+            <span className="ad-placeholder-size">970 x 90</span>
+          </div>
+        </div>
       </div>
     </div>
   );
