@@ -320,6 +320,14 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
         </div>
       </div>
 
+      {/* Ad Position 1: After Hero (728x90) */}
+      <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 24px' }}>
+        <div className="ad-placeholder" style={{ width: 728, height: 90 }}>
+          <span className="ad-placeholder-label">AD SLOT</span>
+          <span className="ad-placeholder-size">728 x 90</span>
+        </div>
+      </div>
+
       {/* ── FEATURED CONTENT HUB ── */}
       <div
         style={{
