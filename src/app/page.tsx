@@ -1,9 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getArticles, getGames, getArticleBySlug, type Article, type Game } from "@/lib/supabase";
 
 export default function Home() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [games, setGames] = useState<Game[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [arts, gms] = await Promise.all([
+          getArticles({ limit: 8 }),
+          getGames()
+        ]);
+        setArticles(arts);
+        setGames(gms);
+      } catch (e) {
+        console.error("Failed to fetch data:", e);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -12,6 +34,14 @@ export default function Home() {
       setMobileNavOpen(false);
     }
   };
+
+  // Placeholder hero if no articles
+  const heroArticle = articles[0] || null;
+  const trendingArticles = articles.slice(1, 5);
+  const mobileArticles = articles.filter(a => {
+    const game = a.games;
+    return game?.platform === 'mobile' || game?.platform === 'cross-platform';
+  }).slice(0, 4);
 
   return (
     <div className="min-h-screen bg-[#070707] text-white font-inter">
@@ -22,75 +52,78 @@ export default function Home() {
 
           {/* Logo */}
           <div className="flex items-center gap-[10px] flex-shrink-0">
-            <img src="/images/logo.png" alt="TopGame Thailand" className="w-8 h-8 object-contain" />
+            <img src="/images/logo.png"
+              alt="TopGame Thailand" className="w-8 h-8 object-contain" />
             <div className="flex flex-col leading-none">
-              <div className="font-kanit text-[14px] font-black tracking-[0.5px] text-white">
+              <span className="text-[13px] font-bold tracking-wide">
                 TOP<span className="text-tg-red">GAME</span>
-              </div>
-              <div className="font-inter text-[8px] font-medium tracking-[3px] uppercase text-white/30 mt-[1px]">
-                Thailand
-              </div>
+              </span>
+              <span className="text-[8px] tracking-[3px] text-white/40 uppercase">Thailand</span>
             </div>
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-[2px]">
-            {["Home", "News", "Guides", "Reviews", "IT Gadget"].map((item, i) => (
-              <a
-                key={item}
-                href="#"
-                className={`text-[12px] font-medium px-[13px] py-[6px] rounded-[5px] transition-all duration-150 ${
-                  i === 0
-                    ? "text-white bg-white/[0.06]"
-                    : "text-white/45 hover:text-white hover:bg-white/[0.06]"
-                }`}
-              >
-                {item}
-              </a>
-            ))}
-            <button
-              onClick={() => scrollToSection("tools")}
-              className="ml-1 text-[10px] font-semibold px-3 py-[5px] rounded-full bg-tg-red/15 text-tg-red border border-tg-red/25 tracking-[0.5px] hover:bg-tg-red/25 transition-all cursor-pointer"
-            >
-              Tools ⚡
-            </button>
+          <div className="hidden lg:flex items-center gap-[24px]">
+            <a href="/" className="text-[13px] text-white/70 hover:text-white transition-colors">Home</a>
+            <a href="/news" className="text-[13px] text-white/70 hover:text-white transition-colors">News</a>
+            <a href="/guides" className="text-[13px] text-white/70 hover:text-white transition-colors">Guides</a>
+            <a href="/reviews" className="text-[13px] text-white/70 hover:text-white transition-colors">Reviews</a>
+            <a href="/it-gadget" className="text-[13px] text-white/70 hover:text-white transition-colors">IT Gadget</a>
+            <button onClick={() => scrollToSection("tools")} className="text-[13px] text-tg-red hover:text-tg-red/80 transition-colors">Tools ⚡</button>
           </div>
 
-          {/* Right */}
-          <div className="flex items-center gap-2">
-            <button className="w-7 h-7 rounded-[6px] bg-white/[0.05] border border-white/[0.08] flex items-center justify-center hover:bg-white/10 transition-all">
-              <svg width="13" height="13" fill="none" stroke="rgba(255,255,255,0.4)" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          {/* Right — Search */}
+          <div className="flex items-center gap-[12px]">
+            <button
+              onClick={() => {
+                const s = document.getElementById("search-input");
+                if (s) { s.classList.toggle("hidden"); s.focus(); }
+              }}
+              className="p-[6px] rounded-[6px] hover:bg-white/[0.06] transition-colors"
+              aria-label="Search"
+            >
+              <svg className="w-[16px] h-[16px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" strokeWidth="2" />
+                <path strokeWidth="2" d="m21 21-4.35-4.35" />
               </svg>
             </button>
+            {/* Mobile Hamburger */}
             <button
+              className="lg:hidden p-[6px] rounded-[6px] hover:bg-white/[0.06] transition-colors"
               onClick={() => setMobileNavOpen(!mobileNavOpen)}
-              className="lg:hidden w-7 h-7 flex items-center justify-center text-white/40"
+              aria-label="Menu"
             >
-              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
+              <svg className="w-[20px] h-[20px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {mobileNavOpen ? (
+                  <path strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                )}
               </svg>
             </button>
           </div>
         </div>
 
-        {/* Mobile Nav */}
+        {/* Search Bar */}
+        <div id="search-input" className="hidden max-w-7xl mx-auto px-5 pb-[10px]">
+          <input
+            type="search"
+            placeholder="Search articles..."
+            className="w-full bg-[#0d0d0d] border border-white/[0.08] rounded-[8px] px-4 py-2 text-[13px] text-white placeholder:text-white/30 focus:outline-none focus:border-tg-red/50 transition-colors"
+          />
+        </div>
+
+        {/* Mobile Menu */}
         {mobileNavOpen && (
-          <div className="lg:hidden bg-[#070707]/98 border-t border-white/[0.06] px-5 py-4 flex flex-col gap-1">
-            {["Home", "News", "Guides", "Reviews", "IT Gadget"].map((item, i) => (
-              <a
-                key={item}
-                href="#"
-                className={`px-3 py-2 rounded-[5px] text-sm font-medium transition-all ${
-                  i === 0 ? "text-white bg-white/[0.06]" : "text-white/45 hover:text-white"
-                }`}
-              >
-                {item}
-              </a>
-            ))}
-            <button onClick={() => scrollToSection("tools")} className="mt-2 px-3 py-2 rounded-full text-center text-[11px] font-semibold bg-tg-red/15 text-tg-red border border-tg-red/25 cursor-pointer">
-              Tools ⚡
-            </button>
+          <div className="lg:hidden border-t border-white/[0.06] bg-[#070707]">
+            <div className="max-w-7xl mx-auto px-5 py-[12px] flex flex-col gap-[8px]">
+              <a href="/" className="text-[14px] text-white/70 py-[8px]">Home</a>
+              <a href="/news" className="text-[14px] text-white/70 py-[8px]">News</a>
+              <a href="/guides" className="text-[14px] text-white/70 py-[8px]">Guides</a>
+              <a href="/reviews" className="text-[14px] text-white/70 py-[8px]">Reviews</a>
+              <a href="/it-gadget" className="text-[14px] text-white/70 py-[8px]">IT Gadget</a>
+              <button onClick={() => scrollToSection("tools")} className="text-[14px] text-tg-red text-left py-[8px]">Tools ⚡</button>
+            </div>
           </div>
         )}
       </nav>
@@ -101,219 +134,225 @@ export default function Home() {
 
         {/* Left — Main Story */}
         <article className="relative overflow-hidden bg-[#0a0a14] cursor-pointer group min-h-[220px]">
-          {/*           {/* Background image */}
+          {/* Background image */}
           <img
-            src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&h=600&fit=crop"
-            alt="Genshin Impact 5.0"
+            src={heroArticle?.hero_image || "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&h=600&fit=crop"}
+            alt={heroArticle?.title || "Genshin Impact 5.0"}
             className="absolute inset-0 w-full h-full object-cover"
           />
           {/* Dark overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#070707]/80 via-[#070707]/40 to-[#070707]/90" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070707]/60 via-transparent to-[#070707]/80" />     {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#070707] opacity-100 lg:opacity-100" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070707]/97 via-[#070707]/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070707]/60 via-transparent to-[#070707]/80" />
 
           {/* Content */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-7">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-[6px] h-[6px] rounded-full bg-tg-red animate-pulse" />
-              <span className="text-[9px] font-bold tracking-[3px] uppercase text-tg-red">Live Review</span>
+          <div className="relative z-10 h-full flex flex-col justify-end p-[16px_20px_20px]">
+            <div className="flex items-center gap-[10px] mb-[8px]">
+              <span className={`text-[8px] font-bold tracking-[1.5px] uppercase px-[6px] py-[3px] rounded-[3px] bg-tg-red text-white`}>
+                {heroArticle?.category?.toUpperCase() || "FEATURED"}
+              </span>
+              {heroArticle?.games && (
+                <span className="text-[8px] text-white/50 tracking-wider uppercase">
+                  {heroArticle.games.name}
+                </span>
+              )}
             </div>
-            <h1 className="font-kanit text-[18px] lg:text-[26px] font-black text-white leading-[1.2] mb-3 max-w-[420px] group-hover:text-tg-red/90 transition-colors">
-              Genshin Impact 5.0 — The Biggest Update SEA Gamers Can&apos;t Miss
-            </h1>
-            <div className="flex items-center gap-3">
-              <span className="text-[11px] text-white/35">TopGame Thailand</span>
-              <span className="w-px h-[10px] bg-white/10" />
-              <span className="text-[11px] text-white/25">Apr 30, 2026</span>
-              <span className="ml-auto text-[10px] font-semibold text-tg-red tracking-[1px] uppercase hidden sm:block">Read More →</span>
-            </div>
+            <h2 className="font-kanit text-[18px] lg:text-[26px] font-semibold text-white leading-tight line-clamp-2 group-hover:text-tg-red transition-colors">
+              {heroArticle?.title || "Welcome to TopGame Thailand"}
+            </h2>
+            <p className="text-[11px] text-white/40 mt-[6px]">
+              {heroArticle?.excerpt || "Your source for mobile game news, reviews, and guides"}
+            </p>
           </div>
         </article>
 
         {/* Right — Latest Sidebar */}
-        <aside className="bg-[#050505] border-t lg:border-t-0 lg:border-l border-white/[0.04] flex flex-col lg:max-h-[380px] lg:overflow-hidden">
-          <div className="px-5 py-4 border-b border-white/[0.04] flex items-center justify-between flex-shrink-0">
-            <span className="text-[9px] font-bold tracking-[3px] uppercase text-white/20">Latest</span>
-            <span className="text-[9px] font-semibold text-tg-red tracking-[0.5px]">See all →</span>
+        <div className="border-t lg:border-t-0 lg:border-l border-white/[0.05] bg-[#070707]">
+          <div className="p-[14px_16px] border-b border-white/[0.05]">
+            <span className="text-[10px] font-bold tracking-[2px] text-white/30 uppercase">Latest</span>
           </div>
-          <div className="flex-1 flex flex-col overflow-hidden">
-            {[
-              { num: "01", tag: "Review", tagColor: "text-tg-red", title: "Elden Ring: Nightreign — Full Review, Best Spin-off Yet?", time: "2h ago" },
-              { num: "02", tag: "News", tagColor: "text-tg-news", title: "Pokemon TCG Pocket Launches Today — Free Download Available", time: "4h ago" },
-              { num: "03", tag: "Tips", tagColor: "text-tg-review", title: "10 Tricks to Save Primogems in Genshin Impact", time: "6h ago" },
-              { num: "04", tag: "Mobile", tagColor: "text-tg-live", title: "Honor of Kings SEA — New Season Patch Notes", time: "8h ago" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="flex gap-3 px-5 py-3 border-b border-white/[0.03] last:border-b-0 cursor-pointer hover:bg-white/[0.02] transition-all group"
-              >
-                <div className="font-bebas text-[18px] text-white/[0.07] leading-none flex-shrink-0 w-5 mt-[1px]">
-                  {item.num}
-                </div>
+          <div className="flex flex-col">
+            {articles.slice(1, 5).map((art, i) => (
+              <a key={art.id || i} href={`/article/${art.slug}`} className="group flex items-start gap-[12px] p-[12px_16px] border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors">
                 <div className="flex-1 min-w-0">
-                  <div className={`text-[8px] font-bold tracking-[1.5px] uppercase mb-1 ${item.tagColor}`}>
-                    {item.tag}
+                  <div className="flex items-center gap-[6px] mb-[4px]">
+                    <span className={`text-[7px] font-bold tracking-[1.5px] uppercase px-[5px] py-[2px] rounded-[2px] bg-tg-red/80 text-white`}>
+                      {art.category?.toUpperCase()}
+                    </span>
+                    <span className="text-[8px] text-white/30">{art.read_time} min</span>
                   </div>
-                  <div className="font-kanit text-[11px] font-semibold text-white/60 leading-[1.4] line-clamp-2 group-hover:text-white/80 transition-colors">
-                    {item.title}
+                  <div className="font-kanit text-[11px] font-semibold text-white/70 leading-[1.3] line-clamp-2 group-hover:text-white transition-colors">
+                    {art.title}
                   </div>
-                  <div className="text-[9px] text-white/20 mt-1">{item.time}</div>
                 </div>
-              </div>
+                {art.hero_image && (
+                  <div className="w-[52px] h-[52px] flex-shrink-0 rounded-[6px] overflow-hidden">
+                    <img src={art.hero_image} alt={art.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                )}
+              </a>
             ))}
           </div>
-        </aside>
+        </div>
       </section>
       </div>
 
-      {/* ========== MAIN CONTENT ========== */}
-      <main className="max-w-7xl mx-auto px-5 py-6 lg:py-8">
-
-        {/* TRENDING */}
-        <section className="pt-6 pb-2">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-[3px] h-4 bg-tg-red rounded-full" />
-              <h2 className="font-kanit text-[15px] font-bold uppercase tracking-wide">Trending</h2>
-            </div>
-            <span className="text-[10px] text-white/25 hover:text-tg-red transition-colors cursor-pointer tracking-[0.5px]">See all →</span>
+      {/* ========== TRENDING ========== */}
+      <section className="max-w-7xl mx-auto px-5 lg:px-0 py-[28px]">
+        <div className="flex items-center justify-between mb-[16px]">
+          <div className="flex items-center gap-[10px]">
+            <span className="text-[18px]">🔥</span>
+            <h2 className="font-kanit text-[16px] font-semibold text-white">Trending</h2>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px]">
-            {[
-              { img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=250&fit=crop", tag: "Review", tagClass: "text-tg-red", title: "Elden Ring Nightreign — Full Review", meta: "Apr 27 · 8 min" },
-              { img: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400&h=250&fit=crop", tag: "Live", tagClass: "text-tg-live", title: "Pokemon Presents Recap — Everything Announced", meta: "Apr 26 · 5 min" },
-              { img: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=400&h=250&fit=crop", tag: "News", tagClass: "text-tg-news", title: "Honor of Kings SEA New Season Is Live", meta: "Apr 25 · 3 min" },
-              { img: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400&h=250&fit=crop", tag: "Guide", tagClass: "text-tg-review", title: "Zenless Zone Zero Beginner's Guide 2026", meta: "Apr 24 · 12 min" },
-            ].map((card, i) => (
-              <article key={i} className="bg-[#0d0d0d] rounded-[8px] overflow-hidden cursor-pointer group hover:-translate-y-[2px] transition-transform duration-200">
-                <div className="aspect-[16/10] overflow-hidden relative">
-                  <img src={card.img} alt={card.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/80 to-transparent" />
-                </div>
-                <div className="p-[10px_12px_12px]">
-                  <div className={`text-[8px] font-bold tracking-[1.5px] uppercase mb-[5px] ${card.tagClass}`}>{card.tag}</div>
-                  <div className="font-kanit text-[11px] font-semibold text-white/70 leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
-                  <div className="text-[9px] text-white/20 mt-[6px]">{card.meta}</div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* MOBILE GAMES */}
-        <section className="pt-5 pb-2">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-[3px] h-4 bg-tg-red rounded-full" />
-              <h2 className="font-kanit text-[15px] font-bold uppercase tracking-wide">Mobile Games</h2>
-            </div>
-            <span className="text-[10px] text-white/25 hover:text-tg-red transition-colors cursor-pointer tracking-[0.5px]">See all →</span>
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px]">
-            {[
-              { img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=400&h=250&fit=crop", tag: "Tips", tagClass: "text-tg-red", title: "Genshin Impact 5.1 — Best Team Comps SEA", meta: "Apr 23 · 7 min" },
-              { img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=250&fit=crop", tag: "Esports", tagClass: "text-tg-live", title: "Honor of Kings World Championship — SEA Results", meta: "Apr 22 · 4 min" },
-              { img: "https://images.unsplash.com/photo-1542751110-97427bbecf20?w=400&h=250&fit=crop", tag: "Guide", tagClass: "text-tg-review", title: "Wuthering Waves Tier List — Best Characters Apr 2026", meta: "Apr 21 · 9 min" },
-              { img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop", tag: "Reroll", tagClass: "text-tg-tech", title: "AFK Journey Reroll Guide — Get SSR on First Pull", meta: "Apr 20 · 6 min" },
-            ].map((card, i) => (
-              <article key={i} className="bg-[#0d0d0d] rounded-[8px] overflow-hidden cursor-pointer group hover:-translate-y-[2px] transition-transform duration-200">
-                <div className="aspect-[16/10] overflow-hidden relative">
-                  <img src={card.img} alt={card.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/80 to-transparent" />
-                </div>
-                <div className="p-[10px_12px_12px]">
-                  <div className={`text-[8px] font-bold tracking-[1.5px] uppercase mb-[5px] ${card.tagClass}`}>{card.tag}</div>
-                  <div className="font-kanit text-[11px] font-semibold text-white/70 leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
-                  <div className="text-[9px] text-white/20 mt-[6px]">{card.meta}</div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* TOOLS */}
-        <section id="tools" className="pt-5 pb-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-[3px] h-4 bg-tg-red rounded-full" />
-              <h2 className="font-kanit text-[15px] font-bold uppercase tracking-wide">Tools</h2>
-            </div>
-            <span className="text-[10px] text-white/25 hover:text-tg-red transition-colors cursor-pointer tracking-[0.5px]">See all →</span>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
-            <a
-              href="https://bosstimer.tglabs.info"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#0d0d0d] rounded-[8px] p-4 flex items-center gap-3 cursor-pointer border border-white/[0.04] hover:border-tg-red/20 transition-all group"
-            >
-              <div className="w-9 h-9 rounded-[8px] bg-tg-red/[0.12] flex items-center justify-center text-base flex-shrink-0">
-                <img src="https://bosstimer.tglabs.info/logo.png" alt="TOSM" className="w-9 h-9 object-contain" />
+          <a href="/trending" className="text-[11px] text-white/30 hover:text-white transition-colors">View All →</a>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px]">
+          {trendingArticles.length > 0 ? trendingArticles.map((card, i) => (
+            <a key={card.id || i} href={`/article/${card.slug}`} className="bg-[#0d0d0d] rounded-[8px] overflow-hidden cursor-pointer group hover:-translate-y-[2px] transition-transform duration-200">
+              <div className="aspect-[16/10] overflow-hidden relative">
+                <img src={card.hero_image || `https://images.unsplash.com/photo-${['1550745165-9bc0b252726f','1612287230202-1ff1d85d1bdf','1560253023-3ec5d502959f','1606144042614-b2417e99c4e3'][i]}?w=400&h=250&fit=crop`} alt={card.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/80 to-transparent" />
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-kanit text-[12px] font-bold text-white">TOSM Boss Timer</div>
-                <div className="text-[9px] text-white/30 mt-[2px]">Spawn alerts for Genshin, HSR & more</div>
+              <div className="p-[10px_12px_12px]">
+                <div className={`text-[8px] font-bold tracking-[1.5px] uppercase mb-[5px] text-tg-red`}>{card.category?.toUpperCase()}</div>
+                <div className="font-kanit text-[11px] font-semibold text-white/70 leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
+                <div className="text-[9px] text-white/20 mt-[6px]">{card.read_time} min read</div>
               </div>
-              <div className="text-white/15 group-hover:text-tg-red transition-colors text-sm">→</div>
             </a>
-            <div className="bg-[#0d0d0d] rounded-[8px] p-4 flex items-center gap-3 cursor-pointer border border-white/[0.04] hover:border-tg-news/20 transition-all group">
-              <div className="w-9 h-9 rounded-[8px] bg-tg-news/[0.12] flex items-center justify-center text-base flex-shrink-0">
-                📊
+          )) : (
+            // Placeholder cards
+            [1,2,3,4].map((i) => (
+              <div key={i} className="bg-[#0d0d0d] rounded-[8px] overflow-hidden">
+                <div className="aspect-[16/10] bg-[#111]" />
+                <div className="p-[10px_12px_12px]">
+                  <div className="h-[8px] w-[40px] bg-[#1a1a1a] rounded mb-[8px]" />
+                  <div className="h-[14px] bg-[#1a1a1a] rounded w-3/4 mb-[6px]" />
+                  <div className="h-[10px] bg-[#111] rounded w-1/2" />
+                </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-kanit text-[12px] font-bold text-white">Tier List Builder</div>
-                <div className="text-[9px] text-white/30 mt-[2px]">Build & share interactive tier lists</div>
+            ))
+          )}
+        </div>
+      </section>
+
+      {/* ========== MOBILE GAMES ========== */}
+      <section className="max-w-7xl mx-auto px-5 lg:px-0 py-[28px]">
+        <div className="flex items-center justify-between mb-[16px]">
+          <div className="flex items-center gap-[10px]">
+            <span className="text-[18px]">📱</span>
+            <h2 className="font-kanit text-[16px] font-semibold text-white">Mobile Games</h2>
+          </div>
+          <a href="/mobile" className="text-[11px] text-white/30 hover:text-white transition-colors">View All →</a>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px]">
+          {mobileArticles.length > 0 ? mobileArticles.map((card, i) => (
+            <a key={card.id || i} href={`/article/${card.slug}`} className="bg-[#0d0d0d] rounded-[8px] overflow-hidden cursor-pointer group hover:-translate-y-[2px] transition-transform duration-200">
+              <div className="aspect-[16/10] overflow-hidden relative">
+                <img src={card.hero_image || `https://images.unsplash.com/photo-${['1593305841991-05c297ba4575','1542751371-adc38448a05e','1542751110-97427bbecf20','1511512578047-dfb367046420'][i]}?w=400&h=250&fit=crop`} alt={card.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/80 to-transparent" />
               </div>
-              <div className="text-white/15 group-hover:text-tg-news transition-colors text-sm">→</div>
+              <div className="p-[10px_12px_12px]">
+                <div className={`text-[8px] font-bold tracking-[1.5px] uppercase mb-[5px] text-tg-red`}>{card.category?.toUpperCase()}</div>
+                <div className="font-kanit text-[11px] font-semibold text-white/70 leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
+                <div className="text-[9px] text-white/20 mt-[6px]">{card.read_time} min read</div>
+              </div>
+            </a>
+          )) : (
+            [1,2,3,4].map((i) => (
+              <div key={i} className="bg-[#0d0d0d] rounded-[8px] overflow-hidden">
+                <div className="aspect-[16/10] bg-[#111]" />
+                <div className="p-[10px_12px_12px]">
+                  <div className="h-[8px] w-[40px] bg-[#1a1a1a] rounded mb-[8px]" />
+                  <div className="h-[14px] bg-[#1a1a1a] rounded w-3/4 mb-[6px]" />
+                  <div className="h-[10px] bg-[#111] rounded w-1/2" />
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      </section>
+
+      {/* ========== TOOLS ========== */}
+      <section id="tools" className="max-w-7xl mx-auto px-5 lg:px-0 py-[28px]">
+        <div className="flex items-center gap-[10px] mb-[16px]">
+          <span className="text-[18px]">⚡</span>
+          <h2 className="font-kanit text-[16px] font-semibold text-white">Tools</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">
+
+          {/* Boss Timer */}
+          <a href="https://bosstimer.tglabs.info" target="_blank" rel="noopener noreferrer" className="bg-[#0d0d0d] rounded-[8px] p-[16px] cursor-pointer group hover:-translate-y-[1px] transition-all duration-200 border border-white/[0.06] hover:border-tg-red/30">
+            <div className="flex items-center gap-[12px]">
+              <div className="w-[40px] h-[40px] rounded-[8px] bg-tg-red/10 flex items-center justify-center">
+                <img src="https://bosstimer.tglabs.info/logo.png" alt="Boss Timer" className="w-[24px] h-[24px] object-contain" />
+              </div>
+              <div>
+                <div className="font-kanit text-[13px] font-semibold text-white group-hover:text-tg-red transition-colors">TOSM Boss Timer</div>
+                <div className="text-[10px] text-white/40 mt-[2px]">Track boss respawns • 54 bosses</div>
+              </div>
             </div>
-            <div className="bg-[#0d0d0d] rounded-[8px] p-4 flex items-center gap-3 cursor-pointer border border-white/[0.04] hover:border-tg-review/20 transition-all group">
-              <div className="w-9 h-9 rounded-[8px] bg-tg-review/[0.12] flex items-center justify-center text-base flex-shrink-0">
-                🎁
+          </a>
+
+          {/* Tier List Builder — placeholder */}
+          <div className="bg-[#0d0d0d] rounded-[8px] p-[16px] border border-white/[0.06] opacity-50 cursor-not-allowed">
+            <div className="flex items-center gap-[12px]">
+              <div className="w-[40px] h-[40px] rounded-[8px] bg-[#1a1a1a] flex items-center justify-center">
+                <span className="text-[18px]">📊</span>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-kanit text-[12px] font-bold text-white">Code Redeemer</div>
-                <div className="text-[9px] text-white/30 mt-[2px]">All active redeem codes in one place</div>
+              <div>
+                <div className="font-kanit text-[13px] font-semibold text-white">Tier List Builder</div>
+                <div className="text-[10px] text-white/40 mt-[2px]">Coming soon...</div>
               </div>
-              <div className="text-white/15 group-hover:text-tg-review transition-colors text-sm">→</div>
             </div>
           </div>
-        </section>
 
-      </main>
+          {/* Code Redeemer — placeholder */}
+          <div className="bg-[#0d0d0d] rounded-[8px] p-[16px] border border-white/[0.06] opacity-50 cursor-not-allowed">
+            <div className="flex items-center gap-[12px]">
+              <div className="w-[40px] h-[40px] rounded-[8px] bg-[#1a1a1a] flex items-center justify-center">
+                <span className="text-[18px]">🎁</span>
+              </div>
+              <div>
+                <div className="font-kanit text-[13px] font-semibold text-white">Code Redeemer</div>
+                <div className="text-[10px] text-white/40 mt-[2px]">Coming soon...</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
 
       {/* ========== FOOTER ========== */}
-      <footer className="bg-[#040404] border-t border-white/[0.05]">
-        <div className="max-w-7xl mx-auto px-5 py-6">
-          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-6 mb-5">
-            <div>
-              <div className="font-kanit text-[16px] font-black text-white mb-1">
-                TOP<span className="text-tg-red">GAME</span> Thailand
+      <footer className="border-t border-white/[0.05] mt-[20px]">
+        <div className="max-w-7xl mx-auto px-5 lg:px-0 py-[24px]">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-[20px]">
+
+            {/* Logo + Nav */}
+            <div className="flex flex-col gap-[12px]">
+              <div className="flex items-center gap-[10px]">
+                <img src="/images/logo.png" alt="TopGame Thailand" className="w-6 h-6 object-contain" />
+                <span className="text-[12px] font-bold tracking-wide">TOP<span className="text-tg-red">GAME</span> Thailand</span>
               </div>
-              <div className="text-[10px] text-white/20 leading-[1.7]">
-                Your #1 source for mobile gaming news,<br />
-                guides, and reviews across Southeast Asia.
-              </div>
-            </div>
-            <div>
-              <div className="text-[9px] font-bold tracking-[2px] uppercase text-white/20 mb-3">Navigate</div>
-              <div className="flex flex-col gap-[6px]">
-                {["Home", "News", "Guides", "Reviews", "Tools"].map(link => (
-                  <a key={link} href="#" className="text-[11px] text-white/30 hover:text-white transition-colors">{link}</a>
-                ))}
+              <div className="flex flex-wrap gap-[16px]">
+                <a href="/news" className="text-[11px] text-white/40 hover:text-white transition-colors">News</a>
+                <a href="/reviews" className="text-[11px] text-white/40 hover:text-white transition-colors">Reviews</a>
+                <a href="/guides" className="text-[11px] text-white/40 hover:text-white transition-colors">Guides</a>
+                <a href="/it-gadget" className="text-[11px] text-white/40 hover:text-white transition-colors">IT Gadget</a>
               </div>
             </div>
-            <div>
-              <div className="text-[9px] font-bold tracking-[2px] uppercase text-white/20 mb-3">Follow</div>
-              <div className="flex flex-col gap-[6px]">
-                {["YouTube", "Facebook", "Discord", "X / Twitter"].map(link => (
-                  <a key={link} href="#" className="text-[11px] text-white/30 hover:text-white transition-colors">{link}</a>
-                ))}
+
+            {/* Follow */}
+            <div className="flex flex-col gap-[8px]">
+              <span className="text-[10px] tracking-[2px] text-white/30 uppercase">Follow</span>
+              <div className="flex gap-[12px]">
+                <a href="https://www.youtube.com/@topgame_th" target="_blank" rel="noopener noreferrer" className="text-[11px] text-white/40 hover:text-white transition-colors">YouTube</a>
+                <a href="https://www.facebook.com/topgameth" target="_blank" rel="noopener noreferrer" className="text-[11px] text-white/40 hover:text-white transition-colors">Facebook</a>
+                <a href="https://discord.gg/topgameth" target="_blank" rel="noopener noreferrer" className="text-[11px] text-white/40 hover:text-white transition-colors">Discord</a>
               </div>
             </div>
+
           </div>
-          <div className="border-t border-white/[0.04] pt-4 text-center text-[9px] text-white/12">
-            &copy; 2026 TopGame Thailand &middot; All rights reserved
+          <div className="mt-[20px] pt-[16px] border-t border-white/[0.05] text-center">
+            <span className="text-[10px] text-white/20">© 2026 TopGame Thailand. All rights reserved.</span>
           </div>
         </div>
       </footer>
