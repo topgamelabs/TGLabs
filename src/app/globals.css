@@ -49,75 +49,19 @@
   overflow: hidden;
 }
 
-/* Card Hover */
-.card-hover {
-  transition: all 0.3s ease;
-}
-.card-hover:hover .card-img {
-  transform: scale(1.05);
-}
-.card-img {
-  transition: transform 0.5s ease;
+/* Base Styles */
+body {
+  background: #070707;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
 }
 
-/* Hero Gradient */
-.hero-overlay {
-  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
+a {
+  text-decoration: none;
 }
 
-/* Glow Bar */
-.glow-bar {
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #FF1A1A, transparent);
-  box-shadow: 0 0 20px rgba(255,26,26,0.5);
-}
-
-/* Category Tabs */
-.cat-tab {
-  padding: 8px 16px;
-  color: #888;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-.cat-tab:hover { color: #fff; }
-.cat-tab.active {
-  color: #FF1A1A;
-  border-bottom-color: #FF1A1A;
-}
-
-/* Latest News Item */
-.latest-item {
-  padding: 12px 0;
-  border-bottom: 1px solid #2A2A2A;
-}
-.latest-item:last-child { border-bottom: none; }
-.latest-item:hover .latest-title { color: #FF1A1A; }
-.latest-title { transition: color 0.2s ease; }
-
-/* Minimal card */
-.minimal-card {
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-/* Section Title */
-.section-title {
-  font-family: 'Kanit', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 1.5rem;
-  line-height: 1.1;
-  color: #fff;
-}
-
-/* Overline label */
-.overline-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+img {
+  max-width: 100%;
+  height: auto;
 }

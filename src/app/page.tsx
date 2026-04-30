@@ -5,390 +5,277 @@ import { useState } from "react";
 export default function Home() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      setMobileNavOpen(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white font-['Prompt',sans-serif]">
+    <div className="min-h-screen bg-[#070707] text-white font-inter">
 
       {/* ========== NAVBAR ========== */}
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-[#0A0A0A]/90 nav-blur border-b border-[#2A2A2A]">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <nav className="fixed top-0 left-0 right-0 z-50 nav-blur bg-[#070707]/95 border-b border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-5 h-[58px] flex items-center justify-between">
+
           {/* Logo */}
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
-              <svg className="w-full h-full" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 24C8 15.163 15.163 8 24 8s16 7.163 16 16" stroke="#FF1A1A" strokeWidth="3" strokeLinecap="round" fill="none"/>
-                <rect x="4" y="22" width="8" height="14" rx="3" fill="#FF1A1A"/>
-                <rect x="36" y="22" width="8" height="14" rx="3" fill="#FF1A1A"/>
-                <rect x="14" y="26" width="20" height="14" rx="4" fill="#FF1A1A"/>
-                <path d="M24 14c0-3 2-5 4-7-1 2-1 4-1 6 0 2 1 3 2 4-2-1-4-1-5-1v-2z" fill="#FF1A1A"/>
-              </svg>
-            </div>
+          <div className="flex items-center gap-[10px] flex-shrink-0">
+            <img src="/images/logo.png" alt="TopGame Thailand" className="w-8 h-8 object-contain" />
             <div className="flex flex-col leading-none">
-              <div className="flex items-baseline gap-0">
-                <span className="font-['Bebas_Neue'] text-2xl tracking-wider text-white italic">TOP</span>
-                <span className="font-['Bebas_Neue'] text-2xl tracking-wider text-[#FF1A1A] italic">GAME</span>
+              <div className="font-kanit text-[14px] font-black tracking-[0.5px] text-white">
+                TOP<span className="text-tg-red">GAME</span>
               </div>
-              <div className="flex items-center gap-2 mt-0.5">
-                <div className="h-px w-4 bg-[#FF1A1A]"></div>
-                <span className="font-['Inter'] text-[10px] text-[#FF1A1A] tracking-[0.2em] uppercase font-medium">Thailand</span>
-                <div className="h-px w-4 bg-[#FF1A1A]"></div>
+              <div className="font-inter text-[8px] font-medium tracking-[3px] uppercase text-white/30 mt-[1px]">
+                Thailand
               </div>
             </div>
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1">
-            <a href="#" className="px-4 py-2 text-sm font-medium text-white hover:text-[#FF1A1A] transition-colors rounded-lg hover:bg-[#1F1F1F]">หน้าแรก</a>
-            <a href="#" className="px-4 py-2 text-sm font-medium text-[#CFCFCF] hover:text-[#FF1A1A] transition-colors rounded-lg hover:bg-[#1F1F1F]">ข่าวเกม</a>
-            <a href="#" className="px-4 py-2 text-sm font-medium text-[#CFCFCF] hover:text-[#FF1A1A] transition-colors rounded-lg hover:bg-[#1F1F1F]">วิธีเล่น</a>
-            <a href="#" className="px-4 py-2 text-sm font-medium text-[#CFCFCF] hover:text-[#FF1A1A] transition-colors rounded-lg hover:bg-[#1F1F1F]">รีวิว</a>
-            <a href="#" className="px-4 py-2 text-sm font-medium text-[#CFCFCF] hover:text-[#FF1A1A] transition-colors rounded-lg hover:bg-[#1F1F1F]">IT Gadget</a>
+          <div className="hidden lg:flex items-center gap-[2px]">
+            {["Home", "News", "Guides", "Reviews", "IT Gadget"].map((item, i) => (
+              <a
+                key={item}
+                href="#"
+                className={`text-[12px] font-medium px-[13px] py-[6px] rounded-[5px] transition-all duration-150 ${
+                  i === 0
+                    ? "text-white bg-white/[0.06]"
+                    : "text-white/45 hover:text-white hover:bg-white/[0.06]"
+                }`}
+              >
+                {item}
+              </a>
+            ))}
+            <button
+              onClick={() => scrollToSection("tools")}
+              className="ml-1 text-[10px] font-semibold px-3 py-[5px] rounded-full bg-tg-red/15 text-tg-red border border-tg-red/25 tracking-[0.5px] hover:bg-tg-red/25 transition-all cursor-pointer"
+            >
+              Tools ⚡
+            </button>
           </div>
 
-          {/* Search & Mobile Menu */}
+          {/* Right */}
           <div className="flex items-center gap-2">
-            <button className="p-2 text-[#CFCFCF] hover:text-[#FF1A1A] transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button className="w-7 h-7 rounded-[6px] bg-white/[0.05] border border-white/[0.08] flex items-center justify-center hover:bg-white/10 transition-all">
+              <svg width="13" height="13" fill="none" stroke="rgba(255,255,255,0.4)" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
               </svg>
             </button>
-            <button onClick={() => setMobileNavOpen(!mobileNavOpen)} className="lg:hidden p-2 text-[#CFCFCF]">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button
+              onClick={() => setMobileNavOpen(!mobileNavOpen)}
+              className="lg:hidden w-7 h-7 flex items-center justify-center text-white/40"
+            >
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
               </svg>
             </button>
           </div>
         </div>
+
+        {/* Mobile Nav */}
+        {mobileNavOpen && (
+          <div className="lg:hidden bg-[#070707]/98 border-t border-white/[0.06] px-5 py-4 flex flex-col gap-1">
+            {["Home", "News", "Guides", "Reviews", "IT Gadget"].map((item, i) => (
+              <a
+                key={item}
+                href="#"
+                className={`px-3 py-2 rounded-[5px] text-sm font-medium transition-all ${
+                  i === 0 ? "text-white bg-white/[0.06]" : "text-white/45 hover:text-white"
+                }`}
+              >
+                {item}
+              </a>
+            ))}
+            <button onClick={() => scrollToSection("tools")} className="mt-2 px-3 py-2 rounded-full text-center text-[11px] font-semibold bg-tg-red/15 text-tg-red border border-tg-red/25 cursor-pointer">
+              Tools ⚡
+            </button>
+          </div>
+        )}
       </nav>
 
-      {/* Mobile Nav Dropdown */}
-      {mobileNavOpen && (
-        <div className="fixed top-16 left-0 right-0 z-30 bg-[#0A0A0A]/95 nav-blur border-b border-[#2A2A2A] lg:hidden px-4 py-4 flex flex-col gap-4">
-          <a href="#" className="text-white font-medium hover:text-[#FF1A1A] transition-colors">หน้าแรก</a>
-          <a href="#" className="text-[#CFCFCF] font-medium hover:text-[#FF1A1A] transition-colors">ข่าวเกม</a>
-          <a href="#" className="text-[#CFCFCF] font-medium hover:text-[#FF1A1A] transition-colors">วิธีเล่น</a>
-          <a href="#" className="text-[#CFCFCF] font-medium hover:text-[#FF1A1A] transition-colors">รีวิว</a>
-          <a href="#" className="text-[#CFCFCF] font-medium hover:text-[#FF1A1A] transition-colors">IT Gadget</a>
-        </div>
-      )}
+      {/* ========== HERO — CINEMATIC SPLIT ========== */}
+      <div className="max-w-7xl mx-auto px-5 lg:px-0">
+      <section className="mt-[58px] grid grid-cols-1 lg:grid-cols-[62%_38%] border-b border-white/[0.05] lg:h-[clamp(280px,42vw,380px)]">
+
+        {/* Left — Main Story */}
+        <article className="relative overflow-hidden bg-[#0a0a14] cursor-pointer group min-h-[220px]">
+          {/*           {/* Background image */}
+          <img
+            src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&h=600&fit=crop"
+            alt="Genshin Impact 5.0"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#070707]/80 via-[#070707]/40 to-[#070707]/90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070707]/60 via-transparent to-[#070707]/80" />     {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#070707] opacity-100 lg:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070707]/97 via-[#070707]/20 to-transparent" />
+
+          {/* Content */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-7">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-[6px] h-[6px] rounded-full bg-tg-red animate-pulse" />
+              <span className="text-[9px] font-bold tracking-[3px] uppercase text-tg-red">Live Review</span>
+            </div>
+            <h1 className="font-kanit text-[18px] lg:text-[26px] font-black text-white leading-[1.2] mb-3 max-w-[420px] group-hover:text-tg-red/90 transition-colors">
+              Genshin Impact 5.0 — The Biggest Update SEA Gamers Can&apos;t Miss
+            </h1>
+            <div className="flex items-center gap-3">
+              <span className="text-[11px] text-white/35">TopGame Thailand</span>
+              <span className="w-px h-[10px] bg-white/10" />
+              <span className="text-[11px] text-white/25">Apr 30, 2026</span>
+              <span className="ml-auto text-[10px] font-semibold text-tg-red tracking-[1px] uppercase hidden sm:block">Read More →</span>
+            </div>
+          </div>
+        </article>
+
+        {/* Right — Latest Sidebar */}
+        <aside className="bg-[#050505] border-t lg:border-t-0 lg:border-l border-white/[0.04] flex flex-col lg:max-h-[380px] lg:overflow-hidden">
+          <div className="px-5 py-4 border-b border-white/[0.04] flex items-center justify-between flex-shrink-0">
+            <span className="text-[9px] font-bold tracking-[3px] uppercase text-white/20">Latest</span>
+            <span className="text-[9px] font-semibold text-tg-red tracking-[0.5px]">See all →</span>
+          </div>
+          <div className="flex-1 flex flex-col overflow-hidden">
+            {[
+              { num: "01", tag: "Review", tagColor: "text-tg-red", title: "Elden Ring: Nightreign — Full Review, Best Spin-off Yet?", time: "2h ago" },
+              { num: "02", tag: "News", tagColor: "text-tg-news", title: "Pokemon TCG Pocket Launches Today — Free Download Available", time: "4h ago" },
+              { num: "03", tag: "Tips", tagColor: "text-tg-review", title: "10 Tricks to Save Primogems in Genshin Impact", time: "6h ago" },
+              { num: "04", tag: "Mobile", tagColor: "text-tg-live", title: "Honor of Kings SEA — New Season Patch Notes", time: "8h ago" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="flex gap-3 px-5 py-3 border-b border-white/[0.03] last:border-b-0 cursor-pointer hover:bg-white/[0.02] transition-all group"
+              >
+                <div className="font-bebas text-[18px] text-white/[0.07] leading-none flex-shrink-0 w-5 mt-[1px]">
+                  {item.num}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className={`text-[8px] font-bold tracking-[1.5px] uppercase mb-1 ${item.tagColor}`}>
+                    {item.tag}
+                  </div>
+                  <div className="font-kanit text-[11px] font-semibold text-white/60 leading-[1.4] line-clamp-2 group-hover:text-white/80 transition-colors">
+                    {item.title}
+                  </div>
+                  <div className="text-[9px] text-white/20 mt-1">{item.time}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </aside>
+      </section>
+      </div>
 
       {/* ========== MAIN CONTENT ========== */}
-      <main className="max-w-7xl mx-auto px-4 pt-24 pb-10">
+      <main className="max-w-7xl mx-auto px-5 py-6 lg:py-8">
 
-        {/* ========== HERO + LATEST SECTION ========== */}
-        <section className="flex flex-col lg:flex-row gap-6 mb-10 lg:items-center">
-
-          {/* ===== HERO (2/3 width) ===== */}
-          <article className="lg:w-[calc(66.67%-12px)] cursor-pointer">
-            <div className="relative rounded-lg overflow-hidden minimal-card">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=1200&h=750&fit=crop"
-                  className="w-full h-full object-cover card-img"
-                  alt="Genshin Impact 5.0"
-                />
-              </div>
-              <div className="absolute inset-0 hero-overlay"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <span className="inline-block bg-[#FF1A1A] text-white text-xs font-bold px-3 py-1 rounded mb-3 uppercase tracking-wide">
-                  🔥 Live Review
-                </span>
-                <h2 className="font-['Kanit'] text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-2">
-                  Genshin Impact 5.0 อัปเดตใหญ่! ฟีเจอร์ใหม่ที่ห้ามพลาด
-                </h2>
-                <p className="text-[#CFCFCF] text-sm">โดย TopGame Thailand • 27 เมษายน 2569</p>
-              </div>
-            </div>
-          </article>
-
-          {/* ===== LATEST SIDEBAR (1/3 width) ===== */}
-          <aside className="lg:w-[calc(33.33%-12px)]">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="section-title">ล่าสุด</h2>
-              <a href="#" className="text-[#FF1A1A] text-sm font-medium hover:underline">ดูทั้งหมด →</a>
-            </div>
-            <div className="bg-[#1F1F1F] rounded-lg p-4">
-              {/* Item 1 */}
-              <div className="latest-item">
-                <div className="flex gap-3 cursor-pointer">
-                  <div className="flex-1">
-                    <span className="text-[#FF1A1A] text-xs font-bold uppercase">🔥 Tips</span>
-                    <h3 className="latest-title text-white font-medium mt-1 line-clamp-2">
-                      10 ทริคโกงมิตรภาพใน Stardust Valley ฉบับรวดเร็ว
-                    </h3>
-                  </div>
-                  <div className="w-20 h-14 flex-shrink-0 rounded overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=200&h=140&fit=crop" className="w-full h-full object-cover" alt="" />
-                  </div>
-                </div>
-              </div>
-              {/* Item 2 */}
-              <div className="latest-item">
-                <div className="flex gap-3 cursor-pointer">
-                  <div className="flex-1">
-                    <span className="text-[#4A90D9] text-xs font-bold uppercase">📰 News</span>
-                    <h3 className="latest-title text-white font-medium mt-1 line-clamp-2">
-                      Pokemon TCG Pocket เปิดตัวแล้ววันนี้! ดาวน์โหลดฟรี
-                    </h3>
-                  </div>
-                  <div className="w-20 h-14 flex-shrink-0 rounded overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=200&h=140&fit=crop" className="w-full h-full object-cover" alt="" />
-                  </div>
-                </div>
-              </div>
-              {/* Item 3 */}
-              <div className="latest-item">
-                <div className="flex gap-3 cursor-pointer">
-                  <div className="flex-1">
-                    <span className="text-[#4DCC8A] text-xs font-bold uppercase">🎮 Review</span>
-                    <h3 className="latest-title text-white font-medium mt-1 line-clamp-2">
-                      รีวิว Marvel Rivals: เกม Hero Shooter ที่ทุ่มทุนสร้างได้สมบูรณ์แบบ
-                    </h3>
-                  </div>
-                  <div className="w-20 h-14 flex-shrink-0 rounded overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=200&h=140&fit=crop" className="w-full h-full object-cover" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </aside>
-
-        </section>
-
-        {/* ========== GLOW BAR ========== */}
-        <div className="glow-bar mb-10"></div>
-
-        {/* ========== TRENDING SECTION ========== */}
-        <section className="mb-10">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-xl">🔥</span>
-            <h2 className="section-title">กำลังมาแรง</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {/* Card 1 */}
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="Elden Ring" />
-              </div>
-              <div className="p-4">
-                <span className="text-[#FF1A1A] text-xs font-bold uppercase">Review</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">Elden Ring: Nightreign รีวิวฉบับเต็ม</h3>
-              </div>
-            </article>
-            {/* Card 2 */}
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="Skyrim Mods" />
-              </div>
-              <div className="p-4">
-                <span className="text-[#FF6B35] text-xs font-bold uppercase">📺 Live</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">วิธีติดตั้ง mods บน Skyrim ง่ายๆ</h3>
-              </div>
-            </article>
-            {/* Card 3 */}
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="Genshin" />
-              </div>
-              <div className="p-4">
-                <span className="text-[#4A90D9] text-xs font-bold uppercase">📰 News</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">Genshin Impact ฉลอง 4 ปี พร้อมของขวัญมหาศาล</h3>
-              </div>
-            </article>
-            {/* Card 4 */}
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1616588589676-62b3bd4ff6d2?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="Gaming Mouse" />
-              </div>
-              <div className="p-4">
-                <span className="text-[#A855F7] text-xs font-bold uppercase">💻 Tech</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">แนะนำเมาส์เกมเบอร์ 1 ปี 2024-2025</h3>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        {/* ========== PC & CONSOLE SECTION ========== */}
-        <section className="mb-10">
-          <div className="flex items-center justify-between mb-6">
+        {/* TRENDING */}
+        <section className="pt-6 pb-2">
+          <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <span className="text-xl">🎮</span>
-              <h2 className="section-title">PC และ Console</h2>
+              <div className="w-[3px] h-4 bg-tg-red rounded-full" />
+              <h2 className="font-kanit text-[15px] font-bold uppercase tracking-wide">Trending</h2>
             </div>
-            <a href="#" className="text-[#FF1A1A] text-sm font-medium hover:underline">ดูทั้งหมด →</a>
+            <span className="text-[10px] text-white/25 hover:text-tg-red transition-colors cursor-pointer tracking-[0.5px]">See all →</span>
           </div>
-
-          {/* Category Tabs */}
-          <div className="flex gap-6 border-b border-[#2A2A2A] mb-6 overflow-x-auto pb-1">
-            <span className="cat-tab active">ทั้งหมด</span>
-            <span className="cat-tab">PC Games</span>
-            <span className="cat-tab">PlayStation</span>
-            <span className="cat-tab">Xbox</span>
-            <span className="cat-tab">Nintendo</span>
-          </div>
-
-          {/* Article Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="Elden Ring" />
-              </div>
-              <div className="p-4">
-                <span className="text-[#FF1A1A] text-xs font-bold uppercase">Review</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">Elden Ring: Nightreign รีวิวฉบับเต็ม</h3>
-              </div>
-            </article>
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="Skyrim" />
-              </div>
-              <div className="p-4">
-                <span className="text-[#FF1A1A] text-xs font-bold uppercase">Tips</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">วิธีติดตั้ง mods บน Skyrim ง่ายๆ</h3>
-              </div>
-            </article>
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="Nintendo" />
-              </div>
-              <div className="p-4">
-                <span className="text-[#4A90D9] text-xs font-bold uppercase">News</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">Nintendo Switch 2 เปิดตัวอย่างเป็นทางการ</h3>
-              </div>
-            </article>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px]">
+            {[
+              { img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=250&fit=crop", tag: "Review", tagClass: "text-tg-red", title: "Elden Ring Nightreign — Full Review", meta: "Apr 27 · 8 min" },
+              { img: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=400&h=250&fit=crop", tag: "Live", tagClass: "text-tg-live", title: "Pokemon Presents Recap — Everything Announced", meta: "Apr 26 · 5 min" },
+              { img: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=400&h=250&fit=crop", tag: "News", tagClass: "text-tg-news", title: "Honor of Kings SEA New Season Is Live", meta: "Apr 25 · 3 min" },
+              { img: "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=400&h=250&fit=crop", tag: "Guide", tagClass: "text-tg-review", title: "Zenless Zone Zero Beginner's Guide 2026", meta: "Apr 24 · 12 min" },
+            ].map((card, i) => (
+              <article key={i} className="bg-[#0d0d0d] rounded-[8px] overflow-hidden cursor-pointer group hover:-translate-y-[2px] transition-transform duration-200">
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <img src={card.img} alt={card.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/80 to-transparent" />
+                </div>
+                <div className="p-[10px_12px_12px]">
+                  <div className={`text-[8px] font-bold tracking-[1.5px] uppercase mb-[5px] ${card.tagClass}`}>{card.tag}</div>
+                  <div className="font-kanit text-[11px] font-semibold text-white/70 leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
+                  <div className="text-[9px] text-white/20 mt-[6px]">{card.meta}</div>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
-        {/* ========== MOBILE GAMES SECTION ========== */}
-        <section className="mb-10">
-          <div className="flex items-center justify-between mb-6">
+        {/* MOBILE GAMES */}
+        <section className="pt-5 pb-2">
+          <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <span className="text-xl">📱</span>
-              <h2 className="section-title">เกมมือถือ</h2>
+              <div className="w-[3px] h-4 bg-tg-red rounded-full" />
+              <h2 className="font-kanit text-[15px] font-bold uppercase tracking-wide">Mobile Games</h2>
             </div>
-            <a href="#" className="text-[#FF1A1A] text-sm font-medium hover:underline">ดูทั้งหมด →</a>
+            <span className="text-[10px] text-white/25 hover:text-tg-red transition-colors cursor-pointer tracking-[0.5px]">See all →</span>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="Rogue Land" />
-              </div>
-              <div className="p-4">
-                <span className="text-[#FF1A1A] text-xs font-bold uppercase">🔥 Tips</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">Rogue Land เปลี่ยนแปลงประจำสัปดาห์ มีนอตใหม่!</h3>
-              </div>
-            </article>
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="Honor of Kings" />
-              </div>
-              <div className="p-4">
-                <span className="text-[#FF6B35] text-xs font-bold uppercase">📺 Live</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">มิตซึ่มรวมตัว! สรุปการแข่งขัน Honor of Kings</h3>
-              </div>
-            </article>
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="Genshin" />
-              </div>
-              <div className="p-4">
-                <span className="text-[#4A90D9] text-xs font-bold uppercase">📰 News</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">Genshin Impact ฉลอง 4 ปี พร้อมของขวัญมหาศาล</h3>
-              </div>
-            </article>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px]">
+            {[
+              { img: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=400&h=250&fit=crop", tag: "Tips", tagClass: "text-tg-red", title: "Genshin Impact 5.1 — Best Team Comps SEA", meta: "Apr 23 · 7 min" },
+              { img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=250&fit=crop", tag: "Esports", tagClass: "text-tg-live", title: "Honor of Kings World Championship — SEA Results", meta: "Apr 22 · 4 min" },
+              { img: "https://images.unsplash.com/photo-1542751110-97427bbecf20?w=400&h=250&fit=crop", tag: "Guide", tagClass: "text-tg-review", title: "Wuthering Waves Tier List — Best Characters Apr 2026", meta: "Apr 21 · 9 min" },
+              { img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop", tag: "Reroll", tagClass: "text-tg-tech", title: "AFK Journey Reroll Guide — Get SSR on First Pull", meta: "Apr 20 · 6 min" },
+            ].map((card, i) => (
+              <article key={i} className="bg-[#0d0d0d] rounded-[8px] overflow-hidden cursor-pointer group hover:-translate-y-[2px] transition-transform duration-200">
+                <div className="aspect-[16/10] overflow-hidden relative">
+                  <img src={card.img} alt={card.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/80 to-transparent" />
+                </div>
+                <div className="p-[10px_12px_12px]">
+                  <div className={`text-[8px] font-bold tracking-[1.5px] uppercase mb-[5px] ${card.tagClass}`}>{card.tag}</div>
+                  <div className="font-kanit text-[11px] font-semibold text-white/70 leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
+                  <div className="text-[9px] text-white/20 mt-[6px]">{card.meta}</div>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
-        {/* ========== IT & GADGET SECTION ========== */}
-        <section className="mb-10">
-          <div className="flex items-center justify-between mb-6">
+        {/* TOOLS */}
+        <section id="tools" className="pt-5 pb-6">
+          <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <span className="text-xl">💻</span>
-              <h2 className="section-title">IT และ Gadget</h2>
+              <div className="w-[3px] h-4 bg-tg-red rounded-full" />
+              <h2 className="font-kanit text-[15px] font-bold uppercase tracking-wide">Tools</h2>
             </div>
-            <a href="#" className="text-[#FF1A1A] text-sm font-medium hover:underline">ดูทั้งหมด →</a>
+            <span className="text-[10px] text-white/25 hover:text-tg-red transition-colors cursor-pointer tracking-[0.5px]">See all →</span>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="ROG Ally" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
+            <a
+              href="https://bosstimer.tglabs.info"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#0d0d0d] rounded-[8px] p-4 flex items-center gap-3 cursor-pointer border border-white/[0.04] hover:border-tg-red/20 transition-all group"
+            >
+              <div className="w-9 h-9 rounded-[8px] bg-tg-red/[0.12] flex items-center justify-center text-base flex-shrink-0">
+                <img src="https://bosstimer.tglabs.info/logo.png" alt="TOSM" className="w-9 h-9 object-contain" />
               </div>
-              <div className="p-4">
-                <span className="text-[#A855F7] text-xs font-bold uppercase">Gadget</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">รีวิว ROG Ally X: เครื่องเล่นเกม PC แบบพกพา</h3>
+              <div className="flex-1 min-w-0">
+                <div className="font-kanit text-[12px] font-bold text-white">TOSM Boss Timer</div>
+                <div className="text-[9px] text-white/30 mt-[2px]">Spawn alerts for Genshin, HSR & more</div>
               </div>
-            </article>
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="Steam Deck" />
+              <div className="text-white/15 group-hover:text-tg-red transition-colors text-sm">→</div>
+            </a>
+            <div className="bg-[#0d0d0d] rounded-[8px] p-4 flex items-center gap-3 cursor-pointer border border-white/[0.04] hover:border-tg-news/20 transition-all group">
+              <div className="w-9 h-9 rounded-[8px] bg-tg-news/[0.12] flex items-center justify-center text-base flex-shrink-0">
+                📊
               </div>
-              <div className="p-4">
-                <span className="text-[#A855F7] text-xs font-bold uppercase">Tech</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">เปรียบเทียบ Steam Deck vs ROG Ally 2024</h3>
+              <div className="flex-1 min-w-0">
+                <div className="font-kanit text-[12px] font-bold text-white">Tier List Builder</div>
+                <div className="text-[9px] text-white/30 mt-[2px]">Build & share interactive tier lists</div>
               </div>
-            </article>
-            <article className="card-hover cursor-pointer minimal-card bg-[#1F1F1F]">
-              <div className="aspect-[16/10] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1616588589676-62b3bd4ff6d2?w=600&h=375&fit=crop" className="w-full h-full object-cover card-img" alt="Gaming Mouse" />
-              </div>
-              <div className="p-4">
-                <span className="text-[#A855F7] text-xs font-bold uppercase">Setup</span>
-                <h3 className="text-white font-semibold mt-1 line-clamp-2">แนะนำเมาส์เกมเบอร์ 1 ปี 2024-2025</h3>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        {/* ========== FEATURED TOOLS ========== */}
-        <section className="mb-10">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-xl">⚡</span>
-            <h2 className="section-title">เครื่องมือแนะนำ</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Boss Timer */}
-            <div className="card-hover cursor-pointer minimal-card bg-[#1F1F1F] p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#FF1A1A]/20 flex items-center justify-center text-xl">⏰</div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-lg text-white">Boss Timer</h3>
-                  <p className="text-[#CFCFCF] text-sm mt-1">ตั้งเวลาแจ้งเตือนบอสในเกมต่างๆ</p>
-                  <div className="flex gap-2 mt-3">
-                    <span className="bg-[#2A2A2A] text-[#888] text-xs px-2 py-1 rounded">Genshin</span>
-                    <span className="bg-[#2A2A2A] text-[#888] text-xs px-2 py-1 rounded">HSR</span>
-                  </div>
-                </div>
-              </div>
+              <div className="text-white/15 group-hover:text-tg-news transition-colors text-sm">→</div>
             </div>
-            {/* Tier List */}
-            <div className="card-hover cursor-pointer minimal-card bg-[#1F1F1F] p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#4A90D9]/20 flex items-center justify-center text-xl">📊</div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-lg text-white">Tier List Builder</h3>
-                  <p className="text-[#CFCFCF] text-sm mt-1">สร้าง Tier List แบบโต้ตอบสำหรับเกมต่างๆ</p>
-                  <div className="flex gap-2 mt-3">
-                    <span className="bg-[#2A2A2A] text-[#888] text-xs px-2 py-1 rounded">Genshin</span>
-                    <span className="bg-[#2A2A2A] text-[#888] text-xs px-2 py-1 rounded">WGR</span>
-                  </div>
-                </div>
+            <div className="bg-[#0d0d0d] rounded-[8px] p-4 flex items-center gap-3 cursor-pointer border border-white/[0.04] hover:border-tg-review/20 transition-all group">
+              <div className="w-9 h-9 rounded-[8px] bg-tg-review/[0.12] flex items-center justify-center text-base flex-shrink-0">
+                🎁
               </div>
-            </div>
-            {/* Code Redeemer */}
-            <div className="card-hover cursor-pointer minimal-card bg-[#1F1F1F] p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#4DCC8A]/20 flex items-center justify-center text-xl">🎁</div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-lg text-white">Code Redeemer</h3>
-                  <p className="text-[#CFCFCF] text-sm mt-1">รวมโค้ดลงทะเบียนเกมมือถือในที่เดียว</p>
-                  <div className="flex gap-2 mt-3">
-                    <span className="bg-[#2A2A2A] text-[#888] text-xs px-2 py-1 rounded">Zenless</span>
-                    <span className="bg-[#2A2A2A] text-[#888] text-xs px-2 py-1 rounded">Genshin</span>
-                  </div>
-                </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-kanit text-[12px] font-bold text-white">Code Redeemer</div>
+                <div className="text-[9px] text-white/30 mt-[2px]">All active redeem codes in one place</div>
               </div>
+              <div className="text-white/15 group-hover:text-tg-review transition-colors text-sm">→</div>
             </div>
           </div>
         </section>
@@ -396,50 +283,37 @@ export default function Home() {
       </main>
 
       {/* ========== FOOTER ========== */}
-      <footer className="bg-[#1F1F1F]">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Logo & About */}
-            <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="font-['Bebas_Neue'] text-2xl text-white italic">Top</span>
-                <span className="font-['Bebas_Neue'] text-2xl text-[#FF1A1A] italic">Game</span>
+      <footer className="bg-[#040404] border-t border-white/[0.05]">
+        <div className="max-w-7xl mx-auto px-5 py-6">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-6 mb-5">
+            <div>
+              <div className="font-kanit text-[16px] font-black text-white mb-1">
+                TOP<span className="text-tg-red">GAME</span> Thailand
               </div>
-              <p className="text-[#CFCFCF] text-sm leading-relaxed">
-                แหล่งรวมข่าวสาร เทคนิค และรีวิวเกมมือถือสำหรับเกมเมอร์ไทย
-              </p>
-              <div className="flex items-center gap-2 mt-4">
-                <div className="h-px w-4 bg-[#FF1A1A]"></div>
-                <span className="font-['Inter'] text-[10px] text-[#FF1A1A] tracking-[0.2em] uppercase font-medium">Thailand</span>
-                <div className="h-px w-4 bg-[#FF1A1A]"></div>
+              <div className="text-[10px] text-white/20 leading-[1.7]">
+                Your #1 source for mobile gaming news,<br />
+                guides, and reviews across Southeast Asia.
               </div>
             </div>
-
-            {/* Links */}
             <div>
-              <h4 className="font-semibold text-white mb-4">เมนู</h4>
-              <ul className="space-y-2 text-[#CFCFCF] text-sm">
-                <li><a href="#" className="hover:text-[#FF1A1A] transition-colors">หน้าแรก</a></li>
-                <li><a href="#" className="hover:text-[#FF1A1A] transition-colors">ข่าวเกม</a></li>
-                <li><a href="#" className="hover:text-[#FF1A1A] transition-colors">วิธีเล่น</a></li>
-                <li><a href="#" className="hover:text-[#FF1A1A] transition-colors">รีวิว</a></li>
-              </ul>
+              <div className="text-[9px] font-bold tracking-[2px] uppercase text-white/20 mb-3">Navigate</div>
+              <div className="flex flex-col gap-[6px]">
+                {["Home", "News", "Guides", "Reviews", "Tools"].map(link => (
+                  <a key={link} href="#" className="text-[11px] text-white/30 hover:text-white transition-colors">{link}</a>
+                ))}
+              </div>
             </div>
-
-            {/* Social */}
             <div>
-              <h4 className="font-semibold text-white mb-4">ติดตาม</h4>
-              <ul className="space-y-2 text-[#CFCFCF] text-sm">
-                <li><a href="#" className="hover:text-[#FF1A1A] transition-colors">YouTube</a></li>
-                <li><a href="#" className="hover:text-[#FF1A1A] transition-colors">Facebook</a></li>
-                <li><a href="#" className="hover:text-[#FF1A1A] transition-colors">Discord</a></li>
-                <li><a href="#" className="hover:text-[#FF1A1A] transition-colors">Twitter</a></li>
-              </ul>
+              <div className="text-[9px] font-bold tracking-[2px] uppercase text-white/20 mb-3">Follow</div>
+              <div className="flex flex-col gap-[6px]">
+                {["YouTube", "Facebook", "Discord", "X / Twitter"].map(link => (
+                  <a key={link} href="#" className="text-[11px] text-white/30 hover:text-white transition-colors">{link}</a>
+                ))}
+              </div>
             </div>
           </div>
-
-          <div className="border-t border-[#2A2A2A] mt-8 pt-8 text-center text-[#888] text-sm">
-            <p>© 2026 TopGame Thailand. All rights reserved.</p>
+          <div className="border-t border-white/[0.04] pt-4 text-center text-[9px] text-white/12">
+            &copy; 2026 TopGame Thailand &middot; All rights reserved
           </div>
         </div>
       </footer>
