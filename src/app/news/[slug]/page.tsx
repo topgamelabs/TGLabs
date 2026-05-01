@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: article.title,
+    title: `${article.title} | TopGame Thailand`,
     description: article.excerpt,
     alternates: {
       canonical: `https://tglabs.info/news/${article.slug}`,
@@ -36,6 +36,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: "article",
       publishedTime: article.published_at ?? article.created_at,
       authors: [article.author_name ?? "TopGame Thailand"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.excerpt,
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }

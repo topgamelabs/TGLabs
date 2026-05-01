@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata = {
+  metadataBase: new URL("https://tglabs.info"),
   title: "TopGame Thailand - ข่าวเกมมือถือ อัปเดตล่าสุด",
   description:
     "รวมข่าวเกมมือถือ อัปเดตใหม่ รีวิว เทคนิค และ Tier List ครบทุกเกมดังในไทย",
