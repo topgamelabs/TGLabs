@@ -53,37 +53,27 @@ export async function getGames(): Promise<Game[]> {
 }
 
 // Fetch published articles with optional filters
-export async function getArticles(options: {
-  category?: string;
-  gameId?: string;
-  limit?: number;
-  featured?: boolean;
-} = {}): Promise<Article[]> {
-  let query = supabase
-    .from('articles')
-    .select(`
-      *,
-      games:game_id (*)
-    `)
-    .eq('is_published', true)
-    .order('published_at', { ascending: false });
+export async function getArticles({ limit = 10 } = {}) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?select=*&order=created_at.desc&limit=${limit}`,
+    {
+      headers: {
+        apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      },
+      cache: "no-store",
+    }
+  );
 
-  if (options.category) {
-    query = query.eq('category', options.category);
-  }
-  if (options.gameId) {
-    query = query.eq('game_id', options.gameId);
-  }
-  if (options.featured) {
-    query = query.eq('is_featured', true);
-  }
-  if (options.limit) {
-    query = query.limit(options.limit);
+  const data = await res.json();
+  console.log("ARTICLES:", data);
+
+  // 🔥 FIX สำคัญ
+  if (!Array.isArray(data)) {
+    console.error("GET ARTICLES ERROR:", data);
+    return [];
   }
 
-  const { data, error } = await query;
-  if (error) throw error;
-  return data || [];
+  return data;
 }
 
 // Fetch single article by slug
