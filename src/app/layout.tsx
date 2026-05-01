@@ -1,9 +1,25 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "TopGame Thailand — Gaming Media Platform",
-  description: "สื่อเกมเพื่อเกมเมอร์ไทย ข่าวเกม รีวิว เทคนิค และข้อมูลเกมมือถือ PC Console",
+export const metadata = {
+  title: "TopGame Thailand - ข่าวเกมมือถือ อัปเดตล่าสุด",
+  description:
+    "รวมข่าวเกมมือถือ อัปเดตใหม่ รีวิว เทคนิค และ Tier List ครบทุกเกมดังในไทย",
+  keywords: [
+    "เกมมือถือ",
+    "ข่าวเกม",
+    "Ragnarok",
+    "ROV",
+    "Genshin Impact",
+    "Mobile Legends",
+  ],
+  openGraph: {
+    title: "TopGame Thailand",
+    description: "ข่าวเกมมือถือ อัปเดตไว ครบทุกเกมดัง",
+    url: "https://tglabs.info",
+    siteName: "TopGame Thailand",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

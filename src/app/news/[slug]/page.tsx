@@ -1,5 +1,40 @@
 import { notFound } from "next/navigation";
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?slug=eq.${decodedSlug}&select=*`,
+    {
+      headers: {
+        apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      },
+      cache: "no-store",
+    }
+  );
+
+  const data = await res.json();
+  const article = data[0];
+
+  if (!article) {
+    return {
+      title: "Article not found",
+    };
+  }
+
+  return {
+    title: article.title,
+    description: article.excerpt,
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      url: `https://tglabs.info/news/${article.slug}`,
+      type: "article",
+    },
+  };
+}
+
 async function getArticle(slug: string) {
   const decodedSlug = decodeURIComponent(slug);
 
