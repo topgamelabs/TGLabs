@@ -3,37 +3,53 @@
 import { useState } from "react";
 
 export default function GeneratePage() {
-  const [mode, setMode] = useState<"keyword" | "rewrite">("keyword");
+  const [mode, setMode] = useState<"keyword" | "rewrite" | "url">("keyword");
   const [input, setInput] = useState("");
   const [source, setSource] = useState("");
   const [articles, setArticles] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
+  // ========================
+  // GENERATE
+  // ========================
   const handleGenerate = async () => {
-    const inputs =
-      mode === "keyword"
-        ? input.split("\n").map((x) => x.trim()).filter(Boolean)
-        : [input];
-
     setLoading(true);
+
+    let body: any = {
+      action: "generate",
+      mode,
+    };
+
+    if (mode === "url") {
+      body.url = input;
+    } else if (mode === "keyword") {
+      body.inputs = input
+        .split("\n")
+        .map((x) => x.trim())
+        .filter(Boolean);
+    } else {
+      body.inputs = [input];
+    }
 
     const res = await fetch("/api/ai/generate-article", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        action: "generate",
-        mode,
-        inputs,
-      }),
+      body: JSON.stringify(body),
     });
 
     const data = await res.json();
+
     setArticles(data.articles || []);
+    if (data.source_url) setSource(data.source_url);
+
     setLoading(false);
   };
 
+  // ========================
+  // SAVE
+  // ========================
   const handleSave = async () => {
     await fetch("/api/ai/generate-article", {
       method: "POST",
@@ -47,10 +63,13 @@ export default function GeneratePage() {
       }),
     });
 
-    alert("Saved");
+    alert("Saved to DB");
     setArticles([]);
   };
 
+  // ========================
+  // EDIT
+  // ========================
   const updateField = (i: number, field: string, value: string) => {
     const updated = [...articles];
     updated[i][field] = value;
@@ -85,29 +104,49 @@ export default function GeneratePage() {
           >
             Rewrite
           </button>
+
+          <button
+            onClick={() => setMode("url")}
+            className={`px-4 py-2 rounded ${
+              mode === "url"
+                ? "bg-purple-600"
+                : "bg-gray-800 hover:bg-gray-700"
+            }`}
+          >
+            URL
+          </button>
         </div>
 
         {/* INPUT */}
-        <textarea
-          className="w-full h-40 p-4 bg-[#111] border border-gray-700 rounded mb-4"
-          placeholder={
-            mode === "keyword"
-              ? "ใส่ keyword หลายบรรทัด"
-              : "วางเนื้อข่าว"
-          }
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
+        {mode === "url" ? (
+          <input
+            className="w-full p-3 bg-[#111] border border-gray-700 rounded mb-4"
+            placeholder="วาง URL ข่าว"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+        ) : (
+          <textarea
+            className="w-full h-40 p-4 bg-[#111] border border-gray-700 rounded mb-4"
+            placeholder={
+              mode === "keyword"
+                ? "ใส่ keyword หลายบรรทัด"
+                : "วางเนื้อข่าว"
+            }
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+        )}
 
         {/* SOURCE */}
         <input
           className="w-full p-3 bg-[#111] border border-gray-700 rounded mb-4"
-          placeholder="Source URL (สำคัญ)"
+          placeholder="Source URL (optional)"
           value={source}
           onChange={(e) => setSource(e.target.value)}
         />
 
-        {/* BUTTON */}
+        {/* GENERATE BUTTON */}
         <button
           onClick={handleGenerate}
           disabled={loading}
@@ -126,6 +165,7 @@ export default function GeneratePage() {
                 key={i}
                 className="mb-8 p-5 bg-[#111] border border-gray-800 rounded"
               >
+                {/* TITLE */}
                 <input
                   className="w-full mb-2 p-2 bg-black border border-gray-700"
                   value={a.title}
@@ -134,6 +174,7 @@ export default function GeneratePage() {
                   }
                 />
 
+                {/* EXCERPT */}
                 <textarea
                   className="w-full mb-3 p-2 bg-black border border-gray-700"
                   value={a.excerpt}
@@ -142,6 +183,7 @@ export default function GeneratePage() {
                   }
                 />
 
+                {/* CONTENT */}
                 <textarea
                   className="w-full h-40 p-2 bg-black border border-gray-700 mb-3"
                   value={a.content}
@@ -150,6 +192,7 @@ export default function GeneratePage() {
                   }
                 />
 
+                {/* RENDER HTML */}
                 <div
                   className="prose prose-invert mt-4"
                   dangerouslySetInnerHTML={{ __html: a.content }}
@@ -157,6 +200,7 @@ export default function GeneratePage() {
               </div>
             ))}
 
+            {/* SAVE BUTTON */}
             <button
               onClick={handleSave}
               className="bg-red-600 hover:bg-red-700 px-6 py-2 rounded font-semibold"
