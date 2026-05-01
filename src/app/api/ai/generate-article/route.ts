@@ -1,125 +1,149 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 function generateSlug(title: string) {
-  return title
+  const base = title
     .toLowerCase()
     .replace(/[^\wก-๙]+/g, "-")
     .replace(/^-+|-+$/g, "");
+
+  const unique = Date.now().toString().slice(-6);
+  return `${base}-${unique}`;
 }
 
-export async function GET() {
-  return new Response("API READY");
-}
+const promptKeyword = (input: string) => `
+คุณคือนักข่าวเกมมืออาชีพ
 
-export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
-    const input = body.input;
+เขียนข่าวจากหัวข้อนี้:
+"${input}"
 
-    if (!input) {
-      return NextResponse.json({ error: "Missing input" }, { status: 400 });
-    }
+- ห้ามแต่งข้อมูลมั่ว
+- เขียนเหมือนข่าวจริง
+- มี <h2> อย่างน้อย 2
+- มี bullet list
 
-    const prompt = `
-คุณคือนักเขียนข่าวเกมมือถือในไทย
+ตอบ JSON:
+{ "title": "...", "excerpt": "...", "content": "<p>...</p>" }
+`;
 
-เขียนข่าวจากข้อมูลนี้:
-${input}
+const promptRewrite = (content: string) => `
+คุณคือนักข่าวเกมมืออาชีพ
+
+เรียบเรียงข่าวจากข้อมูลนี้:
+
+"""
+${content}
+"""
 
 ข้อกำหนด:
-- ภาษาไทย อ่านง่าย
-- ไม่ clickbait
-- มีหัวข้อย่อย
-- ปิดท้ายด้วย bullet 3 ข้อ
+- rewrite ใหม่ทั้งหมด ห้าม copy
+- ห้ามแต่งข้อมูลเพิ่ม
+- เขียนเหมือน "สรุปข่าว"
 
-ตอบเป็น JSON เท่านั้น:
+- มี <h2> อย่างน้อย 2
+- มี bullet list
+
+ตอนท้ายต้องมี:
+"ข้อมูลอ้างอิงจากแหล่งข่าวต้นฉบับ"
+
+ตอบ JSON:
 {
-  "title": "string",
-  "excerpt": "string",
+  "title": "...",
+  "excerpt": "...",
   "content": "<p>...</p>"
 }
 `;
 
-    const aiRes = await fetch("https://api.openai.com/v1/responses", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        input: prompt,
-      }),
-    });
+async function generateAI(prompt: string) {
+  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: "gpt-4o-mini",
+      messages: [{ role: "user", content: prompt }],
+    }),
+  });
 
-    const aiData = await aiRes.json();
+  const data = await res.json();
+  const text = data.choices?.[0]?.message?.content || "";
 
-    let text = "";
+  const cleaned = text
+    .replace(/```json/g, "")
+    .replace(/```/g, "")
+    .trim();
 
-    if (aiData.output_text) {
-      text = aiData.output_text;
-    } else if (aiData.output?.[0]?.content?.[0]?.text) {
-      text = aiData.output[0].content[0].text;
-    }
+  return JSON.parse(cleaned);
+}
 
-    if (!text) {
-      console.error("[AI Generate] NO OUTPUT from AI API. Raw:", JSON.stringify(aiData));
-      return NextResponse.json({ error: "No AI response" }, { status: 500 });
-    }
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
 
-    const cleaned = text
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
-      .trim();
+    const action = body.action || "generate";
+    const mode = body.mode || "keyword";
 
-    let parsed;
+    // ========================
+    // GENERATE
+    // ========================
+    if (action === "generate") {
+      const inputs: string[] = body.inputs || [];
+      const results = [];
 
-    try {
-      parsed = JSON.parse(cleaned);
-    } catch (err) {
-      console.error("[AI Generate] JSON PARSE ERROR:", cleaned);
-      return NextResponse.json({ error: "Invalid JSON from AI" }, { status: 500 });
-    }
+      for (const input of inputs) {
+        const prompt =
+          mode === "rewrite"
+            ? promptRewrite(input)
+            : promptKeyword(input);
 
-    const slug = generateSlug(parsed.title);
-
-    const saveRes = await fetch(
-      `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          apikey: process.env.SUPABASE_SERVICE_ROLE_KEY!,
-          Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
-          Prefer: "return=representation",
-        },
-        body: JSON.stringify({
-          title: parsed.title,
-          excerpt: parsed.excerpt,
-          content: parsed.content,
-          slug: slug,
-          category: "news", // ✅ เพิ่มตรงนี้ (สำคัญมาก)
-          status: "draft",
-          ai_generated: true,
-        }),
+        const article = await generateAI(prompt);
+        results.push(article);
       }
-    );
 
-    if (!saveRes.ok) {
-      const errText = await saveRes.text();
-      console.error("[AI Generate] SUPABASE INSERT ERROR:", errText);
-      return NextResponse.json({ error: "Failed to save article" }, { status: 500 });
+      return NextResponse.json({ success: true, articles: results });
     }
 
-    const saved = await saveRes.json();
+    // ========================
+    // SAVE
+    // ========================
+    if (action === "save") {
+      const articles = body.articles || [];
+      const source_url = body.source_url || null;
 
-    return NextResponse.json({
-      success: true,
-      article: saved[0],
-    });
+      for (const article of articles) {
+        const resInsert = await fetch(
+          `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              apikey: process.env.SUPABASE_SERVICE_ROLE_KEY!,
+              Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
+            },
+            body: JSON.stringify({
+              title: article.title,
+              excerpt: article.excerpt,
+              content: article.content,
+              slug: generateSlug(article.title),
+              category: "news",
+              author_id: "33333333-3333-3333-3333-333333333333",
+              status: "draft",
+              ai_generated: true,
+              source_url: source_url,
+            }),
+          }
+        );
 
-  } catch (error) {
-    console.error("[AI Generate] SERVER ERROR:", error);
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+        console.log("SAVE STATUS:", resInsert.status);
+      }
+
+      return NextResponse.json({ success: true });
+    }
+
+    return NextResponse.json({ error: "invalid action" }, { status: 400 });
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ error: "failed" }, { status: 500 });
   }
 }
