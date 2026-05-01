@@ -63,7 +63,7 @@ ${input}
     }
 
     if (!text) {
-      console.error("AI RAW:", aiData);
+      console.error("[AI Generate] NO OUTPUT from AI API. Raw:", JSON.stringify(aiData));
       return NextResponse.json({ error: "No AI response" }, { status: 500 });
     }
 
@@ -77,7 +77,7 @@ ${input}
     try {
       parsed = JSON.parse(cleaned);
     } catch (err) {
-      console.error("PARSE ERROR:", cleaned);
+      console.error("[AI Generate] JSON PARSE ERROR:", cleaned);
       return NextResponse.json({ error: "Invalid JSON from AI" }, { status: 500 });
     }
 
@@ -107,7 +107,7 @@ ${input}
 
     if (!saveRes.ok) {
       const errText = await saveRes.text();
-      console.error("SUPABASE ERROR:", errText);
+      console.error("[AI Generate] SUPABASE INSERT ERROR:", errText);
       return NextResponse.json({ error: "Failed to save article" }, { status: 500 });
     }
 
@@ -119,7 +119,7 @@ ${input}
     });
 
   } catch (error) {
-    console.error("SERVER ERROR:", error);
+    console.error("[AI Generate] SERVER ERROR:", error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

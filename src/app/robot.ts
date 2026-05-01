@@ -1,4 +1,5 @@
 export default function robots() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tglabs.info";
   return {
     rules: [
       {
@@ -6,6 +7,6 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: "https://tglabs.info/sitemap.xml",
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }

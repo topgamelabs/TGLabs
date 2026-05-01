@@ -60,16 +60,16 @@ export async function getArticles({ limit = 10 } = {}) {
       headers: {
         apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       },
-      cache: "no-store",
+      next: { revalidate: 60 }, // ✅ cache 60s — SEO friendly
     }
   );
+
 
   const data = await res.json();
   console.log("ARTICLES:", data);
 
-  // 🔥 FIX สำคัญ
   if (!Array.isArray(data)) {
-    console.error("GET ARTICLES ERROR:", data);
+    console.error("[getArticles] ERROR: unexpected response", data);
     return [];
   }
 
