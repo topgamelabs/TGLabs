@@ -133,7 +133,7 @@ export default function Home() {
       <section className="mt-[58px] grid grid-cols-1 lg:grid-cols-[62%_38%] border-b border-white/[0.05] lg:h-[clamp(280px,42vw,380px)]">
 
         {/* Left — Main Story */}
-        <article className="relative overflow-hidden bg-[#0a0a14] cursor-pointer group min-h-[220px]">
+        <a href={heroArticle ? `/news/${heroArticle.slug}` : "/news"} className="relative overflow-hidden bg-[#0a0a14] cursor-pointer group min-h-[220px] block">
           {/* Background image */}
           <img
             src={heroArticle?.hero_image || "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&h=600&fit=crop"}
@@ -163,7 +163,7 @@ export default function Home() {
               {heroArticle?.excerpt || "Your source for mobile game news, reviews, and guides"}
             </p>
           </div>
-        </article>
+        </a>
 
         {/* Right — Latest Sidebar */}
         <div className="border-t lg:border-t-0 lg:border-l border-white/[0.05] bg-[#070707]">
@@ -172,7 +172,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col">
             {articles.slice(1, 5).map((art, i) => (
-              <a key={art.id || i} href={`/article/${art.slug}`} className="group flex items-start gap-[12px] p-[12px_16px] border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors">
+              <a key={art.id || i} href={`/news/${art.slug}`} className="group flex items-start gap-[12px] p-[12px_16px] border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-[6px] mb-[4px]">
                     <span className={`text-[7px] font-bold tracking-[1.5px] uppercase px-[5px] py-[2px] rounded-[2px] bg-tg-red/80 text-white`}>
@@ -207,7 +207,7 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px]">
           {trendingArticles.length > 0 ? trendingArticles.map((card, i) => (
-            <a key={card.id || i} href={`/article/${card.slug}`} className="bg-[#0d0d0d] rounded-[8px] overflow-hidden cursor-pointer group hover:-translate-y-[2px] transition-transform duration-200">
+            <a key={card.id || i} href={`/news/${card.slug}`} className="bg-[#0d0d0d] rounded-[8px] overflow-hidden cursor-pointer group hover:-translate-y-[2px] transition-transform duration-200">
               <div className="aspect-[16/10] overflow-hidden relative">
                 <img src={card.hero_image || `https://images.unsplash.com/photo-${['1550745165-9bc0b252726f','1612287230202-1ff1d85d1bdf','1560253023-3ec5d502959f','1606144042614-b2417e99c4e3'][i]}?w=400&h=250&fit=crop`} alt={card.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/80 to-transparent" />
@@ -245,7 +245,7 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-[10px]">
           {mobileArticles.length > 0 ? mobileArticles.map((card, i) => (
-            <a key={card.id || i} href={`/article/${card.slug}`} className="bg-[#0d0d0d] rounded-[8px] overflow-hidden cursor-pointer group hover:-translate-y-[2px] transition-transform duration-200">
+            <a key={card.id || i} href={`/news/${card.slug}`} className="bg-[#0d0d0d] rounded-[8px] overflow-hidden cursor-pointer group hover:-translate-y-[2px] transition-transform duration-200">
               <div className="aspect-[16/10] overflow-hidden relative">
                 <img src={card.hero_image || `https://images.unsplash.com/photo-${['1593305841991-05c297ba4575','1542751371-adc38448a05e','1542751110-97427bbecf20','1511512578047-dfb367046420'][i]}?w=400&h=250&fit=crop`} alt={card.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/80 to-transparent" />
@@ -280,10 +280,10 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[10px]">
 
           {/* Boss Timer */}
-          <a href="https://bosstimer.tglabs.info" target="_blank" rel="noopener noreferrer" className="bg-[#0d0d0d] rounded-[8px] p-[16px] cursor-pointer group hover:-translate-y-[1px] transition-all duration-200 border border-white/[0.06] hover:border-tg-red/30">
+          <a href="https://www.tglabs.info/boss" target="_blank" rel="noopener noreferrer" className="bg-[#0d0d0d] rounded-[8px] p-[16px] cursor-pointer group hover:-translate-y-[1px] transition-all duration-200 border border-white/[0.06] hover:border-tg-red/30">
             <div className="flex items-center gap-[12px]">
               <div className="w-[40px] h-[40px] rounded-[8px] bg-tg-red/10 flex items-center justify-center">
-                <img src="https://bosstimer.tglabs.info/logo.png" alt="Boss Timer" className="w-[24px] h-[24px] object-contain" />
+                <span className="text-[20px]">⚔️</span>
               </div>
               <div>
                 <div className="font-kanit text-[13px] font-semibold text-white group-hover:text-tg-red transition-colors">TOSM Boss Timer</div>
