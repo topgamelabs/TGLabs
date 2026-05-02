@@ -1,124 +1,225 @@
 import Link from "next/link";
+import { getArticles } from "@/lib/supabase";
 
-async function getArticles() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?select=*&order=created_at.desc`,
-    {
-      headers: {
-        apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      },
-      cache: "no-store",
-    }
-  );
-
-  return res.json();
-}
+export const revalidate = 60;
 
 export default async function NewsPage() {
-  const articles = await getArticles();
+  const articles = await getArticles({ limit: 20 });
 
   return (
-    <div className="bg-black text-white min-h-screen">
-      {/* NAVBAR */}
-      <div className="border-b border-gray-800">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between">
-          <Link href="/" className="font-bold text-xl">
-            TGLabs
+    <div className="min-h-screen bg-[#000000] text-[#E8E8E8] font-sans">
+
+      {/* ========== NAVBAR ========== */}
+      <nav className="sticky top-0 z-[100] bg-[rgba(0,0,0,0.95)] backdrop-blur-[12px] border-b border-white/[0.06] h-[64px]">
+        <div className="max-w-[1280px] mx-auto px-4 h-full flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-[10px] flex-shrink-0">
+            <img
+              src="https://www.tglabs.info/images/logo.png"
+              alt="TopGame Thailand"
+              className="w-9 h-9 object-contain"
+            />
+            <div className="flex flex-col leading-none">
+              <span className="font-['Bebas_Neue'] text-[18px] tracking-[2px] text-white">
+                TOP<span className="text-[#FF1A1A]">GAME</span>
+              </span>
+              <span className="text-[8px] tracking-[3px] text-white/[0.4] uppercase">Thailand</span>
+            </div>
           </Link>
 
-          <div className="text-sm text-gray-400 flex gap-4">
-            <Link href="/news">ข่าว</Link>
-            <Link href="/">หน้าแรก</Link>
+          <div className="hidden lg:flex items-center gap-6">
+            <Link href="/" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Home</Link>
+            <Link href="/news" className="text-[13px] text-white hover:text-white transition-colors">News</Link>
+            <Link href="/guides" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Guides</Link>
+            <Link href="/reviews" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Reviews</Link>
+            <Link href="/it-gadget" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">IT Gadget</Link>
+            <Link href="#tools" className="text-[13px] text-[#FF1A1A] hover:text-[#FF1A1A]/80 transition-colors">Tools ⚡</Link>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button className="p-2 rounded-md hover:bg-white/[0.06] transition-colors" aria-label="Search">
+              <svg className="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" strokeWidth="2" />
+                <path strokeWidth="2" d="m21 21-4.35-4.35" />
+              </svg>
+            </button>
           </div>
         </div>
-      </div>
+      </nav>
 
-      {/* HERO */}
-      <div className="max-w-6xl mx-auto px-6 py-10">
-        <h1 className="text-4xl font-bold mb-2">
-          ข่าวเกมล่าสุด
-        </h1>
-        <p className="text-gray-400">
-          อัปเดตข่าวเกมใหม่ทุกวัน
-        </p>
-      </div>
+      <div className="max-w-[1280px] mx-auto px-4">
 
-      {/* MAIN */}
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-8 pb-10">
-        
-        {/* CONTENT */}
-        <div className="md:col-span-3 grid md:grid-cols-2 gap-6">
-          {articles.map((a: any) => (
-            <Link
-              key={a.id}
-              href={`/news/${a.slug}`}
-              className="block bg-[#111] border border-gray-800 rounded overflow-hidden hover:border-red-500 transition"
-            >
-              {a.hero_image && (
-  <div className="h-40 bg-gray-800 overflow-hidden">
-    <img
-      src={a.hero_image}
-      alt={a.title}
-      className="w-full h-full object-cover"
-    />
-  </div>
-)}
+        {/* ========== AD: HEADER BANNER ========== */}
+        <div className="h-[70px] mb-4 flex items-center justify-center bg-gradient-to-r from-[#0D0D0D] to-[#1A1A1A] border border-dashed border-[#2A2A2A] rounded-lg">
+          <span className="text-[12px] tracking-[1px] text-[#666666] uppercase"> advertisement — 728×90 </span>
+        </div>
 
-<div className="p-5">
-                <h2 className="text-lg font-bold mb-2 line-clamp-2">
-                  {a.title}
-                </h2>
+        {/* ========== PAGE HEADER ========== */}
+        <div className="py-8">
+          <h1 className="font-['Kanit'] text-[32px] font-semibold text-white">ข่าวเกมล่าสุด</h1>
+          <p className="text-[14px] text-[#AAAAAA] mt-2">อัปเดตข่าวเกมใหม่ทุกวัน</p>
+        </div>
 
-                <p className="text-sm text-gray-400 line-clamp-3">
-                  {a.excerpt}
-                </p>
+        {/* ========== MAIN LAYOUT ========== */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 pb-12">
 
-                <div className="text-xs text-gray-500 mt-3">
-                  อ่านเพิ่มเติม →
+          {/* ========== ARTICLES GRID ========== */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {Array.isArray(articles) && articles.length > 0 ? articles.map((a: any) => (
+              <Link
+                key={a.id}
+                href={`/news/${a.slug}`}
+                className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] hover:-translate-y-[4px] hover:border-[#FF1A1A]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300 cursor-pointer group"
+              >
+                {/* Hero Image */}
+                {a.hero_image ? (
+                  <div className="aspect-[16/10] overflow-hidden">
+                    <img
+                      src={a.hero_image}
+                      alt={a.title}
+                      className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    />
+                  </div>
+                ) : (
+                  <div className="aspect-[16/10] bg-[#1A1A1A]" />
+                )}
+
+                {/* Content */}
+                <div className="p-5">
+                  <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#FF1A1A] mb-2">
+                    {a.category?.toUpperCase()}
+                  </div>
+                  <h2 className="font-['Kanit'] text-[16px] font-semibold text-white leading-[1.4] line-clamp-2 group-hover:text-[#FF1A1A] transition-colors">
+                    {a.title}
+                  </h2>
+                  <p className="text-[13px] text-[#AAAAAA] mt-2 line-clamp-3">
+                    {a.excerpt}
+                  </p>
+                  <div className="text-[11px] text-[#666666] mt-3">
+                    {a.read_time || 3} นาที • {a.games?.name || "General"}
+                  </div>
                 </div>
+              </Link>
+            )) : (
+              <div className="col-span-2 py-20 text-center text-[#AAAAAA]">
+                ไม่มีข่าวในขณะนี้
               </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* SIDEBAR */}
-        <div className="space-y-6">
-          {/* AD SLOT */}
-          <div className="bg-gray-900 h-[250px] flex items-center justify-center text-gray-500">
-            AD 300x250
+            )}
           </div>
 
-          {/* TRENDING (placeholder) */}
-          <div>
-            <h3 className="text-lg font-bold mb-3">
-              ข่าวยอดนิยม
-            </h3>
+          {/* ========== SIDEBAR ========== */}
+          <aside className="hidden lg:block">
 
-            <div className="space-y-3 text-sm text-gray-300">
-              {articles.slice(0, 5).map((a: any) => (
-                <Link
-                  key={a.id}
-                  href={`/news/${a.slug}`}
-                  className="block hover:text-red-400"
-                >
-                  {a.title}
-                </Link>
-              ))}
+            {/* AD */}
+            <div className="h-[250px] mb-6 flex items-center justify-center bg-gradient-to-br from-[#0D0D0D] to-[#1A1A1A] border border-dashed border-[#2A2A2A] rounded-lg">
+              <span className="text-[12px] tracking-[1px] text-[#666666] uppercase"> advertisement — 300×250 </span>
+            </div>
+
+            {/* Trending Widget */}
+            <div className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] mb-6">
+              <div className="px-4 py-3 border-b border-white/[0.05] font-['Kanit'] text-[13px] font-semibold text-white">
+                🔥 Trending
+              </div>
+              <div>
+                {(Array.isArray(articles) ? articles.slice(0, 5) : []).map((item: any, i: number) => (
+                  <Link
+                    key={item.id || i}
+                    href={`/news/${item.slug}`}
+                    className="flex gap-3 px-4 py-3 border-b border-white/[0.03] last:border-0 hover:bg-white/[0.03] transition-colors"
+                  >
+                    <span className="font-['Bebas_Neue'] text-[20px] text-white/[0.1] w-6 flex-shrink-0">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <div className="text-[13px] text-white leading-[1.4] line-clamp-2">{item.title}</div>
+                      <div className="text-[11px] text-[#AAAAAA] mt-1">{item.read_time || 3} min read</div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Categories Widget */}
+            <div className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] mb-6">
+              <div className="px-4 py-3 border-b border-white/[0.05] font-['Kanit'] text-[13px] font-semibold text-white">
+                📂 Categories
+              </div>
+              <div className="px-4 py-2">
+                {[
+                  { name: "📰 News", href: "/news", count: "124" },
+                  { name: "🎮 Reviews", href: "/reviews", count: "89" },
+                  { name: "🔥 Tips & Tricks", href: "/guides", count: "156" },
+                  { name: "💻 IT Gadget", href: "/it-gadget", count: "43" },
+                  { name: "🏆 Tournament", href: "/tournament", count: "67" },
+                ].map((cat) => (
+                  <a
+                    key={cat.href}
+                    href={cat.href}
+                    className="flex justify-between py-2 border-b border-white/[0.05] last:border-0 text-[13px] text-[#AAAAAA] hover:text-white transition-colors"
+                  >
+                    <span>{cat.name}</span>
+                    <span className="text-[#666666]">{cat.count}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* AD Tall */}
+            <div className="min-h-[300px] flex items-center justify-center bg-gradient-to-br from-[#0D0D0D] to-[#1A1A1A] border border-dashed border-[#2A2A2A] rounded-lg">
+              <span className="text-[12px] tracking-[1px] text-[#666666] uppercase"> advertisement — 300×600 </span>
+            </div>
+
+          </aside>
+        </div>
+
+        {/* ========== FOOTER ========== */}
+        <footer className="mt-12 py-8 border-t border-white/[0.05]">
+          <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-8">
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-2">
+                <img
+                  src="https://www.tglabs.info/images/logo.png"
+                  alt="TopGame Thailand"
+                  className="w-7 h-7 object-contain"
+                />
+                <span className="font-['Bebas_Neue'] text-[16px] tracking-[2px] text-white">
+                  TOP<span className="text-[#FF1A1A]">GAME</span>
+                </span>
+              </div>
+              <p className="text-[13px] text-[#AAAAAA] leading-[1.6]">
+                แหล่งรวมข่าวเกมมือถือ อัปเดตใหม่ รีวิว เทคนิค และ Tier List ครบทุกเกมดังในไทย
+              </p>
+              <div className="flex gap-4">
+                <a href="https://www.youtube.com/@topgame_th" target="_blank" rel="noopener noreferrer" className="text-[13px] text-[#AAAAAA] hover:text-[#FF1A1A] transition-colors">YouTube</a>
+                <a href="https://www.facebook.com/topgameth" target="_blank" rel="noopener noreferrer" className="text-[13px] text-[#AAAAAA] hover:text-[#FF1A1A] transition-colors">Facebook</a>
+                <a href="https://discord.gg/topgameth" target="_blank" rel="noopener noreferrer" className="text-[13px] text-[#AAAAAA] hover:text-[#FF1A1A] transition-colors">Discord</a>
+              </div>
+            </div>
+            <div>
+              <div className="font-['Kanit'] text-[13px] font-semibold text-white uppercase tracking-[1px] mb-4">Content</div>
+              <div className="flex flex-col gap-2">
+                <a href="/news" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">ข่าวสาร</a>
+                <a href="/reviews" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">รีวิว</a>
+                <a href="/guides" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">เทคนิค</a>
+                <a href="/it-gadget" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">IT Gadget</a>
+              </div>
+            </div>
+            <div>
+              <div className="font-['Kanit'] text-[13px] font-semibold text-white uppercase tracking-[1px] mb-4">Tools</div>
+              <div className="flex flex-col gap-2">
+                <a href="/boss" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Boss Timer</a>
+                <a href="/tierlist" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Tier List</a>
+                <a href="/codes" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Codes</a>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* BOTTOM AD */}
-      <div className="max-w-6xl mx-auto px-6 pb-10">
-        <div className="bg-gray-900 h-[120px] flex items-center justify-center text-gray-500">
-          AD BANNER
-        </div>
-      </div>
+          <div className="h-[2px] bg-gradient-to-r from-transparent via-[#FF1A1A] to-transparent my-6" />
 
-      {/* FOOTER */}
-      <div className="border-t border-gray-800 py-6 text-center text-gray-500 text-sm">
-        © 2026 TGLabs
+          <div className="text-center">
+            <span className="text-[12px] text-white/[0.2]">© 2026 TopGame Thailand. All rights reserved.</span>
+          </div>
+        </footer>
+
       </div>
     </div>
   );
