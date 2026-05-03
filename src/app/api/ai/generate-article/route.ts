@@ -1,197 +1,286 @@
 import { NextResponse } from "next/server";
 import { extract } from "@extractus/article-extractor";
-import * as cheerio from "cheerio";
 
+// =========================
+// SLUG
+// =========================
 function generateSlug(title: string) {
-  return title
-    .toLowerCase()
-    .replace(/[^\wก-๙]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+  return (
+    title
+      .toLowerCase()
+      .replace(/[^\wก-๙]+/g, "-")
+      .replace(/^-+|-+$/g, "") +
+    "-" +
+    Date.now().toString().slice(-6) +
+    "-" +
+    Math.random().toString(36).slice(2, 6)
+  );
 }
 
 // =========================
-// 🔥 SMART EXTRACTOR
+// PROMPTS
 // =========================
-function extractMainContent(html: string, url: string) {
-  const $ = cheerio.load(html);
+const promptExtractFacts = (content: string) => `
+สรุปข่าวนี้ให้อยู่ในรูปแบบ "โครงสร้างข่าว"
 
-  // ลบ noise
-  $("script, style, nav, footer, header, aside").remove();
+1. hook:
+- สรุปข่าวสั้น
 
-  let content = "";
+2. key_points:
+- bullet สำคัญ
 
-  // 🔥 site-specific (แม่นสุด)
-  if (url.includes("netmarble.com")) {
-    content = $(".view_content").text();
-  }
+3. details:
+- bullet รายละเอียด
 
-  // 🔥 fallback generic
-  if (!content) {
-    content =
-      $("article").text() ||
-      $(".content").text() ||
-      $(".post").text() ||
-      $("main").text() ||
-      $("body").text();
-  }
+4. impact:
+- bullet สิ่งที่ควรรู้
 
-  // clean text
-  content = content
-    .replace(/\s+/g, " ")
-    .trim()
-    .slice(0, 5000);
-
-  return content;
-}
-
-// =========================
-// 🔥 PROMPT
-// =========================
-const promptRewrite = (content: string) => `
-คุณคือนักเขียนข่าวเกมมืออาชีพ
-
-# TASK
-เรียบเรียงข่าวใหม่จากข้อมูลด้านล่าง
-
-# STYLE
-- เขียนให้อ่านง่าย เป็นธรรมชาติ
-- มีความเป็น storyteller เล็กน้อย
-
-# RULES
-- ห้าม copy
-- ห้ามแต่งข้อมูล
-- ถ้าข้อมูลไม่พอ ให้สรุปเท่าที่มี
-
-# OUTPUT
-ตอบ JSON เท่านั้น:
-{
-  "title": "...",
-  "excerpt": "...",
-  "content": "<h2>...</h2><p>...</p><ul>...</ul>"
-}
-
-# SOURCE
+ข้อมูล:
 """
 ${content}
 """
+ข้อกำหนดเพิ่มเติม:
+- ถ้ามี code / key / reward:
+  → ต้องเก็บทุกตัว ห้ามตกหล่น
+- ห้ามรวม code เป็นข้อความเดียว
+- ต้องแยกเป็น bullet
+
+ถ้ามี code / redeem code:
+- ต้องแยกเป็น field:
+  "codes": [
+    { "value": "XXXX", "desc": "..." }
+  ]
+- ห้ามรวมกับ text
+
+ตอบ JSON:
+{
+  "hook": "...",
+  "key_points": ["..."],
+  "details": ["..."],
+  "impact": ["..."]
+}
 `;
 
-const promptKeyword = (keyword: string) => `
-คุณคือนักข่าวเกมมืออาชีพ
+const promptRewrite = (data: any) => `
+คุณคือ "นักข่าวเกมมืออาชีพ"
 
-เขียนบทความจาก keyword นี้:
-"${keyword}"
+[HOOK]
+${data.hook || ""}
 
-- มี <h2> อย่างน้อย 2
+[KEY POINTS]
+${(data.key_points || []).map((x: string) => `- ${x}`).join("\n")}
+
+[DETAILS]
+${(data.details || []).map((x: string) => `- ${x}`).join("\n")}
+
+[IMPACT]
+${(data.impact || []).map((x: string) => `- ${x}`).join("\n")}
+
+[HIGHLIGHT RULES]
+- ใช้ <strong> กับข้อมูลสำคัญ เช่น:
+  - ตัวเลข
+  - ชื่อเกม
+  - feature ใหม่
+- ใช้ <em> กับคำอธิบายหรือ insight
+- ถ้ามี code / key / reward:
+  → ต้องใส่ใน <code> หรือ <pre>
+- ถ้ามีหลาย code:
+  → แสดงเป็น list ชัดเจน
+- ต้องมี 1 ส่วนที่เป็น "highlight box" เช่น:
+  <blockquote>...</blockquote>
+
+[CRITICAL DATA RULE]
+- ห้ามตัดข้อมูลสำคัญ เช่น:
+  - code
+  - ตัวเลข
+  - ชื่อ item / reward
+- ถ้ามี code → ต้องแสดงครบ 100%
+- ถ้ามีหลาย code → ต้องแยกเป็นรายการ
+
+[FORMAT REQUIREMENTS]
+
+- ต้องมี section นี้ถ้ามี code:
+
+<h2>โค้ดทั้งหมด</h2>
+<ul>
+  <li><code>XXXX-XXXX</code> — คำอธิบาย</li>
+</ul>
+
+- ต้องมี highlight box อย่างน้อย 1 จุด:
+
+<blockquote>
+ข้อมูลสำคัญสรุปสั้น ๆ
+</blockquote>
+
+[STYLE UPGRADE]
+- ห้ามเขียนแบบเรียบทั้งหมด
+- ต้องมีการ:
+  - เน้น (bold)
+  - แทรก highlight
+  - แยก section ชัด
+
+  [HARD REQUIREMENTS - MUST FOLLOW]
+
+1. ต้องใช้ HTML formatting:
+- ใช้ <strong> อย่างน้อย 3 จุด
+- ใช้ <em> อย่างน้อย 1 จุด
+- ต้องมี <blockquote> อย่างน้อย 1 จุด
+
+2. ถ้ามี code:
+- ต้องแสดงใน <code>
+- ห้ามหายแม้แต่ตัวเดียว
+- ถ้ามีหลาย code → ต้องอยู่ใน <ul><li>
+
+3. ถ้าไม่มี formatting ตามนี้ → คำตอบถือว่า "ผิด"
+
+4. ห้ามส่ง content แบบ plain text
+
+[CODE RENDER RULE]
+
+ถ้ามี codes:
+- ต้องมี section:
+
+<h2>โค้ดทั้งหมด</h2>
+<ul>
+  ${(data.codes || [])
+  .map((c: any) => `<li><code>${c.value}</code> - ${c.desc}</li>`)
+  .join("")}
+</ul>
+- ถ้ามี code ที่ต้องใช้ทันที เช่น redeem code → ต้องแสดงใน <code> และมีคำอธิบายชัดเจน
+
+เขียนข่าวให้:
+- มี <h2>
 - มี bullet list
-- ห้ามแต่งข้อมูลมั่ว
+- อ่านลื่นเหมือนเว็บข่าว
+- ยาว 400-700 คำ
 
 ตอบ JSON:
 {
   "title": "...",
   "excerpt": "...",
-  "content": "<h2>...</h2><p>...</p><ul>...</ul>"
+  "content": "<p>...</p>",
+  "seo_title": "...",
+  "seo_description": "..."
 }
 `;
 
 // =========================
-// 🔥 AI CALL
+// AI (มี timeout)
 // =========================
-async function generateAI(prompt: string) {
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content: "Return ONLY valid JSON. No explanation.",
-        },
-        { role: "user", content: prompt },
-      ],
-      response_format: { type: "json_object" },
-    }),
-  });
-
-  const data = await res.json();
-
-  console.log("STATUS:", res.status);
-  console.log("AI FULL:", JSON.stringify(data, null, 2));
-
-  const text = data?.choices?.[0]?.message?.content;
-
-  if (!text) {
-    throw new Error("AI empty response");
-  }
-
+async function generateAI(prompt: string, timeoutMs = 15000) {
   try {
-    return JSON.parse(text);
-  } catch (e) {
-    console.error("JSON PARSE FAIL:", text);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
-    return {
-      title: "AI Parse Error",
-      excerpt: "",
-      content: `<p>${text}</p>`,
-    };
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      signal: controller.signal,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        messages: [{ role: "user", content: prompt }],
+      }),
+    });
+
+    clearTimeout(timeout);
+
+    if (!res.ok) {
+      console.error("AI ERROR:", await res.text());
+      return null;
+    }
+
+    const data = await res.json();
+    const text = data.choices?.[0]?.message?.content || "";
+
+    return JSON.parse(text.replace(/```json|```/g, "").trim());
+  } catch (err) {
+    console.error("AI FAIL:", err);
+    return null;
   }
 }
 
 // =========================
-// 🔥 ROUTE
+// SAFE
+// =========================
+function safe(data: any, fallbackTitle: string) {
+  if (!data || !data.content) {
+    return {
+      title: fallbackTitle,
+      excerpt: "",
+      content: "<p>Content unavailable</p>",
+      seo_title: fallbackTitle,
+      seo_description: "",
+    };
+  }
+  return data;
+}
+
+// =========================
+// API
 // =========================
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    console.log("BODY:", body);
 
     // =========================
-    // 🔥 URL MODE
+    // URL MODE
     // =========================
-    if (body.mode === "url" || body.url) {
-      let content = "";
-      let image = null;
+    if (body.mode === "url") {
+      const articleData = await Promise.race([
+        extract(body.url),
+        new Promise((_, reject) =>
+          setTimeout(() => reject(new Error("extract timeout")), 10000)
+        ),
+      ]);
 
-      // 🔹 พยายาม extract ปกติ
-      try {
-        const articleData = await extract(body.url);
-        content = articleData?.content || "";
-        image = articleData?.image || null;
-      } catch (e) {
-        console.log("extract error:", e);
+      if (!articleData?.content) {
+        return NextResponse.json({ error: "extract failed" });
       }
 
-      // 🔥 FALLBACK → SMART EXTRACT
-      if (!content) {
-        console.log("FALLBACK: smart extractor");
+      const content = articleData.content.slice(0, 8000);
 
-        const res = await fetch(body.url);
-        const html = await res.text();
+      console.log("STEP 1: extract done");
 
-        content = extractMainContent(html, body.url);
+      // 🔥 STEP 2: structured facts
+      const structuredRaw = await generateAI(promptExtractFacts(content));
+      console.log("STEP 2:", structuredRaw);
+
+      let structured = structuredRaw;
+
+      if (!structured || !structured.key_points?.length) {
+        console.warn("FACT FAILED → fallback");
+
+        structured = {
+          hook: "",
+          key_points: [content.slice(0, 500)],
+          details: [],
+          impact: [],
+          codes: [], // 🔥 เพิ่มตรงนี้
+        };
+        if (!structured.codes) {
+  structured.codes = [];
+}
       }
 
-      console.log("CONTENT LENGTH:", content.length);
+      // 🔥 STEP 3: rewrite
+      const newsRaw = await generateAI(promptRewrite(structured), 30000);
+      console.log("STEP 3: rewrite done");
 
-      if (!content || content.length < 50) {
-        return NextResponse.json(
-          { error: "content extraction failed" },
-          { status: 400 }
-        );
+      const news = safe(newsRaw, "News");
+
+      if (!news.title.includes("2026")) {
+        news.title += " (อัปเดต 2026)";
       }
-
-      const ai = await generateAI(promptRewrite(content));
 
       return NextResponse.json({
         success: true,
         articles: [
           {
-            ...ai,
-            hero_image: image,
+            ...news,
+            hero_image: articleData.image || null,
           },
         ],
         source_url: body.url,
@@ -199,33 +288,11 @@ export async function POST(req: Request) {
     }
 
     // =========================
-    // 🔥 KEYWORD MODE
-    // =========================
-    if (body.mode === "keyword") {
-      const keyword = body.inputs?.[0];
-
-      if (!keyword) {
-        return NextResponse.json(
-          { error: "keyword missing" },
-          { status: 400 }
-        );
-      }
-
-      const ai = await generateAI(promptKeyword(keyword));
-
-      return NextResponse.json({
-        success: true,
-        articles: [ai],
-        source_url: null,
-      });
-    }
-
-    // =========================
-    // 🔥 SAVE
+    // SAVE MODE
     // =========================
     if (body.action === "save") {
       for (const article of body.articles) {
-        await fetch(
+        const res = await fetch(
           `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles`,
           {
             method: "POST",
@@ -241,14 +308,12 @@ export async function POST(req: Request) {
               slug: generateSlug(article.title),
               category: "news",
               author_id: "33333333-3333-3333-3333-333333333333",
-
               status: "published",
               is_published: true,
-              published_at: new Date().toISOString(),
-
               ai_generated: true,
               source_url: body.source_url,
-
+              seo_title: article.seo_title,
+              seo_description: article.seo_description,
               hero_image:
                 article.hero_image ||
                 `https://picsum.photos/seed/${encodeURIComponent(
@@ -257,17 +322,33 @@ export async function POST(req: Request) {
             }),
           }
         );
+
+        if (!newsRaw) {
+  console.warn("REWRITE FAILED → fallback");
+
+  newsRaw = await generateAI(
+    promptRewrite({
+      hook: "",
+      key_points: structured.key_points,
+      details: [],
+      impact: [],
+    }),
+    15000
+  );
+}
+
+        if (!res.ok) {
+          console.error("SAVE ERROR:", await res.text());
+          return NextResponse.json({ error: "save failed" });
+        }
       }
 
       return NextResponse.json({ success: true });
     }
 
-    return NextResponse.json(
-      { error: "invalid request", body },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "invalid request" });
   } catch (err: any) {
-    console.error("ERROR:", err);
+    console.error("API ERROR:", err);
     return NextResponse.json({ error: err.message });
   }
 }

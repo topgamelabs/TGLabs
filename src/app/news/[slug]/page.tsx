@@ -1,6 +1,40 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?slug=eq.${slug}&is_published=eq.true&select=title,excerpt,seo_title,seo_description,hero_image`,
+    {
+      headers: {
+        apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
+      },
+      cache: "no-store",
+    }
+  );
+
+  const data = await res.json();
+  const article = data?.[0];
+
+  if (!article) return {};
+
+  return {
+    title: article.seo_title || article.title,
+    description: article.seo_description || article.excerpt,
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      images: article.hero_image ? [article.hero_image] : [],
+    },
+  };
+}
+
 async function getArticle(slug: string) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?slug=eq.${slug}&select=*`,
@@ -129,6 +163,8 @@ export default async function ArticlePage({
 );
     return res.json();
   }
+
+  
 
   const [article, related] = await Promise.all([
   getArticle(slug),
