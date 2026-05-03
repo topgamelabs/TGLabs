@@ -8,24 +8,44 @@ async function getArticle(slug: string) {
       headers: {
         apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       },
-      cache: "no-store",
+      cache: "force-cache",
+      next: { revalidate: 60 },
     }
   );
+
   const data = await res.json();
   return data?.[0] || null;
 }
 
-async function getRelated() {
+async function getRelated(currentSlug: string) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?limit=4&order=created_at.desc`,
+    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/...articles?slug=neq.${currentSlug}&created_at=gte.${new Date(Date.now() - 7*24*60*60*1000).toISOString()}&limit=4&order=view_count.desc&created_at.desc`,
     {
       headers: {
         apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       },
-      cache: "no-store",
+      cache: "force-cache",
+      next: { revalidate: 120 },
     }
   );
+
   return res.json();
+}
+
+async function incrementView(articleId: string) {
+  await fetch(
+    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/rpc/increment_view`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      },
+      body: JSON.stringify({
+        article_uuid: articleId,
+      }),
+    }
+  );
 }
 
 // Category badge colors
@@ -37,6 +57,48 @@ const categoryColors: Record<string, string> = {
   tech: "bg-[#A855F7] text-white",
   tournament: "bg-[#FFD700] text-black",
 };
+
+function injectAdsIntoContent(html: string) {
+  const parts = html.split("</p>");
+  let adCount = 0;
+
+  return parts.map((part, index) => {
+    const clean = part.replace(/<[^>]+>/g, "").trim(); // ลบ tag
+    const wordCount = clean.length;
+
+    const content = part + "</p>";
+
+    // ❌ ข้าม paragraph สั้น
+    if (wordCount < 120) {
+      return content;
+    }
+
+    // 🎯 เงื่อนไข insert
+    const shouldInsert =
+      // แทรกครั้งแรกเร็ว (หลัง paragraph 1–2)
+      (index === 1 && adCount === 0) ||
+      // แทรกทุก 3–4 paragraph ที่มีคุณภาพ
+      (adCount > 0 && index % 3 === 0);
+
+    // จำกัดจำนวน ads (กัน spam / SEO)
+    if (shouldInsert && adCount < 3) {
+      adCount++;
+
+      return `
+        ${content}
+        <div class="my-8 flex items-center justify-center">
+          <div class="w-full h-[120px] bg-gradient-to-r from-[#0D0D0D] to-[#1A1A1A] border border-dashed border-[#2A2A2A] rounded-lg flex items-center justify-center">
+            <span class="text-[12px] tracking-[1px] text-[#666666] uppercase">
+              advertisement — smart
+            </span>
+          </div>
+        </div>
+      `;
+    }
+
+    return content;
+  }).join("");
+}
 
 function formatDate(dateStr: string) {
   try {
@@ -54,15 +116,36 @@ export default async function ArticlePage({
 }) {
   const { slug } = await params;
 
-  const [article, related] = await Promise.all([getArticle(slug), getRelated()]);
-  if (!article) return notFound();
+  async function getRelated(currentSlug: string) {
+    const res = await fetch(
+  `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?...`,
+  {
+    headers: {
+      apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    },
+    cache: "force-cache",
+    next: { revalidate: 60 },
+  }
+);
+    return res.json();
+  }
+
+  const [article, related] = await Promise.all([
+  getArticle(slug),
+  getRelated(slug),
+]);
+
+if (!article) return notFound();
+if (article?.id) {
+  incrementView(article.id);
+}
 
   const c = (article.category || "news").toLowerCase();
   const colorClass = categoryColors[c] || categoryColors.news;
   const categoryIcon = c === "tips" ? "🔥 " : c === "live" ? "📺 " : c === "news" ? "📰 " : c === "review" ? "🎮 " : c === "tech" ? "💻 " : c === "tournament" ? "🏆 " : "";
 
   return (
-    <div className="min-h-screen bg-[#000000] text-[#E8E8E8] font-sans">
+    <div className="min-h-screen pb-[80px] bg-[#000000] text-[#E8E8E8] font-sans">
 
       {/* ========== NAVBAR ========== */}
       <nav className="sticky top-0 z-[100] bg-[rgba(0,0,0,0.95)] backdrop-blur-[12px] border-b border-white/[0.06] h-[64px]">
@@ -135,6 +218,12 @@ export default async function ArticlePage({
 
             {/* Article Header */}
             <header className="mb-8">
+              {/* AD: Top Content */}
+<div className="h-[90px] mb-6 flex items-center justify-center bg-gradient-to-r from-[#0D0D0D] to-[#1A1A1A] border border-dashed border-[#2A2A2A] rounded-lg">
+  <span className="text-[12px] tracking-[1px] text-[#666666] uppercase">
+    advertisement — 728×90
+  </span>
+</div>
               <span className={`inline-flex items-center gap-1 px-3 py-1.5 rounded text-[10px] font-bold tracking-[1.5px] uppercase ${colorClass}`}>
                 {categoryIcon}{c}
               </span>
@@ -171,7 +260,17 @@ export default async function ArticlePage({
 
             {/* Article Content */}
             <article className="text-[15px] leading-[1.8] text-white/[0.85]">
-              <div dangerouslySetInnerHTML={{ __html: article.content }} />
+              <div
+  dangerouslySetInnerHTML={{
+    __html: injectAdsIntoContent(article.content),
+  }}
+/>
+              {/* AD: Mid Article */}
+<div className="h-[120px] my-8 flex items-center justify-center bg-gradient-to-r from-[#0D0D0D] to-[#1A1A1A] border border-dashed border-[#2A2A2A] rounded-lg">
+  <span className="text-[12px] tracking-[1px] text-[#666666] uppercase">
+    advertisement — in-content
+  </span>
+</div>
 
               {/* Source */}
               {article.source_url && (
@@ -252,7 +351,7 @@ export default async function ArticlePage({
           </main>
 
           {/* ========== SIDEBAR ========== */}
-          <aside className="hidden lg:block">
+          <aside className="hidden lg:block sticky top-[80px] h-fit">
 
             {/* AD */}
             <div className="h-[250px] mb-6 flex items-center justify-center bg-gradient-to-br from-[#0D0D0D] to-[#1A1A1A] border border-dashed border-[#2A2A2A] rounded-lg">
@@ -364,6 +463,15 @@ export default async function ArticlePage({
             <span className="text-[12px] text-white/[0.2]">© 2026 TopGame Thailand. All rights reserved.</span>
           </div>
         </footer>
+
+        {/* ========== MOBILE STICKY AD ========== */}
+<div className="fixed bottom-0 left-0 w-full z-[999] lg:hidden">
+  <div className="h-[70px] flex items-center justify-center bg-[#0D0D0D] border-t border-white/[0.1]">
+    <span className="text-[12px] text-[#666666] uppercase">
+      advertisement — mobile sticky
+    </span>
+  </div>
+</div>
 
       </div>
     </div>
