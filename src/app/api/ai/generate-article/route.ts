@@ -229,12 +229,13 @@ export async function POST(req: Request) {
     // URL MODE
     // =========================
     if (body.mode === "url") {
-      const articleData = await Promise.race([
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const articleData = (await Promise.race([
         extract(body.url),
         new Promise((_, reject) =>
           setTimeout(() => reject(new Error("extract timeout")), 10000)
         ),
-      ]);
+      ])) as any;
 
       if (!articleData?.content) {
         return NextResponse.json({ error: "extract failed" });
@@ -322,20 +323,6 @@ export async function POST(req: Request) {
             }),
           }
         );
-
-        if (!newsRaw) {
-  console.warn("REWRITE FAILED → fallback");
-
-  newsRaw = await generateAI(
-    promptRewrite({
-      hook: "",
-      key_points: structured.key_points,
-      details: [],
-      impact: [],
-    }),
-    15000
-  );
-}
 
         if (!res.ok) {
           console.error("SAVE ERROR:", await res.text());

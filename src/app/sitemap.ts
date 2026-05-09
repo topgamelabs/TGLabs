@@ -1,11 +1,14 @@
 import { MetadataRoute } from "next";
 
+const SUPABASE_REST_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://pegajhvjrldsdzfyppcv.supabase.co';
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZ2FqaHZqcmxkc2R6ZnlwcGN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyMjQ1NjUsImV4cCI6MjA5MDgwMDU2NX0.QKo9tTznbgqbCAPAow6DxZXBa_T69PM-yq4PUoD0hhM';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?select=slug,updated_at,is_published`,
+    `${SUPABASE_REST_URL}/rest/v1/articles?select=slug,updated_at,is_published`,
     {
       headers: {
-        apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        apikey: SUPABASE_ANON_KEY!,
       },
       cache: "force-cache",
       next: { revalidate: 300 },

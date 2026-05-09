@@ -1,5 +1,8 @@
 import { extract } from "@extractus/article-extractor";
 
+const SUPABASE_REST_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://pegajhvjrldsdzfyppcv.supabase.co';
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZ2FqaHZqcmxkc2R6ZnlwcGN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyMjQ1NjUsImV4cCI6MjA5MDgwMDU2NX0.QKo9tTznbgqbCAPAow6DxZXBa_T69PM-yq4PUoD0hhM';
+
 function generateSlug(title: string) {
   return (
     title
@@ -59,7 +62,7 @@ export async function processNewsURL(url: string) {
   const ai = await generateAI(promptRewrite(articleData.content));
 
   await fetch(
-    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles`,
+    `${SUPABASE_REST_URL}/rest/v1/articles`,
     {
       method: "POST",
       headers: {

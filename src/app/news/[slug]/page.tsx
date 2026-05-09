@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { ContentRenderer, type ContentBlock } from "@/components/news/ContentRenderer";
 
 export async function generateMetadata({
   params,
@@ -97,24 +98,18 @@ function injectAdsIntoContent(html: string) {
   let adCount = 0;
 
   return parts.map((part, index) => {
-    const clean = part.replace(/<[^>]+>/g, "").trim(); // ลบ tag
+    const clean = part.replace(/<[^>]+>/g, "").trim();
     const wordCount = clean.length;
-
     const content = part + "</p>";
 
-    // ❌ ข้าม paragraph สั้น
     if (wordCount < 120) {
       return content;
     }
 
-    // 🎯 เงื่อนไข insert
     const shouldInsert =
-      // แทรกครั้งแรกเร็ว (หลัง paragraph 1–2)
       (index === 1 && adCount === 0) ||
-      // แทรกทุก 3–4 paragraph ที่มีคุณภาพ
       (adCount > 0 && index % 3 === 0);
 
-    // จำกัดจำนวน ads (กัน spam / SEO)
     if (shouldInsert && adCount < 3) {
       adCount++;
 
@@ -132,6 +127,70 @@ function injectAdsIntoContent(html: string) {
 
     return content;
   }).join("");
+}
+
+function parseInlineImages(imagesJson: string | null): Array<{ url: string; caption?: string }> {
+  if (!imagesJson) return [];
+  try {
+    const parsed = JSON.parse(imagesJson);
+    if (Array.isArray(parsed)) return parsed;
+  } catch {}
+  return [];
+}
+
+function isJsonBlocks(content: string): boolean {
+  const trimmed = content.trim();
+  return trimmed.startsWith("[") || trimmed.startsWith("{");
+}
+
+function renderContent(content: string, inlineImages: Array<{ url: string; caption?: string }>) {
+  if (isJsonBlocks(content)) {
+    try {
+      const blocks: ContentBlock[] = JSON.parse(content);
+      return (
+        <>
+          <ContentRenderer blocks={blocks} />
+          {/* Inject inline images after paragraphs */}
+          {inlineImages.map((img, i) => (
+            <figure key={i} style={{ margin: "24px 0" }}>
+              <img
+                src={img.url}
+                alt={img.caption || ""}
+                style={{
+                  width: "100%",
+                  borderRadius: 12,
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+              />
+              {img.caption && (
+                <figcaption
+                  style={{
+                    marginTop: 8,
+                    fontSize: 13,
+                    color: "#666",
+                    textAlign: "center",
+                    fontStyle: "italic",
+                  }}
+                >
+                  {img.caption}
+                </figcaption>
+              )}
+            </figure>
+          ))}
+        </>
+      );
+    } catch {
+      return <div dangerouslySetInnerHTML={{ __html: content }} />;
+    }
+  }
+
+  return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: injectAdsIntoContent(content),
+      }}
+    />
+  );
 }
 
 function formatDate(dateStr: string) {
@@ -250,6 +309,11 @@ if (article?.id) {
                 className="w-full h-[400px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/[0.7] to-transparent" />
+              {article.hero_caption && (
+                <p className="absolute bottom-4 left-4 right-4 text-[12px] text-white/[0.6] italic text-center">
+                  {article.hero_caption}
+                </p>
+              )}
             </div>
 
             {/* Article Header */}
@@ -296,11 +360,7 @@ if (article?.id) {
 
             {/* Article Content */}
             <article className="text-[15px] leading-[1.8] text-white/[0.85]">
-              <div
-  dangerouslySetInnerHTML={{
-    __html: injectAdsIntoContent(article.content),
-  }}
-/>
+              {renderContent(article.content, parseInlineImages(article.inline_images))}
               {/* AD: Mid Article */}
 <div className="h-[120px] my-8 flex items-center justify-center bg-gradient-to-r from-[#0D0D0D] to-[#1A1A1A] border border-dashed border-[#2A2A2A] rounded-lg">
   <span className="text-[12px] tracking-[1px] text-[#666666] uppercase">
