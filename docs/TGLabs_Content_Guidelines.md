@@ -9,7 +9,27 @@
 
 ---
 
-## โครงสร้างข่าว
+## โครงสร้างข่าว (JSON Blocks Format)
+
+Content เป็น JSON array ของ blocks ห้ามใช้ HTML string
+
+```
+[{"type":"paragraph",...}]
+```
+
+### Block Types
+
+| type | ใช้สำหรับ | ตัวอย่าง |
+|------|-----------|---------|
+| `paragraph` | ย่อหน้าธรรมดา | `{type:"paragraph",content:"ข้อความ"}` |
+| `heading` | หัวข้อย่อย (H2/H3) | `{type:"heading",level:2,content:"หัวข้อ"}` |
+| `bullet` | bullet list | `{type:"bullet",items:["ข้อ 1","ข้อ 2"]}` |
+| `quote` | คำพูด/เนื้อหาเน้น | `{type:"quote",content:"..."}` |
+| `rule` | เส้นแบ่งกลางหน้า | `{type:"rule",label:"สรุป"}` |
+| `image` | รูปในเนื้อหา | `{type:"image",imageUrl:"...",imageCaption:"..."}` |
+| `ptag` | label สี | `{type:"ptag",tagType:"buff",tagLabel:"BUFF"}` |
+
+---
 
 ### 1. Title
 - มีชื่อเกมขึ้นต้นหรืออยู่ใน title ชัดเจน
@@ -21,72 +41,59 @@
 - สรุปใจความสำคัญให้น่าคลิกแต่ไม่เกินจริง
 - ตอบคำถาม: อะไร / เกมอะไร / ผลกระทบอะไร
 
-### 3. Content Structure
-```
-ย่อหน้าแรก (hook)   → สรุปข่าว 2-3 บรรทัด ตอบคำถาม "อะไร / เกมอะไร / เมื่อไหร่"
-<h2> หัวข้อย่อยที่ 1    → อธิบายรายละเอียดหลัก
-<h3> หัวข้อย่อย          → (ถ้าต้องแยกประเด็นเพิ่มเติม)
-พารากราฟ             → เนื้อหาประกอบ
-<div class="highlight-box"> → คำสรุป / จุดสำคัญ / คำที่น่าจดจำ
-<ul class="bullet-red">  → bullet points ที่มีกรอบแดง (ถ้าเหมาะสม)
-<h2> หัวข้อย่อยที่ 2    → รายละเอียดเพิ่มเติม
-<p> สรุปปิดท้าย        → บอกผลกระทบ / สิ่งที่ต้องจับตา
-```
+### 3. Content Structure (ตัวอย่าง)
 
-### 4. การใช้ Highlight Box
-ใช้สำหรับ:
-- คำสรุปสั้นๆ ที่น่าจดจำ (เช่น "ยังคงเล่นได้แม้มือถือเครื่องเก่า")
-- จุดเด่นที่อยากให้ผู้อ่านจำ
-- Warning หรือสิ่งที่ต้องระวัง
-
-Format:
-```html
-<div class="highlight-box">
-  <h4>📌 สรุป</h4>
-  <ul>
-    <li>ข้อ 1</li>
-    <li>ข้อ 2</li>
-  </ul>
-</div>
+```json
+[
+  { "type": "paragraph", "content": "ROV อัปเดต 3.42 มาพร้อมฮีโร่ใหม่ Ryoma นักดาบจากตะวันออก พร้อมปรับสมดุลฮีโร่หลายตัว" },
+  { "type": "heading", "level": 2, "content": "ฮีโร่ใหม่ Ryoma" },
+  { "type": "paragraph", "content": "Ryoma เป็นฮีโร่ระยะไกลที่มีความสามารถในการ thrust ทำลายล้าง" },
+  { "type": "bullet", "items": ["Flash Slash — พุ่งผ่านศัตรู 3 ตัว", "Shadow Dance — กระโดดหนีเมื่อ HP ต่ำ", "Katana Storm — Ultimate ระดับ AOE"] },
+  { "type": "rule", "label": "สรุป" },
+  { "type": "paragraph", "content": "ฮีโร่ใหม่นี้เหมาะสำหรับผู้เล่นที่ชอบ aggressive playstyle" }
+]
 ```
 
-### 5. การใช้ Bullet กรอบแดง
-ใช้เมื่อเนื้อหามี list ที่ต้องการเน้น:
+### 4. PTag — Colored Labels
 
-```html
-<ul class="bullet-red">
-  <li>ข้อมูลที่ 1</li>
-  <li>ข้อมูลที่ 2</li>
-</ul>
+ใช้สำหรับ label สีที่ต้องการเน้น:
+
+| tagType | ใช้เมื่อ | สี |
+|---------|---------|-----|
+| `buff` | ปรับดีขึ้น, เพิ่มพลัง | เขียว |
+| `nerf` | ปรับแย่ลง, ลดพลัง | แดง |
+| `new` | ฟีเจอร์ใหม่, ฮีโร่ใหม่ | ฟ้า |
+| `event` | กิจกรรม, event พิเศษ | เหลือง |
+| `fix` | แก้บัก, ปรับปรุง | ม่วง |
+
+```json
+{ "type": "ptag", "tagType": "new", "tagLabel": "ฮีโร่ใหม่" }
 ```
 
-### 6. Score/Rating Box
-สำหรับรีวิวหรือข่าวที่ต้องมีการให้คะแนน:
+### 5. Quote — คำพูดเน้น
 
-```html
-<div class="score-box">
-  <h4>คะแนนรีวิว</h4>
-  <table>
-    <tr><td>เนื้อเรื่อง</td><td>8/10</td></tr>
-    <tr><td>Gameplay</td><td>8.5/10</td></tr>
-  </table>
-</div>
+```json
+{ "type": "quote", "content": "Ryoma จะเปลี่ยน meta ของ ROV อย่างสิ้นเชิง — นักวิเคราะห์จาก TGLabs" }
 ```
 
-### 7. Tags/Labels
-- ใช้ tag จากระบบที่กำหนด: `news`, `review`, `tierlist`, `patch`, `event`
-- เพิ่ม game_id ให้ตรงกับเกมที่ข่าวเกี่ยวข้อง
+### 6. Rule — เส้นแบ่ง
+
+```json
+{ "type": "rule", "label": "สรุป" }
+```
+
+ใช้สำหรับจุดสำคัญที่อยากให้จำ เช่น "สรุป", "คะแนน", "วันที่"
 
 ---
 
 ## SEO กฎ
 
-### Title Tag (Meta Title)
+### Title Tag (seo_title)
 - **60-70 ตัวอักษร**
 - Format ที่แนะนำ: `{ชื่อเกม} {หัวข้อข่าวหลัก} | TopGame Thailand`
-- ตัวอย่าง: `R OV อัปเดต 3.42 พร้อมฮีโร่ใหม่ Ryoma | TopGame Thailand`
+- ตัวอย่าง: `ROV อัปเดต 3.42 พร้อมฮีโร่ใหม่ Ryoma | TopGame Thailand`
 
-### Meta Description
+### Meta Description (seo_description)
 - **150-160 ตัวอักษร**
 - สรุปข่าว 1-2 ประโยค ใส่ keyword หลัก
 
@@ -98,13 +105,6 @@ Format:
 ### URL Slug
 - Format: `/news/{game-id}-{topic-short}`
 - ตัวอย่าง: `/news/rov-ryoma-new-hero`
-
-### Open Graph
-- `og:title` = Title (ไม่ต้องมี brand suffix)
-- `og:description` = Excerpt
-- `og:image` = Hero image (800x400px ขึ้นไป)
-- `og:type` = article
-- `article:published_time` = วันที่ลงข่าว
 
 ---
 
@@ -122,44 +122,6 @@ Format:
 
 ---
 
-## ตัวอย่างการเขียน
-
-### ดี ✓
-```
-Title: Genshin Impact เวอร์ชัน 5.0 มาพร้อมพื้นที่ใหม่ Natlan พร้อมรีวิว
-
-Excerpt: Genshin Impact ปล่อยอัปเดต 5.0 วันที่ 15 มกราคม 2026 
-มาพร้อมพื้นที่ใหม่ Natlan, ฮีโร่ใหม่ 2 ตัว และระบบ Pyro ...
-
-Content:
-<p>Genshin Impact เวอร์ชัน 5.0 อัปเดตวันที่ 15 มกราคม 2026 
-มาพร้อมพื้นที่ใหม่ Natlan ดินแดนแห่งไฟที่ผู้เล่นรอคอยมานาน...</p>
-
-<h2>Natlan — ดินแดนแห่งไฟ</h2>
-<p>พื้นที่ใหม่มีขนาดใหญ่กว่า Fontaine 1.5 เท่า มาพร้อม...</p>
-
-<h2>ฮีโร่ใหม่ 2 ตัว</h2>
-<p>Citlalli (5-star Cryo) และ Ifa (4-star Dendro) เข้ามาในรอบ Wish...</p>
-
-<p>อัปเดตนี้ถือว่าคุ้มค่าสำหรับผู้เล่นที่ชอบสำรวจเนื้อหาใหม่ 
-คาดว่า MiHoYo จะปล่อย event พิเศษสำหรับ Natlan อีก 2 event ในเดือนกุมภาพันธ์</p>
-```
-
-### ไม่ดี ✗
-```
-Title: !!SHOCKING!! Genshin 5.0 มาแล้ว! ไม่เชื่อสิ่งที่เกิดขึ้น!
-
-Excerpt: มาแล้วจ้า! เวอร์ชันใหม่สุดมันส์ ทุกคนต้องเล่น! 
-ข่าวนี้เด็ดมากจริงๆ
-
-Content:
-🔥 Genshin 5.0 มาแล้วจ้าาาา!! 🎮🎮🎮
- ทุกคนต้องรีบเข้าไปเล่นเลยนะคะ! 
- สุดๆไปเลย! ดีสุดๆ! Amazing! 😍😍😍
-```
-
----
-
 ## Hero Image
 
 - ขนาดแนะนำ: **800×400px** ขึ้นไป
@@ -169,7 +131,7 @@ Content:
 
 ---
 
-## Games Reference (สำหรับ Tag และ SEO)
+## Games Reference
 
 | ID | ชื่อ | Genre | Keywords |
 |----|------|-------|----------|
@@ -192,9 +154,3 @@ Content:
 | 400-600 | 3 นาที |
 | 600-800 | 4 นาที |
 | 800+ | 5+ นาที |
-
----
-
-## Related Articles
-
-เมื่อลงข่าว ให้เพิ่ม `related_articles` (ถ้ามี) ใน metadata เพื่อให้ระบบแสดงข่าวที่เกี่ยวข้อง 2-3 ข่าว
