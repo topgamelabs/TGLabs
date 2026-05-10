@@ -20,18 +20,13 @@ export const metadata: Metadata = {
     url: "https://tglabs.info",
     siteName: "TopGame Thailand",
     type: "website",
-    images: [{
-      url: "https://pegajhvjrldsdzfyppcv.supabase.co/storage/v1/object/public/images/TopGame_hero.png",
-      width: 1200,
-      height: 630,
-      alt: "TopGame Thailand - ข่าวเกมมือถือ อัปเดตล่าสุด",
-    }],
+    images: "https://pegajhvjrldsdzfyppcv.supabase.co/storage/v1/object/public/images/TopGame_hero.png",
   },
   twitter: {
     card: "summary_large_image",
     title: "TopGame Thailand",
     description: "ข่าวเกมมือถือ อัปเดตไว ครบทุกเกมดัง",
-    images: ["https://pegajhvjrldsdzfyppcv.supabase.co/storage/v1/object/public/images/TopGame_hero.png"],
+    images: "https://pegajhvjrldsdzfyppcv.supabase.co/storage/v1/object/public/images/TopGame_hero.png",
   },
 };
 
