@@ -139,7 +139,7 @@ function Block({ block }: { block: ContentBlock }) {
             fontFamily: "'Kanit', sans-serif",
             fontSize: sizes[level],
             fontWeight: 700,
-            color: "#fff",
+            color: level === 3 ? "#FF1A1A" : "#fff",
             marginTop: 32,
             marginBottom: 12,
             lineHeight: 1.3,
@@ -163,10 +163,14 @@ function Block({ block }: { block: ContentBlock }) {
         <ul
           style={{
             margin: "16px 0",
+            padding: "16px 20px",
             paddingLeft: 24,
             display: "flex",
             flexDirection: "column",
             gap: 8,
+            borderLeft: "3px solid #FF1A1A",
+            background: "rgba(255,26,26,0.05)",
+            borderRadius: "0 8px 8px 0",
           }}
         >
           {(block.items || []).map((item, i) => (
