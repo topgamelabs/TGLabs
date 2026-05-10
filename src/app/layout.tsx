@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL("https://www.tglabs.info"),
   title: "TopGame Thailand - ข่าวเกมมือถือ อัปเดตล่าสุด",
   description:
@@ -26,6 +26,12 @@ export const metadata = {
       height: 630,
       alt: "TopGame Thailand - ข่าวเกมมือถือ อัปเดตล่าสุด",
     }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TopGame Thailand",
+    description: "ข่าวเกมมือถือ อัปเดตไว ครบทุกเกมดัง",
+    images: ["https://pegajhvjrldsdzfyppcv.supabase.co/storage/v1/object/public/images/TopGame_hero.png"],
   },
 };
 
