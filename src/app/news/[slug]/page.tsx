@@ -201,8 +201,12 @@ function renderContent(content: string, inlineImages: Array<{ url: string; capti
           ))}
         </>
       );
-    } catch {
-      return <div dangerouslySetInnerHTML={{ __html: content }} />;
+    } catch (e) {
+      // JSON parse failed — show fallback paragraph instead of raw JSON
+      const fallbackText = typeof content === 'string' && content.startsWith('[')
+        ? 'เนื้อหาข่าวไม่สามารถแสดงได้ในขณะนี้'
+        : content;
+      return <div dangerouslySetInnerHTML={{ __html: fallbackText }} />;
     }
   }
 
