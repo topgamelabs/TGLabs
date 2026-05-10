@@ -173,22 +173,39 @@ export default function Home() {
             className="relative overflow-hidden rounded-xl cursor-pointer group min-h-[280px] block"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a14] to-[#070707]" />
-            <img
-              src={heroArticle?.hero_image || "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&h=600&fit=crop"}
-              alt={heroArticle?.title || "Featured"}
-              className="absolute inset-0 w-full h-full object-cover opacity-60"
-            />
+            {!loading && heroArticle?.hero_image ? (
+              <img
+                src={heroArticle.hero_image}
+                alt={heroArticle.title || "Featured"}
+                className="absolute inset-0 w-full h-full object-cover opacity-60"
+              />
+            ) : (
+              <div className="absolute inset-0 bg-[#1A1A1A] animate-pulse" />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/[0.9] via-black/[0.4] to-black/[0.2]" />
             <div className="relative z-10 h-full flex flex-col justify-end p-6">
               <div className="mb-2">
-                {getCategoryBadge(heroArticle?.category)}
+                {loading ? (
+                  <div className="h-[22px] w-[60px] bg-[#1A1A1A] rounded animate-pulse" />
+                ) : (
+                  getCategoryBadge(heroArticle?.category)
+                )}
               </div>
-              <h2 className="font-['Kanit'] text-[22px] lg:text-[26px] font-semibold text-white leading-tight line-clamp-2 group-hover:text-[#FF1A1A] transition-colors">
-                {heroArticle?.title || "Welcome to TopGame Thailand"}
-              </h2>
-              <p className="text-[13px] text-white/[0.5] mt-2">
-                {heroArticle?.excerpt || "แหล่งรวมข่าวเกมมือถือ รีวิว และเทคนิค อัปเดตล่าสุด"}
-              </p>
+              {loading ? (
+                <>
+                  <div className="h-[28px] bg-[#1A1A1A] rounded w-full mb-2 animate-pulse" />
+                  <div className="h-[16px] bg-[#1A1A1A] rounded w-3/4 animate-pulse" />
+                </>
+              ) : (
+                <>
+                  <h2 className="font-['Kanit'] text-[22px] lg:text-[26px] font-semibold text-white leading-tight line-clamp-2 group-hover:text-[#FF1A1A] transition-colors">
+                    {heroArticle?.title || "Welcome to TopGame Thailand"}
+                  </h2>
+                  <p className="text-[13px] text-white/[0.5] mt-2">
+                    {heroArticle?.excerpt || "แหล่งรวมข่าวเกมมือถือ รีวิว และเทคนิค อัปเดตล่าสุด"}
+                  </p>
+                </>
+              )}
             </div>
           </a>
 
@@ -198,7 +215,17 @@ export default function Home() {
               <span className="text-[11px] font-bold tracking-[2px] text-white/[0.3] uppercase">📺 Latest Updates</span>
             </div>
             <div className="flex flex-col">
-              {latestArticles.length > 0 ? latestArticles.map((art, i) => (
+              {loading ? (
+                [1, 2, 3, 4].map((i) => (
+                  <div key={i} className="flex gap-3 p-3 border-b border-white/[0.03] animate-pulse">
+                    <div className="w-[80px] h-[50px] rounded-md bg-[#1A1A1A]" />
+                    <div className="flex-1 flex flex-col justify-center gap-2">
+                      <div className="h-[14px] bg-[#1A1A1A] rounded w-3/4" />
+                      <div className="h-[10px] bg-[#1A1A1A] rounded w-1/2" />
+                    </div>
+                  </div>
+                ))
+              ) : latestArticles.length > 0 ? latestArticles.map((art, i) => (
                 <a
                   key={art.id || i}
                   href={`/news/${art.slug}`}
@@ -248,18 +275,33 @@ export default function Home() {
                 <a href="/trending" className="text-[12px] text-white/[0.3] hover:text-white transition-colors">View All →</a>
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                {trendingArticles.length > 0 ? trendingArticles.map((card, i) => (
+                {loading ? (
+                  [1, 2, 3, 4].map((i) => (
+                    <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden animate-pulse">
+                      <div className="aspect-[16/10] bg-[#1A1A1A]" />
+                      <div className="p-4">
+                        <div className="h-[10px] bg-[#1A1A1A] rounded w-1/2 mb-3" />
+                        <div className="h-[14px] bg-[#1A1A1A] rounded w-3/4 mb-2" />
+                        <div className="h-[10px] bg-[#1A1A1A] rounded w-1/3" />
+                      </div>
+                    </div>
+                  ))
+                ) : trendingArticles.length > 0 ? trendingArticles.map((card, i) => (
                   <a
                     key={card.id || i}
                     href={`/news/${card.slug}`}
                     className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] cursor-pointer group hover:-translate-y-[4px] hover:border-[#FF1A1A]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300"
                   >
                     <div className="aspect-[16/10] relative overflow-hidden">
-                      <img
-                        src={card.hero_image || `https://images.unsplash.com/photo-${["1550745165-9bc0b252726f", "1612287230202-1ff1d85d1bdf", "1560253023-3ec5d502959f", "1606144042614-b2417e99c4e3"][i]}?w=400&h=250&fit=crop`}
-                        alt={card.title}
-                        className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
-                      />
+                      {card.hero_image ? (
+                        <img
+                          src={card.hero_image}
+                          alt={card.title}
+                          className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-[#1A1A1A]" />
+                      )}
                     </div>
                     <div className="p-4">
                       <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#FF1A1A] mb-2">{card.category?.toUpperCase()}</div>
@@ -292,18 +334,33 @@ export default function Home() {
                 <a href="/mobile" className="text-[12px] text-white/[0.3] hover:text-white transition-colors">View All →</a>
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                {mobileArticles.length > 0 ? mobileArticles.map((card, i) => (
+                {loading ? (
+                  [1, 2, 3, 4].map((i) => (
+                    <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden animate-pulse">
+                      <div className="aspect-[16/10] bg-[#1A1A1A]" />
+                      <div className="p-4">
+                        <div className="h-[10px] bg-[#1A1A1A] rounded w-1/2 mb-3" />
+                        <div className="h-[14px] bg-[#1A1A1A] rounded w-3/4 mb-2" />
+                        <div className="h-[10px] bg-[#1A1A1A] rounded w-1/3" />
+                      </div>
+                    </div>
+                  ))
+                ) : mobileArticles.length > 0 ? mobileArticles.map((card, i) => (
                   <a
                     key={card.id || i}
                     href={`/news/${card.slug}`}
                     className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] cursor-pointer group hover:-translate-y-[4px] hover:border-[#FF1A1A]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300"
                   >
                     <div className="aspect-[16/10] relative overflow-hidden">
-                      <img
-                        src={card.hero_image || `https://images.unsplash.com/photo-${["1593305841991-05c297ba4575", "1542751371-adc38448a05e", "1542751110-97427bbecf20", "1511512578047-dfb367046420"][i]}?w=400&h=250&fit=crop`}
-                        alt={card.title}
-                        className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
-                      />
+                      {card.hero_image ? (
+                        <img
+                          src={card.hero_image}
+                          alt={card.title}
+                          className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-[#1A1A1A]" />
+                      )}
                     </div>
                     <div className="p-4">
                       <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#FF1A1A] mb-2">{card.category?.toUpperCase()}</div>
