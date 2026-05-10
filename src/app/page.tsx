@@ -32,6 +32,7 @@ function getCategoryBadge(category: string | null | undefined, className = "") {
 export default function Home() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  const [comingSoon, setComingSoon] = useState(false);
   const [articles, setArticles] = useState<Article[]>([]);
   const [games, setGames] = useState<Game[]>([]);
   const [loading, setLoading] = useState(true);
@@ -66,9 +67,18 @@ export default function Home() {
   const latestArticles = articles.slice(1, 5);
   const trendingArticles = articles.slice(1, 5);
   const mobileArticles = articles.filter(a => {
+    if (a.category?.toLowerCase() === "mobile") return true;
     const game = a.games;
     return game?.platform === "mobile" || game?.platform === "cross-platform";
   }).slice(0, 4);
+
+  // Coming Soon Toast
+  useEffect(() => {
+    if (comingSoon) {
+      const t = setTimeout(() => setComingSoon(false), 2500);
+      return () => clearTimeout(t);
+    }
+  }, [comingSoon]);
 
   return (
     <div className="min-h-screen bg-[#000000] text-[#E8E8E8] font-sans">
@@ -97,9 +107,9 @@ export default function Home() {
           <div className="hidden lg:flex items-center gap-6">
             <a href="/" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Home</a>
             <a href="/news" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">News</a>
-            <a href="/guides" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Guides</a>
-            <a href="/reviews" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Reviews</a>
-            <a href="/it-gadget" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">IT Gadget</a>
+            <button onClick={() => setComingSoon(true)} className="text-[13px] text-white/[0.7] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">Guides</button>
+            <button onClick={() => setComingSoon(true)} className="text-[13px] text-white/[0.7] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">Reviews</button>
+            <button onClick={() => setComingSoon(true)} className="text-[13px] text-white/[0.7] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">IT Gadget</button>
             <a href="#tools" className="text-[13px] text-[#FF1A1A] hover:text-[#FF1A1A]/80 transition-colors">Tools ⚡</a>
           </div>
 
@@ -143,19 +153,19 @@ export default function Home() {
         )}
 
         {/* Mobile Menu */}
-        {mobileNavOpen && (
-          <div className="lg:hidden border-t border-white/[0.06] bg-[#000000]">
-            <div className="max-w-[1280px] mx-auto px-4 py-3 flex flex-col gap-1">
-              <a href="/" className="text-[14px] text-white py-2">Home</a>
-              <a href="/news" className="text-[14px] text-white py-2">News</a>
-              <a href="/guides" className="text-[14px] text-white py-2">Guides</a>
-              <a href="/reviews" className="text-[14px] text-white py-2">Reviews</a>
-              <a href="/it-gadget" className="text-[14px] text-white py-2">IT Gadget</a>
-              <a href="#tools" className="text-[14px] text-[#FF1A1A] py-2">Tools ⚡</a>
+          {mobileNavOpen && (
+            <div className="lg:hidden border-t border-white/[0.06] bg-[#000000]">
+              <div className="max-w-[1280px] mx-auto px-4 py-3 flex flex-col gap-1">
+                <a href="/" className="text-[14px] text-white py-2">Home</a>
+                <a href="/news" className="text-[14px] text-white py-2">News</a>
+                <button onClick={() => setComingSoon(true)} className="text-[14px] text-white py-2 text-left cursor-pointer bg-transparent border-none p-0">Guides</button>
+                <button onClick={() => setComingSoon(true)} className="text-[14px] text-white py-2 text-left cursor-pointer bg-transparent border-none p-0">Reviews</button>
+                <button onClick={() => setComingSoon(true)} className="text-[14px] text-white py-2 text-left cursor-pointer bg-transparent border-none p-0">IT Gadget</button>
+                <a href="#tools" className="text-[14px] text-[#FF1A1A] py-2">Tools ⚡</a>
+              </div>
             </div>
-          </div>
-        )}
-      </nav>
+          )}
+        </nav>
 
       <div className="max-w-[1280px] mx-auto px-4">
 
@@ -574,6 +584,25 @@ export default function Home() {
             <span className="text-[12px] text-white/[0.2]">© 2026 TopGame Thailand. All rights reserved.</span>
           </div>
         </footer>
+
+        {/* Coming Soon Toast */}
+        {comingSoon && (
+          <div
+            style={{
+              position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+              zIndex: 99999, background: "rgba(10,10,10,0.98)", border: "1px solid #FF1A1A",
+              borderRadius: 12, padding: "24px 48px", boxShadow: "0 0 60px rgba(255,26,26,0.5)",
+            }}
+          >
+            <div style={{ textAlign: "center" }}>
+              <div style={{ fontSize: 40, marginBottom: 16 }}>🚧</div>
+              <div style={{ fontFamily: "'Kanit', sans-serif", fontSize: 22, color: "#fff", fontWeight: 600, letterSpacing: 1 }}>
+                Coming Soon..
+              </div>
+              <div style={{ fontSize: 13, color: "#666", marginTop: 8 }}>ฟีเจอร์นี้กำลังพัฒนา</div>
+            </div>
+          </div>
+        )}
 
       </div>
     </div>
