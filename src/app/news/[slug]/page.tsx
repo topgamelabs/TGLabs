@@ -30,8 +30,21 @@ export async function generateMetadata({
     title: article.seo_title || article.title,
     description: article.seo_description || article.excerpt,
     openGraph: {
-      title: article.title,
-      description: article.excerpt,
+      type: "article",
+      title: article.seo_title || article.title,
+      description: article.seo_description || article.excerpt,
+      url: `https://www.tglabs.info/news/${slug}`,
+      images: article.hero_image ? [{
+        url: article.hero_image,
+        width: 1200,
+        height: 630,
+        alt: article.title,
+      }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.seo_title || article.title,
+      description: article.seo_description || article.excerpt,
       images: article.hero_image ? [article.hero_image] : [],
     },
   };
