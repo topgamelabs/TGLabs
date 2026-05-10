@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Facebook external hit
+User-agent: facebookexternalhit
+Allow: /
+
+# Googlebot
+User-agent: googlebot
+Allow: /
