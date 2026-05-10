@@ -139,8 +139,30 @@ function parseInlineImages(imagesJson: string | null): Array<{ url: string; capt
 }
 
 function isJsonBlocks(content: string): boolean {
-  const trimmed = content.trim();
-  return trimmed.startsWith("[") || trimmed.startsWith("{");
+  const trimmed = (content || "").trim();
+  if (!trimmed) return false;
+  // Starts with [ or {
+  if (trimmed.startsWith("[") || trimmed.startsWith("{")) {
+    try {
+      JSON.parse(trimmed);
+      return true;
+    } catch {
+      // Might be escaped or encoded — try unescape
+      try {
+        const unescaped = trimmed
+          .replace(/&lt;/g, "<")
+          .replace(/&gt;/g, ">")
+          .replace(/&amp;/g, "&")
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, "'");
+        JSON.parse(unescaped);
+        return true;
+      } catch {
+        return false;
+      }
+    }
+  }
+  return false;
 }
 
 function renderContent(content: string, inlineImages: Array<{ url: string; caption?: string }>) {
