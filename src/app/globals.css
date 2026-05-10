@@ -21,6 +21,8 @@
   --font-kanit: 'Kanit', 'Prompt', sans-serif;
   --font-prompt: 'Prompt', 'Kanit', sans-serif;
   --font-inter: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-sans: 'Kanit', 'Prompt', 'Inter', system-ui, sans-serif;
+  --font-display: 'Kanit', sans-serif;
 }
 
 /* Custom Scrollbar */
