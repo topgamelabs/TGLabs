@@ -5,12 +5,13 @@ import { supabase } from "@/lib/supabase"
 const parser = new Parser()
 
 export async function collectRssNews() {
+  // supports_rss could be true or NULL, query both
   const { data: sources, error }
     = await supabase
       .from("news_sources")
       .select("*")
       .eq("is_active", true)
-      .eq("supports_rss", true)
+      .or("supports_rss.eq.true,supports_rss.is.null")
 
   if (error || !sources) {
     console.error(error)
@@ -27,9 +28,13 @@ export async function collectRssNews() {
       console.log(
         `[RSS] Fetching ${source.name}`
       )
+      console.log(
+        `[RSS URL] ${source.rss_url}`
+      )
       const feed = await parser.parseURL(
         source.rss_url
       )
+      console.log(feed.items.length)
 
       for (const item of feed.items) {
         if (!item.link) continue
