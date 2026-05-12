@@ -371,21 +371,22 @@ if (article?.id) {
                 {article.title}
               </h1>
 
-              <div className="flex flex-wrap items-center gap-4 mt-4 text-[13px] text-[#AAAAAA]">
+              <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mt-4 text-[13px] text-[#AAAAAA]">
 
-                {/* Author */}
+                {/* Left: Author + Date */}
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 rounded-full bg-[#1A1A1A]" />
                   <span className="text-[#E8E8E8] font-medium">TopGame TH</span>
                 </div>
-
                 <span className="text-[#666666]">•</span>
                 <span>{formatDate(article.created_at)}</span>
-                <span className="text-[#666666]">•</span>
-                <span>👁 {article.view_count?.toLocaleString() || "0"} views</span>
 
-                {/* Share */}
-                <ShareButtons url={article.slug ? `https://www.tglabs.info/news/${article.slug}` : "https://www.tglabs.info"} />
+                {/* Right: View count + Share — always together on right */}
+                <div className="flex items-center gap-2">
+                  <span>👁 {article.view_count?.toLocaleString() || "0"} views</span>
+                  <span className="text-[#666666]">•</span>
+                  <ShareButtons url={article.slug ? `https://www.tglabs.info/news/${article.slug}` : "https://www.tglabs.info"} />
+                </div>
               </div>
             </header>
 

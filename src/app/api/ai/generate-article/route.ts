@@ -203,6 +203,38 @@ async function generateAI(prompt: string, timeoutMs = 15000) {
 }
 
 // =========================
+// UNIQUE HERO IMAGE
+// =========================
+// ใช้ slug เป็น seed แทน title เพื่อไม่ให้ภาพซ้ำกัน
+function generateUniqueHeroImage(title: string, slug: string): string {
+  // สร้าง seed จาก slug ที่มี random component อยู่แล้ว
+  const seed = slug.split("-").slice(0, 3).join("-");
+  return `https://picsum.photos/seed/${encodeURIComponent(seed)}/800/400`;
+}
+
+// ตรวจสอบว่า hero_image ซ้ำกับ article ที่มีอยู่แล้วหรือเปล่า (จาก source_url เดียวกัน)
+async function isDuplicateHeroImage(heroImage: string, sourceUrl: string): Promise<boolean> {
+  if (!heroImage || !sourceUrl) return false;
+
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?source_url=eq.${encodeURIComponent(sourceUrl)}&hero_image=eq.${encodeURIComponent(heroImage)}&select=id&limit=1`,
+      {
+        headers: {
+          apikey: process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        },
+        next: { revalidate: 0 },
+      }
+    );
+
+    const data = await res.json();
+    return Array.isArray(data) && data.length > 0;
+  } catch {
+    return false;
+  }
+}
+
+// =========================
 // SAFE
 // =========================
 function safe(data: any, fallbackTitle: string) {
@@ -276,12 +308,26 @@ export async function POST(req: Request) {
         news.title += " (อัปเดต 2026)";
       }
 
+      // สร้าง slug ก่อนเพื่อใช้สำหรับ unique hero image
+      const tempSlug = generateSlug(news.title);
+
+      // ตรวจสอบว่า hero_image ซ้ำกับ article ที่มีอยู่แล้วหรือเปล่า
+      let heroImage = articleData.image || null;
+      if (heroImage) {
+        const isDuplicate = await isDuplicateHeroImage(heroImage, body.url);
+        if (isDuplicate) {
+          console.log("Duplicate hero_image detected, using unique fallback");
+          heroImage = null; // จะ fallback เป็น picsum แทน
+        }
+      }
+
       return NextResponse.json({
         success: true,
         articles: [
           {
             ...news,
-            hero_image: articleData.image || null,
+            hero_image: heroImage,
+            _tempSlug: tempSlug, // ส่ง slug ไปใช้ใน save mode
           },
         ],
         source_url: body.url,
@@ -317,9 +363,10 @@ export async function POST(req: Request) {
               seo_description: article.seo_description,
               hero_image:
                 article.hero_image ||
-                `https://picsum.photos/seed/${encodeURIComponent(
-                  article.title
-                )}/800/400`,
+                generateUniqueHeroImage(
+                  article.title,
+                  article._tempSlug || generateSlug(article.title)
+                ),
             }),
           }
         );

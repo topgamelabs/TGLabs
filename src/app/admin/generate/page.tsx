@@ -12,7 +12,7 @@ export default function GeneratePage() {
   // ========================
   // GENERATE
   // ========================
-  const handleGenerate = async () => {
+  const handleGenerating = async () => {
     setLoading(true);
 
     let body: any = {
@@ -77,139 +77,185 @@ export default function GeneratePage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-10">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">AI Generate</h1>
+    <div className="min-h-screen bg-[#0A0A0A] text-[#E8E8E8]">
 
-        {/* MODE */}
-        <div className="flex gap-2 mb-4">
+      {/* HEADER */}
+      <header className="border-b border-[#1F1F1F] px-6 py-5">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <div>
+            <h1 className="text-xl font-semibold text-white tracking-tight">AI Generate</h1>
+            <p className="text-sm text-[#888] mt-0.5">สร้างบทความอัตโนมัติ</p>
+          </div>
+          <div className="w-2 h-2 rounded-full bg-[#4DCC8A]"></div>
+        </div>
+      </header>
+
+      <main className="max-w-4xl mx-auto px-6 py-8">
+
+        {/* MODE TABS */}
+        <div className="flex gap-1 bg-[#111] p-1 rounded-lg mb-8 w-fit">
           <button
             onClick={() => setMode("keyword")}
-            className={`px-4 py-2 rounded ${
+            className={`px-5 py-2 text-sm font-medium rounded-md transition-all ${
               mode === "keyword"
-                ? "bg-red-600"
-                : "bg-gray-800 hover:bg-gray-700"
+                ? "bg-[#FF1A1A] text-white"
+                : "text-[#888] hover:text-white"
             }`}
           >
             Keyword
           </button>
-
           <button
             onClick={() => setMode("rewrite")}
-            className={`px-4 py-2 rounded ${
+            className={`px-5 py-2 text-sm font-medium rounded-md transition-all ${
               mode === "rewrite"
-                ? "bg-blue-600"
-                : "bg-gray-800 hover:bg-gray-700"
+                ? "bg-[#4A90D9] text-white"
+                : "text-[#888] hover:text-white"
             }`}
           >
             Rewrite
           </button>
-
           <button
             onClick={() => setMode("url")}
-            className={`px-4 py-2 rounded ${
+            className={`px-5 py-2 text-sm font-medium rounded-md transition-all ${
               mode === "url"
-                ? "bg-purple-600"
-                : "bg-gray-800 hover:bg-gray-700"
+                ? "bg-[#A855F7] text-white"
+                : "text-[#888] hover:text-white"
             }`}
           >
             URL
           </button>
         </div>
 
-        {/* INPUT */}
-        {mode === "url" ? (
-          <input
-            className="w-full p-3 bg-[#111] border border-gray-700 rounded mb-4"
-            placeholder="วาง URL ข่าว"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-        ) : (
-          <textarea
-            className="w-full h-40 p-4 bg-[#111] border border-gray-700 rounded mb-4"
-            placeholder={
-              mode === "keyword"
-                ? "ใส่ keyword หลายบรรทัด"
-                : "วางเนื้อข่าว"
-            }
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-        )}
+        {/* INPUT SECTION */}
+        <div className="bg-[#111] rounded-xl p-6 mb-6">
+          <label className="text-xs font-medium text-[#888] uppercase tracking-wider mb-3 block">
+            {mode === "url" ? "URL" : mode === "keyword" ? "Keywords" : "Content"}
+          </label>
+          {mode === "url" ? (
+            <input
+              className="w-full p-3 bg-[#0A0A0A] border border-[#2A2A2A] rounded-lg text-white placeholder-[#555] focus:border-[#FF1A1A] focus:outline-none transition-colors"
+              placeholder="https://..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
+          ) : (
+            <textarea
+              className="w-full h-32 p-4 bg-[#0A0A0A] border border-[#2A2A2A] rounded-lg text-white placeholder-[#555] focus:border-[#FF1A1A] focus:outline-none transition-colors resize-none"
+              placeholder={
+                mode === "keyword"
+                  ? " พิมพ์ keyword แต่ละบรรทัด..."
+                  : " วางเนื้อข่าวที่ต้องการ..."
+              }
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
+          )}
 
-        {/* SOURCE */}
-        <input
-          className="w-full p-3 bg-[#111] border border-gray-700 rounded mb-4"
-          placeholder="Source URL (optional)"
-          value={source}
-          onChange={(e) => setSource(e.target.value)}
-        />
+          {/* SOURCE */}
+          <div className="mt-4">
+            <label className="text-xs font-medium text-[#888] uppercase tracking-wider mb-3 block">
+              Source URL
+            </label>
+            <input
+              className="w-full p-3 bg-[#0A0A0A] border border-[#2A2A2A] rounded-lg text-white placeholder-[#555] focus:border-[#FF1A1A] focus:outline-none transition-colors"
+              placeholder="https://..."
+              value={source}
+              onChange={(e) => setSource(e.target.value)}
+            />
+          </div>
+        </div>
 
         {/* GENERATE BUTTON */}
         <button
-          onClick={handleGenerate}
+          onClick={handleGenerating}
           disabled={loading}
-          className="bg-green-600 hover:bg-green-700 px-6 py-2 rounded font-semibold mb-6"
+          className="w-full bg-[#FF1A1A] hover:bg-[#B30000] disabled:bg-[#333] text-white font-semibold py-3 rounded-lg transition-all mb-10"
         >
-          {loading ? "Generating..." : "Generate"}
+          {loading ? (
+            <span className="flex items-center justify-center gap-2">
+              <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+              </svg>
+              กำลังสร้าง...
+            </span>
+          ) : (
+            "Generate"
+          )}
         </button>
 
-        {/* PREVIEW */}
+        {/* PREVIEW SECTION */}
         {articles.length > 0 && (
           <div>
-            <h2 className="text-xl font-bold mb-4">Preview & Edit</h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-lg font-semibold text-white">Preview & Edit</h2>
+              <span className="text-xs text-[#888] bg-[#1F1F1F] px-3 py-1 rounded-full">
+                {articles.length} บทความ
+              </span>
+            </div>
 
             {articles.map((a, i) => (
               <div
                 key={i}
-                className="mb-8 p-5 bg-[#111] border border-gray-800 rounded"
+                className="bg-[#111] rounded-xl p-6 mb-6 border border-[#1F1F1F]"
               >
                 {/* TITLE */}
-                <input
-                  className="w-full mb-2 p-2 bg-black border border-gray-700"
-                  value={a.title}
-                  onChange={(e) =>
-                    updateField(i, "title", e.target.value)
-                  }
-                />
+                <div className="mb-4">
+                  <label className="text-xs font-medium text-[#888] uppercase tracking-wider mb-2 block">
+                    Title
+                  </label>
+                  <input
+                    className="w-full p-3 bg-[#0A0A0A] border border-[#2A2A2A] rounded-lg text-white focus:border-[#FF1A1A] focus:outline-none transition-colors"
+                    value={a.title}
+                    onChange={(e) => updateField(i, "title", e.target.value)}
+                  />
+                </div>
 
                 {/* EXCERPT */}
-                <textarea
-                  className="w-full mb-3 p-2 bg-black border border-gray-700"
-                  value={a.excerpt}
-                  onChange={(e) =>
-                    updateField(i, "excerpt", e.target.value)
-                  }
-                />
+                <div className="mb-4">
+                  <label className="text-xs font-medium text-[#888] uppercase tracking-wider mb-2 block">
+                    Excerpt
+                  </label>
+                  <textarea
+                    className="w-full h-20 p-3 bg-[#0A0A0A] border border-[#2A2A2A] rounded-lg text-white focus:border-[#FF1A1A] focus:outline-none transition-colors resize-none"
+                    value={a.excerpt}
+                    onChange={(e) => updateField(i, "excerpt", e.target.value)}
+                  />
+                </div>
 
                 {/* CONTENT */}
-                <textarea
-                  className="w-full h-40 p-2 bg-black border border-gray-700 mb-3"
-                  value={a.content}
-                  onChange={(e) =>
-                    updateField(i, "content", e.target.value)
-                  }
-                />
+                <div className="mb-4">
+                  <label className="text-xs font-medium text-[#888] uppercase tracking-wider mb-2 block">
+                    Content
+                  </label>
+                  <textarea
+                    className="w-full h-40 p-3 bg-[#0A0A0A] border border-[#2A2A2A] rounded-lg text-white focus:border-[#FF1A1A] focus:outline-none transition-colors resize-none"
+                    value={a.content}
+                    onChange={(e) => updateField(i, "content", e.target.value)}
+                  />
+                </div>
 
                 {/* RENDER HTML */}
-                <div
-                  className="prose prose-invert mt-4"
-                  dangerouslySetInnerHTML={{ __html: a.content }}
-                />
+                <div className="border border-[#2A2A2A] rounded-lg p-4 bg-[#0A0A0A]">
+                  <p className="text-xs text-[#666] mb-2">Preview</p>
+                  <div
+                    className="prose prose-invert max-w-none text-sm text-[#E8E8E8]"
+                    dangerouslySetInnerHTML={{ __html: a.content }}
+                  />
+                </div>
               </div>
             ))}
 
             {/* SAVE BUTTON */}
             <button
               onClick={handleSave}
-              className="bg-red-600 hover:bg-red-700 px-6 py-2 rounded font-semibold"
+              className="w-full bg-[#4DCC8A] hover:bg-[#3AB872] text-black font-semibold py-3 rounded-lg transition-all"
             >
               Save to DB
             </button>
           </div>
         )}
-      </div>
+      </main>
     </div>
   );
 }
