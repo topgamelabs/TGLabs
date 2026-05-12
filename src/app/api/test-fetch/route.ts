@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server"
 
 import {
-  testSingleRss
-} from "@/lib/news/testSingleRss"
+  processFetchQueue
+} from "@/lib/news/processFetchQueue"
 
 export async function GET() {
 
-  await testSingleRss()
+  await processFetchQueue()
 
   return NextResponse.json({
     success: true
