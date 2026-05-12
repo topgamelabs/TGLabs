@@ -17,6 +17,8 @@ export async function collectRssNews() {
     return
   }
 
+  console.log("RSS SOURCES:", sources)
+
   for (const source of sources) {
 
     if (!source.rss_url) continue
