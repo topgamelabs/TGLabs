@@ -5,20 +5,18 @@ import { supabase } from "@/lib/supabase"
 const parser = new Parser()
 
 export async function collectRssNews() {
-  // supports_rss could be true or NULL, query both
   const { data: sources, error }
     = await supabase
       .from("news_sources")
       .select("*")
-      .eq("is_active", true)
-      .or("supports_rss.eq.true,supports_rss.is.null")
+      .not("rss_url", "is", null)
 
   if (error || !sources) {
     console.error(error)
     return
   }
 
-  console.log("RSS SOURCES:", sources)
+  console.log("ALL SOURCES:", sources)
 
   for (const source of sources) {
 
