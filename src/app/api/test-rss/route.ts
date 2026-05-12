@@ -1,14 +1,13 @@
 import { NextResponse } from "next/server"
 
-import {
-  collectRssNews
-} from "@/lib/news/collectRssNews"
+import { supabase }
+from "@/lib/supabase"
 
 export async function GET() {
 
-  await collectRssNews()
+  const result = await supabase
+    .from("news_sources")
+    .select("*")
 
-  return NextResponse.json({
-    success: true
-  })
+  return NextResponse.json(result)
 }
