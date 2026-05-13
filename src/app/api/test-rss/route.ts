@@ -6,9 +6,7 @@ import {
 
 export async function GET() {
 
-  await testSingleRss()
+  const result = await testSingleRss()
 
-  return NextResponse.json({
-    success: true
-  })
+  return NextResponse.json(result)
 }

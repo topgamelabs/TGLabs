@@ -35,6 +35,7 @@ export default function GeneratePage() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-tglabs-manual-tool": "admin-generate",
       },
       body: JSON.stringify(body),
     });
@@ -55,6 +56,7 @@ export default function GeneratePage() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-tglabs-manual-tool": "admin-generate",
       },
       body: JSON.stringify({
         action: "save",

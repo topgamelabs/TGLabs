@@ -255,6 +255,17 @@ function safe(data: any, fallbackTitle: string) {
 // =========================
 export async function POST(req: Request) {
   try {
+    if (req.headers.get("x-tglabs-manual-tool") !== "admin-generate") {
+      return NextResponse.json(
+        {
+          error: "legacy_ai_route_manual_only",
+          message:
+            "Autonomous rewrite must use the OpenClaw candidate queue, not this legacy URL route.",
+        },
+        { status: 403 }
+      );
+    }
+
     const body = await req.json();
 
     // =========================

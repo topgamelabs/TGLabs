@@ -1,50 +1,33 @@
-import { NextResponse } from "next/server";
-import Parser from "rss-parser";
-import { processNewsURL } from "@/lib/aiNews";
+import { NextResponse } from "next/server"
+import { collectNewsLinks } from "@/lib/news/collectRssNews"
+import { processFetchQueue } from "@/lib/news/processFetchQueue"
+import { processFreshnessValidation } from "@/lib/news/processFreshnessValidation"
 
-const parser = new Parser();
-
-// 🔥 ใช้ feed ที่เสถียรกว่า
-const FEEDS = [
-  "https://feeds.feedburner.com/ign/all",
-  "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
-];
+export const runtime = "nodejs"
 
 export async function GET() {
   try {
-    let total = 0;
-
-    for (const feed of FEEDS) {
-      try {
-        console.log("FETCH RSS:", feed);
-
-        const data = await parser.parseURL(feed);
-        const items = data.items.slice(0, 2);
-
-        console.log("FOUND:", items.length);
-
-        for (const item of items) {
-          if (!item.link) continue;
-
-          console.log("PROCESS:", item.link);
-
-          await processNewsURL(item.link);
-          total++;
-        }
-      } catch (err: any) {
-        console.error("RSS ERROR:", feed, err.message);
-        continue; // 🔥 ข้าม feed ที่พัง
-      }
-    }
+    const collection = await collectNewsLinks()
+    await processFreshnessValidation()
+    await processFetchQueue()
 
     return NextResponse.json({
       success: true,
-      processed: total,
-    });
-  } catch (err: any) {
-    console.error("CRON ERROR:", err);
-    return NextResponse.json({
-      error: err.message,
-    });
+      stage: "ingestion",
+      collection,
+      aiWriter: "disabled",
+    })
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "CRON_FAILED"
+
+    console.error("INGESTION CRON ERROR:", message)
+
+    return NextResponse.json(
+      {
+        success: false,
+        error: message,
+      },
+      { status: 500 }
+    )
   }
 }

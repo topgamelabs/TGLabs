@@ -1,60 +1,43 @@
 import Parser from "rss-parser"
+import { fetchWithRetry } from "./fetchWithRetry"
 
 const parser = new Parser()
 
 export async function testSingleRss() {
-
   try {
+    const fetched = await fetchWithRetry("https://www.gematsu.com/feed", {
+      contentType: "rss",
+      retries: 2,
+      timeoutMs: 12000,
+    })
 
-    const response = await fetch(
-      "https://www.gematsu.com/feed",
-      {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+    console.log("STATUS:", fetched.status)
+    console.log("ATTEMPTS:", fetched.attempts)
 
-          "Accept":
-            "application/rss+xml, application/xml"
-        }
-      }
-    )
-
-    console.log(
-      "STATUS:",
-      response.status
-    )
-
-    if (!response.ok) {
-      throw new Error(
-        `HTTP ${response.status}`
-      )
+    if (!fetched.ok) {
+      throw new Error(fetched.error || `HTTP ${fetched.status}`)
     }
 
-    const xml = await response.text()
+    const feed = await parser.parseString(fetched.body)
 
-    const feed =
-      await parser.parseString(xml)
+    console.log("TITLE:", feed.title)
+    console.log("ITEMS:", feed.items.length)
+    console.log("FIRST:", feed.items[0])
 
-    console.log(
-      "TITLE:",
-      feed.title
-    )
+    return {
+      success: true,
+      status: fetched.status,
+      items: feed.items.length,
+      title: feed.title,
+    }
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "RSS_TEST_FAILED"
 
-    console.log(
-      "ITEMS:",
-      feed.items.length
-    )
+    console.error("RSS TEST FAILED:", message)
 
-    console.log(
-      "FIRST:",
-      feed.items[0]
-    )
-
-  } catch (error: any) {
-
-    console.error(
-      "RSS TEST FAILED:",
-      error.message
-    )
+    return {
+      success: false,
+      error: message,
+    }
   }
 }
