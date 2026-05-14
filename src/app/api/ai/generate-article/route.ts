@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { extract } from "@extractus/article-extractor";
 
+export const dynamic = 'force-dynamic';
+
 // =========================
 // SLUG
 // =========================

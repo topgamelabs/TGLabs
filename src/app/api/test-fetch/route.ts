@@ -4,6 +4,8 @@ import {
   processFetchQueue
 } from "@/lib/news/processFetchQueue"
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
 
   await processFetchQueue()
