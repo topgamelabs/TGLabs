@@ -348,12 +348,6 @@ if (article?.id) {
                 alt={article.title}
                 className="w-full h-[400px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/[0.7] to-transparent" />
-              {article.hero_caption && (
-                <p className="absolute bottom-4 left-4 right-4 text-[12px] text-white/[0.6] italic text-center">
-                  {article.hero_caption}
-                </p>
-              )}
             </div>
 
             {/* Article Header */}

@@ -66,11 +66,7 @@ export default function Home() {
   const heroArticle = articles[0] || null;
   const latestArticles = articles.slice(1, 5);
   const trendingArticles = articles.slice(1, 5);
-  const mobileArticles = articles.filter(a => {
-    if (a.category?.toLowerCase() === "mobile") return true;
-    const game = a.games;
-    return game?.platform === "mobile" || game?.platform === "cross-platform";
-  }).slice(0, 4);
+  const mobileArticles = articles.filter(a => a.category?.toLowerCase() === "mobile").slice(0, 4);
 
   // Coming Soon Toast
   useEffect(() => {
@@ -107,6 +103,7 @@ export default function Home() {
           <div className="hidden lg:flex items-center gap-6">
             <a href="/" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Home</a>
             <a href="/news" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">News</a>
+            <a href="/news/mobile" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Mobile</a>
             <button onClick={() => setComingSoon(true)} className="text-[13px] text-white/[0.7] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">Guides</button>
             <button onClick={() => setComingSoon(true)} className="text-[13px] text-white/[0.7] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">Reviews</button>
             <button onClick={() => setComingSoon(true)} className="text-[13px] text-white/[0.7] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">IT Gadget</button>
@@ -158,6 +155,7 @@ export default function Home() {
               <div className="max-w-[1280px] mx-auto px-4 py-3 flex flex-col gap-1">
                 <a href="/" className="text-[14px] text-white py-2">Home</a>
                 <a href="/news" className="text-[14px] text-white py-2">News</a>
+                <a href="/news/mobile" className="text-[14px] text-white py-2">Mobile</a>
                 <button onClick={() => setComingSoon(true)} className="text-[14px] text-white py-2 text-left cursor-pointer bg-transparent border-none p-0">Guides</button>
                 <button onClick={() => setComingSoon(true)} className="text-[14px] text-white py-2 text-left cursor-pointer bg-transparent border-none p-0">Reviews</button>
                 <button onClick={() => setComingSoon(true)} className="text-[14px] text-white py-2 text-left cursor-pointer bg-transparent border-none p-0">IT Gadget</button>
@@ -175,24 +173,24 @@ export default function Home() {
         </div>
 
         {/* ========== HERO SECTION ========== */}
-        <section className="mt-4 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4 lg:h-[clamp(280px,42vw,380px)]">
+        <section className="mt-4 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4">
 
           {/* Main Hero Card */}
           <a
             href={heroArticle ? `/news/${heroArticle.slug}` : "/news"}
-            className="relative overflow-hidden rounded-xl cursor-pointer group min-h-[280px] block"
+            className="relative overflow-hidden rounded-xl cursor-pointer group min-h-[280px] aspect-[16/9] block"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a14] to-[#070707]" />
             {!loading && heroArticle?.hero_image ? (
               <img
                 src={heroArticle.hero_image}
                 alt={heroArticle.title || "Featured"}
-                className="absolute inset-0 w-full h-full object-cover opacity-60"
+                className="absolute inset-0 w-full h-full object-cover opacity-90"
               />
             ) : (
               <div className="absolute inset-0 bg-[#1A1A1A] animate-pulse" />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/[0.9] via-black/[0.4] to-black/[0.2]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/[0.6] via-black/[0.2] to-black/[0.05]" />
             <div className="relative z-10 h-full flex flex-col justify-end p-6">
               <div className="mb-2">
                 {loading ? (
@@ -288,8 +286,8 @@ export default function Home() {
                 {loading ? (
                   [1, 2, 3, 4].map((i) => (
                     <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden animate-pulse">
-                      <div className="aspect-[16/10] bg-[#1A1A1A]" />
-                      <div className="p-4">
+                      <div className="aspect-[16/9] bg-[#1A1A1A]" />
+                      <div className="p-3">
                         <div className="h-[10px] bg-[#1A1A1A] rounded w-1/2 mb-3" />
                         <div className="h-[14px] bg-[#1A1A1A] rounded w-3/4 mb-2" />
                         <div className="h-[10px] bg-[#1A1A1A] rounded w-1/3" />
@@ -302,7 +300,7 @@ export default function Home() {
                     href={`/news/${card.slug}`}
                     className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] cursor-pointer group hover:-translate-y-[4px] hover:border-[#FF1A1A]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300"
                   >
-                    <div className="aspect-[16/10] relative overflow-hidden">
+                    <div className="aspect-[16/9] relative overflow-hidden">
                       {card.hero_image ? (
                         <img
                           src={card.hero_image}
@@ -313,7 +311,7 @@ export default function Home() {
                         <div className="w-full h-full bg-[#1A1A1A]" />
                       )}
                     </div>
-                    <div className="p-4">
+                    <div className="p-3">
                       <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#FF1A1A] mb-2">{card.category?.toUpperCase()}</div>
                       <div className="font-['Kanit'] text-[14px] font-medium text-white leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
                       <div className="text-[11px] text-[#AAAAAA] mt-2">{card.read_time || 3} min read</div>
@@ -322,8 +320,8 @@ export default function Home() {
                 )) : (
                   [1, 2, 3, 4].map((i) => (
                     <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden">
-                      <div className="aspect-[16/10] bg-[#1A1A1A]" />
-                      <div className="p-4">
+                      <div className="aspect-[16/9] bg-[#1A1A1A]" />
+                      <div className="p-3">
                         <div className="h-[10px] bg-[#1A1A1A] rounded w-1/2 mb-3" />
                         <div className="h-[14px] bg-[#1A1A1A] rounded w-3/4 mb-2" />
                         <div className="h-[10px] bg-[#1A1A1A] rounded w-1/3" />
@@ -347,8 +345,8 @@ export default function Home() {
                 {loading ? (
                   [1, 2, 3, 4].map((i) => (
                     <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden animate-pulse">
-                      <div className="aspect-[16/10] bg-[#1A1A1A]" />
-                      <div className="p-4">
+                      <div className="aspect-[16/9] bg-[#1A1A1A]" />
+                      <div className="p-3">
                         <div className="h-[10px] bg-[#1A1A1A] rounded w-1/2 mb-3" />
                         <div className="h-[14px] bg-[#1A1A1A] rounded w-3/4 mb-2" />
                         <div className="h-[10px] bg-[#1A1A1A] rounded w-1/3" />
@@ -361,7 +359,7 @@ export default function Home() {
                     href={`/news/${card.slug}`}
                     className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] cursor-pointer group hover:-translate-y-[4px] hover:border-[#FF1A1A]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300"
                   >
-                    <div className="aspect-[16/10] relative overflow-hidden">
+                    <div className="aspect-[16/9] relative overflow-hidden">
                       {card.hero_image ? (
                         <img
                           src={card.hero_image}
@@ -372,7 +370,7 @@ export default function Home() {
                         <div className="w-full h-full bg-[#1A1A1A]" />
                       )}
                     </div>
-                    <div className="p-4">
+                    <div className="p-3">
                       <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#FF1A1A] mb-2">{card.category?.toUpperCase()}</div>
                       <div className="font-['Kanit'] text-[14px] font-medium text-white leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
                       <div className="text-[11px] text-[#AAAAAA] mt-2">{card.read_time || 3} min read</div>
@@ -381,8 +379,8 @@ export default function Home() {
                 )) : (
                   [1, 2, 3, 4].map((i) => (
                     <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden">
-                      <div className="aspect-[16/10] bg-[#1A1A1A]" />
-                      <div className="p-4">
+                      <div className="aspect-[16/9] bg-[#1A1A1A]" />
+                      <div className="p-3">
                         <div className="h-[10px] bg-[#1A1A1A] rounded w-1/2 mb-3" />
                         <div className="h-[14px] bg-[#1A1A1A] rounded w-3/4 mb-2" />
                         <div className="h-[10px] bg-[#1A1A1A] rounded w-1/3" />
