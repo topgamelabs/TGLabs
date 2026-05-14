@@ -67,3 +67,30 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* Article HTML Content - Bullet List Styling */
+article ul,
+.article-content ul {
+  margin: 16px 0;
+  padding: 16px 20px;
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-left: 3px solid #FF1A1A;
+  background: rgba(255,26,26,0.05);
+  border-radius: 0 8px 8px 0;
+}
+
+article ul li,
+.article-content ul li {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  list-style-type: disc;
+}
+
+article ul li::marker,
+.article-content ul li::marker {
+  color: #FF1A1A;
+}
