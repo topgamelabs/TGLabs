@@ -473,7 +473,7 @@ export default function Home() {
 
             {/* Boss Timer */}
             <a
-              href="/boss"
+              href="https://bosstimer.tglabs.info/"
               className="bg-[#0D0D0D] rounded-[10px] p-4 border border-white/[0.06] cursor-pointer group hover:-translate-y-[2px] hover:border-[#FF1A1A]/30 transition-all duration-200"
             >
               <div className="flex items-center gap-3">
@@ -567,7 +567,7 @@ export default function Home() {
             <div>
               <div className="font-['Kanit'] text-[13px] font-semibold text-white uppercase tracking-[1px] mb-4">Tools</div>
               <div className="flex flex-col gap-2">
-                <a href="/boss" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Boss Timer</a>
+                <a href="https://bosstimer.tglabs.info/" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Boss Timer</a>
                 <a href="/tierlist" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Tier List</a>
                 <a href="/codes" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Codes</a>
               </div>

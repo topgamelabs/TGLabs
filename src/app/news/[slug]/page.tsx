@@ -580,7 +580,7 @@ if (article?.id) {
             <div>
               <div className="font-['Kanit'] text-[13px] font-semibold text-white uppercase tracking-[1px] mb-4">Tools</div>
               <div className="flex flex-col gap-2">
-                <a href="/boss" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Boss Timer</a>
+                <a href="https://bosstimer.tglabs.info/" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Boss Timer</a>
                 <a href="/tierlist" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Tier List</a>
                 <a href="/codes" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Codes</a>
               </div>
