@@ -29,6 +29,9 @@ export async function generateMetadata({
   return {
     title: article.seo_title || article.title,
     description: article.seo_description || article.excerpt,
+    alternates: {
+      canonical: `https://www.tglabs.info/news/${slug}`,
+    },
     openGraph: {
       type: "article",
       title: article.seo_title || article.title,
