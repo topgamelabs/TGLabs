@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { getArticles, getGames, type Article, type Game } from "@/lib/supabase";
 
 // Category badge colors
@@ -84,7 +85,7 @@ export default function Home() {
         <div className="max-w-[1280px] mx-auto px-4 h-full flex items-center justify-between">
 
           {/* Logo */}
-          <a href="/" className="flex items-center gap-[10px] flex-shrink-0">
+          <Link href="/" className="flex items-center gap-[10px] flex-shrink-0">
             <img
               src="https://www.tglabs.info/images/logo.png"
               alt="TopGame Thailand"
@@ -97,13 +98,13 @@ export default function Home() {
               </span>
               <span className="text-[8px] tracking-[3px] text-white/[0.4] uppercase">Thailand</span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-6">
-            <a href="/" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Home</a>
-            <a href="/news" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">News</a>
-            <a href="/news/mobile" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Mobile</a>
+            <Link href="/" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Home</Link>
+            <Link href="/news" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">News</Link>
+            <Link href="/news/mobile" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Mobile</Link>
             <button onClick={() => setComingSoon(true)} className="text-[13px] text-white/[0.7] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">Guides</button>
             <button onClick={() => setComingSoon(true)} className="text-[13px] text-white/[0.7] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">Reviews</button>
             <button onClick={() => setComingSoon(true)} className="text-[13px] text-white/[0.7] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">IT Gadget</button>
@@ -153,9 +154,9 @@ export default function Home() {
           {mobileNavOpen && (
             <div className="lg:hidden border-t border-white/[0.06] bg-[#000000]">
               <div className="max-w-[1280px] mx-auto px-4 py-3 flex flex-col gap-1">
-                <a href="/" className="text-[14px] text-white py-2">Home</a>
-                <a href="/news" className="text-[14px] text-white py-2">News</a>
-                <a href="/news/mobile" className="text-[14px] text-white py-2">Mobile</a>
+                <Link href="/" className="text-[14px] text-white py-2">Home</Link>
+                <Link href="/news" className="text-[14px] text-white py-2">News</Link>
+                <Link href="/news/mobile" className="text-[14px] text-white py-2">Mobile</Link>
                 <button onClick={() => setComingSoon(true)} className="text-[14px] text-white py-2 text-left cursor-pointer bg-transparent border-none p-0">Guides</button>
                 <button onClick={() => setComingSoon(true)} className="text-[14px] text-white py-2 text-left cursor-pointer bg-transparent border-none p-0">Reviews</button>
                 <button onClick={() => setComingSoon(true)} className="text-[14px] text-white py-2 text-left cursor-pointer bg-transparent border-none p-0">IT Gadget</button>
@@ -280,7 +281,7 @@ export default function Home() {
                   <span className="text-[20px]">🔥</span>
                   <h2 className="font-['Kanit'] text-[18px] font-semibold text-white">Trending</h2>
                 </div>
-                <a href="/trending" className="text-[12px] text-white/[0.3] hover:text-white transition-colors">View All →</a>
+                <Link href="/trending" className="text-[12px] text-white/[0.3] hover:text-white transition-colors">View All →</Link>
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 {loading ? (
@@ -295,7 +296,7 @@ export default function Home() {
                     </div>
                   ))
                 ) : trendingArticles.length > 0 ? trendingArticles.map((card, i) => (
-                  <a
+                  <Link
                     key={card.id || i}
                     href={`/news/${card.slug}`}
                     className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] cursor-pointer group hover:-translate-y-[4px] hover:border-[#FF1A1A]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300"
@@ -316,7 +317,7 @@ export default function Home() {
                       <div className="font-['Kanit'] text-[14px] font-medium text-white leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
                       <div className="text-[11px] text-[#AAAAAA] mt-2">{card.read_time || 3} min read</div>
                     </div>
-                  </a>
+                  </Link>
                 )) : (
                   [1, 2, 3, 4].map((i) => (
                     <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden">
@@ -339,7 +340,7 @@ export default function Home() {
                   <span className="text-[20px]">📱</span>
                   <h2 className="font-['Kanit'] text-[18px] font-semibold text-white">Mobile Games</h2>
                 </div>
-                <a href="/mobile" className="text-[12px] text-white/[0.3] hover:text-white transition-colors">View All →</a>
+                <Link href="/mobile" className="text-[12px] text-white/[0.3] hover:text-white transition-colors">View All →</Link>
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                 {loading ? (
@@ -354,7 +355,7 @@ export default function Home() {
                     </div>
                   ))
                 ) : mobileArticles.length > 0 ? mobileArticles.map((card, i) => (
-                  <a
+                  <Link
                     key={card.id || i}
                     href={`/news/${card.slug}`}
                     className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] cursor-pointer group hover:-translate-y-[4px] hover:border-[#FF1A1A]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300"
@@ -375,7 +376,7 @@ export default function Home() {
                       <div className="font-['Kanit'] text-[14px] font-medium text-white leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
                       <div className="text-[11px] text-[#AAAAAA] mt-2">{card.read_time || 3} min read</div>
                     </div>
-                  </a>
+                  </Link>
                 )) : (
                   [1, 2, 3, 4].map((i) => (
                     <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden">
@@ -413,7 +414,7 @@ export default function Home() {
               </div>
               <div>
                 {trendingArticles.slice(0, 5).map((item, i) => (
-                  <a
+                  <Link
                     key={item.id || i}
                     href={`/news/${item.slug}`}
                     className="flex gap-3 px-4 py-3 hover:bg-white/[0.03] transition-colors"
@@ -425,7 +426,7 @@ export default function Home() {
                       <div className="text-[13px] text-white leading-[1.4] line-clamp-2">{item.title}</div>
                       <div className="text-[11px] text-[#AAAAAA] mt-1">{item.read_time || 3} min read</div>
                     </div>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -443,14 +444,14 @@ export default function Home() {
                   { name: "💻 IT Gadget", href: "/it-gadget", count: "43" },
                   { name: "🏆 Tournament", href: "/tournament", count: "67" },
                 ].map((cat) => (
-                  <a
+                  <Link
                     key={cat.href}
                     href={cat.href}
                     className="flex justify-between py-2 border-b border-white/[0.05] text-[13px] text-[#AAAAAA] last:border-0 hover:text-white transition-colors"
                   >
                     <span>{cat.name}</span>
                     <span className="text-[#666666]">{cat.count}</span>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -556,10 +557,10 @@ export default function Home() {
             <div>
               <div className="font-['Kanit'] text-[13px] font-semibold text-white uppercase tracking-[1px] mb-4">Content</div>
               <div className="flex flex-col gap-2">
-                <a href="/news" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">ข่าวสาร</a>
-                <a href="/reviews" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">รีวิว</a>
-                <a href="/guides" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">เทคนิค</a>
-                <a href="/it-gadget" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">IT Gadget</a>
+                <Link href="/news" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">ข่าวสาร</Link>
+                <Link href="/reviews" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">รีวิว</Link>
+                <Link href="/guides" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">เทคนิค</Link>
+                <Link href="/it-gadget" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">IT Gadget</Link>
               </div>
             </div>
 
@@ -568,8 +569,8 @@ export default function Home() {
               <div className="font-['Kanit'] text-[13px] font-semibold text-white uppercase tracking-[1px] mb-4">Tools</div>
               <div className="flex flex-col gap-2">
                 <a href="https://bosstimer.tglabs.info/" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Boss Timer</a>
-                <a href="/tierlist" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Tier List</a>
-                <a href="/codes" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Codes</a>
+                <Link href="/tierlist" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Tier List</Link>
+                <Link href="/codes" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Codes</Link>
               </div>
             </div>
 

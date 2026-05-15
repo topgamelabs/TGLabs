@@ -15,6 +15,13 @@ interface RawNewsQueueRow {
 }
 
 export async function processFetchQueue() {
+  const result = {
+    processed: 0,
+    fetched: 0,
+    rejectedDuplicate: 0,
+    failed: 0,
+  }
+
   const { data, error } = await supabaseAdmin
     .from("raw_news_queue")
     .select("*")
@@ -25,10 +32,11 @@ export async function processFetchQueue() {
 
   if (error || !data) {
     console.error("[FETCH] Failed to load queue", error?.message)
-    return
+    return result
   }
 
   for (const row of data as RawNewsQueueRow[]) {
+    result.processed++
     console.log(`[FETCH] ${row.source_url}`)
 
     const fetched = await fetchWithRetry(row.source_url, {
@@ -84,6 +92,7 @@ export async function processFetchQueue() {
         }
 
         console.log(`[FETCH DUPLICATE] ${row.source_url}`)
+        result.rejectedDuplicate++
         continue
       }
 
@@ -108,11 +117,13 @@ export async function processFetchQueue() {
       }
 
       console.log(`[FETCH SUCCESS] ${row.source_url}`)
+      result.fetched++
     } catch (error) {
       const message = error instanceof Error ? error.message : "FETCH_FAILED"
       const nextStatus = attempts >= MAX_FETCH_ATTEMPTS ? "failed" : "pending"
 
       console.error(`[FETCH FAILED] ${row.source_url}`, message)
+      result.failed++
 
       const { error: updateError } = await supabaseAdmin
         .from("raw_news_queue")
@@ -129,4 +140,6 @@ export async function processFetchQueue() {
       }
     }
   }
+
+  return result
 }

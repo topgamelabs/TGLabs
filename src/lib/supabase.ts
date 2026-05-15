@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
+import { getPublicSupabaseConfig } from "@/lib/env";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://pegajhvjrldsdzfyppcv.supabase.co';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZ2FqaHZqcmxkc2R6ZnlwcGN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyMjQ1NjUsImV4cCI6MjA5MDgwMDU2NX0.QKo9tTznbgqbCAPAow6DxZXBa_T69PM-yq4PUoD0hhM';
+const { url: supabaseUrl, anonKey: supabaseAnonKey } = getPublicSupabaseConfig();
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
@@ -60,12 +60,12 @@ export async function getGames(): Promise<Game[]> {
 }
 
 // Fetch published articles with optional filters
-const SUPABASE_REST_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://pegajhvjrldsdzfyppcv.supabase.co';
-const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZ2FqaHZqcmxkc2R6ZnlwcGN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyMjQ1NjUsImV4cCI6MjA5MDgwMDU2NX0.QKo9tTznbgqbCAPAow6DxZXBa_T69PM-yq4PUoD0hhM';
+const SUPABASE_REST_URL = supabaseUrl;
+const SUPABASE_ANON_KEY = supabaseAnonKey;
 
 export async function getArticles({ limit = 10 } = {}) {
   const res = await fetch(
-    `${SUPABASE_REST_URL}/rest/v1/articles?select=*&order=created_at.desc&limit=${limit}`,
+    `${SUPABASE_REST_URL}/rest/v1/articles?select=*&is_published=eq.true&order=created_at.desc&limit=${limit}`,
     {
       headers: {
         apikey: SUPABASE_ANON_KEY!,
@@ -76,8 +76,6 @@ export async function getArticles({ limit = 10 } = {}) {
 
 
   const data = await res.json();
-  console.log("ARTICLES:", data);
-
   if (!Array.isArray(data)) {
     console.error("[getArticles] ERROR: unexpected response", data);
     return [];

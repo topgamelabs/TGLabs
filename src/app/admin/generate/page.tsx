@@ -2,11 +2,28 @@
 
 import { useState } from "react";
 
+interface GeneratedArticle {
+  title: string;
+  excerpt: string;
+  content: string;
+  seo_title?: string;
+  seo_description?: string;
+  hero_image?: string | null;
+  _tempSlug?: string;
+}
+
+type GenerateBody = {
+  action: "generate";
+  mode: "keyword" | "rewrite" | "url";
+  url?: string;
+  inputs?: string[];
+};
+
 export default function GeneratePage() {
   const [mode, setMode] = useState<"keyword" | "rewrite" | "url">("keyword");
   const [input, setInput] = useState("");
   const [source, setSource] = useState("");
-  const [articles, setArticles] = useState<any[]>([]);
+  const [articles, setArticles] = useState<GeneratedArticle[]>([]);
   const [loading, setLoading] = useState(false);
 
   // ========================
@@ -15,7 +32,7 @@ export default function GeneratePage() {
   const handleGenerating = async () => {
     setLoading(true);
 
-    let body: any = {
+    const body: GenerateBody = {
       action: "generate",
       mode,
     };
@@ -72,7 +89,7 @@ export default function GeneratePage() {
   // ========================
   // EDIT
   // ========================
-  const updateField = (i: number, field: string, value: string) => {
+  const updateField = (i: number, field: keyof GeneratedArticle, value: string) => {
     const updated = [...articles];
     updated[i][field] = value;
     setArticles(updated);

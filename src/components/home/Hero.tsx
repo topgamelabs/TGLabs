@@ -143,7 +143,7 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
             position: "relative",
           }}
         >
-          // MOBILE GAMING HUB · TH //
+          {/* MOBILE GAMING HUB · TH */}
         </div>
 
         {/* Logo — 40% larger on desktop */}
@@ -348,7 +348,7 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
             textAlign: "center",
           }}
         >
-          // Featured Content //
+          {/* Featured Content */}
         </div>
 
         <div
@@ -694,7 +694,7 @@ export function Hero({ games, onSelect }: HeroProps): React.JSX.Element {
             textTransform: "uppercase",
           }}
         >
-          // Tree of Savior M //
+          {/* Tree of Savior M */}
         </div>
         <div
           style={{

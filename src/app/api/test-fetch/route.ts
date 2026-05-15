@@ -8,9 +8,10 @@ export const dynamic = 'force-dynamic'
 
 export async function GET() {
 
-  await processFetchQueue()
+  const result = await processFetchQueue()
 
   return NextResponse.json({
-    success: true
+    success: true,
+    result
   })
 }

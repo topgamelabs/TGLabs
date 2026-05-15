@@ -2,8 +2,8 @@
  * Regenerate all articles from template data
  */
 
-const SUPABASE_URL = 'https://pegajhvjrldsdzfyppcv.supabase.co';
-const SERVICE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZ2FqaHZqcmxkc2R6ZnlwcGN2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTIyNDU2NSwiZXhwIjoyMDkwODAwNTY1fQ.vwYsQF5V9TnOU9bRTpkJjXZ9CXX-tQE8V8yLqpzlmMQ';
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const TEMPLATES = [
   {

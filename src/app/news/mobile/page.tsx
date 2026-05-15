@@ -72,7 +72,7 @@ export default async function MobileNewsPage() {
 
           {/* ========== ARTICLES GRID ========== */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {Array.isArray(mobileArticles) && mobileArticles.length > 0 ? mobileArticles.map((a: any) => (
+            {Array.isArray(mobileArticles) && mobileArticles.length > 0 ? mobileArticles.map((a) => (
               <Link
                 key={a.id}
                 href={`/news/${a.slug}`}
@@ -128,7 +128,7 @@ export default async function MobileNewsPage() {
                 🔥 Trending Mobile
               </div>
               <div>
-                {(Array.isArray(mobileArticles) ? mobileArticles.slice(0, 5) : []).map((item: any, i: number) => (
+                {(Array.isArray(mobileArticles) ? mobileArticles.slice(0, 5) : []).map((item, i) => (
                   <Link
                     key={item.id || i}
                     href={`/news/${item.slug}`}
@@ -160,14 +160,14 @@ export default async function MobileNewsPage() {
                   { name: "💻 IT Gadget", href: "/it-gadget", count: "43" },
                   { name: "🏆 Tournament", href: "/tournament", count: "67" },
                 ].map((cat) => (
-                  <a
+                  <Link
                     key={cat.href}
                     href={cat.href}
                     className="flex justify-between py-2 border-b border-white/[0.05] last:border-0 text-[13px] text-[#AAAAAA] hover:text-white transition-colors"
                   >
                     <span>{cat.name}</span>
                     <span className="text-[#666666]">{cat.count}</span>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -206,19 +206,19 @@ export default async function MobileNewsPage() {
             <div>
               <div className="font-['Kanit'] text-[13px] font-semibold text-white uppercase tracking-[1px] mb-4">Content</div>
               <div className="flex flex-col gap-2">
-                <a href="/news" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">ข่าวสาร</a>
-                <a href="/news/mobile" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">เกมมือถือ</a>
-                <a href="/reviews" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">รีวิว</a>
-                <a href="/guides" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">เทคนิค</a>
-                <a href="/it-gadget" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">IT Gadget</a>
+                <Link href="/news" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">ข่าวสาร</Link>
+                <Link href="/news/mobile" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">เกมมือถือ</Link>
+                <Link href="/reviews" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">รีวิว</Link>
+                <Link href="/guides" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">เทคนิค</Link>
+                <Link href="/it-gadget" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">IT Gadget</Link>
               </div>
             </div>
             <div>
               <div className="font-['Kanit'] text-[13px] font-semibold text-white uppercase tracking-[1px] mb-4">Tools</div>
               <div className="flex flex-col gap-2">
                 <a href="https://bosstimer.tglabs.info/" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Boss Timer</a>
-                <a href="/tierlist" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Tier List</a>
-                <a href="/codes" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Codes</a>
+                <Link href="/tierlist" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Tier List</Link>
+                <Link href="/codes" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Codes</Link>
               </div>
             </div>
           </div>

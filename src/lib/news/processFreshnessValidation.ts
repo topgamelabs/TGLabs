@@ -8,6 +8,13 @@ interface FreshnessQueueRow {
 }
 
 export async function processFreshnessValidation() {
+  const result = {
+    processed: 0,
+    accepted: 0,
+    rejected: 0,
+    pendingDateExtraction: 0,
+  }
+
   const { data, error } = await supabaseAdmin
     .from("raw_news_queue")
     .select("*")
@@ -15,10 +22,12 @@ export async function processFreshnessValidation() {
 
   if (error || !data) {
     console.error("[Freshness] Failed to load queue", error?.message)
-    return
+    return result
   }
 
   for (const row of data as FreshnessQueueRow[]) {
+    result.processed++
+
     if (!row.published_source_at) {
       await supabaseAdmin
         .from("raw_news_queue")
@@ -31,19 +40,27 @@ export async function processFreshnessValidation() {
       console.log(
         `[Freshness] ${row.raw_title || row.id} => pending_missing_date`
       )
+      result.pendingDateExtraction++
       continue
     }
 
-    const result = validateFreshness(row.published_source_at)
+    const freshness = validateFreshness(row.published_source_at)
 
     await supabaseAdmin
       .from("raw_news_queue")
       .update({
-        freshness_status: result.status,
-        freshness_reason: result.reason,
+        freshness_status: freshness.status,
+        freshness_reason: freshness.reason,
       })
       .eq("id", row.id)
 
-    console.log(`[Freshness] ${row.raw_title || row.id} => ${result.status}`)
+    console.log(`[Freshness] ${row.raw_title || row.id} => ${freshness.status}`)
+    if (freshness.status === "accepted") {
+      result.accepted++
+    } else {
+      result.rejected++
+    }
   }
+
+  return result
 }

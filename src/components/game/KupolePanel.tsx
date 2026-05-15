@@ -45,6 +45,41 @@ const SORT_OPTIONS = [
   { value: "tier-desc", label: "Overall Tier (High→Low)" },
 ];
 
+function FilterPill({
+  options,
+  value,
+  onChange,
+}: {
+  options: string[];
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+      {options.map((opt) => (
+        <button
+          key={opt}
+          onClick={() => onChange(opt)}
+          style={{
+            padding: "4px 10px",
+            borderRadius: 20,
+            border: `1px solid ${value === opt ? "#9d6fff44" : "rgba(100,80,200,0.15)"}`,
+            background: value === opt ? "rgba(157,111,255,0.15)" : "transparent",
+            color: value === opt ? "#c4a0ff" : "#5a5478",
+            fontFamily: "monospace",
+            fontSize: 10,
+            cursor: "pointer",
+            letterSpacing: 0.5,
+            transition: "all 0.15s",
+          }}
+        >
+          {opt}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 const TIER_ORDER: Record<string, number> = {
   "OP": 0,
   "SS": 1,
@@ -561,39 +596,6 @@ export function KupolePanel(): React.JSX.Element {
 
     return list;
   }, [search, typeFilter, gradeFilter, sortBy]);
-
-  const FilterPill = ({
-    options,
-    value,
-    onChange,
-  }: {
-    options: string[];
-    value: string;
-    onChange: (v: string) => void;
-  }) => (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-      {options.map((opt) => (
-        <button
-          key={opt}
-          onClick={() => onChange(opt)}
-          style={{
-            padding: "4px 10px",
-            borderRadius: 20,
-            border: `1px solid ${value === opt ? "#9d6fff44" : "rgba(100,80,200,0.15)"}`,
-            background: value === opt ? "rgba(157,111,255,0.15)" : "transparent",
-            color: value === opt ? "#c4a0ff" : "#5a5478",
-            fontFamily: "monospace",
-            fontSize: 10,
-            cursor: "pointer",
-            letterSpacing: 0.5,
-            transition: "all 0.15s",
-          }}
-        >
-          {opt}
-        </button>
-      ))}
-    </div>
-  );
 
   return (
     <>

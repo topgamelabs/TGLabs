@@ -3,9 +3,10 @@ import { processFreshnessValidation }
   from "@/lib/news/processFreshnessValidation"
 
 export async function GET() {
-  await processFreshnessValidation()
+  const result = await processFreshnessValidation()
 
   return NextResponse.json({
-    success: true
+    success: true,
+    result
   })
 }

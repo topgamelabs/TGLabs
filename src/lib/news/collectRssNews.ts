@@ -4,7 +4,7 @@ import {
   type DiscoveredNewsLink,
   type NewsSourceConfig,
 } from "./discoverNewsLinks"
-import { hashTitle, hashUrl } from "./newsIdentity"
+import { hashTitle, hashUrl, normalizeTitle } from "./newsIdentity"
 import { validateSourceQuality } from "./sourceQuality"
 
 interface QueueInsertResult {
@@ -138,11 +138,12 @@ async function isDuplicateQueuedOrPublished(link: DiscoveredNewsLink) {
   }
 
   const titleHash = hashTitle(link.title)
-  if (!titleHash || !link.title) return null
+  const normalizedTitle = normalizeTitle(link.title)
+  if (!titleHash || !normalizedTitle || !link.title) return null
 
   const { data: sameTitleQueue, error: titleQueueError } = await supabaseAdmin
     .from("raw_news_queue")
-    .select("id")
+    .select("id,raw_title")
     .eq("raw_title", link.title)
     .limit(1)
 
@@ -154,9 +155,31 @@ async function isDuplicateQueuedOrPublished(link: DiscoveredNewsLink) {
     return "duplicate_raw_title"
   }
 
+  const { data: recentQueueTitles, error: normalizedQueueError } =
+    await supabaseAdmin
+      .from("raw_news_queue")
+      .select("id,raw_title")
+      .not("raw_title", "is", null)
+      .limit(100)
+
+  if (normalizedQueueError) {
+    console.error(
+      "[COLLECT] Normalized queue title check failed",
+      normalizedQueueError.message
+    )
+  }
+
+  if (
+    recentQueueTitles?.some(
+      (row) => normalizeTitle(row.raw_title) === normalizedTitle
+    )
+  ) {
+    return "duplicate_normalized_raw_title"
+  }
+
   const { data: sameTitleArticle, error: titleArticleError } = await supabaseAdmin
     .from("articles")
-    .select("id")
+    .select("id,title")
     .eq("title", link.title)
     .limit(1)
 
@@ -166,6 +189,28 @@ async function isDuplicateQueuedOrPublished(link: DiscoveredNewsLink) {
 
   if (sameTitleArticle && sameTitleArticle.length > 0) {
     return "duplicate_published_title"
+  }
+
+  const { data: recentArticleTitles, error: normalizedArticleError } =
+    await supabaseAdmin
+      .from("articles")
+      .select("id,title")
+      .not("title", "is", null)
+      .limit(100)
+
+  if (normalizedArticleError) {
+    console.error(
+      "[COLLECT] Normalized article title check failed",
+      normalizedArticleError.message
+    )
+  }
+
+  if (
+    recentArticleTitles?.some(
+      (row) => normalizeTitle(row.title) === normalizedTitle
+    )
+  ) {
+    return "duplicate_normalized_published_title"
   }
 
   return null

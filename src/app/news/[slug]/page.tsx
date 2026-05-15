@@ -3,6 +3,17 @@ import Link from "next/link";
 import { ContentRenderer, type ContentBlock } from "@/components/news/ContentRenderer";
 import { ShareButtons } from "@/components/news/ShareButtons";
 
+type RelatedArticle = {
+  id?: string;
+  slug: string;
+  title: string;
+  category?: string | null;
+  hero_image?: string | null;
+  read_time?: number | null;
+  view_count?: number | null;
+  created_at?: string | null;
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -11,7 +22,7 @@ export async function generateMetadata({
   const { slug } = await params;
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?slug=eq.${slug}&is_published=eq.true&select=title,excerpt,seo_title,seo_description,hero_image`,
+    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?slug=eq.${encodeURIComponent(slug)}&is_published=eq.true&select=title,excerpt,seo_title,seo_description,hero_image`,
     {
       headers: {
         apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -55,7 +66,7 @@ export async function generateMetadata({
 
 async function getArticle(slug: string) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?slug=eq.${slug}&select=*`,
+    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?slug=eq.${encodeURIComponent(slug)}&is_published=eq.true&select=*`,
     {
       headers: {
         apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -66,12 +77,13 @@ async function getArticle(slug: string) {
   );
 
   const data = await res.json();
-  return data?.[0] || null;
+  return Array.isArray(data) ? data[0] || null : null;
 }
 
 async function getRelated(currentSlug: string) {
+  const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/...articles?slug=neq.${currentSlug}&created_at=gte.${new Date(Date.now() - 7*24*60*60*1000).toISOString()}&limit=4&order=view_count.desc&created_at.desc`,
+    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?slug=neq.${encodeURIComponent(currentSlug)}&is_published=eq.true&created_at=gte.${encodeURIComponent(since)}&select=id,slug,title,category,hero_image,read_time,view_count,created_at&order=view_count.desc,created_at.desc&limit=5`,
     {
       headers: {
         apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -81,7 +93,8 @@ async function getRelated(currentSlug: string) {
     }
   );
 
-  return res.json();
+  const data = await res.json();
+  return Array.isArray(data) ? (data as RelatedArticle[]) : [];
 }
 
 async function incrementView(articleId: string) {
@@ -251,22 +264,6 @@ export default async function ArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
-  async function getRelated(currentSlug: string) {
-    const res = await fetch(
-  `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/articles?...`,
-  {
-    headers: {
-      apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    },
-    cache: "force-cache",
-    next: { revalidate: 60 },
-  }
-);
-    return res.json();
-  }
-
-  
 
   const [article, related] = await Promise.all([
   getArticle(slug),
@@ -447,7 +444,7 @@ if (article?.id) {
                 <span>📰</span> บทความที่เกี่ยวข้อง
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {related.slice(0, 3).map((item: any, i: number) => (
+                {related.slice(0, 3).map((item, i) => (
                   <a
                     key={item.id || i}
                     href={`/news/${item.slug}`}
@@ -494,7 +491,7 @@ if (article?.id) {
                 🔥 Trending
               </div>
               <div>
-                {related.slice(0, 5).map((item: any, i: number) => (
+                {related.slice(0, 5).map((item, i) => (
                   <a
                     key={item.id || i}
                     href={`/news/${item.slug}`}
@@ -571,18 +568,18 @@ if (article?.id) {
             <div>
               <div className="font-['Kanit'] text-[13px] font-semibold text-white uppercase tracking-[1px] mb-4">Content</div>
               <div className="flex flex-col gap-2">
-                <a href="/news" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">ข่าวสาร</a>
-                <a href="/reviews" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">รีวิว</a>
-                <a href="/guides" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">เทคนิค</a>
-                <a href="/it-gadget" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">IT Gadget</a>
+                <Link href="/news" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">ข่าวสาร</Link>
+                <Link href="/reviews" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">รีวิว</Link>
+                <Link href="/guides" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">เทคนิค</Link>
+                <Link href="/it-gadget" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">IT Gadget</Link>
               </div>
             </div>
             <div>
               <div className="font-['Kanit'] text-[13px] font-semibold text-white uppercase tracking-[1px] mb-4">Tools</div>
               <div className="flex flex-col gap-2">
                 <a href="https://bosstimer.tglabs.info/" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Boss Timer</a>
-                <a href="/tierlist" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Tier List</a>
-                <a href="/codes" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Codes</a>
+                <Link href="/tierlist" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Tier List</Link>
+                <Link href="/codes" className="text-[13px] text-[#AAAAAA] hover:text-white transition-colors">Codes</Link>
               </div>
             </div>
           </div>

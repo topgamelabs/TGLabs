@@ -6,6 +6,34 @@ export const dynamic = 'force-dynamic';
 // =========================
 // SLUG
 // =========================
+interface StructuredFacts {
+  hook?: string;
+  key_points?: string[];
+  details?: string[];
+  impact?: string[];
+  codes?: CodeEntry[];
+}
+
+interface CodeEntry {
+  value: string;
+  desc: string;
+}
+
+interface GeneratedNews {
+  title: string;
+  excerpt: string;
+  content: string;
+  seo_title: string;
+  seo_description: string;
+  hero_image?: string | null;
+  _tempSlug?: string;
+}
+
+interface ExtractedArticle {
+  content?: string;
+  image?: string | null;
+}
+
 function generateSlug(title: string) {
   return (
     title
@@ -63,7 +91,7 @@ ${content}
 }
 `;
 
-const promptRewrite = (data: any) => `
+const promptRewrite = (data: StructuredFacts) => `
 คุณคือ "นักข่าวเกมมืออาชีพ"
 
 [HOOK]
@@ -145,7 +173,7 @@ ${(data.impact || []).map((x: string) => `- ${x}`).join("\n")}
 <h2>โค้ดทั้งหมด</h2>
 <ul>
   ${(data.codes || [])
-  .map((c: any) => `<li><code>${c.value}</code> - ${c.desc}</li>`)
+  .map((c: CodeEntry) => `<li><code>${c.value}</code> - ${c.desc}</li>`)
   .join("")}
 </ul>
 - ถ้ามี code ที่ต้องใช้ทันที เช่น redeem code → ต้องแสดงใน <code> และมีคำอธิบายชัดเจน
@@ -239,7 +267,7 @@ async function isDuplicateHeroImage(heroImage: string, sourceUrl: string): Promi
 // =========================
 // SAFE
 // =========================
-function safe(data: any, fallbackTitle: string) {
+function safe(data: Partial<GeneratedNews> | null, fallbackTitle: string): GeneratedNews {
   if (!data || !data.content) {
     return {
       title: fallbackTitle,
@@ -249,7 +277,16 @@ function safe(data: any, fallbackTitle: string) {
       seo_description: "",
     };
   }
-  return data;
+
+  return {
+    title: data.title || fallbackTitle,
+    excerpt: data.excerpt || "",
+    content: data.content,
+    seo_title: data.seo_title || data.title || fallbackTitle,
+    seo_description: data.seo_description || data.excerpt || "",
+    hero_image: data.hero_image,
+    _tempSlug: data._tempSlug,
+  };
 }
 
 // =========================
@@ -274,13 +311,12 @@ export async function POST(req: Request) {
     // URL MODE
     // =========================
     if (body.mode === "url") {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const articleData = (await Promise.race([
         extract(body.url),
         new Promise((_, reject) =>
           setTimeout(() => reject(new Error("extract timeout")), 10000)
         ),
-      ])) as any;
+      ])) as ExtractedArticle;
 
       if (!articleData?.content) {
         return NextResponse.json({ error: "extract failed" });
@@ -394,8 +430,9 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ error: "invalid request" });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("API ERROR:", err);
-    return NextResponse.json({ error: err.message });
+    const message = err instanceof Error ? err.message : "UNKNOWN_ERROR";
+    return NextResponse.json({ error: message });
   }
 }

@@ -72,6 +72,19 @@ function getTierKey(tier: string): string {
   return "Junk";
 }
 
+function getTierNotes(tierlist: unknown): string | null {
+  if (
+    tierlist &&
+    typeof tierlist === "object" &&
+    "notes" in tierlist &&
+    typeof tierlist.notes === "string"
+  ) {
+    return tierlist.notes;
+  }
+
+  return null;
+}
+
 // ─── Skill Row (reused in modals) ─────────────────────────────────────────────
 
 function SkillRow({ label, desc }: { label: string; desc: string }) {
@@ -105,6 +118,7 @@ function FellowModal({ fellow, onClose }: { fellow: Fellow; onClose: () => void 
   const tl = fellow.tierlist;
   const isDemigod = fellow.grade === "Demigod UR";
   const elemColor = ELEMENT_COLORS[fellow.element] ?? "#9d6fff";
+  const notes = getTierNotes(tl);
 
   return (
     <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(2,3,5,0.85)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
@@ -153,9 +167,9 @@ function FellowModal({ fellow, onClose }: { fellow: Fellow; onClose: () => void 
                   </div>
                 ))}
               </div>
-              {(tl as any).notes && (
+              {notes && (
                 <p style={{ margin: "8px 0 0 0", fontFamily: "Sarabun, sans-serif", fontSize: 11, color: "#7a6a9a", lineHeight: 1.5, fontStyle: "italic" }}>
-                  💬 {(tl as any).notes}
+                  💬 {notes}
                 </p>
               )}
             </div>
@@ -205,6 +219,7 @@ function FellowModal({ fellow, onClose }: { fellow: Fellow; onClose: () => void 
 function KupoleModal({ kupole, onClose }: { kupole: Kupole; onClose: () => void }) {
   const tl = kupole.tierlist;
   const typeColor = TYPE_COLORS[kupole.type] ?? "#9d6fff";
+  const notes = getTierNotes(tl);
 
   return (
     <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(2,3,5,0.85)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}>
@@ -255,9 +270,9 @@ function KupoleModal({ kupole, onClose }: { kupole: Kupole; onClose: () => void 
                   </div>
                 ))}
               </div>
-              {(tl as any).notes && (
+              {notes && (
                 <p style={{ margin: "8px 0 0 0", fontFamily: "Sarabun, sans-serif", fontSize: 11, color: "#7a6a9a", lineHeight: 1.5, fontStyle: "italic" }}>
-                  💬 {(tl as any).notes}
+                  💬 {notes}
                 </p>
               )}
             </div>
