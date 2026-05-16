@@ -16,7 +16,7 @@ function shouldRunAiWriter(req: NextRequest) {
   )
 }
 
-function getAiWriterOptions(req: NextRequest) {
+function getOpenAiRewriteOptions(req: NextRequest) {
   const rewrite = req.nextUrl.searchParams.get("rewrite")
   const limit = Number(req.nextUrl.searchParams.get("rewriteLimit"))
 
@@ -29,19 +29,27 @@ function getAiWriterOptions(req: NextRequest) {
 export async function GET(req: NextRequest) {
   try {
     const collection = await collectNewsLinks()
-    const freshness = await processFreshnessValidation()
     const fetchQueue = await processFetchQueue()
-    const aiWriter = shouldRunAiWriter(req)
-      ? await rewriteOpenClawCandidates(getAiWriterOptions(req))
+    const freshness = await processFreshnessValidation()
+    const openAiRewrite = shouldRunAiWriter(req)
+      ? await rewriteOpenClawCandidates(getOpenAiRewriteOptions(req))
       : "disabled"
 
     return NextResponse.json({
       success: true,
-      stage: "ingestion",
+      stage: "rss_to_openai_rewrite",
+      pipeline: [
+        "RSS/source",
+        "raw_news_queue",
+        "fetch_full_content",
+        "freshness_check",
+        "openai_rewrite",
+        "insert_articles",
+      ],
       collection,
-      freshness,
       fetchQueue,
-      aiWriter,
+      freshness,
+      openAiRewrite,
     })
   } catch (error) {
     const message = error instanceof Error ? error.message : "CRON_FAILED"

@@ -1,10 +1,58 @@
 import { supabaseAdmin } from "@/lib/supabaseAdmin"
 import { validateFreshness } from "./validateFreshness"
 
+const STALE_UNFILTERED_DAYS = 30
+
 interface FreshnessQueueRow {
   id: string
   raw_title: string | null
   published_source_at: string | null
+}
+
+async function cleanupStaleUnfilteredRawNews() {
+  const cutoff = new Date(
+    Date.now() - STALE_UNFILTERED_DAYS * 24 * 60 * 60 * 1000
+  ).toISOString()
+
+  const patch = {
+    freshness_status: "rejected",
+    freshness_reason: "stale_unfiltered_over_30_days",
+    extraction_status: "skipped",
+    rewrite_status: "skipped",
+    rewrite_error: "stale_unfiltered_over_30_days",
+    rewrite_finished_at: new Date().toISOString(),
+  }
+
+  const { data, error } = await supabaseAdmin
+    .from("raw_news_queue")
+    .update(patch)
+    .in("freshness_status", ["pending", "pending_date_extraction"])
+    .lt("discovered_at", cutoff)
+    .select("id")
+
+  if (!error) {
+    return data?.length || 0
+  }
+
+  const { data: fallbackData, error: fallbackError } = await supabaseAdmin
+    .from("raw_news_queue")
+    .update({
+      freshness_status: "rejected",
+      freshness_reason: "stale_unfiltered_over_30_days",
+    })
+    .in("freshness_status", ["pending", "pending_date_extraction"])
+    .lt("discovered_at", cutoff)
+    .select("id")
+
+  if (fallbackError) {
+    console.error(
+      "[Freshness] Failed to clean stale unfiltered raw news",
+      fallbackError.message
+    )
+    return 0
+  }
+
+  return fallbackData?.length || 0
 }
 
 export async function processFreshnessValidation() {
@@ -13,7 +61,10 @@ export async function processFreshnessValidation() {
     accepted: 0,
     rejected: 0,
     pendingDateExtraction: 0,
+    cleanedStaleUnfiltered: 0,
   }
+
+  result.cleanedStaleUnfiltered = await cleanupStaleUnfilteredRawNews()
 
   const { data, error } = await supabaseAdmin
     .from("raw_news_queue")

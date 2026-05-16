@@ -5,11 +5,13 @@ import {
   type NewsSourceConfig,
 } from "./discoverNewsLinks"
 import { hashTitle, hashUrl, normalizeTitle } from "./newsIdentity"
+import { evaluateMobileGameNewsRelevance } from "./newsRelevance"
 import { validateSourceQuality } from "./sourceQuality"
 
 interface QueueInsertResult {
   queued: number
   skippedOld: number
+  skippedIrrelevant: number
   failed: number
 }
 
@@ -223,6 +225,7 @@ async function queueDiscoveredLinks(
   const result: QueueInsertResult = {
     queued: 0,
     skippedOld: 0,
+    skippedIrrelevant: 0,
     failed: 0,
   }
 
@@ -231,6 +234,20 @@ async function queueDiscoveredLinks(
       result.skippedOld++
       console.log(
         `[COLLECT] Skip stale link ${link.url}: ${link.freshnessReason}`
+      )
+      continue
+    }
+
+    const relevance = evaluateMobileGameNewsRelevance({
+      title: link.title,
+      excerpt: link.excerpt,
+      url: link.url,
+    })
+
+    if (!relevance.allowed && relevance.reason === "non_game_entertainment") {
+      result.skippedIrrelevant++
+      console.log(
+        `[COLLECT] Skip irrelevant link ${link.url}: ${relevance.reason}`
       )
       continue
     }
@@ -258,12 +275,14 @@ export async function collectNewsLinks() {
       sources: 0,
       queued: 0,
       skippedOld: 0,
+      skippedIrrelevant: 0,
       failed: 0,
     }
   }
 
   let queued = 0
   let skippedOld = 0
+  let skippedIrrelevant = 0
   let failed = 0
 
   for (const rawSource of sources as Record<string, unknown>[]) {
@@ -294,6 +313,7 @@ export async function collectNewsLinks() {
     const inserted = await queueDiscoveredLinks(source, discovered.links)
     queued += inserted.queued
     skippedOld += inserted.skippedOld
+    skippedIrrelevant += inserted.skippedIrrelevant
     failed += inserted.failed
 
     if (inserted.queued > 0) {
@@ -303,7 +323,7 @@ export async function collectNewsLinks() {
     }
 
     console.log(
-      `[COLLECT] ${source.name || source.domain}: queued=${inserted.queued}, stale=${inserted.skippedOld}, failed=${inserted.failed}`
+      `[COLLECT] ${source.name || source.domain}: queued=${inserted.queued}, stale=${inserted.skippedOld}, irrelevant=${inserted.skippedIrrelevant}, failed=${inserted.failed}`
     )
   }
 
@@ -312,6 +332,7 @@ export async function collectNewsLinks() {
     sources: sources.length,
     queued,
     skippedOld,
+    skippedIrrelevant,
     failed,
   }
 }

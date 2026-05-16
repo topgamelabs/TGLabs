@@ -25,6 +25,24 @@ async function countRewriteStatus(status: string) {
   return count || 0
 }
 
+async function countEligiblePendingRewrite() {
+  const { count, error } = await supabaseAdmin
+    .from("raw_news_queue")
+    .select("id", { count: "exact", head: true })
+    .eq("fetch_status", "success")
+    .eq("freshness_status", "accepted")
+    .eq("extraction_status", "pending")
+    .eq("rewrite_status", "pending")
+    .not("raw_content", "is", null)
+    .not("published_source_at", "is", null)
+
+  if (error) {
+    throw new Error(`COUNT_ELIGIBLE_PENDING_FAILED: ${error.message}`)
+  }
+
+  return count || 0
+}
+
 export async function GET(req: NextRequest) {
   if (!isAuthorized(req)) {
     return NextResponse.json(
@@ -34,22 +52,34 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const [pending, processing, success, failed, duplicate] = await Promise.all([
+    const [
+      pending,
+      eligiblePending,
+      processing,
+      success,
+      failed,
+      duplicate,
+      skipped,
+    ] = await Promise.all([
       countRewriteStatus("pending"),
+      countEligiblePendingRewrite(),
       countRewriteStatus("processing"),
       countRewriteStatus("success"),
       countRewriteStatus("failed"),
       countRewriteStatus("duplicate"),
+      countRewriteStatus("skipped"),
     ])
 
     return NextResponse.json({
       success: true,
       rewriteQueue: {
         pending,
+        eligiblePending,
         processing,
         success,
         failed,
         duplicate,
+        skipped,
       },
     })
   } catch (error) {
