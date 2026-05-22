@@ -1,4 +1,5 @@
 import React from "react";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
 interface ArticleContentProps {
   content: string;
@@ -9,7 +10,7 @@ export default function ArticleContent({ content, className }: ArticleContentPro
   return (
     <div
       className={className || "article-content"}
-      dangerouslySetInnerHTML={{ __html: content }}
+      dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }}
       style={{
         // Style HTML bullet lists to match JSON block red border style
         "--bullet-border": "#FF1A1A",

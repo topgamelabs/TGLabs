@@ -48,6 +48,8 @@ export interface InlineImage {
   position?: number; // paragraph index to insert after
 }
 
+export type ArticleCategoryCounts = Record<string, number>;
+
 // Fetch all games
 export async function getGames(): Promise<Game[]> {
   const { data, error } = await supabase
@@ -63,9 +65,10 @@ export async function getGames(): Promise<Game[]> {
 const SUPABASE_REST_URL = supabaseUrl;
 const SUPABASE_ANON_KEY = supabaseAnonKey;
 
-export async function getArticles({ limit = 10 } = {}) {
+export async function getArticles({ limit = 10, category }: { limit?: number; category?: string } = {}) {
+  const categoryQuery = category ? `&category=eq.${encodeURIComponent(category)}` : "";
   const res = await fetch(
-    `${SUPABASE_REST_URL}/rest/v1/articles?select=*&is_published=eq.true&order=created_at.desc&limit=${limit}`,
+    `${SUPABASE_REST_URL}/rest/v1/articles?select=*&is_published=eq.true${categoryQuery}&order=created_at.desc&limit=${limit}`,
     {
       headers: {
         apikey: SUPABASE_ANON_KEY!,
@@ -82,6 +85,52 @@ export async function getArticles({ limit = 10 } = {}) {
   }
 
   return data;
+}
+
+export async function getArticleCategoryCounts(
+  categories: string[] = ["gaming", "news", "mobile", "pc-console", "review", "tips", "tech", "tournament"]
+): Promise<ArticleCategoryCounts> {
+  const emptyCounts = Object.fromEntries(categories.map((category) => [category, 0]));
+
+  try {
+    const totalQuery = supabase
+      .from("articles")
+      .select("id", { count: "exact", head: true })
+      .eq("is_published", true);
+
+    const [totalResult, entries] = await Promise.all([
+      totalQuery,
+      Promise.all(
+        categories.map(async (category) => {
+          const { count, error } = await supabase
+            .from("articles")
+            .select("id", { count: "exact", head: true })
+            .eq("is_published", true)
+            .eq("category", category);
+
+          if (error) return [category, 0] as const;
+          return [category, count || 0] as const;
+        })
+      ),
+    ]);
+
+    if (totalResult.error) {
+      return {
+        all: 0,
+        ...emptyCounts,
+      };
+    }
+
+    return {
+      all: totalResult.count || 0,
+      ...Object.fromEntries(entries),
+    };
+  } catch {
+    return {
+      all: 0,
+      ...emptyCounts,
+    };
+  }
 }
 
 // Fetch single article by slug

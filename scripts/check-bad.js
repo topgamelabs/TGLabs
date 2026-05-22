@@ -1,6 +1,5 @@
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 async function getAllArticles() {
   const res = await fetch(
@@ -13,20 +12,6 @@ async function getAllArticles() {
     }
   );
   return res.json();
-}
-
-function stripHtml(html) {
-  return (html || '')
-    .replace(/<[^>]*>/g, '')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&[a-z]+;/gi, '')
-    .replace(/\s+/g, ' ')
-    .trim();
 }
 
 function isBadMigration(content) {
@@ -44,7 +29,7 @@ function isBadMigration(content) {
     if (content.includes('<p>') || content.includes('<h') || content.includes('<ul')) {
       return true;
     }
-  } catch (e) {
+  } catch {
     return false;
   }
   return false;

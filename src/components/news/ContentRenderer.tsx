@@ -1,4 +1,5 @@
 import React from "react";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
 // PTag
 const TAG_COLOR: Record<string, { bg: string; c: string; b: string }> = {
@@ -122,7 +123,7 @@ function Block({ block }: { block: ContentBlock }) {
             color: "rgba(255,255,255,0.85)",
             marginBottom: 16,
           }}
-          dangerouslySetInnerHTML={{ __html: block.content || "" }}
+          dangerouslySetInnerHTML={{ __html: sanitizeHtml(block.content) }}
         />
       );
 
@@ -182,7 +183,7 @@ function Block({ block }: { block: ContentBlock }) {
                 color: "rgba(255,255,255,0.85)",
                 listStyleType: "disc",
               }}
-              dangerouslySetInnerHTML={{ __html: item }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(item) }}
             />
           ))}
         </ul>

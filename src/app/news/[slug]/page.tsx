@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ContentRenderer, type ContentBlock } from "@/components/news/ContentRenderer";
 import { ShareButtons } from "@/components/news/ShareButtons";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
 type RelatedArticle = {
   id?: string;
@@ -118,6 +119,9 @@ const categoryColors: Record<string, string> = {
   tips: "bg-[#FF1A1A] text-white",
   live: "bg-[#FF6B35] text-white",
   news: "bg-[#4A90D9] text-white",
+  gaming: "bg-[#4A90D9] text-white",
+  mobile: "bg-[#22C55E] text-white",
+  "pc-console": "bg-[#F97316] text-white",
   review: "bg-[#4DCC8A] text-white",
   tech: "bg-[#A855F7] text-white",
   tournament: "bg-[#FFD700] text-black",
@@ -236,14 +240,14 @@ function renderContent(content: string, inlineImages: Array<{ url: string; capti
       const fallbackText = typeof content === 'string' && content.startsWith('[')
         ? 'เนื้อหาข่าวไม่สามารถแสดงได้ในขณะนี้'
         : content;
-      return <div dangerouslySetInnerHTML={{ __html: fallbackText }} />;
+      return <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(fallbackText) }} />;
     }
   }
 
   return (
     <div
       dangerouslySetInnerHTML={{
-        __html: injectAdsIntoContent(content),
+        __html: injectAdsIntoContent(sanitizeHtml(content)),
       }}
     />
   );

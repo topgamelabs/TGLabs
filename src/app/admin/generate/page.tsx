@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
 interface GeneratedArticle {
   title: string;
@@ -259,7 +260,7 @@ export default function GeneratePage() {
                   <p className="text-xs text-[#666] mb-2">Preview</p>
                   <div
                     className="prose prose-invert max-w-none text-sm text-[#E8E8E8]"
-                    dangerouslySetInnerHTML={{ __html: a.content }}
+                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(a.content) }}
                   />
                 </div>
               </div>

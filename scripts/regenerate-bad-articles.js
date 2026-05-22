@@ -9,7 +9,6 @@
  */
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
@@ -308,15 +307,6 @@ async function deleteArticle(slug) {
   return res.ok || res.status === 204;
 }
 
-async function getArticleBySlug(slug) {
-  const res = await fetch(
-    SUPABASE_URL + '/rest/v1/articles?slug=eq.' + encodeURIComponent(slug) + '&select=id',
-    { headers: { apikey: ANON_KEY, Authorization: 'Bearer ' + ANON_KEY } }
-  );
-  const d = await res.json();
-  return d[0] || null;
-}
-
 async function insertArticle(articleData) {
   const res = await fetch(SUPABASE_URL + '/rest/v1/articles', {
     method: 'POST',
@@ -329,28 +319,6 @@ async function insertArticle(articleData) {
     body: JSON.stringify(articleData),
   });
   return res.json();
-}
-
-async function updateContent(id, blocks) {
-  const res = await fetch(SUPABASE_URL + '/rest/v1/articles?id=eq.' + id, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      'apikey': SERVICE_KEY,
-      'Authorization': 'Bearer ' + SERVICE_KEY,
-      'Prefer': 'return=minimal',
-    },
-    body: JSON.stringify({ content: JSON.stringify(blocks) }),
-  });
-  return res.ok || res.status === 204;
-}
-
-function generateSlug(title) {
-  const base = title
-    .toLowerCase()
-    .replace(/[^\wก-๙]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-  return base + '-' + Date.now().toString().slice(-6);
 }
 
 // ========================
@@ -383,7 +351,6 @@ async function main() {
     });
 
     // Step 3: Insert article
-    const slug = generateSlug(template.title);
     console.log('   💾 Inserting...');
     const inserted = await insertArticle({
       title: template.title,

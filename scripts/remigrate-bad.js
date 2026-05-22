@@ -39,99 +39,6 @@ function stripHtml(html) {
     .trim();
 }
 
-function extractListItems(html) {
-  const items = [];
-  const liMatches = html.match(/<li[^>]*>([\s\S]*?)<\/li>/gi);
-  if (liMatches) {
-    for (const li of liMatches) {
-      const content = li.replace(/<\/?li[^>]*>/gi, '');
-      items.push(stripHtml(content));
-    }
-  }
-  return items;
-}
-
-function htmlToBlocks(html) {
-  if (!html || typeof html !== 'string') return [];
-  const blocks = [];
-  
-  const blockPatterns = [
-    { regex: /<h([1-3])(?:\s[^>]*)?>([\s\S]*?)<\/h\1>/gi, handler: (m) => ({
-        type: 'heading', level: parseInt(m[1]), content: stripHtml(m[2])
-      })
-    },
-    { regex: /<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/gi, handler: (m) => {
-        const content = stripHtml(m[1]);
-        return content ? { type: 'paragraph', content } : null;
-      }
-    },
-    { regex: /<ul(?:\s[^>]*)?>([\s\S]*?)<\/ul>/gi, handler: (m) => {
-        const items = extractListItems(m[1]);
-        return items.length > 0 ? { type: 'bullet', items } : null;
-      }
-    },
-    { regex: /<ol(?:\s[^>]*)?>([\s\S]*?)<\/ol>/gi, handler: (m) => {
-        const items = extractListItems(m[1]);
-        return items.length > 0 ? { type: 'bullet', items } : null;
-      }
-    },
-    { regex: /<blockquote(?:\s[^>]*)?>([\s\S]*?)<\/blockquote>/gi, handler: (m) => {
-        const content = stripHtml(m[1]);
-        return content ? { type: 'quote', content } : null;
-      }
-    },
-    { regex: /<hr\s*\/?>/gi, handler: () => ({ type: 'rule' }) },
-    { regex: /<div(?:\s[^>]*)?class=["'][^"']*highlight-box[^"']*["'](?:[^>]*)>([\s\S]*?)<\/div>/gi, handler: (m) => {
-        const items = extractListItems(m[1]);
-        blocks.push({ type: 'bullet', items });
-        blocks.push({ type: 'rule', label: 'สรุป' });
-        return null;
-      }
-    },
-    { regex: /<figure(?:\s[^>]*)?>([\s\S]*?)<\/figure>/gi, handler: (m) => {
-        const imgMatch = m[1].match(/<img[^>]+src=["']([^"']+)["'][^>]*>/i);
-        if (imgMatch) {
-          const captionMatch = m[1].match(/<figcaption(?:\s[^>]*)?>([\s\S]*?)<\/figcaption>/i);
-          return { type: 'image', imageUrl: imgMatch[1], imageCaption: captionMatch ? stripHtml(captionMatch[1]) : undefined };
-        }
-        return null;
-      }
-    },
-    { regex: /<img[^>]+src=["']([^"']+)["'][^>]*>/gi, handler: (m) => ({ type: 'image', imageUrl: m[1] }) }
-  ];
-  
-  const foundBlocks = [];
-  for (const pattern of blockPatterns) {
-    let match;
-    const regex = new RegExp(pattern.regex.source, pattern.regex.flags);
-    while ((match = regex.exec(html)) !== null) {
-      const block = pattern.handler(match);
-      if (block) {
-        foundBlocks.push({ index: match.index, block });
-      }
-    }
-  }
-  
-  foundBlocks.sort((a, b) => a.index - b.index);
-  const seen = new Set();
-  for (const fb of foundBlocks) {
-    const key = JSON.stringify(fb.block);
-    if (!seen.has(key)) {
-      seen.add(key);
-      blocks.push(fb.block);
-    }
-  }
-  
-  if (blocks.length === 0) {
-    const text = stripHtml(html);
-    if (text && text.length > 0) {
-      blocks.push({ type: 'paragraph', content: text });
-    }
-  }
-  
-  return blocks;
-}
-
 async function updateArticle(id, content) {
   const res = await fetch(
     `${SUPABASE_URL}/rest/v1/articles?id=eq.${id}`,
@@ -166,7 +73,7 @@ function isBadMigration(content) {
     if (content.includes('<p>') || content.includes('<h') || content.includes('<ul')) {
       return true;
     }
-  } catch (e) {
+  } catch {
     return false;
   }
   return false;
@@ -199,7 +106,7 @@ async function main() {
     try {
       const parsed = JSON.parse(article.content);
       console.log('  Current (bad):', JSON.stringify(parsed));
-    } catch (e) {
+    } catch {
       console.log('  Cannot parse current content');
     }
     

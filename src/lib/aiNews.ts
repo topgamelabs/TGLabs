@@ -75,7 +75,7 @@ export async function processNewsURL(url: string) {
         excerpt: ai.excerpt,
         content: ai.content,
         slug: generateSlug(ai.title),
-        category: "news",
+        category: "gaming",
         author_id: "33333333-3333-3333-3333-333333333333",
         status: "draft",
         ai_generated: true,

@@ -1,16 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server"
+import { requireOperationalAuth } from "@/lib/apiAuth"
 import { rewriteOpenClawCandidates } from "@/lib/news/rewriteCandidates"
+import { getEditorialHealthReport } from "@/lib/news/editorialHealthReport"
 import { supabaseAdmin } from "@/lib/supabaseAdmin"
 
 export const runtime = "nodejs"
-
-function isAuthorized(req: NextRequest) {
-  const token = process.env.OPENCLAW_INGEST_TOKEN
-  if (!token) return true
-
-  const auth = req.headers.get("authorization")
-  return auth === `Bearer ${token}`
-}
+export const maxDuration = 300
 
 async function countRewriteStatus(status: string) {
   const { count, error } = await supabaseAdmin
@@ -34,7 +29,6 @@ async function countEligiblePendingRewrite() {
     .eq("extraction_status", "pending")
     .eq("rewrite_status", "pending")
     .not("raw_content", "is", null)
-    .not("published_source_at", "is", null)
 
   if (error) {
     throw new Error(`COUNT_ELIGIBLE_PENDING_FAILED: ${error.message}`)
@@ -44,12 +38,8 @@ async function countEligiblePendingRewrite() {
 }
 
 export async function GET(req: NextRequest) {
-  if (!isAuthorized(req)) {
-    return NextResponse.json(
-      { success: false, error: "UNAUTHORIZED" },
-      { status: 401 }
-    )
-  }
+  const unauthorized = requireOperationalAuth(req)
+  if (unauthorized) return unauthorized
 
   try {
     const [
@@ -70,6 +60,8 @@ export async function GET(req: NextRequest) {
       countRewriteStatus("skipped"),
     ])
 
+    const health = await getEditorialHealthReport()
+
     return NextResponse.json({
       success: true,
       rewriteQueue: {
@@ -81,6 +73,7 @@ export async function GET(req: NextRequest) {
         duplicate,
         skipped,
       },
+      health,
     })
   } catch (error) {
     const message = error instanceof Error ? error.message : "REWRITE_STATUS_FAILED"
@@ -96,23 +89,25 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!isAuthorized(req)) {
-    return NextResponse.json(
-      { success: false, error: "UNAUTHORIZED" },
-      { status: 401 }
-    )
-  }
+  const unauthorized = requireOperationalAuth(req)
+  if (unauthorized) return unauthorized
 
   try {
     const body = await req.json().catch(() => ({}))
     const limit = typeof body.limit === "number" ? body.limit : undefined
+    const queueId = typeof body.queueId === "string" ? body.queueId : undefined
     const dryRun = body.dryRun === true
+    const publish = body.publish === true
+    const manual = body.manual === true
     const maxAttempts =
       typeof body.maxAttempts === "number" ? body.maxAttempts : undefined
     const result = await rewriteOpenClawCandidates({
       limit,
+      queueId,
       dryRun,
+      publish,
       maxAttempts,
+      manual,
     })
 
     return NextResponse.json({

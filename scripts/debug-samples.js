@@ -16,7 +16,7 @@ async function check() {
       const parsed = JSON.parse(article.content);
       console.log('Parsed blocks:', parsed.length);
       parsed.forEach((b, i) => console.log('  block[' + i + ']:', JSON.stringify(b).slice(0, 80)));
-    } catch(e) {
+    } catch {
       console.log('Not JSON - might be partial HTML:', article.content.slice(0, 100));
     }
     console.log('');

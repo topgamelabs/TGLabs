@@ -2,13 +2,21 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { getArticles, getGames, type Article, type Game } from "@/lib/supabase";
+import {
+  getArticleCategoryCounts,
+  getArticles,
+  type Article,
+  type ArticleCategoryCounts,
+} from "@/lib/supabase";
 
 // Category badge colors
 const categoryColors: Record<string, string> = {
   tips: "bg-[#FF1A1A] text-white shadow-[0_0_20px_rgba(255,26,26,0.4)]",
   live: "bg-[#FF6B35] text-white",
   news: "bg-[#4A90D9] text-white",
+  gaming: "bg-[#4A90D9] text-white",
+  mobile: "bg-[#22C55E] text-white",
+  "pc-console": "bg-[#F97316] text-white",
   review: "bg-[#4DCC8A] text-white",
   tech: "bg-[#A855F7] text-white",
   tournament: "bg-[#FFD700] text-black",
@@ -35,20 +43,20 @@ export default function Home() {
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [comingSoon, setComingSoon] = useState(false);
   const [articles, setArticles] = useState<Article[]>([]);
-  const [games, setGames] = useState<Game[]>([]);
+  const [categoryCounts, setCategoryCounts] = useState<ArticleCategoryCounts>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const [arts, gms] = await Promise.all([
-          getArticles({ limit: 9 }),
-          getGames()
+        const [arts, counts] = await Promise.all([
+          getArticles({ limit: 20 }),
+          getArticleCategoryCounts(),
         ]);
         setArticles(arts || []);
-        setGames(gms || []);
+        setCategoryCounts(counts);
       } catch (e) {
-        console.error("Failed to fetch data:", e);
+        console.warn("Failed to fetch homepage data:", e);
       } finally {
         setLoading(false);
       }
@@ -56,19 +64,25 @@ export default function Home() {
     fetchData();
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-      setMobileNavOpen(false);
-    }
-  };
-
   const heroArticle = articles[0] || null;
   const latestArticles = articles.slice(1, 5);
   const trendingArticles = articles.slice(1, 5);
   const mobileArticles = articles.filter(a => a.category?.toLowerCase() === "mobile").slice(0, 4);
-
+  const pcConsoleArticles = articles.filter(a => a.category?.toLowerCase() === "pc-console").slice(0, 4);
+  const gamingArticles = articles.filter(a => {
+    const category = a.category?.toLowerCase();
+    return category === "gaming" || category === "news";
+  }).slice(0, 4);
+  const categoryLinks = [
+    { name: "News", href: "/news", count: categoryCounts.all || 0 },
+    { name: "Mobile", href: "/news/mobile", count: categoryCounts.mobile || 0 },
+    { name: "PC/Console", href: "/news/pc-console", count: categoryCounts["pc-console"] || 0 },
+    { name: "Gaming", href: "/news/gaming", count: (categoryCounts.gaming || 0) + (categoryCounts.news || 0) },
+    { name: "Reviews", href: "/reviews", count: categoryCounts.review || 0 },
+    { name: "Tips & Tricks", href: "/guides", count: categoryCounts.tips || 0 },
+    { name: "IT Gadget", href: "/it-gadget", count: categoryCounts.tech || 0 },
+    { name: "Tournament", href: "/tournament", count: categoryCounts.tournament || 0 },
+  ];
   // Coming Soon Toast
   useEffect(() => {
     if (comingSoon) {
@@ -105,6 +119,8 @@ export default function Home() {
             <Link href="/" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Home</Link>
             <Link href="/news" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">News</Link>
             <Link href="/news/mobile" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Mobile</Link>
+            <Link href="/news/pc-console" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">PC/Console</Link>
+            <Link href="/news/gaming" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Gaming</Link>
             <button onClick={() => setComingSoon(true)} className="text-[13px] text-white/[0.7] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">Guides</button>
             <button onClick={() => setComingSoon(true)} className="text-[13px] text-white/[0.7] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">Reviews</button>
             <button onClick={() => setComingSoon(true)} className="text-[13px] text-white/[0.7] hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0">IT Gadget</button>
@@ -157,6 +173,8 @@ export default function Home() {
                 <Link href="/" className="text-[14px] text-white py-2">Home</Link>
                 <Link href="/news" className="text-[14px] text-white py-2">News</Link>
                 <Link href="/news/mobile" className="text-[14px] text-white py-2">Mobile</Link>
+                <Link href="/news/pc-console" className="text-[14px] text-white py-2">PC/Console</Link>
+                <Link href="/news/gaming" className="text-[14px] text-white py-2">Gaming</Link>
                 <button onClick={() => setComingSoon(true)} className="text-[14px] text-white py-2 text-left cursor-pointer bg-transparent border-none p-0">Guides</button>
                 <button onClick={() => setComingSoon(true)} className="text-[14px] text-white py-2 text-left cursor-pointer bg-transparent border-none p-0">Reviews</button>
                 <button onClick={() => setComingSoon(true)} className="text-[14px] text-white py-2 text-left cursor-pointer bg-transparent border-none p-0">IT Gadget</button>
@@ -392,6 +410,128 @@ export default function Home() {
               </div>
             </section>
 
+            {/* ========== PC / CONSOLE ========== */}
+            <section id="pc-console" className="mt-12 scroll-mt-24">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-[20px]">PC</span>
+                  <h2 className="font-['Kanit'] text-[18px] font-semibold text-white">PC/Console</h2>
+                </div>
+                <Link href="/news" className="text-[12px] text-white/[0.3] hover:text-white transition-colors">View All â†’</Link>
+              </div>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                {loading ? (
+                  [1, 2, 3, 4].map((i) => (
+                    <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden animate-pulse">
+                      <div className="aspect-[16/9] bg-[#1A1A1A]" />
+                      <div className="p-3">
+                        <div className="h-[10px] bg-[#1A1A1A] rounded w-1/2 mb-3" />
+                        <div className="h-[14px] bg-[#1A1A1A] rounded w-3/4 mb-2" />
+                        <div className="h-[10px] bg-[#1A1A1A] rounded w-1/3" />
+                      </div>
+                    </div>
+                  ))
+                ) : pcConsoleArticles.length > 0 ? pcConsoleArticles.map((card, i) => (
+                  <Link
+                    key={card.id || i}
+                    href={`/news/${card.slug}`}
+                    className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] cursor-pointer group hover:-translate-y-[4px] hover:border-[#F97316]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300"
+                  >
+                    <div className="aspect-[16/9] relative overflow-hidden">
+                      {card.hero_image ? (
+                        <img
+                          src={card.hero_image}
+                          alt={card.title}
+                          className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-[#1A1A1A]" />
+                      )}
+                    </div>
+                    <div className="p-3">
+                      <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#F97316] mb-2">{card.category?.toUpperCase()}</div>
+                      <div className="font-['Kanit'] text-[14px] font-medium text-white leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
+                      <div className="text-[11px] text-[#AAAAAA] mt-2">{card.read_time || 3} min read</div>
+                    </div>
+                  </Link>
+                )) : (
+                  [1, 2, 3, 4].map((i) => (
+                    <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04]">
+                      <div className="aspect-[16/9] bg-[#1A1A1A]" />
+                      <div className="p-3">
+                        <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#F97316] mb-2">PC/CONSOLE</div>
+                        <div className="font-['Kanit'] text-[14px] font-medium text-white/[0.55] leading-[1.4]">
+                          Waiting for curated PC/Console news
+                        </div>
+                        <div className="text-[11px] text-[#AAAAAA] mt-2">Coming soon</div>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </section>
+
+            {/* ========== GAMING NEWS ========== */}
+            <section id="gaming" className="mt-12 scroll-mt-24">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-[20px]">GN</span>
+                  <h2 className="font-['Kanit'] text-[18px] font-semibold text-white">Gaming News</h2>
+                </div>
+                <Link href="/news/gaming" className="text-[12px] text-white/[0.3] hover:text-white transition-colors">View All</Link>
+              </div>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                {loading ? (
+                  [1, 2, 3, 4].map((i) => (
+                    <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden animate-pulse">
+                      <div className="aspect-[16/9] bg-[#1A1A1A]" />
+                      <div className="p-3">
+                        <div className="h-[10px] bg-[#1A1A1A] rounded w-1/2 mb-3" />
+                        <div className="h-[14px] bg-[#1A1A1A] rounded w-3/4 mb-2" />
+                        <div className="h-[10px] bg-[#1A1A1A] rounded w-1/3" />
+                      </div>
+                    </div>
+                  ))
+                ) : gamingArticles.length > 0 ? gamingArticles.map((card, i) => (
+                  <Link
+                    key={card.id || i}
+                    href={`/news/${card.slug}`}
+                    className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] cursor-pointer group hover:-translate-y-[4px] hover:border-[#4A90D9]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300"
+                  >
+                    <div className="aspect-[16/9] relative overflow-hidden">
+                      {card.hero_image ? (
+                        <img
+                          src={card.hero_image}
+                          alt={card.title}
+                          className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-[#1A1A1A]" />
+                      )}
+                    </div>
+                    <div className="p-3">
+                      <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#4A90D9] mb-2">GAMING</div>
+                      <div className="font-['Kanit'] text-[14px] font-medium text-white leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
+                      <div className="text-[11px] text-[#AAAAAA] mt-2">{card.read_time || 3} min read</div>
+                    </div>
+                  </Link>
+                )) : (
+                  [1, 2, 3, 4].map((i) => (
+                    <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04]">
+                      <div className="aspect-[16/9] bg-[#1A1A1A]" />
+                      <div className="p-3">
+                        <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#4A90D9] mb-2">GAMING</div>
+                        <div className="font-['Kanit'] text-[14px] font-medium text-white/[0.55] leading-[1.4]">
+                          Waiting for curated gaming news
+                        </div>
+                        <div className="text-[11px] text-[#AAAAAA] mt-2">Coming soon</div>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </section>
+
             {/* ========== AD: SECTION BREAK ========== */}
             <div className="h-[120px] my-12 flex items-center justify-center bg-gradient-to-r from-[#0D0D0D] to-[#1A1A1A] border border-dashed border-[#2A2A2A] rounded-lg">
               <span className="text-[12px] tracking-[1px] text-[#666666] uppercase"> advertisement — 728×120 </span>
@@ -434,16 +574,10 @@ export default function Home() {
             {/* Categories Widget */}
             <div className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] mb-6">
               <div className="px-4 py-3 border-b border-white/[0.05] font-['Kanit'] text-[13px] font-semibold text-white">
-                📂 Categories
+                Categories
               </div>
               <div className="px-4 py-2">
-                {[
-                  { name: "📰 News", href: "/news", count: "124" },
-                  { name: "🎮 Reviews", href: "/reviews", count: "89" },
-                  { name: "🔥 Tips & Tricks", href: "/guides", count: "156" },
-                  { name: "💻 IT Gadget", href: "/it-gadget", count: "43" },
-                  { name: "🏆 Tournament", href: "/tournament", count: "67" },
-                ].map((cat) => (
+                {categoryLinks.map((cat) => (
                   <Link
                     key={cat.href}
                     href={cat.href}
@@ -455,7 +589,6 @@ export default function Home() {
                 ))}
               </div>
             </div>
-
             {/* AD Tall */}
             <div className="min-h-[300px] flex items-center justify-center bg-gradient-to-br from-[#0D0D0D] to-[#1A1A1A] border border-dashed border-[#2A2A2A] rounded-lg">
               <span className="text-[12px] tracking-[1px] text-[#666666] uppercase"> advertisement — 300×600 </span>

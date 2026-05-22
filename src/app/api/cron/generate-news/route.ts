@@ -1,10 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server"
+import { requireOperationalAuth } from "@/lib/apiAuth"
 import { collectNewsLinks } from "@/lib/news/collectRssNews"
 import { processFetchQueue } from "@/lib/news/processFetchQueue"
 import { processFreshnessValidation } from "@/lib/news/processFreshnessValidation"
 import { rewriteOpenClawCandidates } from "@/lib/news/rewriteCandidates"
 
 export const runtime = "nodejs"
+export const maxDuration = 300
 
 function shouldRunAiWriter(req: NextRequest) {
   const rewrite = req.nextUrl.searchParams.get("rewrite")
@@ -19,14 +21,20 @@ function shouldRunAiWriter(req: NextRequest) {
 function getOpenAiRewriteOptions(req: NextRequest) {
   const rewrite = req.nextUrl.searchParams.get("rewrite")
   const limit = Number(req.nextUrl.searchParams.get("rewriteLimit"))
+  const publish = req.nextUrl.searchParams.get("publish")
 
   return {
     dryRun: rewrite === "dry-run",
-    limit: Number.isFinite(limit) ? limit : undefined,
+    limit: Number.isFinite(limit) ? limit : 1,
+    publish: publish === "1" || publish === "true",
+    maxAttempts: 2,
   }
 }
 
 export async function GET(req: NextRequest) {
+  const unauthorized = requireOperationalAuth(req)
+  if (unauthorized) return unauthorized
+
   try {
     const collection = await collectNewsLinks()
     const fetchQueue = await processFetchQueue()

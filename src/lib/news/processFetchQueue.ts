@@ -14,6 +14,17 @@ interface RawNewsQueueRow {
   published_source_at: string | null
 }
 
+function rejectedRewritePatch(reason: string | null) {
+  const normalizedReason = reason || "freshness_rejected"
+
+  return {
+    extraction_status: "skipped",
+    rewrite_status: "skipped",
+    rewrite_error: normalizedReason,
+    rewrite_finished_at: new Date().toISOString(),
+  }
+}
+
 export async function processFetchQueue() {
   const result = {
     processed: 0,
@@ -83,6 +94,7 @@ export async function processFetchQueue() {
             fetched_at: new Date().toISOString(),
             freshness_status: "rejected",
             freshness_reason: "duplicate_content_hash",
+            ...rejectedRewritePatch("duplicate_content_hash"),
             fetch_error: null,
           })
           .eq("id", row.id)
@@ -107,6 +119,9 @@ export async function processFetchQueue() {
           published_source_at: discoveredDate,
           freshness_status: freshness.status,
           freshness_reason: freshness.reason,
+          ...(freshness.status === "rejected"
+            ? rejectedRewritePatch(freshness.reason)
+            : {}),
           fetched_at: new Date().toISOString(),
           fetch_error: null,
         })

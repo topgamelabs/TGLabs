@@ -4,7 +4,7 @@ import { getArticles } from "@/lib/supabase";
 export const revalidate = 60;
 
 export default async function MobileNewsPage() {
-  const articles = await getArticles({ limit: 20 });
+  const articles = await getArticles({ limit: 40, category: "mobile" });
 
   // Filter only mobile articles
   const mobileArticles = articles.filter(a => {
@@ -37,6 +37,8 @@ export default async function MobileNewsPage() {
             <Link href="/" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Home</Link>
             <Link href="/news" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">News</Link>
             <Link href="/news/mobile" className="text-[13px] text-[#FF1A1A] hover:text-[#FF1A1A]/80 transition-colors">Mobile</Link>
+            <Link href="/news/pc-console" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">PC/Console</Link>
+            <Link href="/news/gaming" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Gaming</Link>
             <Link href="/guides" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Guides</Link>
             <Link href="/reviews" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">Reviews</Link>
             <Link href="/it-gadget" className="text-[13px] text-white/[0.7] hover:text-white transition-colors">IT Gadget</Link>

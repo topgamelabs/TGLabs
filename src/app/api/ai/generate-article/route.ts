@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { extract } from "@extractus/article-extractor";
+import { requireOperationalAuth } from "@/lib/apiAuth";
 
 export const dynamic = 'force-dynamic';
 
@@ -294,6 +295,9 @@ function safe(data: Partial<GeneratedNews> | null, fallbackTitle: string): Gener
 // =========================
 export async function POST(req: Request) {
   try {
+    const unauthorized = requireOperationalAuth(req);
+    if (unauthorized) return unauthorized;
+
     if (req.headers.get("x-tglabs-manual-tool") !== "admin-generate") {
       return NextResponse.json(
         {
@@ -402,7 +406,7 @@ export async function POST(req: Request) {
               excerpt: article.excerpt,
               content: article.content,
               slug: generateSlug(article.title),
-              category: "news",
+              category: "gaming",
               author_id: "33333333-3333-3333-3333-333333333333",
               status: "published",
               is_published: true,

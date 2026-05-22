@@ -1,5 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabaseAdmin"
-import { evaluateMobileGameNewsRelevance } from "./newsRelevance"
+import { evaluateGameNewsRelevance } from "./newsRelevance"
 import { validateSourceQuality } from "./sourceQuality"
 
 const MIN_RAW_CONTENT_LENGTH = 800
@@ -9,6 +9,7 @@ const STALE_PENDING_DAYS = 30
 
 interface OpenClawCandidateOptions {
   markSkipped?: boolean
+  queueId?: string
 }
 
 export interface OpenClawCandidate {
@@ -17,7 +18,8 @@ export interface OpenClawCandidate {
   source_domain: string | null
   raw_title: string | null
   raw_excerpt: string | null
-  published_source_at: string
+  published_source_at: string | null
+  effective_published_at: string
   raw_content: string
   content_hash: string | null
 }
@@ -25,6 +27,7 @@ export interface OpenClawCandidate {
 interface RawCandidateRow extends OpenClawCandidate {
   source_id: string | null
   raw_content: string
+  discovered_at: string | null
 }
 
 async function markSkippedCandidate(queueId: string, reason: string) {
@@ -109,6 +112,48 @@ export async function cleanupStalePendingRewriteQueue() {
   return fallbackData?.length || 0
 }
 
+export async function cleanupRejectedPendingRewriteQueue() {
+  const patch = {
+    extraction_status: "skipped",
+    rewrite_status: "skipped",
+    rewrite_error: "freshness_rejected_not_rewriteable",
+    rewrite_finished_at: new Date().toISOString(),
+  }
+
+  const { data, error } = await supabaseAdmin
+    .from("raw_news_queue")
+    .update(patch)
+    .eq("freshness_status", "rejected")
+    .eq("extraction_status", "pending")
+    .eq("rewrite_status", "pending")
+    .select("id")
+
+  if (!error) {
+    return data?.length || 0
+  }
+
+  const { data: fallbackData, error: fallbackError } = await supabaseAdmin
+    .from("raw_news_queue")
+    .update({
+      extraction_status: "skipped",
+      rewrite_status: "skipped",
+    })
+    .eq("freshness_status", "rejected")
+    .eq("extraction_status", "pending")
+    .eq("rewrite_status", "pending")
+    .select("id")
+
+  if (fallbackError) {
+    console.error(
+      "[OpenClaw] Failed to clean rejected pending queue",
+      fallbackError.message
+    )
+    return 0
+  }
+
+  return fallbackData?.length || 0
+}
+
 export async function cleanupNonRewriteablePendingQueue(limit = 100) {
   const safeLimit = Math.min(Math.max(Math.floor(limit || 100), 1), 250)
   const { data, error } = await supabaseAdmin
@@ -133,7 +178,7 @@ export async function cleanupNonRewriteablePendingQueue(limit = 100) {
     raw_excerpt: string | null
     raw_content: string | null
   }>) {
-    const relevance = evaluateMobileGameNewsRelevance({
+    const relevance = evaluateGameNewsRelevance({
       title: row.raw_title,
       excerpt: row.raw_excerpt,
       content: row.raw_content,
@@ -160,20 +205,26 @@ export async function getOpenClawCandidates(
 ) {
   const requestedLimit = Number.isFinite(limit) ? limit : DEFAULT_LIMIT
   const safeLimit = Math.min(Math.max(requestedLimit, 1), 25)
+  const queryLimit = options.queueId ? 1 : safeLimit * MAX_SCAN_MULTIPLIER
 
-  const { data, error } = await supabaseAdmin
+  let query = supabaseAdmin
     .from("raw_news_queue")
     .select(
-      "id,source_id,source_url,source_domain,raw_title,raw_excerpt,published_source_at,raw_content,content_hash"
+      "id,source_id,source_url,source_domain,raw_title,raw_excerpt,published_source_at,discovered_at,raw_content,content_hash"
     )
     .eq("fetch_status", "success")
     .eq("freshness_status", "accepted")
     .eq("extraction_status", "pending")
     .eq("rewrite_status", "pending")
     .not("raw_content", "is", null)
-    .not("published_source_at", "is", null)
-    .order("published_source_at", { ascending: false })
-    .limit(safeLimit * MAX_SCAN_MULTIPLIER)
+    .order("discovered_at", { ascending: false })
+    .limit(queryLimit)
+
+  if (options.queueId) {
+    query = query.eq("id", options.queueId)
+  }
+
+  const { data, error } = await query
 
   if (error || !data) {
     console.error("[OpenClaw] Candidate query failed", error?.message)
@@ -241,7 +292,7 @@ export async function getOpenClawCandidates(
       }
     }
 
-    const relevance = evaluateMobileGameNewsRelevance({
+    const relevance = evaluateGameNewsRelevance({
       title: row.raw_title,
       excerpt: row.raw_excerpt,
       content: row.raw_content,
@@ -257,7 +308,7 @@ export async function getOpenClawCandidates(
       if (options.markSkipped && relevance.action !== "defer") {
         await markSkippedCandidate(
           row.id,
-          relevance.reason || "not_mobile_or_cross_platform_game"
+          relevance.reason || "not_supported_game_news"
         )
       }
       continue
@@ -270,6 +321,7 @@ export async function getOpenClawCandidates(
       raw_title: row.raw_title,
       raw_excerpt: row.raw_excerpt,
       published_source_at: row.published_source_at,
+      effective_published_at: row.published_source_at || row.discovered_at || new Date().toISOString(),
       raw_content: row.raw_content,
       content_hash: row.content_hash,
     })

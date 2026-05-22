@@ -2,11 +2,79 @@ import { supabaseAdmin } from "@/lib/supabaseAdmin"
 import { validateFreshness } from "./validateFreshness"
 
 const STALE_UNFILTERED_DAYS = 30
+const MAX_MISSING_DATE_DISCOVERY_AGE_HOURS = 72
 
 interface FreshnessQueueRow {
   id: string
   raw_title: string | null
   published_source_at: string | null
+  discovered_at: string | null
+}
+
+function buildFreshnessPatch(freshness: {
+  status: "accepted" | "rejected" | "pending_date_extraction"
+  reason: string | null
+}) {
+  const patch: {
+    freshness_status: typeof freshness.status
+    freshness_reason: string | null
+    extraction_status?: "skipped"
+    rewrite_status?: "skipped"
+    rewrite_error?: string
+    rewrite_finished_at?: string
+  } = {
+    freshness_status: freshness.status,
+    freshness_reason: freshness.reason,
+  }
+
+  if (freshness.status === "rejected") {
+    const reason = freshness.reason || "freshness_rejected"
+    patch.extraction_status = "skipped"
+    patch.rewrite_status = "skipped"
+    patch.rewrite_error = reason
+    patch.rewrite_finished_at = new Date().toISOString()
+  }
+
+  return patch
+}
+
+function validateRecentDiscovery(discoveredAt?: string | null) {
+  if (!discoveredAt) {
+    return {
+      status: "pending_date_extraction" as const,
+      reason: "missing_publish_date_and_discovery_date",
+    }
+  }
+
+  const discoveredDate = new Date(discoveredAt)
+  if (Number.isNaN(discoveredDate.getTime())) {
+    return {
+      status: "pending_date_extraction" as const,
+      reason: "missing_publish_date_invalid_discovery_date",
+    }
+  }
+
+  const diffHours =
+    (Date.now() - discoveredDate.getTime()) / (1000 * 60 * 60)
+
+  if (diffHours < -2) {
+    return {
+      status: "pending_date_extraction" as const,
+      reason: "missing_publish_date_discovery_in_future",
+    }
+  }
+
+  if (diffHours <= MAX_MISSING_DATE_DISCOVERY_AGE_HOURS) {
+    return {
+      status: "accepted" as const,
+      reason: "fresh_by_recent_discovery_missing_publish_date",
+    }
+  }
+
+  return {
+    status: "rejected" as const,
+    reason: "missing_publish_date_old_discovery",
+  }
 }
 
 async function cleanupStaleUnfilteredRawNews() {
@@ -80,18 +148,23 @@ export async function processFreshnessValidation() {
     result.processed++
 
     if (!row.published_source_at) {
+      const fallbackFreshness = validateRecentDiscovery(row.discovered_at)
+
       await supabaseAdmin
         .from("raw_news_queue")
-        .update({
-          freshness_status: "pending_date_extraction",
-          freshness_reason: "missing_publish_date",
-        })
+        .update(buildFreshnessPatch(fallbackFreshness))
         .eq("id", row.id)
 
       console.log(
-        `[Freshness] ${row.raw_title || row.id} => pending_missing_date`
+        `[Freshness] ${row.raw_title || row.id} => ${fallbackFreshness.status}:${fallbackFreshness.reason}`
       )
-      result.pendingDateExtraction++
+      if (fallbackFreshness.status === "accepted") {
+        result.accepted++
+      } else if (fallbackFreshness.status === "rejected") {
+        result.rejected++
+      } else {
+        result.pendingDateExtraction++
+      }
       continue
     }
 
@@ -99,10 +172,7 @@ export async function processFreshnessValidation() {
 
     await supabaseAdmin
       .from("raw_news_queue")
-      .update({
-        freshness_status: freshness.status,
-        freshness_reason: freshness.reason,
-      })
+      .update(buildFreshnessPatch(freshness))
       .eq("id", row.id)
 
     console.log(`[Freshness] ${row.raw_title || row.id} => ${freshness.status}`)

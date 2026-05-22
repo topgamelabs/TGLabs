@@ -1,4 +1,4 @@
-const MAX_NEWS_AGE_HOURS = 48
+const MAX_NEWS_AGE_HOURS = 72
 
 export type FreshnessStatus = "accepted" | "rejected"
 

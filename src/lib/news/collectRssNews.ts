@@ -5,7 +5,7 @@ import {
   type NewsSourceConfig,
 } from "./discoverNewsLinks"
 import { hashTitle, hashUrl, normalizeTitle } from "./newsIdentity"
-import { evaluateMobileGameNewsRelevance } from "./newsRelevance"
+import { evaluateGameNewsRelevance } from "./newsRelevance"
 import { validateSourceQuality } from "./sourceQuality"
 
 interface QueueInsertResult {
@@ -238,7 +238,7 @@ async function queueDiscoveredLinks(
       continue
     }
 
-    const relevance = evaluateMobileGameNewsRelevance({
+    const relevance = evaluateGameNewsRelevance({
       title: link.title,
       excerpt: link.excerpt,
       url: link.url,
