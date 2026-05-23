@@ -88,6 +88,21 @@ type BatchResult = {
   }
 }
 
+type RewriteApprovedResult = {
+  total?: number
+  success?: number
+  failed?: number
+  results?: Array<{
+    id: string
+    success: boolean
+    warning?: string
+    error?: string
+    output?: {
+      result?: RewriteResult
+    }
+  }>
+}
+
 type FetchFilterResult = {
   stages?: {
     discover?: { status?: string; message?: string }
@@ -322,6 +337,8 @@ export default function NewsroomPage() {
   const [batchResults, setBatchResults] = useState<BatchResult[]>([])
   const [fetchFilterRunning, setFetchFilterRunning] = useState(false)
   const [fetchFilterResult, setFetchFilterResult] = useState<FetchFilterResult | null>(null)
+  const [rewriteApprovedRunning, setRewriteApprovedRunning] = useState(false)
+  const [rewriteApprovedResult, setRewriteApprovedResult] = useState<RewriteApprovedResult | null>(null)
   const [translationRunning, setTranslationRunning] = useState(false)
   const [translationResult, setTranslationResult] = useState<TranslationPreviewResult | null>(null)
   const [translationPreviews, setTranslationPreviews] = useState<Record<string, TranslationPreview>>({})
@@ -479,6 +496,36 @@ export default function NewsroomPage() {
     await load()
   }
 
+  async function rewriteApproved() {
+    if (!confirm("Rewrite approved news as drafts now? This will process up to 5 approved items.")) return
+
+    setRewriteApprovedRunning(true)
+    setRewriteApprovedResult(null)
+    setMessage("Rewriting approved news as drafts...")
+
+    const res = await fetch("/api/admin/newsroom", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "rewrite_approved" }),
+    })
+    const json = await res.json().catch(() => null)
+    setRewriteApprovedRunning(false)
+
+    if (!json?.success) {
+      setMessage(json?.error || "Rewrite approved failed")
+      await load()
+      return
+    }
+
+    const result = (json.result || {}) as RewriteApprovedResult
+    setRewriteApprovedResult(result)
+    setMessage(
+      `Rewrite approved completed: ${result.success || 0} succeeded, ${result.failed || 0} failed.`
+    )
+    setStatus("approved")
+    await load()
+  }
+
   async function translateVisibleQueue() {
     const visibleItems = filteredQueue
       .filter((row) => row.raw_title || row.raw_excerpt)
@@ -575,6 +622,13 @@ export default function NewsroomPage() {
               className="h-10 px-4 rounded-md bg-[#FF1A1A] text-sm font-semibold text-white hover:bg-[#B30000] transition-colors"
             >
               {loading ? "Refreshing..." : "Refresh"}
+            </button>
+            <button
+              onClick={rewriteApproved}
+              disabled={rewriteApprovedRunning}
+              className="h-10 px-4 rounded-md border border-[#FF1A1A]/45 bg-[#FF1A1A]/10 text-sm font-semibold text-[#FFB3B3] hover:bg-[#FF1A1A]/20 disabled:opacity-40"
+            >
+              {rewriteApprovedRunning ? "Rewriting..." : "Rewrite Approved"}
             </button>
           </div>
         </div>
@@ -688,6 +742,38 @@ export default function NewsroomPage() {
                   .join(", ")}
               </p>
             )}
+          </section>
+        )}
+
+        {rewriteApprovedResult && (
+          <section className="mt-4 rounded-lg border border-white/[0.08] bg-[#0D0D0D] p-4">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <p className="text-sm font-semibold text-white">Rewrite Approved Report</p>
+                <p className="mt-1 text-xs text-white/40">
+                  Processed {rewriteApprovedResult.total || 0} approved items. Success {rewriteApprovedResult.success || 0}, failed {rewriteApprovedResult.failed || 0}.
+                </p>
+              </div>
+              <button
+                onClick={() => setRewriteApprovedResult(null)}
+                className="h-8 rounded-md border border-white/[0.12] px-3 text-xs text-white/55"
+              >
+                Dismiss
+              </button>
+            </div>
+            <div className="mt-3 space-y-2">
+              {rewriteApprovedResult.results?.slice(0, 5).map((item) => {
+                const article = item.output?.result?.articles?.[0]
+                return (
+                  <div key={item.id} className="rounded-md border border-white/[0.06] bg-black/20 px-3 py-2 text-xs">
+                    <span className={item.success ? "text-[#7BE0A5]" : "text-[#FF9A74]"}>
+                      {item.success ? "success" : "failed"}
+                    </span>
+                    <span className="ml-2 text-white/45">{article?.title || item.error || item.warning || item.id}</span>
+                  </div>
+                )
+              })}
+            </div>
           </section>
         )}
 

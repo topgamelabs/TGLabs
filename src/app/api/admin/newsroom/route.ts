@@ -527,6 +527,58 @@ async function runQueueAction(action: QueueAction, id: string, reason?: string) 
   return { action }
 }
 
+async function loadApprovedRewriteIds(limit = 5) {
+  const { data, error } = await supabaseAdmin
+    .from("raw_news_queue")
+    .select("id")
+    .eq("freshness_status", "accepted")
+    .eq("freshness_reason", "manual_admin_approved")
+    .eq("extraction_status", "pending")
+    .eq("rewrite_status", "pending")
+    .not("raw_content", "is", null)
+    .order("discovered_at", { ascending: false })
+    .limit(limit)
+
+  if (error) {
+    throw new Error(`LOAD_APPROVED_REWRITE_IDS_FAILED: ${error.message}`)
+  }
+
+  return (data || []).map((row) => row.id as string).filter(Boolean)
+}
+
+async function runRewriteApproved() {
+  const ids = await loadApprovedRewriteIds(5)
+  const results = []
+
+  for (const id of ids) {
+    try {
+      const output = await runQueueAction("rewrite", id)
+      const success = didQueueActionCreateExpectedOutput(output)
+
+      results.push({
+        id,
+        success,
+        warning: success ? undefined : "REWRITE_COMPLETED_WITHOUT_ARTICLE",
+        output,
+      })
+    } catch (error) {
+      results.push({
+        id,
+        success: false,
+        error:
+          error instanceof Error ? error.message : "REWRITE_APPROVED_ITEM_FAILED",
+      })
+    }
+  }
+
+  return {
+    total: ids.length,
+    success: results.filter((item) => item.success).length,
+    failed: results.filter((item) => !item.success).length,
+    results,
+  }
+}
+
 function didQueueActionCreateExpectedOutput(output: Awaited<ReturnType<typeof runQueueAction>>) {
   if (output.action !== "rewrite") return true
   return Boolean(output.result.articles.length > 0)
@@ -586,6 +638,11 @@ export async function POST(req: NextRequest) {
         rawItems.map(parseTranslationPreviewItem)
       )
 
+      return NextResponse.json({ success: true, action, result })
+    }
+
+    if (action === "rewrite_approved") {
+      const result = await runRewriteApproved()
       return NextResponse.json({ success: true, action, result })
     }
 
