@@ -141,6 +141,7 @@ type TranslationPreviewResult = {
 const statusOptions = [
   "all",
   "eligible",
+  "approved",
   "pending",
   "processing",
   "success",
@@ -152,6 +153,7 @@ const statusOptions = [
 const statusLabels: Record<string, string> = {
   all: "all",
   eligible: "Ready to Rewrite",
+  approved: "Approved",
   pending: "pending",
   processing: "processing",
   success: "success",

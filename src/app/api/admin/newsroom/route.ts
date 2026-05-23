@@ -60,6 +60,12 @@ async function loadQueue(req: NextRequest) {
       .eq("extraction_status", "pending")
       .eq("rewrite_status", "pending")
       .not("raw_content", "is", null)
+  } else if (status === "approved") {
+    query = query
+      .eq("freshness_status", "accepted")
+      .eq("freshness_reason", "manual_admin_approved")
+      .eq("extraction_status", "pending")
+      .eq("rewrite_status", "pending")
   } else if (status && status !== "all") {
     query = query.eq("rewrite_status", status)
   }
