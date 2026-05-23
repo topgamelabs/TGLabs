@@ -68,7 +68,7 @@ const SUPABASE_ANON_KEY = supabaseAnonKey;
 export async function getArticles({ limit = 10, category }: { limit?: number; category?: string } = {}) {
   const categoryQuery = category ? `&category=eq.${encodeURIComponent(category)}` : "";
   const res = await fetch(
-    `${SUPABASE_REST_URL}/rest/v1/articles?select=*&is_published=eq.true${categoryQuery}&order=created_at.desc&limit=${limit}`,
+    `${SUPABASE_REST_URL}/rest/v1/articles?select=*&is_published=eq.true${categoryQuery}&order=published_at.desc.nullslast,created_at.desc&limit=${limit}`,
     {
       headers: {
         apikey: SUPABASE_ANON_KEY!,
