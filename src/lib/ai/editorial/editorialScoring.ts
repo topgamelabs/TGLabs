@@ -63,7 +63,7 @@ function metadataTextFor(item: EditorialNewsItem) {
 export function scoreEditorialCandidate(
   item: EditorialNewsItem,
   detection: MobileGameDetection,
-  options: { bypassLowPriorityReject?: boolean } = {}
+  options: { bypassLowPriorityReject?: boolean; forceWrite?: boolean } = {}
 ): EditorialScore {
   const text = textFor(item)
   const metadataText = metadataTextFor(item)
@@ -74,7 +74,7 @@ export function scoreEditorialCandidate(
   const seoScore = clampScore(35 + highMatches.length * 10 + (hasNamedGame ? 20 : 0))
   const engagementScore = clampScore(30 + highMatches.length * 12 - lowMatches.length * 12)
   const sourceQualityScore = item.content && item.content.length > 1200 ? 80 : 55
-  const supportedGameNews = detection.is_mobile_game
+  const supportedGameNews = options.forceWrite === true || detection.is_mobile_game
   const isGuideLike = lowMatches.some((term) =>
     [
       "best builds",
@@ -94,12 +94,14 @@ export function scoreEditorialCandidate(
     detection.confidence * 45 + seoScore * 0.25 + engagementScore * 0.2 + sourceQualityScore * 0.1
   )
   const shouldWrite =
-    supportedGameNews &&
-    priorityScore >= 45 &&
-    seoScore >= 40 &&
-    titleLength > 8 &&
-    (options.bypassLowPriorityReject ||
-      (lowMatches.length < 2 && !(isGuideLike && highMatches.length === 0)))
+    options.forceWrite === true
+      ? titleLength > 8
+      : supportedGameNews &&
+        priorityScore >= 45 &&
+        seoScore >= 40 &&
+        titleLength > 8 &&
+        (options.bypassLowPriorityReject ||
+          (lowMatches.length < 2 && !(isGuideLike && highMatches.length === 0)))
 
   return {
     should_write: shouldWrite,
@@ -109,7 +111,9 @@ export function scoreEditorialCandidate(
     source_quality_score: sourceQualityScore,
     rejection_reason: shouldWrite ? undefined : supportedGameNews ? "low_editorial_priority" : "not_supported_game_news",
     decision_reason: shouldWrite
-      ? `accepted:${highMatches.join(",") || "standard_game_news"}`
+      ? `accepted:${
+          options.forceWrite === true ? "manual_force_write" : highMatches.join(",") || "standard_game_news"
+        }`
       : `rejected:${lowMatches.join(",") || "insufficient_game_seo_signal"}`,
   }
 }

@@ -966,6 +966,7 @@ async function generateRewriteWithRetry(
   const detection = detectMobileGameNews(newsItem)
   const score = scoreEditorialCandidate(newsItem, detection, {
     bypassLowPriorityReject: options.manual === true,
+    forceWrite: options.manual === true,
   })
 
   if (!score.should_write) {
