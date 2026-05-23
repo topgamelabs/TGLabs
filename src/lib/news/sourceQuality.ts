@@ -4,7 +4,9 @@ export interface SourceQualityResult {
 }
 
 const MAX_BLOCKED_COUNT = 5
-const COOLDOWN_HOURS = 6
+const BLOCKED_COOLDOWN_HOURS = 6
+const FAILURE_COOLDOWN_MINUTES = 30
+const SUCCESS_COOLDOWN_MINUTES = 15
 const MIN_SOURCE_SCORE = 40
 
 function asDate(value: unknown) {
@@ -43,13 +45,32 @@ export function validateSourceQuality(
 
   const blockedCount = asNumber(source.blocked_count) || 0
   const lastFailureAt = asDate(source.last_failure_at)
+  const lastSuccessAt = asDate(source.last_success_at)
 
   if (blockedCount >= MAX_BLOCKED_COUNT && lastFailureAt) {
     const diffHours =
       (Date.now() - lastFailureAt.getTime()) / (1000 * 60 * 60)
 
-    if (diffHours < COOLDOWN_HOURS) {
+    if (diffHours < BLOCKED_COOLDOWN_HOURS) {
       return { allowed: false, reason: "source_blocked_cooldown" }
+    }
+  }
+
+  if (lastFailureAt) {
+    const diffMinutes =
+      (Date.now() - lastFailureAt.getTime()) / (1000 * 60)
+
+    if (diffMinutes < FAILURE_COOLDOWN_MINUTES) {
+      return { allowed: false, reason: "source_failure_cooldown" }
+    }
+  }
+
+  if (lastSuccessAt) {
+    const diffMinutes =
+      (Date.now() - lastSuccessAt.getTime()) / (1000 * 60)
+
+    if (diffMinutes < SUCCESS_COOLDOWN_MINUTES) {
+      return { allowed: false, reason: "source_success_cooldown" }
     }
   }
 

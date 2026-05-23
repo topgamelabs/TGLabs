@@ -15,6 +15,11 @@ interface QueueInsertResult {
   failed: number
 }
 
+interface SourceSkipResult {
+  source: string
+  reason: string
+}
+
 function toSourceConfig(source: Record<string, unknown>): NewsSourceConfig {
   return {
     id: String(source.id),
@@ -273,6 +278,8 @@ export async function collectNewsLinks() {
     return {
       success: false,
       sources: 0,
+      sourcesChecked: 0,
+      skippedSources: [] as SourceSkipResult[],
       queued: 0,
       skippedOld: 0,
       skippedIrrelevant: 0,
@@ -284,10 +291,16 @@ export async function collectNewsLinks() {
   let skippedOld = 0
   let skippedIrrelevant = 0
   let failed = 0
+  let sourcesChecked = 0
+  const skippedSources: SourceSkipResult[] = []
 
   for (const rawSource of sources as Record<string, unknown>[]) {
     const sourceQuality = validateSourceQuality(rawSource)
     if (!sourceQuality.allowed) {
+      skippedSources.push({
+        source: String(rawSource.name || rawSource.domain || rawSource.id),
+        reason: sourceQuality.reason || "source_skipped",
+      })
       console.log(
         `[COLLECT] Source skipped ${String(rawSource.name || rawSource.domain || rawSource.id)}: ${sourceQuality.reason}`
       )
@@ -297,6 +310,7 @@ export async function collectNewsLinks() {
     const source = toSourceConfig(rawSource)
 
     console.log(`[COLLECT] Discovering ${source.name || source.domain}`)
+    sourcesChecked++
 
     const discovered = await discoverNewsLinks(source)
 
@@ -330,6 +344,8 @@ export async function collectNewsLinks() {
   return {
     success: true,
     sources: sources.length,
+    sourcesChecked,
+    skippedSources,
     queued,
     skippedOld,
     skippedIrrelevant,

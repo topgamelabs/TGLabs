@@ -89,8 +89,16 @@ type BatchResult = {
 }
 
 type FetchFilterResult = {
+  stages?: {
+    discover?: { status?: string; message?: string }
+    fetch?: { status?: string; message?: string }
+    freshness?: { status?: string; message?: string }
+  }
   collection?: {
+    success?: boolean
     sources?: number
+    sourcesChecked?: number
+    skippedSources?: Array<{ source?: string; reason?: string }>
     queued?: number
     skippedOld?: number
     skippedIrrelevant?: number
@@ -101,6 +109,7 @@ type FetchFilterResult = {
     fetched?: number
     rejectedDuplicate?: number
     failed?: number
+    stoppedReason?: string | null
   }
   freshness?: {
     processed?: number
@@ -149,6 +158,13 @@ const statusLabels: Record<string, string> = {
   failed: "failed",
   duplicate: "duplicate",
   skipped: "skipped",
+}
+
+const stageTone: Record<string, string> = {
+  success: "border-emerald-500/20 bg-emerald-500/10 text-emerald-200",
+  partial: "border-yellow-500/20 bg-yellow-500/10 text-yellow-200",
+  failed: "border-red-500/20 bg-red-500/10 text-red-200",
+  skipped: "border-white/[0.08] bg-white/[0.03] text-white/45",
 }
 
 const typeOptions = [
@@ -627,16 +643,49 @@ export default function NewsroomPage() {
                 Dismiss
               </button>
             </div>
+            {fetchFilterResult.stages && (
+              <div className="mt-4 grid grid-cols-1 gap-3 lg:grid-cols-3">
+                {(["discover", "fetch", "freshness"] as const).map((key) => {
+                  const item = fetchFilterResult.stages?.[key]
+                  const status = item?.status || "skipped"
+                  return (
+                    <div
+                      key={key}
+                      className={`rounded-md border p-3 ${stageTone[status] || stageTone.skipped}`}
+                    >
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em]">
+                        {key}
+                      </p>
+                      <p className="mt-1 text-xs leading-relaxed">
+                        {status}: {item?.message || "No report"}
+                      </p>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
             <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-8">
+              <MetricCard label="Sources" value={fetchFilterResult.collection?.sourcesChecked || 0} />
+              <MetricCard label="Skipped Src" value={fetchFilterResult.collection?.skippedSources?.length || 0} />
               <MetricCard label="Queued" value={fetchFilterResult.collection?.queued || 0} tone="blue" />
               <MetricCard label="Old" value={fetchFilterResult.collection?.skippedOld || 0} tone="red" />
               <MetricCard label="Irrelevant" value={fetchFilterResult.collection?.skippedIrrelevant || 0} tone="red" />
+              <MetricCard label="Fetch Run" value={fetchFilterResult.fetchQueue?.processed || 0} />
               <MetricCard label="Fetch OK" value={fetchFilterResult.fetchQueue?.fetched || 0} tone="green" />
               <MetricCard label="Duplicate" value={fetchFilterResult.fetchQueue?.rejectedDuplicate || 0} />
               <MetricCard label="Accepted" value={fetchFilterResult.freshness?.accepted || 0} tone="green" />
               <MetricCard label="Rejected" value={fetchFilterResult.freshness?.rejected || 0} tone="red" />
               <MetricCard label="Ready +" value={fetchFilterResult.readyAdded || 0} tone="blue" />
             </div>
+            {Boolean(fetchFilterResult.collection?.skippedSources?.length) && (
+              <p className="mt-3 text-xs text-white/40">
+                Skipped sources:{" "}
+                {fetchFilterResult.collection?.skippedSources
+                  ?.slice(0, 6)
+                  .map((item) => `${item.source || "source"} (${item.reason || "skipped"})`)
+                  .join(", ")}
+              </p>
+            )}
           </section>
         )}
 

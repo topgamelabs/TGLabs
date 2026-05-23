@@ -26,6 +26,12 @@ type TranslationPreviewItem = {
   excerpt: string
 }
 
+type StageStatus = "success" | "partial" | "failed" | "skipped"
+
+function stage(status: StageStatus, message: string) {
+  return { status, message }
+}
+
 function normalizeLimit(value: string | null) {
   const limit = Number(value)
   if (!Number.isFinite(limit)) return 50
@@ -161,34 +167,127 @@ async function countReadyToRewrite() {
 
 async function runFetchAndFilter() {
   const readyBefore = await countReadyToRewrite()
-  const collection = await collectNewsLinks()
+  const stages = {
+    discover: stage("skipped", "Discover not started"),
+    fetch: stage("skipped", "Fetch not started"),
+    freshness: stage("skipped", "Freshness not started"),
+  }
+  let collection: Awaited<ReturnType<typeof collectNewsLinks>> | null = null
+  let freshness: Awaited<ReturnType<typeof processFreshnessValidation>> | null =
+    null
   const fetchRounds = []
+  const fetchDeadlineMs = Date.now() + 110000
+  const maxFetchItems = 24
+  const fetchBatchSize = 8
+  let fetchProcessed = 0
 
-  for (let round = 0; round < 5; round++) {
-    const fetchQueue = await processFetchQueue()
-    fetchRounds.push(fetchQueue)
-
-    if (fetchQueue.processed === 0) {
-      break
-    }
+  try {
+    collection = await collectNewsLinks()
+    stages.discover = collection.success
+      ? stage("success", `Queued ${collection.queued} new links`)
+      : stage("failed", "Source discovery failed")
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "DISCOVER_FAILED"
+    stages.discover = stage("failed", message)
   }
 
-  const freshness = await processFreshnessValidation()
+  try {
+    for (let round = 0; round < 3; round++) {
+      if (Date.now() >= fetchDeadlineMs || fetchProcessed >= maxFetchItems) {
+        break
+      }
+
+      const remaining = maxFetchItems - fetchProcessed
+      const fetchQueue = await processFetchQueue({
+        limit: Math.min(fetchBatchSize, remaining),
+        deadlineMs: fetchDeadlineMs,
+      })
+      fetchRounds.push(fetchQueue)
+      fetchProcessed += fetchQueue.processed
+
+      if (fetchQueue.processed === 0 || fetchQueue.stoppedReason) {
+        break
+      }
+    }
+
+    const stoppedReason = fetchRounds.find((round) => round.stoppedReason)
+      ?.stoppedReason
+    const status: StageStatus = stoppedReason
+      ? "partial"
+      : fetchProcessed >= maxFetchItems
+        ? "partial"
+        : "success"
+    const message = stoppedReason
+      ? stoppedReason
+      : fetchProcessed >= maxFetchItems
+        ? `Fetched batch limit reached (${maxFetchItems})`
+        : `Processed ${fetchProcessed} queued links`
+
+    stages.fetch = stage(status, message)
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "FETCH_STAGE_FAILED"
+    stages.fetch = stage("failed", message)
+  }
+
+  try {
+    freshness = await processFreshnessValidation()
+    stages.freshness = stage(
+      "success",
+      `Processed ${freshness.processed} pending freshness rows`
+    )
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "FRESHNESS_FAILED"
+    stages.freshness = stage("failed", message)
+  }
+
   const readyAfter = await countReadyToRewrite()
+  const fetchQueue = fetchRounds.reduce(
+    (total, round) => ({
+      processed: total.processed + round.processed,
+      fetched: total.fetched + round.fetched,
+      rejectedDuplicate: total.rejectedDuplicate + round.rejectedDuplicate,
+      failed: total.failed + round.failed,
+      stoppedReason: total.stoppedReason || round.stoppedReason,
+    }),
+    {
+      processed: 0,
+      fetched: 0,
+      rejectedDuplicate: 0,
+      failed: 0,
+      stoppedReason: null as string | null,
+    }
+  )
+
+  if (fetchQueue.failed > 0 && stages.fetch.status === "success") {
+    stages.fetch = stage(
+      "partial",
+      `Processed ${fetchQueue.processed} links with ${fetchQueue.failed} fetch failures`
+    )
+  }
 
   return {
-    collection,
+    stages,
+    collection:
+      collection || {
+        success: false,
+        sources: 0,
+        sourcesChecked: 0,
+        skippedSources: [],
+        queued: 0,
+        skippedOld: 0,
+        skippedIrrelevant: 0,
+        failed: 0,
+      },
     fetchRounds,
-    fetchQueue: fetchRounds.reduce(
-      (total, round) => ({
-        processed: total.processed + round.processed,
-        fetched: total.fetched + round.fetched,
-        rejectedDuplicate: total.rejectedDuplicate + round.rejectedDuplicate,
-        failed: total.failed + round.failed,
-      }),
-      { processed: 0, fetched: 0, rejectedDuplicate: 0, failed: 0 }
-    ),
-    freshness,
+    fetchQueue,
+    freshness:
+      freshness || {
+        processed: 0,
+        accepted: 0,
+        rejected: 0,
+        pendingDateExtraction: 0,
+        cleanedStaleUnfiltered: 0,
+      },
     readyBefore,
     readyAfter,
     readyAdded: Math.max(readyAfter - readyBefore, 0),

@@ -6,6 +6,16 @@ import { hashContent } from "./newsIdentity"
 import { validateFreshness } from "./validateFreshness"
 
 const MAX_FETCH_ATTEMPTS = 3
+const DEFAULT_FETCH_LIMIT = 10
+const DEFAULT_FETCH_TIMEOUT_MS = 10000
+const DEFAULT_FETCH_RETRIES = 1
+
+interface ProcessFetchQueueOptions {
+  limit?: number
+  deadlineMs?: number
+  timeoutMs?: number
+  retries?: number
+}
 
 interface RawNewsQueueRow {
   id: string
@@ -25,13 +35,18 @@ function rejectedRewritePatch(reason: string | null) {
   }
 }
 
-export async function processFetchQueue() {
+export async function processFetchQueue(options: ProcessFetchQueueOptions = {}) {
   const result = {
     processed: 0,
     fetched: 0,
     rejectedDuplicate: 0,
     failed: 0,
+    stoppedReason: null as string | null,
   }
+  const limit = Math.min(
+    Math.max(Math.floor(options.limit || DEFAULT_FETCH_LIMIT), 1),
+    25
+  )
 
   const { data, error } = await supabaseAdmin
     .from("raw_news_queue")
@@ -39,7 +54,8 @@ export async function processFetchQueue() {
     .eq("fetch_status", "pending")
     .neq("freshness_status", "rejected")
     .or(`fetch_attempts.is.null,fetch_attempts.lt.${MAX_FETCH_ATTEMPTS}`)
-    .limit(10)
+    .order("discovered_at", { ascending: false })
+    .limit(limit)
 
   if (error || !data) {
     console.error("[FETCH] Failed to load queue", error?.message)
@@ -47,13 +63,18 @@ export async function processFetchQueue() {
   }
 
   for (const row of data as RawNewsQueueRow[]) {
+    if (options.deadlineMs && Date.now() >= options.deadlineMs) {
+      result.stoppedReason = "fetch_time_limit_reached"
+      break
+    }
+
     result.processed++
     console.log(`[FETCH] ${row.source_url}`)
 
     const fetched = await fetchWithRetry(row.source_url, {
       contentType: "html",
-      retries: 2,
-      timeoutMs: 15000,
+      retries: options.retries ?? DEFAULT_FETCH_RETRIES,
+      timeoutMs: options.timeoutMs || DEFAULT_FETCH_TIMEOUT_MS,
     })
 
     const attempts = (row.fetch_attempts || 0) + fetched.attempts
