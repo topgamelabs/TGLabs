@@ -6,10 +6,11 @@ export const metadata: Metadata = {
   title: "TopGame Thailand - ข่าวเกมมือถือ อัปเดตล่าสุด",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "64x64" },
       { url: "/favicon.png", type: "image/png", sizes: "512x512" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48 64x64" },
     ],
-    shortcut: "/favicon.ico",
+    shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
   description:
