@@ -12,7 +12,29 @@ export interface Game {
   slug: string;
   thumbnail: string | null;
   platform: string | null;
+  aliases?: string[] | null;
+  platforms?: string[] | null;
+  genre?: string | null;
+  developer?: string | null;
+  publisher?: string | null;
+  official_website?: string | null;
+  official_x?: string | null;
+  official_facebook?: string | null;
+  official_youtube?: string | null;
+  app_store_url?: string | null;
+  google_play_url?: string | null;
+  steam_url?: string | null;
+  playstation_url?: string | null;
+  nintendo_url?: string | null;
+  xbox_url?: string | null;
+  status?: string | null;
+  description?: string | null;
+  last_seen_at?: string | null;
+  metadata_source_url?: string | null;
+  confidence?: number | null;
+  needs_review?: boolean | null;
   created_at: string;
+  updated_at?: string | null;
 }
 
 export interface Article {

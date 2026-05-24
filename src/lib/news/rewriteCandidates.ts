@@ -31,6 +31,12 @@ import {
   serializeArticleBlocks,
   type ArticleBlock,
 } from "./articleBlocks"
+import {
+  categoryForGameProfile,
+  formatGameProfileContext,
+  resolveGameProfile,
+  type GameProfile,
+} from "./gameProfiles"
 
 const DEFAULT_REWRITE_LIMIT = 3
 const MAX_REWRITE_LIMIT = 10
@@ -70,6 +76,13 @@ interface NewsClassification {
   decision: ClassificationDecision
   reason: string
   confidence: number
+}
+
+interface RewriteContext {
+  score?: EditorialScore
+  research?: ResearchContext
+  facts?: ArticleFacts
+  gameProfile?: GameProfile | null
 }
 
 export interface RewriteCandidatesResult {
@@ -141,12 +154,8 @@ function extractSourceText(html: string) {
   return articleText.replace(/\s+/g, " ").trim().slice(0, MAX_SOURCE_TEXT_LENGTH)
 }
 
-function buildEditorialContextBlock(options: {
-  score?: EditorialScore
-  research?: ResearchContext
-  facts?: ArticleFacts
-}) {
-  const { score, research, facts } = options
+function buildEditorialContextBlock(options: RewriteContext) {
+  const { score, research, facts, gameProfile } = options
 
   return `
 Editorial scoring:
@@ -157,6 +166,9 @@ ${research ? JSON.stringify(research, null, 2) : "not available"}
 
 Extracted article facts:
 ${facts ? JSON.stringify(facts, null, 2) : "not available"}
+
+Known game profile from database:
+${formatGameProfileContext(gameProfile)}
 `.trim()
 }
 
@@ -244,11 +256,7 @@ ${sourceText}
 function buildPackagingPrompt(
   candidate: OpenClawCandidate,
   articleDraft: string,
-  context: {
-    score?: EditorialScore
-    research?: ResearchContext
-    facts?: ArticleFacts
-  } = {}
+  context: RewriteContext = {}
 ) {
   return `
 You are formatting an already-written Thai gaming news article for TopGame Thailand.
@@ -305,11 +313,7 @@ function buildGameInfoAppendPrompt(
   candidate: OpenClawCandidate,
   articleDraft: string,
   sourceText: string,
-  context: {
-    score?: EditorialScore
-    research?: ResearchContext
-    facts?: ArticleFacts
-  } = {}
+  context: RewriteContext = {}
 ) {
   return `
 You are a Thai gaming news editor preparing the final article for TopGame Thailand.
@@ -323,6 +327,9 @@ Rules:
 - Use the heading "รายละเอียดทั่วไปของเกม" for the final section.
 - This section is separate from the news story. Think of it as a compact reference box in article form.
 - Include only clearly confirmed details from the source, source URL, title, excerpt, and extracted facts.
+- If a known game profile is available from the database, treat it as trusted reference data and use it before guessing from the source.
+- Prefer database game profile fields for title, platform, genre, developer, publisher, official website, store pages, and social links.
+- Use source details only to supplement article-specific status such as release window, test region, or event details.
 - Do not invent unknown details.
 - If a detail is not confirmed, omit that bullet entirely.
 - Never write "ไม่ระบุ", "unknown", "N/A", or similar placeholders.
@@ -365,11 +372,7 @@ function buildOpinionAppendPrompt(
   candidate: OpenClawCandidate,
   articleDraft: string,
   sourceText: string,
-  context: {
-    score?: EditorialScore
-    research?: ResearchContext
-    facts?: ArticleFacts
-  } = {}
+  context: RewriteContext = {}
 ) {
   return `
 You are a Thai gaming news editor adding a short human opinion note to a finished TopGame Thailand article.
@@ -419,11 +422,7 @@ function buildRepairPrompt(
   candidate: OpenClawCandidate,
   articleDraft: string,
   previousError: string,
-  context: {
-    score?: EditorialScore
-    research?: ResearchContext
-    facts?: ArticleFacts
-  } = {}
+  context: RewriteContext = {}
 ) {
   return `
 You are repairing a Thai gaming news rewrite that failed validation.
@@ -644,11 +643,13 @@ function categoryForClassification(
 
 function applyClassifiedCategory(
   article: RewrittenArticle,
-  classification: NewsClassification
+  classification: NewsClassification,
+  gameProfile?: GameProfile | null
 ): RewrittenArticle {
   return {
     ...article,
-    category: categoryForClassification(classification),
+    category: categoryForGameProfile(gameProfile) || categoryForClassification(classification),
+    game_id: gameProfile?.id || article.game_id || null,
   }
 }
 
@@ -827,11 +828,7 @@ async function generateRewrite(
   candidate: OpenClawCandidate,
   sourceText: string,
   repairReason?: string,
-  context: {
-    score?: EditorialScore
-    research?: ResearchContext
-    facts?: ArticleFacts
-  } = {}
+  context: RewriteContext = {}
 ) {
   const articleDraft = await requestDraftArticle(apiKey, candidate, sourceText)
   const articleWithGameInfo = await requestArticleWithGameInfo(
@@ -888,11 +885,7 @@ async function requestArticleWithGameInfo(
   candidate: OpenClawCandidate,
   articleDraft: string,
   sourceText: string,
-  context: {
-    score?: EditorialScore
-    research?: ResearchContext
-    facts?: ArticleFacts
-  } = {}
+  context: RewriteContext = {}
 ) {
   return requestOpenAiText(
     apiKey,
@@ -911,11 +904,7 @@ async function requestArticleWithOpinion(
   candidate: OpenClawCandidate,
   articleDraft: string,
   sourceText: string,
-  context: {
-    score?: EditorialScore
-    research?: ResearchContext
-    facts?: ArticleFacts
-  } = {}
+  context: RewriteContext = {}
 ) {
   return requestOpenAiText(
     apiKey,
@@ -987,7 +976,14 @@ async function generateRewriteWithRetry(
     enableResearch: process.env.AI_RESEARCH_ENABLED === "true",
   })
   const facts = extractArticleFacts(newsItem, research)
-  const context = { score, research, facts }
+  const { profile: gameProfile, created: createdGameProfile } =
+    await resolveGameProfile({
+      candidate,
+      facts,
+      sourceText,
+      classificationDecision: classification.decision,
+    })
+  const context = { score, research, facts, gameProfile }
 
   logEditorialDecision({
     stage: "editorial_scoring",
@@ -996,6 +992,12 @@ async function generateRewriteWithRetry(
     score: score.priority_score,
     url: candidate.source_url,
   })
+
+  if (gameProfile) {
+    console.log(
+      `[GAME PROFILE] ${createdGameProfile ? "Created" : "Matched"} ${gameProfile.name} (${gameProfile.id})`
+    )
+  }
 
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     try {
@@ -1008,7 +1010,7 @@ async function generateRewriteWithRetry(
       )
 
       return {
-        article: applyClassifiedCategory(article, classification),
+        article: applyClassifiedCategory(article, classification, gameProfile),
         attempts: attempt,
         classification,
       }

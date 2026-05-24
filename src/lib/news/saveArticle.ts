@@ -23,6 +23,7 @@ export interface ArticleDraft {
   seo_title: string
   seo_description: string
   category?: ArticleCategory
+  game_id?: string | null
 }
 
 export interface ArticleSourceContext {
@@ -124,6 +125,7 @@ export async function saveArticleDraft(
     content: article.content,
     slug,
     category: article.category || "gaming",
+    game_id: article.game_id || null,
     author_id: AUTHOR_ID,
     status: publish ? "published" : "draft",
     is_published: publish,
