@@ -284,7 +284,7 @@ function getArticleViewHref(row: QueueRow) {
 }
 
 function inferType(row: QueueRow) {
-  const text = `${row.raw_title || ""} ${row.raw_excerpt || ""} ${row.source_url || ""}`.toLowerCase()
+  const text = `${row.raw_title || ""} ${row.raw_excerpt || ""}`.toLowerCase()
   if (text.includes("pre-register") || text.includes("pre-registration")) return "pre-registration"
   if (text.includes("collab") || text.includes("collaboration")) return "collaboration"
   if (text.includes("reward") || text.includes("code") || text.includes("redeem")) return "rewards"

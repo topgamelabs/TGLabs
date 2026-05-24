@@ -506,16 +506,19 @@ Required JSON shape:
 
 Decision rules:
 - mobile_game: clearly about a mobile game, gacha game, mobile MMORPG, iOS/Android launch, mobile update, mobile event, mobile pre-registration, mobile redeem code, or mobile game service.
-- cross_platform_game: clearly about a game available across mobile plus PC/console, or a game service where mobile support is explicitly present.
+- cross_platform_game: clearly about a game available across mobile plus PC/console, or a game service where mobile support is explicitly present in the article body/title.
 - pc_console_game: clearly about a PC or console game, launch, update, event, patch, major sale, controversy, shutdown, or player-relevant game service.
 - reject: anime, manga, movie, music, merchandise, general entertainment, hardware, or unclear topics.
 - reject: game profile pages, category pages, tag pages, directory pages, sales chart pages, and pages that are not a specific news article.
 - If the article only mentions a game platform in site chrome/navigation/ads, reject it.
 - If game relevance is not clear from the actual article body, reject it.
+- Classify by the source title, excerpt, and article body only.
+- Do not classify as mobile_game or cross_platform_game solely because the publisher/source website focuses on mobile games.
+- Do not use words in the domain name, URL slug, site navigation, breadcrumbs, ads, related links, or footer as platform evidence.
+- If a story says "multiple platforms" but does not clearly confirm iOS, Android, mobile, App Store, Google Play, or smartphone support, classify it as pc_console_game when PC/console platforms are present.
 
 Source title: ${candidate.raw_title || ""}
 Source excerpt: ${candidate.raw_excerpt || ""}
-Source URL: ${candidate.source_url}
 Source published time: ${candidate.published_source_at || "unknown"}
 Freshness reference time: ${candidate.effective_published_at}
 
