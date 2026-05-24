@@ -116,15 +116,15 @@ async function incrementView(articleId: string) {
 
 // Category badge colors
 const categoryColors: Record<string, string> = {
-  tips: "bg-[#FF1A1A] text-white",
-  live: "bg-[#FF6B35] text-white",
-  news: "bg-[#4A90D9] text-white",
-  gaming: "bg-[#4A90D9] text-white",
-  mobile: "bg-[#22C55E] text-white",
-  "pc-console": "bg-[#F97316] text-white",
-  review: "bg-[#4DCC8A] text-white",
-  tech: "bg-[#A855F7] text-white",
-  tournament: "bg-[#FFD700] text-black",
+  mobile: "bg-[#FF1A1A] text-white",
+  "pc-console": "bg-[#006FCD] text-white",
+  tips: "bg-[#F97316] text-white",
+  live: "bg-[#F97316] text-white",
+  news: "bg-[#F97316] text-white",
+  gaming: "bg-[#F97316] text-white",
+  review: "bg-[#F97316] text-white",
+  tech: "bg-[#F97316] text-white",
+  tournament: "bg-[#F97316] text-white",
 };
 
 function injectAdsIntoContent(html: string) {
