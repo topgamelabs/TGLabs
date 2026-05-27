@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { requireOperationalAuth } from "@/lib/apiAuth"
 import { collectNewsLinks } from "@/lib/news/collectRssNews"
+import { annotateRowsWithPossibleDuplicates } from "@/lib/news/duplicateCandidates"
 import { getEditorialHealthReport } from "@/lib/news/editorialHealthReport"
 import { cleanupRejectedPendingRewriteQueue } from "@/lib/news/openClawCandidates"
 import { processFetchQueue } from "@/lib/news/processFetchQueue"
@@ -85,7 +86,7 @@ async function loadQueue(req: NextRequest) {
     throw new Error(`LOAD_QUEUE_FAILED: ${error.message}`)
   }
 
-  const rows = data || []
+  const rows = await annotateRowsWithPossibleDuplicates(data || [])
   const articleIds = Array.from(
     new Set(
       rows
@@ -547,32 +548,54 @@ async function loadApprovedRewriteIds(limit = 5) {
 }
 
 async function runRewriteApproved() {
-  const ids = await loadApprovedRewriteIds(5)
+  const batchSize = 5
+  const attemptedIds = new Set<string>()
   const results = []
 
-  for (const id of ids) {
-    try {
-      const output = await runQueueAction("rewrite", id)
-      const success = didQueueActionCreateExpectedOutput(output)
+  while (true) {
+    const ids = await loadApprovedRewriteIds(batchSize)
+    const freshIds = ids.filter((id) => !attemptedIds.has(id))
 
-      results.push({
-        id,
-        success,
-        warning: success ? undefined : "REWRITE_COMPLETED_WITHOUT_ARTICLE",
-        output,
-      })
-    } catch (error) {
-      results.push({
-        id,
-        success: false,
-        error:
-          error instanceof Error ? error.message : "REWRITE_APPROVED_ITEM_FAILED",
-      })
+    if (freshIds.length === 0) break
+
+    for (const id of freshIds) {
+      attemptedIds.add(id)
+
+      try {
+        const output = await runQueueAction("rewrite", id)
+        const success = didQueueActionCreateExpectedOutput(output)
+
+        results.push({
+          id,
+          success,
+          warning: success ? undefined : "REWRITE_COMPLETED_WITHOUT_ARTICLE",
+          output,
+        })
+      } catch (error) {
+        results.push({
+          id,
+          success: false,
+          error:
+            error instanceof Error ? error.message : "REWRITE_APPROVED_ITEM_FAILED",
+        })
+      }
     }
   }
 
+  const remainingIds = await loadApprovedRewriteIds(batchSize)
+  const unattemptedRemaining = remainingIds.filter((id) => !attemptedIds.has(id))
+
   return {
-    total: ids.length,
+    total: results.length,
+    attempted: attemptedIds.size,
+    batchSize,
+    remaining: remainingIds.length,
+    stoppedReason:
+      unattemptedRemaining.length > 0
+        ? "approved_items_remain_unattempted"
+        : remainingIds.length > 0
+          ? "approved_items_failed_or_unchanged"
+          : "approved_queue_empty",
     success: results.filter((item) => item.success).length,
     failed: results.filter((item) => !item.success).length,
     results,

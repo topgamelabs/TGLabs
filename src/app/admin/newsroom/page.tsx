@@ -30,6 +30,14 @@ type QueueRow = {
     updated_at: string | null
     published_at: string | null
   } | null
+  possible_duplicates?: Array<{
+    id: string
+    raw_title: string | null
+    source_domain: string | null
+    source_url: string | null
+    similarity: number
+    reason: string
+  }>
 }
 
 type ArticleRow = {
@@ -90,6 +98,10 @@ type BatchResult = {
 
 type RewriteApprovedResult = {
   total?: number
+  attempted?: number
+  batchSize?: number
+  remaining?: number
+  stoppedReason?: string
   success?: number
   failed?: number
   results?: Array<{
@@ -199,12 +211,16 @@ const typeOptions = [
 
 const batchActionOptions: Array<{ value: BatchAction; label: string }> = [
   { value: "none", label: "Do nothing" },
-  { value: "rewrite", label: "Rewrite as draft" },
   { value: "approve", label: "Approve" },
-  { value: "retry", label: "Retry" },
+  { value: "rewrite", label: "Rewrite" },
   { value: "skip", label: "Skip" },
-  { value: "delete", label: "Delete" },
 ]
+
+function batchActionButtonClass(selected: boolean) {
+  return selected
+    ? "border-[#FF1A1A] bg-[#FF1A1A] text-white"
+    : "border-white/[0.08] bg-[#0D0D0D] text-white/55 hover:border-white/[0.18] hover:text-white"
+}
 
 function formatDate(value: string | null | undefined) {
   if (!value) return "-"
@@ -497,7 +513,7 @@ export default function NewsroomPage() {
   }
 
   async function rewriteApproved() {
-    if (!confirm("Rewrite approved news as drafts now? This will process up to 5 approved items.")) return
+    if (!confirm("Rewrite approved news as drafts now? This will process approved items in batches of 5 until no new approved items remain.")) return
 
     setRewriteApprovedRunning(true)
     setRewriteApprovedResult(null)
@@ -751,7 +767,7 @@ export default function NewsroomPage() {
               <div>
                 <p className="text-sm font-semibold text-white">Rewrite Approved Report</p>
                 <p className="mt-1 text-xs text-white/40">
-                  Processed {rewriteApprovedResult.total || 0} approved items. Success {rewriteApprovedResult.success || 0}, failed {rewriteApprovedResult.failed || 0}.
+                  Processed {rewriteApprovedResult.total || 0} approved items in batches of {rewriteApprovedResult.batchSize || 5}. Success {rewriteApprovedResult.success || 0}, failed {rewriteApprovedResult.failed || 0}, remaining {rewriteApprovedResult.remaining || 0}.
                 </p>
               </div>
               <button
@@ -922,6 +938,17 @@ export default function NewsroomPage() {
                       <p className="line-clamp-2 text-sm font-medium text-white">{row.raw_title || "Untitled"}</p>
                     )}
                     <p className="mt-1 text-xs text-white/35">{row.source_domain || "unknown"} - {row.freshness_status || "-"}</p>
+                    {row.possible_duplicates && row.possible_duplicates.length > 0 && (
+                      <div className="mt-2 rounded-md border border-[#F5C542]/25 bg-[#F5C542]/10 px-2.5 py-2 text-xs text-[#F8D76A]">
+                        <p className="font-semibold">Possible duplicate: {row.possible_duplicates.length} source(s)</p>
+                        <p className="mt-1 line-clamp-2 text-[#F8D76A]/75">
+                          {row.possible_duplicates
+                            .slice(0, 2)
+                            .map((item) => `${item.source_domain || "unknown"}: ${item.raw_title || "Untitled"}`)
+                            .join(" | ")}
+                        </p>
+                      </div>
+                    )}
                     {row.rewrite_error && (
                       <p className="mt-2 line-clamp-2 text-xs text-[#FF9A74]">{row.rewrite_error}</p>
                     )}
@@ -939,18 +966,23 @@ export default function NewsroomPage() {
                   </div>
                   <span className="text-xs text-white/45">{formatDate(row.published_source_at)}</span>
                   <div className="flex flex-wrap items-center gap-2">
-                    <select
-                      value={batchActions[row.id] || "none"}
-                      onChange={(event) => setRowBatchAction(row.id, event.target.value as BatchAction)}
-                      disabled={busyId === "batch"}
-                      className="h-8 min-w-[150px] rounded-md border border-white/[0.08] bg-[#0D0D0D] px-2 text-xs text-white disabled:opacity-40"
-                    >
-                      {batchActionOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="flex flex-wrap gap-1.5">
+                      {batchActionOptions.map((option) => {
+                        const selected = (batchActions[row.id] || "none") === option.value
+
+                        return (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => setRowBatchAction(row.id, option.value)}
+                            disabled={busyId === "batch"}
+                            className={`h-8 rounded-md border px-2.5 text-[11px] font-semibold transition-colors disabled:opacity-40 ${batchActionButtonClass(selected)}`}
+                          >
+                            {option.label}
+                          </button>
+                        )
+                      })}
+                    </div>
                     <button disabled={busyId === row.id || busyId === "batch"} onClick={() => runAction("rewrite", row.id)} className="rounded border border-[#FF1A1A]/35 px-3 py-1.5 text-xs font-semibold text-[#FF8A8A] disabled:opacity-40">
                       Run now
                     </button>

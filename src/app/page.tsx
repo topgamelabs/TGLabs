@@ -192,12 +192,12 @@ export default function Home() {
         </div>
 
         {/* ========== HERO SECTION ========== */}
-        <section className="mt-4 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4">
+        <section className="mt-4 grid min-w-0 grid-cols-1 gap-4 lg:grid-cols-[2fr_1fr]">
 
           {/* Main Hero Card */}
           <a
             href={heroArticle ? `/news/${heroArticle.slug}` : "/news"}
-            className="relative overflow-hidden rounded-xl cursor-pointer group min-h-[280px] aspect-[16/9] block"
+            className="relative block aspect-[16/9] w-full min-w-0 max-w-full overflow-hidden rounded-xl cursor-pointer group"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a14] to-[#070707]" />
             {!loading && heroArticle?.hero_image ? (
@@ -237,7 +237,7 @@ export default function Home() {
           </a>
 
           {/* Latest Sidebar */}
-          <div className="bg-[#0D0D0D] rounded-xl overflow-hidden">
+          <div className="min-w-0 overflow-hidden rounded-xl bg-[#0D0D0D]">
             <div className="px-4 py-3 border-b border-white/[0.05]">
               <span className="text-[11px] font-bold tracking-[2px] text-white/[0.3] uppercase">📺 Latest Updates</span>
             </div>
@@ -435,7 +435,7 @@ export default function Home() {
                   <Link
                     key={card.id || i}
                     href={`/news/${card.slug}`}
-                    className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] cursor-pointer group hover:-translate-y-[4px] hover:border-[#F97316]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300"
+                    className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04] cursor-pointer group hover:-translate-y-[4px] hover:border-[#006FCD]/30 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300"
                   >
                     <div className="aspect-[16/9] relative overflow-hidden">
                       {card.hero_image ? (
@@ -449,7 +449,7 @@ export default function Home() {
                       )}
                     </div>
                     <div className="p-3">
-                      <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#F97316] mb-2">{card.category?.toUpperCase()}</div>
+                      <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#006FCD] mb-2">{card.category?.toUpperCase()}</div>
                       <div className="font-['Kanit'] text-[14px] font-medium text-white leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
                       <div className="text-[11px] text-[#AAAAAA] mt-2">{card.read_time || 3} min read</div>
                     </div>
@@ -459,7 +459,7 @@ export default function Home() {
                     <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04]">
                       <div className="aspect-[16/9] bg-[#1A1A1A]" />
                       <div className="p-3">
-                        <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#F97316] mb-2">PC/CONSOLE</div>
+                        <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#006FCD] mb-2">PC/CONSOLE</div>
                         <div className="font-['Kanit'] text-[14px] font-medium text-white/[0.55] leading-[1.4]">
                           Waiting for curated PC/Console news
                         </div>
@@ -510,7 +510,7 @@ export default function Home() {
                       )}
                     </div>
                     <div className="p-3">
-                      <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#4A90D9] mb-2">GAMING</div>
+                      <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#F97316] mb-2">GAMING</div>
                       <div className="font-['Kanit'] text-[14px] font-medium text-white leading-[1.4] line-clamp-2 group-hover:text-white transition-colors">{card.title}</div>
                       <div className="text-[11px] text-[#AAAAAA] mt-2">{card.read_time || 3} min read</div>
                     </div>
@@ -520,7 +520,7 @@ export default function Home() {
                     <div key={i} className="bg-[#0D0D0D] rounded-[10px] overflow-hidden border border-white/[0.04]">
                       <div className="aspect-[16/9] bg-[#1A1A1A]" />
                       <div className="p-3">
-                        <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#4A90D9] mb-2">GAMING</div>
+                        <div className="text-[10px] font-bold tracking-[1px] uppercase text-[#F97316] mb-2">GAMING</div>
                         <div className="font-['Kanit'] text-[14px] font-medium text-white/[0.55] leading-[1.4]">
                           Waiting for curated gaming news
                         </div>

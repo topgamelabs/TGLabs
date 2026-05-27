@@ -27,10 +27,15 @@ import {
   type ArticleDraft,
 } from "./saveArticle"
 import {
+  getArticleBlockMetrics,
   parseArticleBlocks,
   serializeArticleBlocks,
   type ArticleBlock,
 } from "./articleBlocks"
+import {
+  findPossibleDuplicateCandidates,
+  type PossibleDuplicateCandidate,
+} from "./duplicateCandidates"
 import {
   categoryForGameProfile,
   formatGameProfileContext,
@@ -46,6 +51,9 @@ const OPENAI_REWRITE_PROVIDER = "openai"
 const DEFAULT_OPENAI_REWRITE_MODEL = "gpt-4o"
 const DEFAULT_OPENAI_CLASSIFIER_MODEL = "gpt-4o-mini"
 const STALE_PROCESSING_MINUTES = 30
+const MIN_FINAL_ARTICLE_TEXT_LENGTH = 1000
+const MIN_FINAL_PARAGRAPH_BLOCKS = 4
+const MIN_FINAL_CONTENT_BLOCKS = 5
 const DISALLOWED_FOREIGN_SCRIPT_PATTERN = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u
 const DANGEROUS_AI_HTML_PATTERN = /<\/?(script|style|iframe|object|embed|svg|math)\b/i
 
@@ -83,6 +91,19 @@ interface RewriteContext {
   research?: ResearchContext
   facts?: ArticleFacts
   gameProfile?: GameProfile | null
+  additionalSources?: AdditionalSourceContext[]
+}
+
+interface AdditionalSourceContext {
+  queueId: string
+  sourceUrl: string
+  sourceDomain: string | null
+  title: string | null
+  excerpt: string | null
+  publishedAt: string | null
+  similarity: number
+  reason: string
+  sourceText: string
 }
 
 export interface RewriteCandidatesResult {
@@ -129,6 +150,7 @@ export interface RewriteCandidatesOptions {
   maxAttempts?: number
   queueId?: string
   manual?: boolean
+  force?: boolean
 }
 
 function resolveLimit(limit: number | undefined) {
@@ -155,7 +177,7 @@ function extractSourceText(html: string) {
 }
 
 function buildEditorialContextBlock(options: RewriteContext) {
-  const { score, research, facts, gameProfile } = options
+  const { score, research, facts, gameProfile, additionalSources } = options
 
   return `
 Editorial scoring:
@@ -169,6 +191,23 @@ ${facts ? JSON.stringify(facts, null, 2) : "not available"}
 
 Known game profile from database:
 ${formatGameProfileContext(gameProfile)}
+
+Additional source articles merged into this rewrite:
+${additionalSources?.length ? JSON.stringify(
+  additionalSources.map((source) => ({
+    queueId: source.queueId,
+    sourceUrl: source.sourceUrl,
+    sourceDomain: source.sourceDomain,
+    title: source.title,
+    excerpt: source.excerpt,
+    publishedAt: source.publishedAt,
+    similarity: source.similarity,
+    reason: source.reason,
+    sourceText: source.sourceText.slice(0, 6000),
+  })),
+  null,
+  2
+) : "none"}
 `.trim()
 }
 
@@ -240,6 +279,11 @@ Use Markdown only for the article draft:
 - A normal result should feel like a complete news article, not a summary.
 - When the source has enough information, aim for 6-10 short paragraphs and 3-4 H2 sections.
 - Keep the ending natural and avoid a forced conclusion.
+- If additional source articles are provided in the editorial context, merge their confirmed facts into this one article.
+- Do not write separate articles for each source.
+- Prefer facts that appear in multiple sources, but include useful source-specific details when they do not conflict.
+- If sources conflict, use the more concrete/official detail or avoid the disputed claim.
+- Mention only facts supported by at least one provided source.
 
 Source title: ${candidate.raw_title || ""}
 Source excerpt: ${candidate.raw_excerpt || ""}
@@ -309,24 +353,20 @@ ${articleDraft}
 `.trim()
 }
 
-function buildGameInfoAppendPrompt(
+function buildGameInfoSectionPrompt(
   candidate: OpenClawCandidate,
-  articleDraft: string,
   sourceText: string,
   context: RewriteContext = {}
 ) {
   return `
-You are a Thai gaming news editor preparing the final article for TopGame Thailand.
+You are a Thai gaming news editor preparing only the final game information section for a TopGame Thailand article.
 
-The news article has already been written. Do not rewrite it from scratch.
-Your only job is to add a final game information section at the end of the article.
+Return only the game information section. Do not return the news article.
 
 Rules:
-- Preserve the existing article title, paragraphs, headings, bullets, wording, and flow as much as possible.
-- Add the game information as the final section only.
-- Use the heading "รายละเอียดทั่วไปของเกม" for the final section.
+- Use the heading "รายละเอียดทั่วไปของเกม" for the section.
 - This section is separate from the news story. Think of it as a compact reference box in article form.
-- Include only clearly confirmed details from the source, source URL, title, excerpt, and extracted facts.
+- Include only clearly confirmed details from the source, source URL, title, excerpt, extracted facts, and known game profile.
 - If a known game profile is available from the database, treat it as trusted reference data and use it before guessing from the source.
 - Prefer database game profile fields for title, platform, genre, developer, publisher, official website, store pages, and social links.
 - Use source details only to supplement article-specific status such as release window, test region, or event details.
@@ -337,7 +377,9 @@ Rules:
 - For "ชื่อเกม", use the actual game title, not the article title.
 - If adding a source URL, include the full source URL exactly.
 - Write in natural Thai.
-- Return the complete final article in Markdown.
+- Return Markdown only.
+- Start with exactly one H2 heading.
+- Prefer a concise bullet list.
 - Do not return JSON.
 
 Useful details to include when confirmed:
@@ -358,32 +400,22 @@ ${buildEditorialContextBlock(context)}
 
 Source text:
 """
-${sourceText}
-"""
-
-Article draft:
-"""
-${articleDraft}
+${sourceText.slice(0, 10000)}
 """
 `.trim()
 }
 
-function buildOpinionAppendPrompt(
+function buildOpinionOnlyPrompt(
   candidate: OpenClawCandidate,
-  articleDraft: string,
   sourceText: string,
   context: RewriteContext = {}
 ) {
   return `
-You are a Thai gaming news editor adding a short human opinion note to a finished TopGame Thailand article.
+You are a Thai gaming news editor writing only a short human opinion note for a finished TopGame Thailand article.
 
-The article already contains the news and the final "รายละเอียดทั่วไปของเกม" section.
-Do not rewrite the article from scratch.
-Your only job is to add one short opinion paragraph at the very end.
+Return only one Markdown blockquote. Do not return the news article.
 
 Rules:
-- Preserve the existing article title, paragraphs, headings, bullets, wording, and flow as much as possible.
-- Add the opinion after the game information section.
 - The opinion must be a Markdown blockquote, starting with "> ".
 - Do not add a heading for this opinion section.
 - Write like the site writer is casually adding a short personal feeling.
@@ -392,7 +424,6 @@ Rules:
 - It may be lightly speculative or expressive, but must not invent concrete facts.
 - Do not mention "ทีมงาน", "ผู้เขียน", or "ความเห็น".
 - Keep official English game titles in English.
-- Return the complete final article in Markdown.
 - Do not return JSON.
 
 Example tone:
@@ -408,14 +439,107 @@ ${buildEditorialContextBlock(context)}
 
 Source text:
 """
-${sourceText}
-"""
-
-Article draft:
-"""
-${articleDraft}
+${sourceText.slice(0, 6000)}
 """
 `.trim()
+}
+
+function normalizeMarkdownSection(value: string) {
+  return value.replace(/```(?:markdown)?|```/gi, "").trim()
+}
+
+function appendMarkdownSection(articleDraft: string, section: string) {
+  const cleanArticle = articleDraft.trim()
+  const cleanSection = normalizeMarkdownSection(section)
+
+  if (!cleanSection) return cleanArticle
+
+  return `${cleanArticle}\n\n${cleanSection}`.trim()
+}
+
+function normalizeOpinionBlock(value: string) {
+  const clean = normalizeMarkdownSection(value)
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join(" ")
+    .replace(/^>\s*/, "")
+    .trim()
+    .slice(0, 500)
+
+  if (!clean) {
+    throw new Error("AI_OPINION_EMPTY")
+  }
+
+  return `> ${clean}`
+}
+
+function markdownTextLength(value: string) {
+  return value
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/^>\s?/gm, "")
+    .replace(/^[-*+]\s+/gm, "")
+    .replace(/\[[^\]]+\]\([^)]+\)/g, "$1")
+    .replace(/[`*_~]/g, "")
+    .replace(/\s+/g, " ")
+    .trim().length
+}
+
+function validateMarkdownRetention(
+  stage: string,
+  previousArticle: string,
+  nextArticle: string
+) {
+  const previousLength = markdownTextLength(previousArticle)
+  const nextLength = markdownTextLength(nextArticle)
+
+  if (previousLength >= 800 && nextLength < Math.floor(previousLength * 0.8)) {
+    throw new Error(`${stage}_DROPPED_ARTICLE_BODY`)
+  }
+}
+
+function validateFinalArticleQuality(article: RewrittenArticle) {
+  const metrics = getArticleBlockMetrics(article.blocks)
+  const contentBlocks = article.blocks.filter((block) =>
+    ["paragraph", "heading", "bullet"].includes(block.type)
+  )
+  const firstContentBlock = article.blocks.find((block) => block.type !== "rule")
+
+  if (metrics.textLength < MIN_FINAL_ARTICLE_TEXT_LENGTH) {
+    throw new Error("AI_REWRITE_ARTICLE_TOO_SHORT")
+  }
+
+  if (metrics.paragraphs < MIN_FINAL_PARAGRAPH_BLOCKS) {
+    throw new Error("AI_REWRITE_TOO_FEW_PARAGRAPHS")
+  }
+
+  if (contentBlocks.length < MIN_FINAL_CONTENT_BLOCKS) {
+    throw new Error("AI_REWRITE_TOO_FEW_CONTENT_BLOCKS")
+  }
+
+  if (firstContentBlock?.type === "quote") {
+    throw new Error("AI_REWRITE_QUOTE_ONLY_OR_QUOTE_FIRST")
+  }
+
+  if (metrics.quotes > 0) {
+    const lastTextBlockIndex = article.blocks
+      .map((block, index) => ("content" in block || block.type === "bullet" ? index : -1))
+      .filter((index) => index >= 0)
+      .pop()
+    const lastQuoteIndex = article.blocks
+      .map((block, index) => (block.type === "quote" ? index : -1))
+      .filter((index) => index >= 0)
+      .pop()
+
+    if (
+      typeof lastTextBlockIndex === "number" &&
+      typeof lastQuoteIndex === "number" &&
+      lastQuoteIndex < lastTextBlockIndex
+    ) {
+      throw new Error("AI_REWRITE_OPINION_QUOTE_NOT_LAST")
+    }
+  }
 }
 
 function buildRepairPrompt(
@@ -508,6 +632,8 @@ Decision rules:
 - cross_platform_game: clearly about a game available across mobile plus PC/console, or a game service where mobile support is explicitly present in the article body/title.
 - pc_console_game: clearly about a PC or console game, launch, update, event, patch, major sale, controversy, shutdown, or player-relevant game service.
 - reject: anime, manga, movie, music, merchandise, general entertainment, hardware, or unclear topics.
+- reject: anime-only, manga-only, movie-only, trailer/PV-only, voice actor/event, anniversary, figure, goods, or merchandise stories unless the actual article is clearly about a playable game launch/update/event/shutdown.
+- reject: hardware, GPU/CPU, driver, benchmark, monitor, keyboard, mouse, or device stories unless the article is clearly about a player-impacting game update/service.
 - reject: game profile pages, category pages, tag pages, directory pages, sales chart pages, and pages that are not a specific news article.
 - If the article only mentions a game platform in site chrome/navigation/ads, reject it.
 - If game relevance is not clear from the actual article body, reject it.
@@ -620,7 +746,7 @@ function validateRewrite(value: unknown): RewrittenArticle {
     throw new Error("AI_REWRITE_BAD_SLUG")
   }
 
-  return {
+  const article = {
     title: data.title.trim(),
     slug: normalizedSlug || undefined,
     excerpt: data.excerpt.trim(),
@@ -630,6 +756,10 @@ function validateRewrite(value: unknown): RewrittenArticle {
     category: allowedCategories.includes(category) ? category : "gaming",
     blocks,
   }
+
+  validateFinalArticleQuality(article)
+
+  return article
 }
 
 function categoryForClassification(
@@ -863,6 +993,59 @@ function getRewriteSourceText(candidate: OpenClawCandidate) {
   return { apiKey, sourceText }
 }
 
+function buildAdditionalSourceContexts(
+  candidates: PossibleDuplicateCandidate[]
+): AdditionalSourceContext[] {
+  return candidates
+    .map((candidate) => {
+      const sourceText = candidate.raw_content
+        ? extractSourceText(candidate.raw_content)
+        : ""
+
+      return {
+        queueId: candidate.id,
+        sourceUrl: candidate.source_url || "",
+        sourceDomain: candidate.source_domain || null,
+        title: candidate.raw_title || null,
+        excerpt: candidate.raw_excerpt || null,
+        publishedAt: candidate.published_source_at || null,
+        similarity: candidate.similarity,
+        reason: candidate.reason,
+        sourceText,
+      }
+    })
+    .filter((source) => source.sourceUrl && source.sourceText.length >= 500)
+}
+
+async function markMergedDuplicates(
+  primaryQueueId: string,
+  articleId: string,
+  duplicates: AdditionalSourceContext[]
+) {
+  for (const duplicate of duplicates) {
+    const { error } = await supabaseAdmin
+      .from("raw_news_queue")
+      .update({
+        extraction_status: "skipped",
+        rewrite_status: "duplicate",
+        rewrite_error: `merged_into:${primaryQueueId}:${articleId}`,
+        rewrite_finished_at: new Date().toISOString(),
+        rewritten_article_id: articleId,
+      })
+      .eq("id", duplicate.queueId)
+      .eq("extraction_status", "pending")
+      .eq("rewrite_status", "pending")
+
+    if (error) {
+      console.error(
+        "[AI WRITER] Failed to mark merged duplicate",
+        duplicate.queueId,
+        error.message
+      )
+    }
+  }
+}
+
 async function requestDraftArticle(
   apiKey: string,
   candidate: OpenClawCandidate,
@@ -887,9 +1070,9 @@ async function requestArticleWithGameInfo(
   sourceText: string,
   context: RewriteContext = {}
 ) {
-  return requestOpenAiText(
+  const gameInfoSection = await requestOpenAiText(
     apiKey,
-    buildGameInfoAppendPrompt(candidate, articleDraft, sourceText, context),
+    buildGameInfoSectionPrompt(candidate, sourceText, context),
     {
       model: process.env.OPENAI_REWRITE_MODEL || DEFAULT_OPENAI_REWRITE_MODEL,
       temperature: 0.3,
@@ -897,6 +1080,11 @@ async function requestArticleWithGameInfo(
       errorPrefix: "AI_GAME_INFO",
     }
   )
+
+  const articleWithGameInfo = appendMarkdownSection(articleDraft, gameInfoSection)
+  validateMarkdownRetention("AI_GAME_INFO", articleDraft, articleWithGameInfo)
+
+  return articleWithGameInfo
 }
 
 async function requestArticleWithOpinion(
@@ -906,9 +1094,9 @@ async function requestArticleWithOpinion(
   sourceText: string,
   context: RewriteContext = {}
 ) {
-  return requestOpenAiText(
+  const opinion = await requestOpenAiText(
     apiKey,
-    buildOpinionAppendPrompt(candidate, articleDraft, sourceText, context),
+    buildOpinionOnlyPrompt(candidate, sourceText, context),
     {
       model: process.env.OPENAI_REWRITE_MODEL || DEFAULT_OPENAI_REWRITE_MODEL,
       temperature: 0.6,
@@ -916,6 +1104,14 @@ async function requestArticleWithOpinion(
       errorPrefix: "AI_OPINION",
     }
   )
+
+  const articleWithOpinion = appendMarkdownSection(
+    articleDraft,
+    normalizeOpinionBlock(opinion)
+  )
+  validateMarkdownRetention("AI_OPINION", articleDraft, articleWithOpinion)
+
+  return articleWithOpinion
 }
 
 async function requestRewrite(
@@ -936,14 +1132,24 @@ async function requestRewrite(
 async function generateRewriteWithRetry(
   candidate: OpenClawCandidate,
   maxAttempts: number,
-  options: { manual?: boolean } = {}
+  options: {
+    manual?: boolean
+    force?: boolean
+    additionalSources?: AdditionalSourceContext[]
+  } = {}
 ) {
   let lastError: unknown
   let repairReason: string | undefined
   const { apiKey, sourceText } = getRewriteSourceText(candidate)
-  const classification = await classifyCandidate(apiKey, candidate, sourceText)
+  const classification = options.force
+    ? ({
+        decision: "reject",
+        reason: "manual_force_rewrite",
+        confidence: 1,
+      } satisfies NewsClassification)
+    : await classifyCandidate(apiKey, candidate, sourceText)
 
-  if (classification.decision === "reject") {
+  if (!options.force && classification.decision === "reject") {
     throw new Error(`AI_CLASSIFIED_REJECT: ${classification.reason}`)
   }
 
@@ -958,7 +1164,7 @@ async function generateRewriteWithRetry(
   const detection = detectMobileGameNews(newsItem)
   const score = scoreEditorialCandidate(newsItem, detection, {
     bypassLowPriorityReject: options.manual === true,
-    forceWrite: options.manual === true,
+    forceWrite: options.manual === true || options.force === true,
   })
 
   if (!score.should_write) {
@@ -983,7 +1189,13 @@ async function generateRewriteWithRetry(
       sourceText,
       classificationDecision: classification.decision,
     })
-  const context = { score, research, facts, gameProfile }
+  const context = {
+    score,
+    research,
+    facts,
+    gameProfile,
+    additionalSources: options.additionalSources || [],
+  }
 
   logEditorialDecision({
     stage: "editorial_scoring",
@@ -1218,6 +1430,7 @@ export async function rewriteOpenClawCandidates(
   const maxAttempts = resolveAttempts(normalizedOptions.maxAttempts)
   const queueId = normalizedOptions.queueId
   const manual = normalizedOptions.manual === true
+  const force = normalizedOptions.force === true
 
   const result: RewriteCandidatesResult = {
     dryRun,
@@ -1284,8 +1497,23 @@ export async function rewriteOpenClawCandidates(
         continue
       }
 
+      const mergedSources = buildAdditionalSourceContexts(
+        await findPossibleDuplicateCandidates(candidate, {
+          includeRawContent: true,
+          limit: 4,
+        })
+      )
+
+      if (mergedSources.length > 0) {
+        console.log(
+          `[AI WRITER] Merging ${mergedSources.length} duplicate source(s) into ${candidate.source_url}`
+        )
+      }
+
       const rewritten = await generateRewriteWithRetry(candidate, maxAttempts, {
         manual,
+        force,
+        additionalSources: mergedSources,
       })
 
       if (dryRun) {
@@ -1318,6 +1546,8 @@ export async function rewriteOpenClawCandidates(
         rewritten_article_id: inserted.id,
       })
 
+      await markMergedDuplicates(candidate.id, inserted.id, mergedSources)
+
       if (publish) {
         result.published++
       } else {
@@ -1331,6 +1561,15 @@ export async function rewriteOpenClawCandidates(
         status: inserted.status,
         isPublished: inserted.is_published,
       })
+
+      for (const mergedSource of mergedSources) {
+        result.skippedDuplicate++
+        result.duplicates.push({
+          queueId: mergedSource.queueId,
+          sourceUrl: mergedSource.sourceUrl,
+          reason: `merged_into:${candidate.id}:${inserted.id}`,
+        })
+      }
     } catch (error) {
       const message = error instanceof Error ? error.message : "AI_REWRITE_FAILED"
 

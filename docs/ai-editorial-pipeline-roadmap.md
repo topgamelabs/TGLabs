@@ -5,8 +5,8 @@ Use it to continue development if chat context is lost.
 
 ## Current Production Baseline
 
-The current AI news pipeline is already live-ready and synced to `main` and
-`dev` at commit `eb6692f`.
+The current AI news pipeline has a working production baseline on `main`, while
+new work is done locally until the user explicitly asks to sync `main`.
 
 Implemented flow:
 
@@ -56,7 +56,8 @@ Latest verified health before this roadmap:
 
 ## Development Rules For The Next Phase
 
-- Develop on `dev`, not `main`.
+- Develop locally first; sync `main` only when the user explicitly asks.
+- Do not recreate the old `dev` branch workflow.
 - Do not rebuild the working pipeline from scratch.
 - Do not refactor unrelated UI or article pages.
 - Do not change the database schema unless necessary and discussed first.
@@ -278,7 +279,7 @@ Implementation:
 
 ## Latest Local Verification
 
-After completing roadmap items 1-8 locally on `dev`:
+After completing roadmap items 1-8 locally:
 
 - `npm run lint`: passed with the same 41 existing warnings.
 - `npm run build`: passed.
@@ -287,8 +288,8 @@ After completing roadmap items 1-8 locally on `dev`:
 
 ## Next Action
 
-Review the local diff, optionally test the OpenClaw rewrite status endpoint, then
-ask for approval before committing or syncing.
+Review the local diff, test the OpenClaw rewrite status endpoint when useful,
+then ask for approval before syncing `main`.
 
 ## Newsroom Admin Roadmap
 
@@ -511,7 +512,7 @@ Current decision:
 
 ## News Selection Accuracy Roadmap
 
-Status: active.
+Status: active locally.
 
 Goal:
 
@@ -551,7 +552,7 @@ Latest freshness decision:
 
 ## PC / Console Expansion
 
-Status: in progress in local `dev`.
+Status: in progress locally.
 
 Goal:
 
@@ -638,7 +639,7 @@ Resume note:
 
 ## Focused Games Official Source Monitor Roadmap
 
-Status: active.
+Status: paused.
 
 Goal:
 
@@ -686,3 +687,89 @@ Implementation note:
 
 - First inspect the live Supabase schema before writing migrations, because the
   local migration folder only contains recent incremental migrations.
+- Latest decision: pause focused-game official source monitoring for now because
+  reliable official source discovery proved too variable across publishers.
+  Return to this only after the core newsroom/rewrite flow is stable.
+
+## Facebook News Posting Roadmap
+
+Status: Phase 1 complete locally. Real Facebook photo posting and first-comment
+posting have been verified with a valid long-lived Page access token.
+
+Current state:
+
+- `POST /api/facebook/post` exists for simple Page posts using message + link.
+- `POST /api/facebook/post` also supports manual article photo posts with the
+  article URL as the first comment.
+- Local environment has a valid long-lived Facebook Page token and Page ID for
+  `TopGame Thailand`.
+- Graph API checks confirmed the token resolves the Page and can publish Page
+  photo posts.
+- A real article photo post and first comment were created successfully, and
+  the returned Facebook ids were saved back to Supabase.
+- The existing publish cron does not yet auto-share articles to Facebook.
+- Phase 2 is intentionally paused until the current blocking issues found
+  during real operation are resolved.
+
+Goal:
+
+- Publish news posts to the Facebook Page in a reliable, non-duplicating way.
+- Prefer visual posts for reach: image post first, article link in the first
+  comment.
+- Keep manual controls before enabling automation.
+
+Phase 1 - Manual photo post:
+
+- [x] Add support for Facebook photo posts from article images.
+- [x] Use article `hero_image` or a selected social image as the uploaded photo URL.
+- [x] Use article `excerpt` as the initial caption.
+- [x] After the photo post succeeds, add the article URL as the first comment.
+- [x] Add admin manual action such as `Post to Facebook`.
+- [x] Add persistence to prevent duplicate posts:
+  - `facebook_post_id`
+  - `facebook_posted_at`
+  - `facebook_first_comment_id`
+  - `facebook_post_error`
+- [x] Add `facebook_last_attempt_at` for troubleshooting.
+- [x] If the first comment fails after the photo post succeeds, keep the post and
+  record the comment error for retry.
+- [x] Refresh the Page token and complete one real post test.
+- [x] Verify the admin posting route stores `facebook_post_id` and
+  `facebook_first_comment_id` after a real post.
+- [x] Ensure the first comment uses the public production article URL instead
+  of a local development URL.
+
+Phase 2 - Social creative generation:
+
+- Status: Paused. Do not start Phase 2 until the known issues found after
+  Phase 1 verification are handled.
+
+- Add AI-generated 4:5 social image support for news posts.
+- Add AI-generated caption support with a more attention-grabbing tone, while
+  avoiding false claims and excessive clickbait.
+- Keep a preview/approval step before posting.
+- Add optional second comment for sponsor content.
+- Sponsor comment must be optional and explicitly approved before posting.
+- Prefer official/real article images when available; use AI images mainly when
+  no suitable image exists or as a designed overlay/template.
+
+Phase 3 - Publish automation:
+
+- When an article is published, enqueue or trigger Facebook posting only if
+  auto-posting is enabled for that article/category.
+- Check `facebook_post_id` before posting to prevent duplicates.
+- Publishing the article must not fail just because Facebook posting fails.
+- Store success/error state on the article for admin retry.
+- Avoid generating images and posting to Facebook inside a fragile long-running
+  publish request if it risks timeout; use a queue-style step if needed.
+
+Known risks:
+
+- Facebook must be able to fetch the image URL publicly; hotlinked source images
+  can fail or be blocked.
+- Page tokens can expire or lose permissions, so errors need clear logging.
+- API-created photo posts may behave differently from manual Meta Business Suite
+  posts; test one real post before automation.
+- Comments can fail independently from the post.
+- AI-generated game imagery can be inaccurate or copyright-sensitive; avoid
+  implying an AI image is official art.

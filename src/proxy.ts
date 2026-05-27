@@ -22,6 +22,7 @@ export const config = {
   matcher: [
     "/admin/:path*",
     "/api/admin/:path*",
+    "/api/facebook/:path*",
     "/api/ai/generate-article",
   ],
 }

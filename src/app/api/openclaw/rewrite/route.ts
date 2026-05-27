@@ -99,6 +99,7 @@ export async function POST(req: NextRequest) {
     const dryRun = body.dryRun === true
     const publish = body.publish === true
     const manual = body.manual === true
+    const force = body.force === true
     const maxAttempts =
       typeof body.maxAttempts === "number" ? body.maxAttempts : undefined
     const result = await rewriteOpenClawCandidates({
@@ -108,6 +109,7 @@ export async function POST(req: NextRequest) {
       publish,
       maxAttempts,
       manual,
+      force,
     })
 
     return NextResponse.json({

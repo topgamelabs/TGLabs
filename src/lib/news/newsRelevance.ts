@@ -149,12 +149,56 @@ const PLAYER_IMPACT_TERMS = [
 const NON_GAME_TERMS = [
   "anime",
   "animation",
+  "animated series",
   "comic",
   "episode",
+  "film",
   "manga",
   "movie",
+  "music",
   "novel",
   "season",
+  "tv series",
+  "動畫",
+  "动画",
+  "アニメ",
+  "映画",
+  "劇場版",
+  "漫画",
+  "マンガ",
+  "pv",
+  "visual",
+]
+
+const HARDWARE_TERMS = [
+  "amd software",
+  "benchmark",
+  "cpu",
+  "driver",
+  "gpu",
+  "graphics card",
+  "hardware",
+  "keyboard",
+  "monitor",
+  "mouse",
+  "nvidia",
+  "radeon",
+  "rtx",
+]
+
+const GAME_ADAPTATION_TERMS = [
+  "android",
+  "app store",
+  "closed beta",
+  "game",
+  "google play",
+  "ios",
+  "launch",
+  "mobile",
+  "pre-registration",
+  "release",
+  "rpg",
+  "shutdown",
 ]
 
 const NON_ARTICLE_URL_PATTERN =
@@ -311,6 +355,8 @@ export function evaluateGameNewsRelevance(
   const headlineGameMatches = countMatches(headlineText, GAME_SERVICE_TERMS)
   const headlineCrossPlatformMatches = countMatches(headlineText, CROSS_PLATFORM_TERMS)
   const headlineNonGameMatches = countMatches(headlineText, NON_GAME_TERMS)
+  const headlineHardwareMatches = countMatches(headlineText, HARDWARE_TERMS)
+  const headlineGameAdaptationMatches = countMatches(headlineText, GAME_ADAPTATION_TERMS)
   const sourceMobileBoost = isMobileFirstSource(input.url) ? 1 : 0
   const sourcePcConsoleBoost = isPcConsoleFirstSource(input.url) ? 1 : 0
   const score =
@@ -326,6 +372,15 @@ export function evaluateGameNewsRelevance(
     return { allowed: false, reason: "non_article_page", score, action: "skip" }
   }
 
+  if (
+    headlineHardwareMatches > 0 &&
+    headlineGameMatches === 0 &&
+    headlineCrossPlatformMatches === 0 &&
+    playerImpactMatches === 0
+  ) {
+    return { allowed: false, reason: "hardware_news", score, action: "skip" }
+  }
+
   if (lowNewsValueMatches > 0 && playerImpactMatches === 0) {
     return {
       allowed: false,
@@ -339,7 +394,8 @@ export function evaluateGameNewsRelevance(
     headlineNonGameMatches > 0 &&
     headlineMobileMatches === 0 &&
     headlineGameMatches === 0 &&
-    headlineCrossPlatformMatches < 2
+    headlineCrossPlatformMatches < 2 &&
+    headlineGameAdaptationMatches < 2
   ) {
     return {
       allowed: false,

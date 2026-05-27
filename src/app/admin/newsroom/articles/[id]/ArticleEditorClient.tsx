@@ -22,6 +22,11 @@ type ArticleForm = {
   seo_description: string
   source_url: string | null
   published_at: string | null
+  facebook_post_id: string | null
+  facebook_posted_at: string | null
+  facebook_first_comment_id: string | null
+  facebook_post_error: string | null
+  facebook_last_attempt_at: string | null
 }
 
 function qualityChecks(article: ArticleForm | null) {
@@ -82,6 +87,7 @@ function parseJsonBlocks(content: string): {
 export function ArticleEditorClient({ id }: { id: string }) {
   const [article, setArticle] = useState<ArticleForm | null>(null)
   const [saving, setSaving] = useState(false)
+  const [postingFacebook, setPostingFacebook] = useState(false)
   const [message, setMessage] = useState("")
   const [contentMode, setContentMode] = useState<"preview" | "raw">("preview")
 
@@ -98,6 +104,11 @@ export function ArticleEditorClient({ id }: { id: string }) {
             hero_image: json.article.hero_image || "",
             seo_title: json.article.seo_title || "",
             seo_description: json.article.seo_description || "",
+            facebook_post_id: json.article.facebook_post_id || null,
+            facebook_posted_at: json.article.facebook_posted_at || null,
+            facebook_first_comment_id: json.article.facebook_first_comment_id || null,
+            facebook_post_error: json.article.facebook_post_error || null,
+            facebook_last_attempt_at: json.article.facebook_last_attempt_at || null,
           })
         }
       })
@@ -133,6 +144,68 @@ export function ArticleEditorClient({ id }: { id: string }) {
     } else {
       setMessage(json.error || "Save failed")
     }
+  }
+
+  async function postToFacebook() {
+    if (!article || postingFacebook) return
+
+    if (!article.is_published) {
+      setMessage("Publish the article before posting to Facebook")
+      return
+    }
+
+    if (article.facebook_post_id) {
+      setMessage("This article already has a Facebook post")
+      return
+    }
+
+    if (!article.hero_image) {
+      setMessage("Hero image is required for Facebook photo post")
+      return
+    }
+
+    if (!confirm("Post this published article to Facebook now?")) return
+
+    setPostingFacebook(true)
+    setMessage("")
+
+    const res = await fetch("/api/facebook/post", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        mode: "photo",
+        articleId: article.id,
+      }),
+    })
+    const json = await res.json().catch(() => null)
+    setPostingFacebook(false)
+
+    if (!json?.success) {
+      const error = json?.error || "Facebook post failed"
+      setArticle({
+        ...article,
+        facebook_post_error: error,
+        facebook_last_attempt_at: new Date().toISOString(),
+      })
+      setMessage(error)
+      return
+    }
+
+    const nextArticle = {
+      ...article,
+      facebook_post_id:
+        json.facebookPhotoPost?.post_id || json.facebookPhotoPost?.id || null,
+      facebook_first_comment_id: json.facebookComment?.id || null,
+      facebook_posted_at: new Date().toISOString(),
+      facebook_post_error: json.commentError || null,
+      facebook_last_attempt_at: new Date().toISOString(),
+    }
+    setArticle(nextArticle)
+    setMessage(
+      json.warning
+        ? "Facebook photo posted, but first comment failed"
+        : "Posted to Facebook"
+    )
   }
 
   const checks = qualityChecks(article)
@@ -256,6 +329,45 @@ export function ArticleEditorClient({ id }: { id: string }) {
                   )}
                 </div>
                 {message && <p className="mt-3 text-sm text-[#4DCC8A]">{message}</p>}
+              </div>
+
+              <div className="rounded-lg border border-white/[0.08] bg-[#0D0D0D] p-4">
+                <h2 className="text-sm font-semibold text-white">Facebook</h2>
+                <div className="mt-4 rounded-md border border-white/[0.08] bg-[#050505] px-3 py-2">
+                  <p className="text-[11px] uppercase tracking-[1.4px] text-white/35">Post status</p>
+                  <p className={article.facebook_post_id ? "mt-1 text-sm font-semibold text-[#4DCC8A]" : "mt-1 text-sm font-semibold text-white/60"}>
+                    {article.facebook_post_id ? "Posted" : "Not posted"}
+                  </p>
+                  {article.facebook_post_id && (
+                    <p className="mt-2 break-all text-xs text-white/35">
+                      {article.facebook_post_id}
+                    </p>
+                  )}
+                  {article.facebook_post_error && (
+                    <p className="mt-2 text-xs leading-5 text-[#FF9A74]">
+                      {article.facebook_post_error}
+                    </p>
+                  )}
+                </div>
+                <button
+                  onClick={postToFacebook}
+                  disabled={
+                    postingFacebook ||
+                    !article.is_published ||
+                    !article.hero_image ||
+                    Boolean(article.facebook_post_id)
+                  }
+                  className="mt-4 h-10 w-full rounded-md border border-[#1877F2]/45 bg-[#1877F2]/15 px-3 text-sm font-semibold text-[#B7D9FF] hover:bg-[#1877F2]/25 disabled:opacity-40"
+                >
+                  {postingFacebook
+                    ? "Posting..."
+                    : article.facebook_post_id
+                      ? "Posted to Facebook"
+                      : "Post to Facebook"}
+                </button>
+                {!article.is_published && (
+                  <p className="mt-2 text-xs text-white/35">Publish before posting to Facebook.</p>
+                )}
               </div>
 
               <div className="rounded-lg border border-white/[0.08] bg-[#0D0D0D] p-4">

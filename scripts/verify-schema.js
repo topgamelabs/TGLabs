@@ -31,7 +31,14 @@ const REQUIRED_TABLES = [
       'ai_generated',
       'search_vector',
     ],
-    recommendedColumns: ['inline_images'],
+    recommendedColumns: [
+      'inline_images',
+      'facebook_post_id',
+      'facebook_posted_at',
+      'facebook_first_comment_id',
+      'facebook_post_error',
+      'facebook_last_attempt_at',
+    ],
   },
   {
     name: 'raw_news_queue',

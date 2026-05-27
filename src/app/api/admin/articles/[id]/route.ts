@@ -15,7 +15,7 @@ export async function GET(
   const { data, error } = await supabaseAdmin
     .from("articles")
     .select(
-      "id,title,slug,excerpt,content,category,hero_image,status,is_published,seo_title,seo_description,source_url,published_at,created_at,updated_at"
+      "id,title,slug,excerpt,content,category,hero_image,status,is_published,seo_title,seo_description,source_url,published_at,created_at,updated_at,facebook_post_id,facebook_posted_at,facebook_first_comment_id,facebook_post_error,facebook_last_attempt_at"
     )
     .eq("id", id)
     .single()
