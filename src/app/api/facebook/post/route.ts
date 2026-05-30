@@ -53,7 +53,7 @@ function buildArticleMessage(article: ArticleForFacebook) {
 }
 
 function buildArticleComment(article: ArticleForFacebook, link: string) {
-  return `อ่านต่อ: ${link || articleUrl(article.slug)}`
+  return `\u0e2d\u0e48\u0e32\u0e19\u0e15\u0e48\u0e2d: ${link || articleUrl(article.slug)}`
 }
 
 function facebookObjectId(post: { id: string; post_id?: string }) {
