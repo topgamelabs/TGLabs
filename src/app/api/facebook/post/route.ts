@@ -1,7 +1,13 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { requireOperationalAuth } from "@/lib/apiAuth"
 import {
+  findFacebookCreativeMapping,
+  resolveWorkspaceCreativePath,
+} from "@/lib/facebook/creativeMapping"
+import { getReadyFacebookFinalImage } from "@/lib/facebook/creativeStorage"
+import {
   publishFacebookPageComment,
+  publishFacebookPagePhotoUpload,
   publishFacebookPagePhotoPost,
   publishFacebookPagePost,
 } from "@/lib/facebook/pages"
@@ -15,7 +21,9 @@ type ArticleForFacebook = {
   slug: string
   excerpt: string | null
   hero_image: string | null
+  status: string | null
   is_published: boolean
+  published_at: string | null
   facebook_post_id: string | null
   facebook_posted_at: string | null
   facebook_first_comment_id: string | null
@@ -56,7 +64,7 @@ async function getArticle(id: string) {
   const { data, error } = await supabaseAdmin
     .from("articles")
     .select(
-      "id,title,slug,excerpt,hero_image,is_published,facebook_post_id,facebook_posted_at,facebook_first_comment_id,facebook_post_error"
+      "id,title,slug,excerpt,hero_image,status,is_published,published_at,facebook_post_id,facebook_posted_at,facebook_first_comment_id,facebook_post_error"
     )
     .eq("id", id)
     .maybeSingle()
@@ -66,6 +74,28 @@ async function getArticle(id: string) {
   }
 
   return data as ArticleForFacebook | null
+}
+
+async function publishArticle(article: ArticleForFacebook) {
+  const publishedAt = article.published_at || new Date().toISOString()
+  const { data, error } = await supabaseAdmin
+    .from("articles")
+    .update({
+      status: "published",
+      is_published: true,
+      published_at: publishedAt,
+    })
+    .eq("id", article.id)
+    .select(
+      "id,title,slug,excerpt,hero_image,status,is_published,published_at,facebook_post_id,facebook_posted_at,facebook_first_comment_id,facebook_post_error"
+    )
+    .single()
+
+  if (error) {
+    throw new Error(`ARTICLE_PUBLISH_FAILED: ${error.message}`)
+  }
+
+  return data as ArticleForFacebook
 }
 
 async function updateFacebookState(
@@ -149,7 +179,14 @@ export async function POST(req: NextRequest) {
         )
       }
 
-      if (!article.is_published) {
+      const shouldPublishArticle =
+        !article.is_published && body.publishArticle === true
+
+      if (shouldPublishArticle && !dryRun) {
+        article = await publishArticle(article)
+      }
+
+      if (!article.is_published && !shouldPublishArticle) {
         return NextResponse.json(
           { success: false, error: "ARTICLE_MUST_BE_PUBLISHED" },
           { status: 400 }
@@ -168,25 +205,43 @@ export async function POST(req: NextRequest) {
         )
       }
 
-      const imageUrl =
+      const mappedCreative = await findFacebookCreativeMapping(article.id)
+      const storedCreative = await getReadyFacebookFinalImage(article.id)
+      const requestedImageFilePath =
+        typeof body.imageFilePath === "string" && body.imageFilePath.trim()
+          ? body.imageFilePath.trim()
+          : ""
+      const mappedImageFilePath = mappedCreative?.finalImagePath?.trim() || ""
+      const imageFilePath = requestedImageFilePath || mappedImageFilePath
+      const resolvedImageFilePath = imageFilePath
+        ? resolveWorkspaceCreativePath(imageFilePath)
+        : ""
+      const requestedImageUrl =
         typeof body.imageUrl === "string" && body.imageUrl.trim()
           ? body.imageUrl.trim()
-          : article.hero_image?.trim() || ""
+          : ""
+      const imageUrl =
+        requestedImageUrl ||
+        storedCreative?.publicUrl ||
+        mappedCreative?.finalImageUrl?.trim() ||
+        article.hero_image?.trim() ||
+        ""
       const caption = message
       const firstComment =
         typeof body.firstComment === "string" && body.firstComment.trim()
           ? body.firstComment.trim()
           : buildArticleComment(article, link)
 
-      if (!imageUrl) {
+      if (!resolvedImageFilePath && !imageUrl) {
         return NextResponse.json(
-          { success: false, error: "ARTICLE_HERO_IMAGE_REQUIRED" },
+          { success: false, error: "FACEBOOK_IMAGE_REQUIRED" },
           { status: 400 }
         )
       }
 
       const photoPayload = {
-        imageUrl,
+        imageUrl: resolvedImageFilePath ? undefined : imageUrl,
+        imageFilePath: resolvedImageFilePath || undefined,
         caption,
         published:
           typeof body.published === "boolean" ? body.published : undefined,
@@ -199,6 +254,9 @@ export async function POST(req: NextRequest) {
           dryRun: true,
           mode,
           article,
+          willPublishArticle: shouldPublishArticle,
+          mappedCreative,
+          storedCreative,
           photoPost: photoPayload,
           firstComment,
         })
@@ -212,7 +270,25 @@ export async function POST(req: NextRequest) {
         ReturnType<typeof publishFacebookPagePhotoPost>
       >
       try {
-        facebookPhotoPost = await publishFacebookPagePhotoPost(photoPayload)
+        facebookPhotoPost = resolvedImageFilePath
+          ? await publishFacebookPagePhotoUpload({
+              imageFilePath: resolvedImageFilePath,
+              caption,
+              published:
+                typeof body.published === "boolean"
+                  ? body.published
+                  : undefined,
+              scheduledPublishTime,
+            })
+          : await publishFacebookPagePhotoPost({
+              imageUrl,
+              caption,
+              published:
+                typeof body.published === "boolean"
+                  ? body.published
+                  : undefined,
+              scheduledPublishTime,
+            })
       } catch (postError) {
         const postMessage =
           postError instanceof Error

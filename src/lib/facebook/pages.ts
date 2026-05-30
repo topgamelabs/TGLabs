@@ -1,4 +1,6 @@
 import { requireEnv } from "@/lib/env"
+import { readFile } from "node:fs/promises"
+import { basename, extname } from "node:path"
 
 const DEFAULT_GRAPH_API_VERSION = "v25.0"
 
@@ -15,6 +17,13 @@ export type FacebookPagePostResult = {
 
 export type FacebookPagePhotoPostInput = {
   imageUrl: string
+  caption: string
+  published?: boolean
+  scheduledPublishTime?: string | number
+}
+
+export type FacebookPagePhotoUploadInput = {
+  imageFilePath: string
   caption: string
   published?: boolean
   scheduledPublishTime?: string | number
@@ -85,6 +94,33 @@ function formatFacebookError(payload: FacebookErrorPayload, fallback: string) {
   ].filter(Boolean)
 
   return parts.join(" | ") || fallback
+}
+
+function mimeTypeForImagePath(filePath: string) {
+  const ext = extname(filePath).toLowerCase()
+
+  if (ext === ".jpg" || ext === ".jpeg") return "image/jpeg"
+  if (ext === ".png") return "image/png"
+  if (ext === ".webp") return "image/webp"
+
+  throw new Error("FACEBOOK_IMAGE_FILE_MUST_BE_JPEG_PNG_OR_WEBP")
+}
+
+async function parseFacebookPhotoResponse(response: Response) {
+  const payload = (await response.json().catch(() => ({}))) as
+    | FacebookPagePhotoPostResult
+    | FacebookErrorPayload
+
+  if (!response.ok || !("id" in payload)) {
+    throw new Error(
+      formatFacebookError(
+        payload as FacebookErrorPayload,
+        "FACEBOOK_PAGE_PHOTO_POST_FAILED"
+      )
+    )
+  }
+
+  return payload
 }
 
 export async function publishFacebookPagePost(input: FacebookPagePostInput) {
@@ -173,20 +209,50 @@ export async function publishFacebookPagePhotoPost(
     body: JSON.stringify(body),
   })
 
-  const payload = (await response.json().catch(() => ({}))) as
-    | FacebookPagePhotoPostResult
-    | FacebookErrorPayload
+  return parseFacebookPhotoResponse(response)
+}
 
-  if (!response.ok || !("id" in payload)) {
-    throw new Error(
-      formatFacebookError(
-        payload as FacebookErrorPayload,
-        "FACEBOOK_PAGE_PHOTO_POST_FAILED"
-      )
-    )
+export async function publishFacebookPagePhotoUpload(
+  input: FacebookPagePhotoUploadInput
+) {
+  const caption = normalizeMessage(input.caption)
+  const imageFilePath = input.imageFilePath.trim()
+
+  if (!caption) {
+    throw new Error("FACEBOOK_CAPTION_REQUIRED")
   }
 
-  return payload
+  if (!imageFilePath) {
+    throw new Error("FACEBOOK_IMAGE_FILE_PATH_REQUIRED")
+  }
+
+  const bytes = await readFile(imageFilePath)
+  const form = new FormData()
+  form.set("access_token", requireEnv("FACEBOOK_PAGE_ACCESS_TOKEN"))
+  form.set("caption", caption)
+  form.set(
+    "source",
+    new Blob([new Uint8Array(bytes)], {
+      type: mimeTypeForImagePath(imageFilePath),
+    }),
+    basename(imageFilePath)
+  )
+
+  if (typeof input.published === "boolean") {
+    form.set("published", String(input.published))
+  }
+
+  if (input.scheduledPublishTime) {
+    form.set("published", "false")
+    form.set("scheduled_publish_time", String(input.scheduledPublishTime))
+  }
+
+  const response = await fetch(getPagePhotosEndpoint(), {
+    method: "POST",
+    body: form,
+  })
+
+  return parseFacebookPhotoResponse(response)
 }
 
 export async function publishFacebookPageComment(

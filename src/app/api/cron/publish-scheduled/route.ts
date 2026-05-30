@@ -5,6 +5,11 @@ import {
   getArticleBlockMetrics,
   parseArticleBlocks,
 } from "@/lib/news/articleBlocks"
+import { getReadyFacebookFinalImage } from "@/lib/facebook/creativeStorage"
+import {
+  publishFacebookPageComment,
+  publishFacebookPagePhotoPost,
+} from "@/lib/facebook/pages"
 
 export const runtime = "nodejs"
 
@@ -12,8 +17,14 @@ type DraftArticle = {
   id: string
   title: string
   slug: string
+  excerpt: string | null
   content: string
   created_at: string | null
+  facebook_post_id: string | null
+}
+
+type ReadyDraftArticle = DraftArticle & {
+  facebookFinalImageUrl: string
 }
 
 const MIN_PUBLISH_TEXT_LENGTH = 1000
@@ -34,11 +45,12 @@ function requireCronAuth(req: NextRequest) {
 async function getNextDraftArticle() {
   const { data, error } = await supabaseAdmin
     .from("articles")
-    .select("id,title,slug,content,created_at")
+    .select("id,title,slug,excerpt,content,created_at,facebook_post_id")
     .eq("status", "draft")
     .eq("is_published", false)
     .eq("ai_generated", true)
     .not("source_url", "is", null)
+    .is("facebook_post_id", null)
     .order("created_at", { ascending: true, nullsFirst: false })
     .limit(25)
 
@@ -52,7 +64,24 @@ async function getNextDraftArticle() {
     const quality = validateDraftQuality(article)
 
     if (quality.ok) {
-      return { article, skipped }
+      const finalImage = await getReadyFacebookFinalImage(article.id)
+
+      if (finalImage) {
+        return {
+          article: {
+            ...article,
+            facebookFinalImageUrl: finalImage.publicUrl,
+          },
+          skipped,
+        }
+      }
+
+      skipped.push({
+        id: article.id,
+        title: article.title,
+        reason: "FACEBOOK_FINAL_IMAGE_NOT_READY",
+      })
+      continue
     }
 
     skipped.push({
@@ -97,7 +126,7 @@ function validateDraftQuality(article: DraftArticle) {
   }
 }
 
-async function publishArticle(article: DraftArticle) {
+async function publishArticle(article: ReadyDraftArticle) {
   const publishedAt = new Date().toISOString()
   const { data, error } = await supabaseAdmin
     .from("articles")
@@ -110,7 +139,7 @@ async function publishArticle(article: DraftArticle) {
     .eq("id", article.id)
     .eq("status", "draft")
     .eq("is_published", false)
-    .select("id,title,slug,status,is_published,published_at")
+    .select("id,title,slug,excerpt,status,is_published,published_at,facebook_post_id,facebook_posted_at,facebook_first_comment_id")
     .maybeSingle()
 
   if (error) {
@@ -118,6 +147,92 @@ async function publishArticle(article: DraftArticle) {
   }
 
   return data
+}
+
+function getSiteUrl() {
+  return (
+    process.env.FACEBOOK_PUBLIC_SITE_URL ||
+    process.env.SITE_URL ||
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://www.tglabs.info"
+  ).replace(/\/$/, "")
+}
+
+function articleUrl(slug: string) {
+  return `${getSiteUrl()}/news/${slug}`
+}
+
+function buildArticleMessage(article: Pick<DraftArticle, "title" | "excerpt">) {
+  const lines = [article.title.trim()]
+
+  if (article.excerpt?.trim()) {
+    lines.push("", article.excerpt.trim())
+  }
+
+  return lines.join("\n")
+}
+
+function facebookObjectId(post: { id: string; post_id?: string }) {
+  return post.post_id || post.id
+}
+
+async function updateFacebookState(
+  articleId: string,
+  patch: {
+    facebook_post_id?: string | null
+    facebook_posted_at?: string | null
+    facebook_first_comment_id?: string | null
+    facebook_post_error?: string | null
+  }
+) {
+  const { error } = await supabaseAdmin
+    .from("articles")
+    .update({
+      ...patch,
+      facebook_last_attempt_at: new Date().toISOString(),
+    })
+    .eq("id", articleId)
+
+  if (error) {
+    throw new Error(`FACEBOOK_STATE_UPDATE_FAILED: ${error.message}`)
+  }
+}
+
+async function postPublishedArticleToFacebook(article: ReadyDraftArticle) {
+  const caption = buildArticleMessage(article)
+  const link = articleUrl(article.slug)
+  const firstComment = `อ่านต่อ: ${link}`
+
+  await updateFacebookState(article.id, {
+    facebook_post_error: null,
+  })
+
+  const facebookPhotoPost = await publishFacebookPagePhotoPost({
+    imageUrl: article.facebookFinalImageUrl,
+    caption,
+  })
+  const objectId = facebookObjectId(facebookPhotoPost)
+
+  await updateFacebookState(article.id, {
+    facebook_post_id: objectId,
+    facebook_posted_at: new Date().toISOString(),
+    facebook_post_error: null,
+  })
+
+  const facebookComment = await publishFacebookPageComment({
+    objectId,
+    message: firstComment,
+  })
+
+  await updateFacebookState(article.id, {
+    facebook_first_comment_id: facebookComment.id,
+    facebook_post_error: null,
+  })
+
+  return {
+    facebookPhotoPost,
+    facebookComment,
+  }
 }
 
 export async function GET(req: NextRequest) {
@@ -159,12 +274,39 @@ export async function GET(req: NextRequest) {
       })
     }
 
-    return NextResponse.json({
-      success: true,
-      published: true,
-      article: publishedArticle,
-      skipped,
-    })
+    try {
+      const facebook = await postPublishedArticleToFacebook({
+        ...article,
+        ...publishedArticle,
+      })
+
+      return NextResponse.json({
+        success: true,
+        published: true,
+        facebookPosted: true,
+        article: publishedArticle,
+        facebook,
+        skipped,
+      })
+    } catch (facebookError) {
+      const facebookMessage =
+        facebookError instanceof Error
+          ? facebookError.message
+          : "FACEBOOK_CRON_POST_FAILED"
+
+      await updateFacebookState(article.id, {
+        facebook_post_error: facebookMessage,
+      })
+
+      return NextResponse.json({
+        success: true,
+        published: true,
+        facebookPosted: false,
+        facebookError: facebookMessage,
+        article: publishedArticle,
+        skipped,
+      })
+    }
   } catch (error) {
     const message = error instanceof Error ? error.message : "PUBLISH_CRON_FAILED"
 
